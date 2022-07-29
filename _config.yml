@@ -1,6 +1,6 @@
 # Book settings
 title: ICESat-2 Sea Ice Thickness Data Analysis and Visualization
-author: Nicole Keeney
+author: Nicole Keeney and Alek Petty
 logo: figs/logo.png
 
 latex:
@@ -8,7 +8,7 @@ latex:
     targetname: book.tex
 
 repository:
-  url                       : https://github.com/nicolejkeeney/icesat2-book
+  url                       : https://github.com/akpetty/icesat2-book
   branch                    : master  
 
 html:
@@ -16,7 +16,7 @@ html:
   use_issues_button         : true
   use_edit_page_button      : true
   favicon                   : "figs/logo.png"
-  google_analytics_id       : "UA-177768395-1"
+  google_analytics_id       : "G-J1HEQ5DMT0"
 
 
 execute:

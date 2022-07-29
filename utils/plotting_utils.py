@@ -395,7 +395,9 @@ def interactive_winter_mean_maps(da, years=None, end_year=None, start_month="Sep
     return pl_means
 
 
-def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3), start_month="Sep", end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', force_complete_season=False): 
+def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3), start_month="Sep", 
+    end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', 
+    annotation = '', force_complete_season=False, loc_pos=0): 
     """ Make a lineplot with markers comparing monthly mean data across winter seasons 
     
     Args: 
@@ -411,7 +413,8 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
         start_month (str, optional): first month in winter (default to September)
         end_month (str, optional): second month in winter; this is the following calender year after start_month (default to April)
         force_complete_season (bool, optional): require that winter season returns data if and only if all months have data? i.e. if Sep and Oct have no data, return nothing even if Nov-Apr have data? (default to False) 
-        
+        loc_pos (int, optional): if greater than one use that, if not default to "best"
+
        Returns: 
            Figure displayed in notebook
         
@@ -455,7 +458,14 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
 
     # Add legend, title, and axis labels, and display plot in notebook 
     if legend:
-        plt.legend(fontsize=8, loc="best")
+        if loc_pos>0:
+            plt.legend(fontsize=8, loc=loc_pos)
+        else:
+            plt.legend(fontsize=8, loc="best")
+    
+    # Add annotation if provided
+    ax.annotate(annotation, xy=(0.02, 0.98),xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=8, zorder=2)
+
     
     plt.title(title, fontsize=9)
     if len(set_ylabel)>0:
