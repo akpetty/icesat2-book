@@ -1,20 +1,20 @@
 format: jb-book
 root: home
 parts:
-- caption: INTRO
+- caption: ICESat-2 sea ice thickness data
   chapters:
-  - file: is2_intro
-- caption: ANALYSIS & VISUALIZATION
+  - file: is2sitmogr4_intro
+- caption: Gridded sea ice thickness analysis (Petty et al., 2022)
   chapters: 
-  - file: sea_ice_thickness
+  - file: sea_ice_thickness_variability
   - file: sea_ice_characteristics 
   - file: atmospheric_variables 
   - file: pio_vs_is2
-- caption: DATA WRANGLING & INTERPOLATION
+- caption: Data wrangling
   chapters:
-  - file: data_wrangling
-  - file: interp_demo
-- caption: HELPER FUNCTIONS
+  - file: gridded_data_wrangling
+  - file: gridded_interp_demo
+- caption: Ancillary code
   chapters: 
   - file: utils/markdown_rendering/read_data_utils
   - file: utils/markdown_rendering/plotting_utils
