@@ -53,7 +53,7 @@ ERA5.attrs = {'description': 'era5 monthly averaged data on single levels from 1
 During handling of the above exception, another exception occurred:
 
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_17579/2741354100.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_25806/2741354100.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m# Read data[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mERA5[0m [0;34m=[0m [0mxr[0m[0;34m.[0m[0mopen_dataset[0m[0;34m([0m[0mERA5_path[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0mERA5[0m [0;34m=[0m [0mERA5[0m[0;34m.[0m[0msel[0m[0;34m([0m[0mtime[0m [0;34m=[0m [0mdate_range[0m[0;34m)[0m [0;31m# Select for date range of interest[0m[0;34m[0m[0;34m[0m[0m
