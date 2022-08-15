@@ -1,5 +1,5 @@
 <!-- #region -->
-ICESat-2 Sea Ice Thickness Analysis Jupyter Book
+ICESat-2 Sea Ice Analysis Jupyter Book
 =============================================
 
 **View this Jupyter Book (including options to run the code interactively!) in our Jupyter Book:** http://icesat-2-sea-ice-state.info
