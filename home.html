@@ -124,12 +124,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="atmospheric_variables.html">
-   Atmospheric variables
+   Atmospheric variability
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pio_vs_is2.html">
-   Model vs. satellite sea ice thickness
+   Comparisons with PIOMAS sea ice thickness estimates
   </a>
  </li>
 </ul>
@@ -280,11 +280,6 @@
   <a class="reference internal nav-link" href="#a-note-on-xarray">
    A note on xarray
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-history">
-   Update history
-  </a>
   <ul class="visible nav section-nav flex-column">
   </ul>
  </li>
@@ -302,14 +297,15 @@
   <div class="section" id="region-icesat-2-arctic-sea-ice-thickness-analysis">
 <h1><!-- #region -->
 ICESat-2 Arctic Sea Ice Thickness Analysis<a class="headerlink" href="#region-icesat-2-arctic-sea-ice-thickness-analysis" title="Permalink to this headline">¶</a></h1>
-<p><img alt="ICESat-2 maps" src="_images/maps_thickness_winter.png" /></p>
 </div>
 <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>NASA’s Ice, Cloud, and Land Elevation Satellite-2 <a class="reference external" href="https://icesat-2.gsfc.nasa.gov/">(ICESat-2)</a> has been providing high resolution laser altimetry profiling of the entire Earth’s surface - particularly over the fast-changing Polar Regions - since its launch in fall 2018.</p>
-<p>The ICESat-2 Project Science Office has produced and disseminated a number of official datasets through the National Snow and Ice Data Center <a class="reference external" href="https://nsidc.org/data/icesat-2">(NSIDC)</a> including the <a class="reference external" href="https://nsidc.org/data/ATL10">(ATL10)</a> Arctic and Southern Ocean sea ice freeboard dataset, which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams from ICESat-2.</p>
-<p>Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model <a class="reference external" href="https://github.com/akpetty/NESOSIM">(NESOSIM)</a> have been produced and disseminated through the NSIDC (<a class="reference external" href="https://nsidc.org/data/IS2SITMOGR4">https://nsidc.org/data/IS2SITMOGR4</a>). More information about the methodology behind this dataset can be found in the <a class="reference external" href="http://www.alekpetty.com/papers/petty2020">(original paper)</a>.</p>
-<p>Since its launch in 2018, ICESat-2 has now collected and analyzed data over four winter seasons across the entire Arctic Ocean. A manuscript is currently in review regarding the analysis of the first three winters of data collected (<a class="reference external" href="https://tc.copernicus.org/preprints/tc-2022-39/">https://tc.copernicus.org/preprints/tc-2022-39/</a>) which was the original motivation behind this Jupyter Book.</p>
+<p>NASA’s Ice, Cloud, and Land Elevation Satellite-2 (<a class="reference external" href="https://icesat-2.gsfc.nasa.gov/">ICESat-2</a>) has been providing high resolution laser altimetry profiling of the entire Earth’s surface - particularly over the fast-changing Polar Regions - since its launch in the fall of 2018.</p>
+<p>The ICESat-2 Project Science Office has produced and disseminated a number of official datasets through the National Snow and Ice Data Center <a class="reference external" href="https://nsidc.org/data/icesat-2">(NSIDC)</a> including the Arctic and Southern Ocean sea ice freeboard dataset <a class="reference external" href="https://nsidc.org/data/ATL10">(ATL10)</a>  dataset, which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams from ICESat-2.</p>
+<p>Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model <a class="reference external" href="https://github.com/akpetty/NESOSIM">(NESOSIM)</a> have been produced and disseminated through the NSIDC (<a class="reference external" href="https://nsidc.org/data/IS2SITMOGR4">https://nsidc.org/data/IS2SITMOGR4</a>). More information about the methodology behind this dataset can be found in the <a class="reference external" href="http://www.alekpetty.com/papers/petty2020">original paper</a>.</p>
+<p>Since its launch in 2018, ICESat-2 has now collected and analyzed data over four winter seasons across the entire Arctic Ocean. A manuscript is currently in review regarding the analysis of the first three winters of data collected (<a class="reference external" href="https://tc.copernicus.org/preprints/tc-2022-39/">https://tc.copernicus.org/preprints/tc-2022-39/</a>) which was the original motivation behind the creation of this Jupyter Book.</p>
+<p>Our goal now is to continue to update this book as new data is produced and to share additional analyses of the sea ice state using the incredible data collected by ICESat-2.</p>
+<p><img alt="ICESat-2 maps" src="_images/maps_thickness_winter.png" /></p>
 </div>
 <div class="section" id="contact">
 <h1>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h1>
@@ -331,18 +327,6 @@ GitHub: nicolejkeeney<br></p>
 <div class="section" id="a-note-on-xarray">
 <h1>A note on xarray<a class="headerlink" href="#a-note-on-xarray" title="Permalink to this headline">¶</a></h1>
 <p>All of the notebooks in this notebook utilize <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a>, a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot.</p>
-</div>
-<div class="section" id="update-history">
-<h1>Update history<a class="headerlink" href="#update-history" title="Permalink to this headline">¶</a></h1>
-<p>If you find any typos or errors in the code or have any suggestions for the book, feel free to open an issue, which you can find by mousing over the GitHub icon at the top of each page. If you are familiar with GitHub, you can also fork the book’s repository and suggest an edit that way.</p>
-<ul class="simple">
-<li><p>9/4/2020: Version 1</p></li>
-<li><p>11/18/2020: Updated with version 2 ICESat-2 data product for <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2020AGUFMC014.0012K/abstract">AGU Fall 2020 poster highlighting the book</a>.</p></li>
-<li><p>6/14/2021: Transitioned from Google Colab interactivity to Binder.</p></li>
-<li><p>10/25/2021: Added interactive plotting using hvplot. Improved interpolation/smoothing method for ICESat-2 data and added notebook to demonstrate steps.</p></li>
-<li><p>01/24/2022: Updated notebooks to reflect new data variables in ICESat-2 data v2. Added drift vectors.</p></li>
-<li><p>08/15/2022: Forked to akpetty and linked to a new domain (<a class="reference external" href="http://icesat-2-sea-ice-state.info">icesat-2-sea-ice-state.info</a>). Re-designed to reflect continued analysis of both the gridded and along-track thickness data.</p></li>
-</ul>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">

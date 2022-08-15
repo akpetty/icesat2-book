@@ -2,19 +2,22 @@
 ICESat-2 Arctic Sea Ice Thickness Analysis
 =============================================
 
-![ICESat-2 maps](figs/maps_thickness_winter.png "ICESat-2 mean winter Arctic sea ice thickness - REPLACE WITH UPDATED BASIC INTERACTIVE PLOT?")
 
 
 # Introduction
 
-NASA's Ice, Cloud, and Land Elevation Satellite-2 [(ICESat-2)](https://icesat-2.gsfc.nasa.gov/) has been providing high resolution laser altimetry profiling of the entire Earth's surface - particularly over the fast-changing Polar Regions - since its launch in fall 2018. 
+NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) has been providing high resolution laser altimetry profiling of the entire Earth's surface - particularly over the fast-changing Polar Regions - since its launch in the fall of 2018. 
 
-The ICESat-2 Project Science Office has produced and disseminated a number of official datasets through the National Snow and Ice Data Center [(NSIDC)](https://nsidc.org/data/icesat-2) including the [(ATL10)](https://nsidc.org/data/ATL10) Arctic and Southern Ocean sea ice freeboard dataset, which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams from ICESat-2. 
+The ICESat-2 Project Science Office has produced and disseminated a number of official datasets through the National Snow and Ice Data Center [(NSIDC)](https://nsidc.org/data/icesat-2) including the Arctic and Southern Ocean sea ice freeboard dataset [(ATL10)](https://nsidc.org/data/ATL10)  dataset, which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams from ICESat-2. 
 
-Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model [(NESOSIM)](https://github.com/akpetty/NESOSIM) have been produced and disseminated through the NSIDC (https://nsidc.org/data/IS2SITMOGR4). More information about the methodology behind this dataset can be found in the [(original paper)](http://www.alekpetty.com/papers/petty2020). 
+Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model [(NESOSIM)](https://github.com/akpetty/NESOSIM) have been produced and disseminated through the NSIDC (https://nsidc.org/data/IS2SITMOGR4). More information about the methodology behind this dataset can be found in the [original paper](http://www.alekpetty.com/papers/petty2020). 
 
 
-Since its launch in 2018, ICESat-2 has now collected and analyzed data over four winter seasons across the entire Arctic Ocean. A manuscript is currently in review regarding the analysis of the first three winters of data collected (https://tc.copernicus.org/preprints/tc-2022-39/) which was the original motivation behind this Jupyter Book.
+Since its launch in 2018, ICESat-2 has now collected and analyzed data over four winter seasons across the entire Arctic Ocean. A manuscript is currently in review regarding the analysis of the first three winters of data collected (https://tc.copernicus.org/preprints/tc-2022-39/) which was the original motivation behind the creation of this Jupyter Book.
+
+Our goal now is to continue to update this book as new data is produced and to share additional analyses of the sea ice state using the incredible data collected by ICESat-2. 
+
+![ICESat-2 maps](figs/maps_thickness_winter.png "ICESat-2 mean winter Arctic sea ice thickness - REPLACE WITH UPDATED BASIC INTERACTIVE PLOT?")
 
 
 # Contact 
@@ -37,12 +40,5 @@ The gridded ICESat-2 winter Arctic sea ice thickness data is available at the NS
 # A note on xarray 
 All of the notebooks in this notebook utilize [xarray](http://xarray.pydata.org/en/stable/), a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot. 
 
-# Update history  
-If you find any typos or errors in the code or have any suggestions for the book, feel free to open an issue, which you can find by mousing over the GitHub icon at the top of each page. If you are familiar with GitHub, you can also fork the book's repository and suggest an edit that way. 
- - 9/4/2020: Version 1
- - 11/18/2020: Updated with version 2 ICESat-2 data product for [AGU Fall 2020 poster highlighting the book](https://ui.adsabs.harvard.edu/abs/2020AGUFMC014.0012K/abstract). 
- - 6/14/2021: Transitioned from Google Colab interactivity to Binder. 
- - 10/25/2021: Added interactive plotting using hvplot. Improved interpolation/smoothing method for ICESat-2 data and added notebook to demonstrate steps. 
- - 01/24/2022: Updated notebooks to reflect new data variables in ICESat-2 data v2. Added drift vectors. 
- - 08/15/2022: Forked to akpetty and linked to a new domain (icesat-2-sea-ice-state.info). Re-designed to reflect continued analysis of both the gridded and along-track thickness data. 
+
  
