@@ -1,8 +1,6 @@
 <!-- #region -->
 ICESat-2 Arctic Sea Ice Analysis
-=============================================
-
-# Contact 
+============================================= 
 
 **Alek Petty (Current repository lead, summer 2022 onwards)**<br>
 alek.a.petty@nasa.gov<br>
