@@ -1,10 +1,7 @@
 <!-- #region -->
-ICESat-2 Arctic Sea Ice Thickness Analysis
+ICESat-2 Arctic Sea Ice Analysis
 =============================================
 
-
-
-# Introduction
 
 NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) has been providing high resolution laser altimetry profiling of the entire Earth's surface - particularly over the fast-changing Polar Regions - since its launch in the fall of 2018. 
 
@@ -40,5 +37,9 @@ The gridded ICESat-2 winter Arctic sea ice thickness data is available at the NS
 # A note on xarray 
 All of the notebooks in this notebook utilize [xarray](http://xarray.pydata.org/en/stable/), a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot. 
 
+# References
 
+Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764
+
+Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2022), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere Discuss (preprint), doi: 10.5194/tc-2022-39.
  

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ICESat-2 Arctic Sea Ice Thickness Analysis &#8212; ICESat-2 Sea Ice Thickness Analysis</title>
+    <title>ICESat-2 Arctic Sea Ice Analysis &#8212; ICESat-2 Sea Ice Thickness Analysis</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -90,7 +90,7 @@
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
    <!-- #region -->
-   ICESat-2 Arctic Sea Ice Thickness Analysis
+   ICESat-2 Arctic Sea Ice Analysis
   </a>
  </li>
 </ul>
@@ -253,12 +253,7 @@
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    <!-- #region -->
-   ICESat-2 Arctic Sea Ice Thickness Analysis
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
+   ICESat-2 Arctic Sea Ice Analysis
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -280,6 +275,11 @@
   <a class="reference internal nav-link" href="#a-note-on-xarray">
    A note on xarray
   </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
   <ul class="visible nav section-nav flex-column">
   </ul>
  </li>
@@ -294,12 +294,9 @@
         
               <div>
                 
-  <div class="section" id="region-icesat-2-arctic-sea-ice-thickness-analysis">
+  <div class="section" id="region-icesat-2-arctic-sea-ice-analysis">
 <h1><!-- #region -->
-ICESat-2 Arctic Sea Ice Thickness Analysis<a class="headerlink" href="#region-icesat-2-arctic-sea-ice-thickness-analysis" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+ICESat-2 Arctic Sea Ice Analysis<a class="headerlink" href="#region-icesat-2-arctic-sea-ice-analysis" title="Permalink to this headline">¶</a></h1>
 <p>NASA’s Ice, Cloud, and Land Elevation Satellite-2 (<a class="reference external" href="https://icesat-2.gsfc.nasa.gov/">ICESat-2</a>) has been providing high resolution laser altimetry profiling of the entire Earth’s surface - particularly over the fast-changing Polar Regions - since its launch in the fall of 2018.</p>
 <p>The ICESat-2 Project Science Office has produced and disseminated a number of official datasets through the National Snow and Ice Data Center <a class="reference external" href="https://nsidc.org/data/icesat-2">(NSIDC)</a> including the Arctic and Southern Ocean sea ice freeboard dataset <a class="reference external" href="https://nsidc.org/data/ATL10">(ATL10)</a>  dataset, which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams from ICESat-2.</p>
 <p>Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model <a class="reference external" href="https://github.com/akpetty/NESOSIM">(NESOSIM)</a> have been produced and disseminated through the NSIDC (<a class="reference external" href="https://nsidc.org/data/IS2SITMOGR4">https://nsidc.org/data/IS2SITMOGR4</a>). More information about the methodology behind this dataset can be found in the <a class="reference external" href="http://www.alekpetty.com/papers/petty2020">original paper</a>.</p>
@@ -327,6 +324,11 @@ GitHub: nicolejkeeney<br></p>
 <div class="section" id="a-note-on-xarray">
 <h1>A note on xarray<a class="headerlink" href="#a-note-on-xarray" title="Permalink to this headline">¶</a></h1>
 <p>All of the notebooks in this notebook utilize <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a>, a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot.</p>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764</p>
+<p>Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2022), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere Discuss (preprint), doi: 10.5194/tc-2022-39.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
