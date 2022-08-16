@@ -23,4 +23,5 @@ content/IS2SITMOGR4/*
 update_book.sh
 
 # scratch
+scratch/
 scratch/*
