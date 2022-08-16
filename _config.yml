@@ -1,7 +1,7 @@
 # Book settings
 title: ICESat-2 Sea Ice State Analysis
 author: Nicole Keeney and Alek Petty
-logo: figs/logo.png
+logo: content/figs/logo.png
 
 latex:
   latex_documents:
@@ -15,7 +15,7 @@ html:
   use_repository_button     : true
   use_issues_button         : true
   use_edit_page_button      : true
-  favicon                   : "figs/logo.png"
+  favicon                   : "content/figs/logo.png"
   google_analytics_id       : "G-J1HEQ5DMT0"
 
 
