@@ -16,8 +16,8 @@ __pycache__/*
 */__pycache__/**
 
 # data 
-data/*.nc*
-data/IS2SITMOGR4/*
+content/*.nc*
+content/IS2SITMOGR4/*
 
 #update script
 update_book.sh
