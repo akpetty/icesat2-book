@@ -21,3 +21,6 @@ content/IS2SITMOGR4/*
 
 #update script
 update_book.sh
+
+# scratch
+scratch/*
