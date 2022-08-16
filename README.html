@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ICESat-2 Sea Ice Analysis Jupyter Book &#8212; ICESat-2 Sea Ice Thickness Analysis</title>
+    <title>ICESat-2 Sea Ice State Analysis Jupyter Book &#8212; ICESat-2 Sea Ice State Analysis</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -77,7 +77,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">ICESat-2 Sea Ice Thickness Analysis</h1>
+      <h1 class="site-logo" id="site-title">ICESat-2 Sea Ice State Analysis</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -87,9 +87,9 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="home.html">
+  <a class="reference internal" href="content/home.html">
    <!-- #region -->
-   ICESat-2 Arctic Sea Ice Analysis
+   ICESat-2 Sea Ice State Analysis
   </a>
  </li>
 </ul>
@@ -100,7 +100,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="is2sitmogr4_intro.html">
+  <a class="reference internal" href="content/is2sitmogr4_intro.html">
    ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)
   </a>
  </li>
@@ -112,22 +112,22 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="sea_ice_thickness_variability.html">
+  <a class="reference internal" href="content/sea_ice_thickness_variability.html">
    Winter Arctic sea ice thickness
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="sea_ice_characteristics.html">
+  <a class="reference internal" href="content/sea_ice_characteristics.html">
    Winter Arctic sea ice state variability
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="atmospheric_variables.html">
+  <a class="reference internal" href="content/atmospheric_variables.html">
    Atmospheric variability
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="pio_vs_is2.html">
+  <a class="reference internal" href="content/pio_vs_is2.html">
    Comparisons with PIOMAS sea ice thickness estimates
   </a>
  </li>
@@ -139,8 +139,13 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gridded_data_wrangling.html">
+  <a class="reference internal" href="content/gridded_data_wrangling.html">
    Data wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/gridded_interp_demo.html">
+   ICESat-2 interpolation workflow
   </a>
  </li>
 </ul>
@@ -151,12 +156,12 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="utils/markdown_rendering/read_data_utils.html">
+  <a class="reference internal" href="content/utils/markdown_rendering/read_data_utils.html">
    Functions for reading data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="utils/markdown_rendering/plotting_utils.html">
+  <a class="reference internal" href="content/utils/markdown_rendering/plotting_utils.html">
    Functions for plotting and mapping
   </a>
  </li>
@@ -252,13 +257,15 @@
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    <!-- #region -->
-   ICESat-2 Sea Ice Analysis Jupyter Book
+   ICESat-2 Sea Ice State Analysis Jupyter Book
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contact">
-   Contact
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contributors">
+     Contributors
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#update-history">
@@ -286,19 +293,17 @@
         
               <div>
                 
-  <div class="section" id="region-icesat-2-sea-ice-analysis-jupyter-book">
+  <div class="section" id="region-icesat-2-sea-ice-state-analysis-jupyter-book">
 <h1><!-- #region -->
-ICESat-2 Sea Ice Analysis Jupyter Book<a class="headerlink" href="#region-icesat-2-sea-ice-analysis-jupyter-book" title="Permalink to this headline">¶</a></h1>
-<p><strong>View this Jupyter Book (including options to run the code interactively!) in our Jupyter Book:</strong> <a class="reference external" href="http://icesat-2-sea-ice-state.info">http://icesat-2-sea-ice-state.info</a></p>
-</div>
-<div class="section" id="contact">
-<h1>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h1>
+ICESat-2 Sea Ice State Analysis Jupyter Book<a class="headerlink" href="#region-icesat-2-sea-ice-state-analysis-jupyter-book" title="Permalink to this headline">¶</a></h1>
+<p><strong>View this Jupyter Book (including options to run the code interactively!) in our Jupyter Book:</strong> <a class="reference external" href="http://www.icesat-2-sea-ice-state.info">http://www.icesat-2-sea-ice-state.info</a></p>
+<div class="section" id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
 <p><strong>Alek Petty (Current repository lead, summer 2022 onwards)</strong><br>
-<a class="reference external" href="mailto:alek&#46;a&#46;petty&#37;&#52;&#48;nasa&#46;gov">alek<span>&#46;</span>a<span>&#46;</span>petty<span>&#64;</span>nasa<span>&#46;</span>gov</a><br>
-GitHub: akpetty<br></p>
+<a class="reference external" href="https://github.com/akpetty"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
 <p><strong>Nicole Keeney (Original repository creator)</strong><br>
-<a class="reference external" href="mailto:nicolejkeeney&#37;&#52;&#48;gmail&#46;com">nicolejkeeney<span>&#64;</span>gmail<span>&#46;</span>com</a><br>
-GitHub: nicolejkeeney<br></p>
+<a class="reference external" href="https://github.com/nicolejkeeney"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
+</div>
 </div>
 <div class="section" id="update-history">
 <h1>Update history<a class="headerlink" href="#update-history" title="Permalink to this headline">¶</a></h1>

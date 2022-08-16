@@ -1,18 +1,16 @@
 <!-- #region -->
-ICESat-2 Sea Ice Analysis Jupyter Book
+ICESat-2 Sea Ice State Analysis Jupyter Book
 =============================================
 
-**View this Jupyter Book (including options to run the code interactively!) in our Jupyter Book:** http://icesat-2-sea-ice-state.info
+**View this Jupyter Book (including options to run the code interactively!) in our Jupyter Book:** http://www.icesat-2-sea-ice-state.info
 
-# Contact 
+## Contributors
 
 **Alek Petty (Current repository lead, summer 2022 onwards)**<br>
-alek.a.petty@nasa.gov<br>
-GitHub: akpetty<br>
+[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/akpetty) 
 
 **Nicole Keeney (Original repository creator)**<br>
-nicolejkeeney@gmail.com<br>
-GitHub: nicolejkeeney<br>
+[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/nicolejkeeney)
 
 
 # Update history  

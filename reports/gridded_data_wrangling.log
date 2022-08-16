@@ -48,12 +48,12 @@ ERA5.attrs = {'description': 'era5 monthly averaged data on single levels from 1
 [0;32m---> 53[0;31m             [0mvalue[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_cache[0m[0;34m[[0m[0mkey[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m     54[0m             [0mself[0m[0;34m.[0m[0m_cache[0m[0;34m.[0m[0mmove_to_end[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/aapetty/GitHub/akpetty/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/aapetty/GitHub/akpetty/icesat2-book/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
 
 During handling of the above exception, another exception occurred:
 
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_25806/2741354100.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_46174/2741354100.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m# Read data[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mERA5[0m [0;34m=[0m [0mxr[0m[0;34m.[0m[0mopen_dataset[0m[0;34m([0m[0mERA5_path[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0mERA5[0m [0;34m=[0m [0mERA5[0m[0;34m.[0m[0msel[0m[0;34m([0m[0mtime[0m [0;34m=[0m [0mdate_range[0m[0;34m)[0m [0;31m# Select for date range of interest[0m[0;34m[0m[0;34m[0m[0m
@@ -127,6 +127,6 @@ During handling of the above exception, another exception occurred:
 
 [0;32msrc/netCDF4/_netCDF4.pyx[0m in [0;36mnetCDF4._netCDF4._ensure_nc_success[0;34m()[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: b'/Users/aapetty/GitHub/akpetty/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc'
-FileNotFoundError: [Errno 2] No such file or directory: b'/Users/aapetty/GitHub/akpetty/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc'
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: b'/Users/aapetty/GitHub/akpetty/icesat2-book/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc'
+FileNotFoundError: [Errno 2] No such file or directory: b'/Users/aapetty/GitHub/akpetty/icesat2-book/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc'
 
