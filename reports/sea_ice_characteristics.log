@@ -24,7 +24,7 @@ display(pl)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_46428/1644708823.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_47603/1644708823.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0mfreeboard_winter_means[0m [0;34m=[0m [0mcompute_gridcell_winter_means[0m[0;34m([0m[0mbook_ds[0m[0;34m.[0m[0mfreeboard[0m[0;34m,[0m [0myears[0m[0;34m=[0m[0myears[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mpl[0m [0;34m=[0m [0mstaticArcticMaps[0m[0;34m([0m[0mfreeboard_winter_means[0m[0;34m,[0m [0mset_cbarlabel[0m [0;34m=[0m [0;34m"Sea ice freeboard (m)"[0m[0;34m,[0m [0mcmap[0m[0;34m=[0m[0;34m"YlOrRd"[0m[0;34m,[0m [0mvmin[0m[0;34m=[0m[0;36m0[0m[0;34m,[0m [0mvmax[0m[0;34m=[0m[0;36m0.8[0m[0;34m,[0m [0mout_str[0m[0;34m=[0m[0;34m'freeboard_winter'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0mdisplay[0m[0;34m([0m[0mpl[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m

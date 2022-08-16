@@ -28,7 +28,7 @@ static_winter_comparison_lineplot(book_ds.t2m, years=years,  figsize=(5,3), save
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_46083/255254877.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_47416/255254877.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m# Maps of the means[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      2[0m [0mt2m_winter_means[0m [0;34m=[0m [0mcompute_gridcell_winter_means[0m[0;34m([0m[0mbook_ds[0m[0;34m.[0m[0mt2m[0m[0;34m,[0m [0myears[0m[0;34m=[0m[0myears[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 3[0;31m [0mpl[0m [0;34m=[0m [0mstaticArcticMaps[0m[0;34m([0m[0mt2m_winter_means[0m[0;34m,[0m [0mtitle[0m[0;34m=[0m[0;34m"Winter mean 2 meter tempertaure"[0m[0;34m,[0m [0mcmap[0m[0;34m=[0m[0;34m"coolwarm"[0m[0;34m,[0m [0mvmin[0m[0;34m=[0m[0;34m-[0m[0;36m40[0m[0;34m,[0m [0mvmax[0m[0;34m=[0m[0;34m-[0m[0;36m15[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
