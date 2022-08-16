@@ -10,16 +10,6 @@ The ICESat-2 Project Science Office has produced and disseminated a number of of
 
 Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model [(NESOSIM)](https://github.com/akpetty/NESOSIM) have been produced and disseminated through the NSIDC (https://nsidc.org/data/IS2SITMOGR4). More information about the methodology behind this dataset can be found in the [original paper](http://www.alekpetty.com/papers/petty2020). 
 
-<iframe
-    width="80%"
-    src="https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004988/sea_ice_thickness_2022_1080p30.mp4"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen="true"
->
-</iframe>
-
-<video src='https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004988/sea_ice_thickness_2022_1080p30.mp4' width=80%/video> 
 
 Since its launch in 2018, ICESat-2 has now collected and analyzed data over four winter seasons across the entire Arctic Ocean. A [manuscript is currently in review](https://tc.copernicus.org/preprints/tc-2022-39/) regarding the analysis of the first three winters of data collected  which was the original motivation behind the creation of this Jupyter Book.
 
