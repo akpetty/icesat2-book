@@ -44,7 +44,7 @@ warnings.filterwarnings('ignore')
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_57881/704958752.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_59394/704958752.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      3[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      4[0m [0;32mimport[0m [0mitertools[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 5[0;31m [0;32mfrom[0m [0mutils[0m[0;34m.[0m[0mread_data_utils[0m [0;32mimport[0m [0mread_book_data[0m [0;31m# Helper function for reading the data from the bucket[0m[0;34m[0m[0;34m[0m[0m
