@@ -14,17 +14,14 @@ Since its launch in 2018, ICESat-2 has now obtained data over four winter season
 
 ![ICESat-2 maps](figs/maps_thickness_winter.png "ICESat-2 mean winter Arctic sea ice thickness - REPLACE WITH UPDATED BASIC INTERACTIVE PLOT?")
 
-<iframe src="https://github.com/akpetty/icesat2-book/blob/gh-pages/content/flowers.html"
-    sandbox="allow-same-origin allow-scripts"
+<iframe src="https://github.com/akpetty/icesat2-book/blob/gh-pages/content/bokeh/flowers.html"
     width="100%"
-    height="500"
-    scrolling="no"
-    seamless="seamless"
-    frameborder="0">
+    allow="encrypted-media"
+    frameborder="0"
+    >
 </iframe>
 
 Our goal going forward is to continue to update this book as new data is produced and to share additional analyses of the sea ice state using the incredible data collected by ICESat-2. The focus of this back thus far has been on the Arctic, due mainly to our increased confidence regarding snow on sea ice conditions compared to the Southern Ocean, but continue to watch this space for futher updates. 
-
 
 ## Jupyter Book description
 [Jupyter Books](https://jupyterbook.org/intro.html) provide a novel means of compiling various related Jupyter Notebooks into one convenient and well-indexed location. Here, a series of Jupyter Notebooks are used to provide a visual demonstration of our efforts to analyze winter Arctic sea ice conditions, primiarly freeboard and thickness, derived from ICESat-2 data, along with other relevant datasets.
