@@ -19,12 +19,12 @@ html:
   favicon                   : "content/figs/logo.png"
   google_analytics_id       : "G-J1HEQ5DMT0"
   extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
-  
+  extra_footer: Distributed under the MIT license
 
 
 execute:
   execute_notebooks         : force
-  allow_errors              : false
+  allow_errors              : true
   timeout                   : 1000
   only_build_toc_files      : true
   exclude_patterns:
