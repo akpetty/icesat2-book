@@ -14,6 +14,15 @@ Since its launch in 2018, ICESat-2 has now obtained data over four winter season
 
 ![ICESat-2 maps](figs/maps_thickness_winter.png "ICESat-2 mean winter Arctic sea ice thickness - REPLACE WITH UPDATED BASIC INTERACTIVE PLOT?")
 
+<iframe src="/content/flowers.html"
+    sandbox="allow-same-origin allow-scripts"
+    width="100%"
+    height="500"
+    scrolling="no"
+    seamless="seamless"
+    frameborder="0">
+</iframe>
+
 Our goal going forward is to continue to update this book as new data is produced and to share additional analyses of the sea ice state using the incredible data collected by ICESat-2. The focus of this back thus far has been on the Arctic, due mainly to our increased confidence regarding snow on sea ice conditions compared to the Southern Ocean, but continue to watch this space for futher updates. 
 
 

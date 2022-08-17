@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Winter Arctic sea ice thickness &#8212; ICESat-2 Sea Ice State Analysis</title>
+    <title>TEST &#8212; ICESat-2 Sea Ice State Analysis</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -266,58 +266,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Winter Arctic sea ice thickness
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-in-the-data">
-   Read in the data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#restrict-data-to-a-given-region">
-     Restrict data to a given region
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-years-over-which-to-perform-the-analysis">
-     Set years over which to perform the analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#icesat-2-interpolated-sea-ice-thickness-maps">
-   ICESat-2 interpolated sea ice thickness maps
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#monthly-data">
-     Monthly data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gridcell-winter-means">
-     Gridcell winter means
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mean-monthly-sea-ice-thickness">
-   Mean monthly sea ice thickness
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -326,231 +274,37 @@
         
               <div>
                 
-  <div class="section" id="winter-arctic-sea-ice-thickness">
-<h1>Winter Arctic sea ice thickness<a class="headerlink" href="#winter-arctic-sea-ice-thickness" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook, we’ll show more detailed analysis and visualization of ICESat2 sea ice thickness measurements and the PIOMAS (Pan-Arctic Ice Ocean Modeling and Assimilation System) modelled sea ice thickness data. We’ll also highlight interactive mapping using the hvplot and holoviews package.</p>
+  <div class="section" id="test">
+<h1>TEST<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span> <span class="c1"># For working with gridded climate data </span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">from</span> <span class="nn">utils.read_data_utils</span> <span class="kn">import</span> <span class="n">read_book_data</span> <span class="c1"># Helper function for reading the data from the bucket</span>
-<span class="kn">from</span> <span class="nn">utils.plotting_utils</span> <span class="kn">import</span> <span class="n">compute_gridcell_winter_means</span><span class="p">,</span> <span class="n">staticArcticMaps</span><span class="p">,</span> <span class="n">interactiveArcticMaps</span><span class="p">,</span> <span class="n">interactive_winter_mean_maps</span><span class="p">,</span> <span class="n">interactive_winter_comparison_lineplot</span> <span class="c1"># Plotting</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.iris</span> <span class="kn">import</span> <span class="n">flowers</span>
 
-<span class="c1"># Plotting dependencies</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">wrap</span>
-<span class="kn">import</span> <span class="nn">hvplot.xarray</span>
-<span class="kn">import</span> <span class="nn">holoviews</span> <span class="k">as</span> <span class="nn">hv</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.axes</span> <span class="kn">import</span> <span class="n">Axes</span>
-<span class="kn">from</span> <span class="nn">cartopy.mpl.geoaxes</span> <span class="kn">import</span> <span class="n">GeoAxes</span>
-<span class="n">GeoAxes</span><span class="o">.</span><span class="n">_pcolormesh_patched</span> <span class="o">=</span> <span class="n">Axes</span><span class="o">.</span><span class="n">pcolormesh</span> <span class="c1"># Helps avoid some weird issues with the polar projection </span>
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span> <span class="c1"># Sets figure size in the notebook</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">HoverTool</span>
 
-<span class="c1"># Remove warnings to improve display</span>
-<span class="kn">import</span> <span class="nn">warnings</span> 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_69249</span><span class="o">/</span><span class="mf">704958752.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">itertools</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">utils.read_data_utils</span> <span class="kn">import</span> <span class="n">read_book_data</span> <span class="c1"># Helper function for reading the data from the bucket</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">utils.plotting_utils</span> <span class="kn">import</span> <span class="n">compute_gridcell_winter_means</span><span class="p">,</span> <span class="n">staticArcticMaps</span><span class="p">,</span> <span class="n">interactiveArcticMaps</span><span class="p">,</span> <span class="n">interactive_winter_mean_maps</span><span class="p">,</span> <span class="n">interactive_winter_comparison_lineplot</span> <span class="c1"># Plotting</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="n">colormap</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;setosa&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;versicolor&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;virginica&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">}</span>
+<span class="n">flowers</span><span class="p">[</span><span class="s1">&#39;colors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">colormap</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">flowers</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]]</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;utils&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="read-in-the-data">
-<h1>Read in the data<a class="headerlink" href="#read-in-the-data" title="Permalink to this headline">¶</a></h1>
-<p>We’ve included a function in the <code class="docutils literal notranslate"><span class="pre">read_data_utils</span></code> module that reads in the book dataset from the public google storage bucketas an xarray.Dataset object.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">read_book_data</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span> <span class="c1"># Print docstring</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Read in data for ICESat2 jupyter book. 
-    If the file does not already exist on the user&#39;s local drive, it is downloaded from the books google storage bucket (https://console.cloud.google.com/storage/browser/is2-pso-seaice)
-    The netcdf file is then read in as an xr.Dataset object 
-    
-    Args: 
-        None
-    Returns: 
-        book_ds (xr.Dataset): data 
-    
-    
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">book_ds</span> <span class="o">=</span> <span class="n">read_book_data</span><span class="p">()</span> <span class="c1"># Read/download the data </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">book_ds</span><span class="p">)</span> <span class="c1"># Show dataset</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
-Dimensions:               (time: 30, y: 448, x: 304)
-Coordinates:
-  * time                  (time) datetime64[ns] 2018-11-01 ... 2021-04-01
-    longitude             (y, x) float32 ...
-    latitude              (y, x) float32 ...
-    xgrid                 (y, x) float32 ...
-    ygrid                 (y, x) float32 ...
-Dimensions without coordinates: y, x
-Data variables: (12/20)
-    projection            (time) float64 ...
-    ice_thickness         (time, y, x) float32 ...
-    ice_thickness_unc     (time, y, x) float32 ...
-    num_segments          (time, y, x) float32 ...
-    mean_day_of_month     (time, y, x) float32 ...
-    snow_depth            (time, y, x) float32 ...
-    ...                    ...
-    region_mask           (time, y, x) float64 ...
-    piomas_ice_thickness  (time, y, x) float32 ...
-    t2m                   (time, y, x) float32 ...
-    msdwlwrf              (time, y, x) float32 ...
-    x_vel                 (time, y, x) float64 ...
-    y_vel                 (time, y, x) float64 ...
-Attributes:
-    contact:      Alek Petty (alek.a.petty@nasa.gov)
-    description:  Gridded Oct 2019 Arctic sea ice thickness and ancillary dat...
-    reference:    Data doi: 10.5067/CV6JEXEE31HF. Original methodology descri...
-    history:      Created 10/12/21
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="restrict-data-to-a-given-region">
-<h2>Restrict data to a given region<a class="headerlink" href="#restrict-data-to-a-given-region" title="Permalink to this headline">¶</a></h2>
-<p>We use a region mask of the Arctic to allow us to select for regions of interest, and ignore other regions. This mask is included as a data variable in the ICESat-2 v2 data, and is provided courtesy W. Meier &amp; S. Stewart, National Snow and Ice Data Center (NSIDC). In our analysis, we restrict the data to the Inner Arctic domain, defined as the combined area of the Central Arctic, Beaufort Sea, Chukchi Sea, E Siberian Sea, Laptev Sea and Kara Sea.</p>
-<p><img alt="Arctic region mask" src="scratch/figs/region_mask.png" /></p>
-<p>CA: Central Arctic, BS: Beaufort Sea, CS: Chukchi Sea, ESS: East Siberian Sea, LS: Laptev Sea, KS: Kara Sea, BaS: Barents Sea, EG: East Greenland Sea, GBB: Gulf of Bothnia, Baltic Sea, BB: Baffin Bay &amp; Davis Strait, BeS: Bering Sea, SO: Sea of Okhotsk, GA: Gulf of Alaska.</p>
-<p>Here, we’ll restrict the data to the Inner Arctic by selected the key values [1,2,3,4,5,6], corresponding to the six regions that compose the Inner Arctic.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">innerArctic</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span> <span class="c1">#Inner Arctic</span>
-<span class="n">book_ds_all</span> <span class="o">=</span> <span class="n">book_ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">book_ds</span> <span class="o">=</span> <span class="n">book_ds</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">region_mask</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">innerArctic</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>On the map below, you can see how the data we’ve called the function on has been cut to show only gridcells in the Inner Arctic!</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;Feb 2020&quot;</span>
+<span class="n">hover</span> <span class="o">=</span> <span class="n">HoverTool</span><span class="p">(</span><span class="n">tooltips</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;Sepal length&quot;</span><span class="p">,</span> <span class="s2">&quot;@sepal_length&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Sepal width&quot;</span><span class="p">,</span> <span class="s2">&quot;@sepal_width&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Petal length&quot;</span><span class="p">,</span> <span class="s2">&quot;@petal_length&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">,</span> <span class="s2">&quot;@species&quot;</span><span class="p">)</span>
+    <span class="p">])</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mi">45</span><span class="p">)})</span>
-<span class="n">im1</span> <span class="o">=</span> <span class="n">book_ds_all</span><span class="p">[</span><span class="s2">&quot;ice_thickness_int&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">im2</span> <span class="o">=</span> <span class="n">book_ds</span><span class="p">[</span><span class="s2">&quot;ice_thickness_int&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im1</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.93</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]),</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sea ice thickness (m)&quot;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Iris Morphology&quot;</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">hover</span><span class="p">,</span> <span class="s2">&quot;pan,reset,wheel_zoom&quot;</span><span class="p">])</span>
 
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wrap</span><span class="p">(</span><span class="s2">&quot;Sea ice thickness before restricting, &quot;</span><span class="o">+</span><span class="n">date</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wrap</span><span class="p">(</span><span class="s2">&quot;Inner Arctic sea ice thickness, &quot;</span><span class="o">+</span><span class="n">date</span><span class="p">,</span> <span class="mi">32</span><span class="p">)),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Petal Length&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Petal Width&#39;</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/bokeh_tests_9_0.png" src="../_images/bokeh_tests_9_0.png" />
-</div>
-</div>
-</div>
-<div class="section" id="set-years-over-which-to-perform-the-analysis">
-<h2>Set years over which to perform the analysis<a class="headerlink" href="#set-years-over-which-to-perform-the-analysis" title="Permalink to this headline">¶</a></h2>
-<p>Setting <code class="docutils literal notranslate"><span class="pre">years</span> <span class="pre">=</span> <span class="pre">[2018,2019,2020]</span></code> indicates that you want to perform the analyses in the notebook for three winter season: winter 2018-19, 2019-20, and 2020-21</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span><span class="mi">2019</span><span class="p">,</span><span class="mi">2020</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="icesat-2-interpolated-sea-ice-thickness-maps">
-<h1>ICESat-2 interpolated sea ice thickness maps<a class="headerlink" href="#icesat-2-interpolated-sea-ice-thickness-maps" title="Permalink to this headline">¶</a></h1>
-<p>Here, we’ll overlay sea ice thickness data over a map of the Arctic. To generate the map, we’ll use interactive plotting functions based off the <code class="docutils literal notranslate"><span class="pre">hvplot</span></code> python package. To see more information on the functions used, click on the plus buttons to see the function documentation, or go into the <code class="docutils literal notranslate"><span class="pre">plotting_utils</span></code> module to see the code.</p>
-<div class="section" id="monthly-data">
-<h2>Monthly data<a class="headerlink" href="#monthly-data" title="Permalink to this headline">¶</a></h2>
-<p>Use the slider to scroll through each month with available data</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">interactiveArcticMaps</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span> <span class="c1"># Print docstring </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span> <span class="o">=</span> <span class="n">interactiveArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="p">[</span><span class="s2">&quot;ice_thickness_int&quot;</span><span class="p">],</span> <span class="n">frame_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="gridcell-winter-means">
-<h2>Gridcell winter means<a class="headerlink" href="#gridcell-winter-means" title="Permalink to this headline">¶</a></h2>
-<p>The plotting function below builds on the plotting function used above, <code class="docutils literal notranslate"><span class="pre">interactiveArcticMaps</span></code>, to display gridcell winter mean ice thickness. You can toggle through the winter seasons using the dropdown on the right of the map.</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">interactive_winter_mean_maps</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span> <span class="c1"># Print docstring</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span> <span class="o">=</span> <span class="n">interactive_winter_mean_maps</span><span class="p">(</span><span class="n">book_ds</span><span class="p">[</span><span class="s2">&quot;ice_thickness_int&quot;</span><span class="p">],</span> 
-                                  <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">,</span>  
-                                  <span class="n">slider</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                                  <span class="n">frame_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> 
-                                  <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ICESat-2 sea ice thickness winter means&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="mean-monthly-sea-ice-thickness">
-<h1>Mean monthly sea ice thickness<a class="headerlink" href="#mean-monthly-sea-ice-thickness" title="Permalink to this headline">¶</a></h1>
-<p>Compare the monthly means across different winter seasons for the uninterpolated ICESat-2 sea ice thickness data</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">interactive_winter_comparison_lineplot</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span> <span class="o">=</span> <span class="n">interactive_winter_comparison_lineplot</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">ice_thickness</span><span class="p">,</span> 
-                            <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span><span class="mi">2019</span><span class="p">,</span><span class="mi">2020</span><span class="p">],</span>
-                            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ICESat-2 sea ice thickness winter comparison&quot;</span><span class="p">,</span> 
-                            <span class="n">frame_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">frame_height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="s1">&#39;petal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;colors&#39;</span><span class="p">,</span> 
+         <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">flowers</span><span class="p">))</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s1">&#39;flowers.html&#39;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -597,7 +351,7 @@ Attributes:
         
           By Nicole Keeney and Alek Petty<br/>
         
-            &copy; Copyright 2021.<br/>
+            &copy; Copyright 2022.<br/>
       </p>
     </div>
   </footer>
