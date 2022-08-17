@@ -1,6 +1,7 @@
 # Book settings
 title: ICESat-2 Sea Ice State Analysis
 author: Nicole Keeney and Alek Petty
+copyright: "2022"  # Copyright year to be placed in the footer
 logo: content/figs/logo.png
 
 latex:
@@ -17,6 +18,8 @@ html:
   use_edit_page_button      : true
   favicon                   : "content/figs/logo.png"
   google_analytics_id       : "G-J1HEQ5DMT0"
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  
 
 
 execute:
