@@ -14,7 +14,7 @@ Since its launch in 2018, ICESat-2 has now obtained data over four winter season
 
 ![ICESat-2 maps](figs/maps_thickness_winter.png "ICESat-2 mean winter Arctic sea ice thickness - REPLACE WITH UPDATED BASIC INTERACTIVE PLOT?")
 
-<iframe src="https://github.com/akpetty/icesat2-book/blob/gh-pages/content/bokeh/flowers.html"
+<iframe src="https://github.com/akpetty/icesat2-book/blob/gh-pages/content/flowers.html"
     width="100%"
     allow="encrypted-media"
     frameborder="0"
