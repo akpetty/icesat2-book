@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICESat-2 Arctic Sea Ice Analysis &#8212; ICESat-2 Sea Ice State Analysis</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)" href="1_is2sitmogr4_intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ICESat-2 Sea Ice State Analysis</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   ICESat-2 Arctic Sea Ice Analysis
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  ICESat-2 Arctic sea ice thickness data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_is2sitmogr4_intro.html">
+   ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Winter Arctic sea ice thickness analysis (Petty et al., 2022)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_winter_arctic_sea_ice_variability.html">
+   Winter Arctic sea ice state variability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_comparisons_with_cryosat-2_and_piomas.html">
+   Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_comparisons_with_BGEP.html">
+   Comparisons with BGEP ULS sea ice draft estimates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_atmospheric_variability.html">
+   Atmospheric variability
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data wrangling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_gridded_data_wrangling.html">
+   Data wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_cryosat-2_data_wrangling.html">
+   CryoSat-2 data wrangling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9_gridded_interp_demo.html">
+   ICESat-2 interpolation workflow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Ancillary code
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="utils/markdown_rendering/read_data_utils.html">
+   Functions for reading data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="utils/markdown_rendering/plotting_utils.html">
+   Functions for plotting and mapping
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/0_home.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/akpetty/icesat2-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2Fcontent/0_home.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/akpetty/icesat2-book/edit/master/content/0_home.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-book-description">
+   Jupyter Book description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-the-data">
+   Accessing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages">
+   Packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license">
+   License
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contributors">
+   Contributors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="icesat-2-arctic-sea-ice-analysis">
+<h1>ICESat-2 Arctic Sea Ice Analysis<a class="headerlink" href="#icesat-2-arctic-sea-ice-analysis" title="Permalink to this headline">¶</a></h1>
+<p>NASA’s Ice, Cloud, and Land Elevation Satellite-2 (<a class="reference external" href="https://icesat-2.gsfc.nasa.gov/">ICESat-2</a>) is the most advanced laser altimetry system ever launched. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well engineered for measuring small-scale sea ice freeboard variability. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.</p>
+<p><img alt="ICESat-2 maps" src="../_images/maps_thickness_winter.png" /></p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>The ICESat-2 Project Science Office has produced and disseminated a number of official data products through the National Snow and Ice Data Center <a class="reference external" href="https://nsidc.org/data/icesat-2">(NSIDC)</a> including the Arctic and Southern Ocean sea ice freeboard dataset <a class="reference external" href="https://nsidc.org/data/ATL10">(ATL10)</a>, which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams of ICESat-2.</p>
+<p>Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data (ATL10) can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model <a class="reference external" href="https://github.com/akpetty/NESOSIM">(NESOSIM)</a> have been produced and disseminated through the NSIDC (<a class="reference external" href="https://nsidc.org/data/IS2SITMOGR4">https://nsidc.org/data/IS2SITMOGR4</a>). More information about the methodology behind this dataset can be found in our <a class="reference external" href="http://www.alekpetty.com/papers/petty2020">original methodology paper</a>. A <a class="reference external" href="https://tc.copernicus.org/preprints/tc-2022-39/">manuscript is currently in review</a> regarding the analysis of the first three winters of data collected, which was the original motivation behind the creation of this Jupyter Book.</p>
+<p>Our goal going forward is to continue to update this book as new data is produced and to share additional analyses of the sea ice state using the incredible data collected by ICESat-2 - going beyond freeboard/thickness. The focus of this back thus far has been on the Arctic, due mainly to our increased confidence regarding snow on sea ice conditions compared to the Southern Ocean. Similarly, we currently do not produce any thickness estimates during summer as melt ponds complicate our retrievals of freeboard and simulations of snow depth. However, do continue to watch this space for futher updates as we learn more about the data from this relatively new mission and further its capabilities.</p>
+</div>
+<div class="section" id="jupyter-book-description">
+<h2>Jupyter Book description<a class="headerlink" href="#jupyter-book-description" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Books</a> provide a novel means of compiling various related Jupyter Notebooks into one convenient and well-indexed location. Here, a series of Jupyter Notebooks are used to provide a visual demonstration of our efforts to analyze winter Arctic sea ice conditions, primiarly freeboard and thickness, derived from ICESat-2 data, along with other relevant datasets.</p>
+<p>We have also set up the book so that users can easily run the code without needing to download anything by using the hosting service called Binder. To run a notebook (chapter pages in the book) in Binder, just click the <strong>Binder</strong> tab under the rocket ship icon at the top of each notebook. This option is configured for all notebooks except the modules in the Helper Functions section and the data wrangling notebook.</p>
+</div>
+<div class="section" id="accessing-the-data">
+<h2>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this headline">¶</a></h2>
+<p>The monthly gridded ICESat-2 winter Arctic sea ice thickness data are archived and made publically available at the NSIDC (<a class="reference external" href="https://nsidc.org/data/IS2SITMOGR4">https://nsidc.org/data/IS2SITMOGR4</a>). However, to simply our analysis we have also uploaded these same data to a <a class="reference external" href="https://console.cloud.google.com/storage/browser/sea-ice-thickness-data/IS2SITMOGR4/v002">google cloud storage bucket</a>. We have also generated and uploaded a single netcdf file containing all the data presented in this Jupyter Book in the same bucket under the name <code class="docutils literal notranslate"><span class="pre">icesat2-book-data.nc</span></code>. This dataset contains all the gridded ICESat-2 sea ice thickness data along with all other datasets used in the notebook to help contextualize the sea ice and atmospheric conditions through each winter. All datasets included have been regridded to the same NSIDC North Polar Sterographic grid (the native grid of the ICESat-2 sea ice data used), to simplify the mapping and comparisons. See the Data Wrangling page for more information each dataset and on on the regridding process.</p>
+</div>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>All of the notebooks in this notebook utilize <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a>, a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>All content in this Jupyter Book is distributed under the MIT license.</p>
+</div>
+<div class="section" id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p><strong>Nicole Keeney (Original repository creator)</strong><br>
+<a class="reference external" href="https://github.com/nicolejkeeney"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
+<p><strong>Alek Petty (Current repository lead, summer 2022 onwards)</strong><br>
+<a class="reference external" href="https://github.com/akpetty"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
+<!-- <iframe src="/flowers.html"
+    width="100%"
+    allow="encrypted-media"
+    frameborder="0"
+    >
+</iframe> -->
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764</p>
+<p>Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2022), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere Discuss (preprint), doi: 10.5194/tc-2022-39.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="1_is2sitmogr4_intro.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Nicole Keeney and Alek Petty<br/>
+        
+            &copy; Copyright 2022.<br/>
+          <div class="extra_footer">
+            Distributed under the MIT license
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('config', 'G-J1HEQ5DMT0');
+                </script>
+
+  </body>
+</html>
