@@ -1,19 +1,23 @@
 format: jb-book
-root: content/home
+root: content/0_home
 parts:
-- caption: ICESat-2 sea ice thickness data
+- caption: ICESat-2 Arctic sea ice thickness data
   chapters:
-  - file: content/is2sitmogr4_intro
-- caption: Gridded sea ice thickness analysis (Petty et al., 2022)
+  - file: content/1_is2sitmogr4_intro
+- caption: Winter Arctic sea ice thickness analysis (Petty et al., 2022)
   chapters: 
-  - file: content/sea_ice_thickness_variability
-  - file: content/sea_ice_characteristics 
-  - file: content/atmospheric_variables 
-  - file: content/pio_vs_is2
+  - file: content/2_winter_arctic_sea_ice_variability
+  - file: content/3_comparisons_with_cryosat-2_and_piomas
+  - file: content/4_comparisons_with_BGEP
+  - file: content/5_atmospheric_variability 
+# - caption: Interactive plots
+#   chapters:
+#   - file: content/6_interactive_data_viz
 - caption: Data wrangling
   chapters:
-  - file: content/gridded_data_wrangling
-  - file: content/gridded_interp_demo
+  - file: content/7_gridded_data_wrangling
+  - file: content/8_cryosat-2_data_wrangling
+  - file: content/9_gridded_interp_demo
 - caption: Ancillary code
   chapters: 
   - file: content/utils/markdown_rendering/read_data_utils

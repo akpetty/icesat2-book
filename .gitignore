@@ -17,7 +17,7 @@ __pycache__/*
 */__pycache__/**
 
 # data 
-content/data/*.nc*
+content/data/*
 content/data/IS2SITMOGR4/*
 
 #update script
