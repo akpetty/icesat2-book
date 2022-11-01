@@ -10,7 +10,8 @@ _build/
 
 # Big files 
 content/gridded_interp_test.ipynb
-content/comparisons_with_cryosat-2
+content/comparisons_with_cryosat-2.ipynb
+
 # pycache 
 __pycache__/*
 */__pycache__/**
