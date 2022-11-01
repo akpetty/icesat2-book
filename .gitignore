@@ -10,14 +10,14 @@ _build/
 
 # Big files 
 content/gridded_interp_test.ipynb
-
+content/comparisons_with_cryosat-2
 # pycache 
 __pycache__/*
 */__pycache__/**
 
 # data 
-content/*.nc*
-content/IS2SITMOGR4/*
+content/data/*.nc*
+content/data/IS2SITMOGR4/*
 
 #update script
 update_book.sh

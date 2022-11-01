@@ -15,7 +15,7 @@ import pandas as pd
 
 # -
 
-def read_is2_data(data_dir="IS2SITMOGR4/v002", bucket_name="sea-ice-thickness-data"): 
+def read_is2_data(data_dir="./data/IS2SITMOGR4/v002", bucket_name="sea-ice-thickness-data"): 
     """ Read in ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard dataset. 
     If the file does not already exist on the user's local drive, it is downloaded from the books google storage bucket (https://console.cloud.google.com/storage/browser/is2-pso-seaice)
     The netcdf files for each month are then read in as an xr.Dataset object
