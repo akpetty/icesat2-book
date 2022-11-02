@@ -30,10 +30,10 @@ All content in this Jupyter Book is distributed under the MIT license.
 
 ## Contributors
 
-**Nicole Keeney (Original repository creator)**<br>
+**Nicole Keeney (Original book creator)**<br>
 [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/nicolejkeeney)
 
-**Alek Petty (Current repository lead, summer 2022 onwards)**<br>
+**Alek Petty (Current book lead, summer 2022 onwards)**<br>
 [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/akpetty) 
 
 <!-- <iframe src="/flowers.html"
