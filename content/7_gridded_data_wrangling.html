@@ -490,6 +490,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">2366477830.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">utils.read_data_utils</span> <span class="kn">import</span> <span class="n">read_is2_data</span> <span class="c1"># This allows us to read the ICESAT2 data directly from the google storage bucket</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Ignore warnings in the notebook to improve display</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;read_is2_data&#39; from &#39;utils.read_data_utils&#39; (/Users/aapetty/GitHub/akpetty/icesat2-book/content/utils/read_data_utils.py)
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="read-in-data">
@@ -542,6 +556,16 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">2195388817.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">read_is2_data</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="s2">&quot;IS2SITMOGR4/v002&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;read_is2_data&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="era5-climate-reanalysis">
@@ -586,7 +610,7 @@
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89517</span><span class="o">/</span><span class="mf">2741354100.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">2741354100.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Read data</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ERA5</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ERA5_path</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ERA5</span> <span class="o">=</span> <span class="n">ERA5</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">)</span> <span class="c1"># Select for date range of interest</span>
@@ -736,12 +760,12 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89517</span><span class="o">/</span><span class="mf">1673105584.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">1673105584.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pio_da</span> <span class="o">=</span> <span class="n">get_piomas_data</span><span class="p">(</span><span class="n">date_range</span><span class="o">=</span><span class="n">date_range</span><span class="p">,</span> <span class="n">data_dir</span><span class="o">=</span><span class="n">PIOMAS_path</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pio_da</span> <span class="o">=</span> <span class="n">pio_da</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">date_range</span><span class="p">)</span> <span class="c1"># Select for date range of interest</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">pio_da</span> <span class="o">=</span> <span class="n">pio_da</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pio_da</span><span class="o">.</span><span class="n">latitude</span> <span class="o">&gt;</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="c1"># Restrict to ICESat-2 latitude</span>
 
-<span class="nn">/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_89517/1523861932.py</span> in <span class="ni">get_piomas_data</span><span class="nt">(date_range, data_dir)</span>
+<span class="nn">/var/folders/2x/8476fbt56qd5m2b5vgkbz2qm0000gp/T/ipykernel_90200/1523861932.py</span> in <span class="ni">get_piomas_data</span><span class="nt">(date_range, data_dir)</span>
 <span class="g g-Whitespace">     </span><span class="mi">21</span>         <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="g g-Whitespace">     </span><span class="mi">22</span>         <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">:</span>
 <span class="ne">---&gt; </span><span class="mi">23</span>             <span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;heff.H&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
@@ -838,7 +862,7 @@
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89517</span><span class="o">/</span><span class="mf">263508622.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">263508622.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">drifts_path</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.nc&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;nh&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">files_xr</span> <span class="o">=</span> <span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">driftsDaily</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">files_xr</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
@@ -871,6 +895,20 @@
 
 <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
 <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="n">out_lons</span><span class="p">,</span> <span class="n">out_lats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">432257725.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Initialize map projection and project data to it</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">out_proj</span> <span class="o">=</span> <span class="s1">&#39;EPSG:3411&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">out_lons</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">out_lats</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+
+<span class="ne">NameError</span>: name &#39;is2_ds&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -928,9 +966,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/aapetty/opt/anaconda3/envs/icesat2_book/lib/python3.8/site-packages/pyproj/crs/crs.py:292: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  projstring = _prepare_from_string(projparams)
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89517</span><span class="o">/</span><span class="mf">4138654826.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">4138654826.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#initialize map projection and project data to it</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">xptsERA</span><span class="p">,</span> <span class="n">yptsERA</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ERA5</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">ERA5</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
@@ -964,7 +1006,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89517</span><span class="o">/</span><span class="mf">237181959.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">237181959.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#project data to ICESat-2 map projection</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">xptsPIO</span><span class="p">,</span> <span class="n">yptsPIO</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="n">pio_da</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">pio_da</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
@@ -1005,7 +1047,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89517</span><span class="o">/</span><span class="mf">1628643029.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">1628643029.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#project data to ICESat-2 map projection</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">xptsDRIFTS</span><span class="p">,</span> <span class="n">yptsDRIFTS</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="n">monthlyDrifts_proj</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">monthlyDrifts_proj</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
@@ -1034,11 +1076,11 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89517</span><span class="o">/</span><span class="mf">4280774277.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_90200</span><span class="o">/</span><span class="mf">4280774277.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">final_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">is2_ds</span><span class="p">,</span> <span class="n">pio_regridded</span><span class="p">,</span> <span class="n">ERA5_regridded</span><span class="p">,</span> <span class="n">drifts_regridded</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">final_ds</span> <span class="o">=</span> <span class="n">final_ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;Nov 2018&quot;</span><span class="p">,</span><span class="n">final_ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># Remove Sep &amp; Oct 2018, which have no data from ICESat-2</span>
 
-<span class="ne">NameError</span>: name &#39;pio_regridded&#39; is not defined
+<span class="ne">NameError</span>: name &#39;is2_ds&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1049,7 +1091,7 @@
 <p>We also uploaded this same file to the google storage bucket.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./data/icesat2-book-data.nc&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./data/IS2_jbook_dataset_201811-202104.nc&#39;</span>
 <span class="n">save_file</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="n">save_file</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
