@@ -9,8 +9,8 @@ Mean winter(November to April) Arctic sea ice thickness from the first three win
 </p>
 
 - See the [ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) notebook](https://www.icesat-2-sea-ice-state.info/content/1_is2sitmogr4_intro.html) for an introduction to the monthly gridded winter Arctic sea ice thickness dataset.
-- Check out the varios notebooks under the chapter heading: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2022) for the analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS.
-- Continue to watch this space for more analysis.
+- Check out the various notebooks in the chapter: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2022) for an analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS data.
+- Continue to watch this space for more sea ice analyses from ICESat-2!
 
 ## Background 
 
