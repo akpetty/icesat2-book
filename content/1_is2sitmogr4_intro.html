@@ -328,7 +328,7 @@
   <div class="section" id="icesat-2-l4-monthly-gridded-sea-ice-thickness-dataset-is2sitmogr4">
 <h1>ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)<a class="headerlink" href="#icesat-2-l4-monthly-gridded-sea-ice-thickness-dataset-is2sitmogr4" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook, we provide a basic look at the Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4). We will show you how to easily download the data from our public google storage bucket and how to generate some simple plots for a few variables of interest.</p>
-<p>Raw data link: <a class="reference external" href="https://nsidc.org/data/is2sitmogr4/">https://nsidc.org/data/is2sitmogr4/</a> (put in the data folder of this book if you want to avoid the goolge bucket approach we provide)</p>
+<p>Raw data link: <a class="reference external" href="https://nsidc.org/data/is2sitmogr4/">https://nsidc.org/data/is2sitmogr4/</a> (put in the data folder of this book to bypass the download options we provide)</p>
 <p>Notes:</p>
 <ul class="simple">
 <li><p>Our current focus is on this simpler, monthly gridded dataset. We hope in future efforts to showcase the hgiher-resolution along-track thickness dataset also: <a class="reference external" href="https://nsidc.org/data/is2sitdat4">https://nsidc.org/data/is2sitdat4</a></p></li>
@@ -355,7 +355,7 @@
 <span class="n">GeoAxes</span><span class="o">.</span><span class="n">_pcolormesh_patched</span> <span class="o">=</span> <span class="n">Axes</span><span class="o">.</span><span class="n">pcolormesh</span> 
 
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># Sets figure size in the notebook</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># Sets effective figure size in the notebook</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">9</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">9</span>
@@ -450,7 +450,7 @@ Load in netcdf files to xarray dataset
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;Jan 2021&quot;</span>
 <span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;ice_thickness&quot;</span>
 <span class="n">data_one_month</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">date</span><span class="p">)</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">data_one_month</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="c1"># horizontal coordinates </span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">data_one_month</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="c1"># horizontal coordinates </span>
                         <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># min and max on the colorbar </span>
                         <span class="n">subplot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mi">45</span><span class="p">)},</span> <span class="c1"># Set the projection </span>
                         <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
@@ -460,47 +460,7 @@ Load in netcdf files to xarray dataset
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">x</span><span class="o">/</span><span class="mi">8476</span><span class="n">fbt56qd5m2b5vgkbz2qm0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_89971</span><span class="o">/</span><span class="mf">3106658673.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;ice_thickness&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">data_one_month</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">date</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">p</span> <span class="o">=</span> <span class="n">data_one_month</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="c1"># horizontal coordinates </span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>                         <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># min and max on the colorbar</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>                         <span class="n">subplot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span><span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mi">45</span><span class="p">)},</span> <span class="c1"># Set the projection</span>
-
-<span class="nn">~/opt/anaconda3/envs/icesat2_book/lib/python3.8/site-packages/xarray/plot/plot.py</span> in <span class="ni">__call__</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span> 
-<span class="g g-Whitespace">    </span><span class="mi">865</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">866</span>         <span class="k">return</span> <span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_da</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span> 
-<span class="g g-Whitespace">    </span><span class="mi">868</span>     <span class="c1"># we can&#39;t use functools.wraps here since that also modifies the name / qualname</span>
-
-<span class="nn">~/opt/anaconda3/envs/icesat2_book/lib/python3.8/site-packages/xarray/plot/plot.py</span> in <span class="ni">plot</span><span class="nt">(darray, row, col, col_wrap, ax, hue, rtol, subplot_kws, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;ax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax</span>
-<span class="g g-Whitespace">    </span><span class="mi">331</span> 
-<span class="ne">--&gt; </span><span class="mi">332</span>     <span class="k">return</span> <span class="n">plotfunc</span><span class="p">(</span><span class="n">darray</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span> 
-<span class="g g-Whitespace">    </span><span class="mi">334</span> 
-
-<span class="nn">~/opt/anaconda3/envs/icesat2_book/lib/python3.8/site-packages/xarray/plot/plot.py</span> in <span class="ni">newplotfunc</span><span class="nt">(darray, x, y, figsize, size, aspect, ax, row, col, col_wrap, xincrease, yincrease, add_colorbar, add_labels, vmin, vmax, cmap, center, robust, extend, levels, infer_intervals, colors, subplot_kws, cbar_ax, cbar_kwargs, xscale, yscale, xticks, yticks, xlim, ylim, norm, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1206</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;plt.imshow&#39;s `aspect` kwarg is not available in xarray&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1207</span> 
-<span class="ne">-&gt; </span><span class="mi">1208</span>         <span class="n">ax</span> <span class="o">=</span> <span class="n">get_axis</span><span class="p">(</span><span class="n">figsize</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">aspect</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">subplot_kws</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1209</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1210</span>         <span class="n">primitive</span> <span class="o">=</span> <span class="n">plotfunc</span><span class="p">(</span>
-
-<span class="nn">~/opt/anaconda3/envs/icesat2_book/lib/python3.8/site-packages/xarray/plot/utils.py</span> in <span class="ni">get_axis</span><span class="nt">(figsize, size, aspect, ax, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">440</span> 
-<span class="g g-Whitespace">    </span><span class="mi">441</span>     <span class="k">if</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="n">ax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">442</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;cannot use subplot_kws with existing ax&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span> 
-<span class="g g-Whitespace">    </span><span class="mi">444</span>     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="ne">ValueError</span>: cannot use subplot_kws with existing ax
-</pre></div>
-</div>
-<img alt="../_images/1_is2sitmogr4_intro_6_1.png" src="../_images/1_is2sitmogr4_intro_6_1.png" />
+<img alt="../_images/1_is2sitmogr4_intro_6_0.png" src="../_images/1_is2sitmogr4_intro_6_0.png" />
 </div>
 </div>
 </div>
@@ -599,7 +559,7 @@ Load in netcdf files to xarray dataset
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken for notebook completion&#39;: 18.52 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken for notebook completion&#39;: 17.49 s
 </pre></div>
 </div>
 </div>

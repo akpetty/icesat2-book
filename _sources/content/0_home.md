@@ -4,6 +4,13 @@ ICESat-2 Arctic Sea Ice Analysis
 NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is the most advanced laser altimetry system ever launched. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well engineered for measuring small-scale sea ice freeboard variability. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.
 
 ![ICESat-2 maps](figs/maps_thickness_winter.png "ICESat-2 mean winter Arctic sea ice thickness")
+<p align = "center">
+Mean winter(November to April) Arctic sea ice thickness from the first three winters profiled by ICESat-2 (data from the IS2SITMOGR4 dataset).
+</p>
+
+- See the [ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) notebook](https://www.icesat-2-sea-ice-state.info/content/1_is2sitmogr4_intro.html) for an introduction to the monthly gridded winter Arctic sea ice thickness dataset.
+- Check out the varios notebooks under the chapter heading: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2022) for the analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS.
+- Continue to watch this space for more analysis.
 
 ## Background 
 
@@ -19,7 +26,7 @@ Our goal going forward is to continue to update this book as new data is produce
 We have also set up the book so that users can easily run the code without needing to download anything by using the hosting service called Binder. To run a notebook (chapter pages in the book) in Binder, just click the **Binder** tab under the rocket ship icon at the top of each notebook. This option is configured for all notebooks except the modules in the Helper Functions section and the data wrangling notebook. 
 
 ## Accessing the data 
-The monthly gridded ICESat-2 winter Arctic sea ice thickness data are archived and made publically available at the NSIDC (https://nsidc.org/data/IS2SITMOGR4). However, to simply our analysis we have also uploaded these same data to a [google cloud storage bucket](https://console.cloud.google.com/storage/browser/sea-ice-thickness-data/IS2SITMOGR4/v002). We have also generated and uploaded a single netcdf file containing all the data presented in this Jupyter Book in the same bucket under the name `icesat2-book-data.nc`. This dataset contains all the gridded ICESat-2 sea ice thickness data along with all other datasets used in the notebook to help contextualize the sea ice and atmospheric conditions through each winter. All datasets included have been regridded to the same NSIDC North Polar Sterographic grid (the native grid of the ICESat-2 sea ice data used), to simplify the mapping and comparisons. See the Data Wrangling page for more information each dataset and on on the regridding process.
+The monthly gridded ICESat-2 winter Arctic sea ice thickness data are archived and made publically available at the NSIDC (https://nsidc.org/data/IS2SITMOGR4). However, to simply our analysis we have also uploaded these same data to a [AWS S3 Bucket](https://icesat-2-sea-ice-us-west-2.s3.us-west-2.amazonaws.com). We have also generated and uploaded aggregated netcdf files containing all the data presented in this Jupyter Book in the S3 bucket under the name `IS2_jbook_dataset_201811-202104.nc` and `IS2_CS2_jbook_dataset_201811-202104.nc`. This dataset contains all the gridded ICESat-2 sea ice thickness data along with all other datasets used in the notebook to help contextualize the sea ice and atmospheric conditions through each winter. All datasets included have been regridded to the same NSIDC North Polar Sterographic grid (the native grid of the ICESat-2 sea ice data used), to simplify the mapping and comparisons. See the Data Wrangling pages for more information each dataset and on on the regridding process.
 
 ## Packages 
 All of the notebooks in this notebook utilize [xarray](http://xarray.pydata.org/en/stable/), a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot. 
