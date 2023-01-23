@@ -137,6 +137,9 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
         if sum(da[col].shape)<=1: 
             col_wrap = None
     
+    dates = da.time.values.tolist()
+    #print('Dates:', dates)
+    
     # Plot
     if len(set_cbarlabel)==0:
         set_cbarlabel=da.attrs["long_name"]+' ['+da.attrs["units"]+']'
@@ -150,13 +153,18 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
     ax_iter = im.axes
     if type(ax_iter) != np.array: # If the data is just a single month, ax.iter returns an axis object. We need to iterate through a list or array
         ax_iter = np.array(ax_iter)
+    i=0
     for ax in ax_iter.flatten():
         ax.coastlines(linewidth=0.15, color = 'black', zorder = 10) # Coastlines
         ax.add_feature(cfeature.LAND, color ='0.95', zorder = 5)    # Land
         ax.add_feature(cfeature.LAKES, color = 'grey', zorder = 5)  # Lakes
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
         ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
-    
+
+        ax.set_title(dates[i], fontsize=9, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
+        i+=1
+       
+        
     # Get figure
     fig = plt.gcf()
     
@@ -168,7 +176,7 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
     
     # save figure
     if savefig:
-        plt.savefig('./figs/maps_'+out_str+'.png', dpi=400, facecolor="white", bbox_inches='tight')
+        plt.savefig('./figs/maps_'+out_str+dates[0].replace(" ", "")+'-'+dates[-1].replace(" ", "")+'.png', dpi=400, facecolor="white", bbox_inches='tight')
 
     plt.close() # Close so it doesnt automatically display in notebook 
     return fig
@@ -296,7 +304,7 @@ def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0
     return fig
 
 
-def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=None, vmax=None, title="", ylim=(60,90), frame_width=250, slider=True, cols=3): 
+def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=None, vmax=None, title="", ylim=(60,90), frame_width=500, slider=True, cols=3): 
     """ Generative one or more interactive maps 
     Using the argument "slide", the user can set whether each map should be displayed together, or displayed in the form of a slider 
     To show each map together (no slider), set slider=False
@@ -330,7 +338,7 @@ def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=N
     #https://hvplot.holoviz.org/user_guide/Subplots.html
     subplots=False
     shared_axes=False
-    show_title=True
+    show_title=False
     if ("time" in da.coords):
         if (sum(da["time"].shape) > 1): 
             subplots=True
@@ -349,7 +357,7 @@ def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=N
                             colorbar=colorbar, clim=(vmin,vmax), cmap=cmap, clabel=clabel, # Colorbar settings 
                             project=True, ylim=ylim, frame_width=frame_width,
                             subplots=subplots, shared_axes=shared_axes,
-                            dynamic=False) 
+                            dynamic=False, rasterize=True) 
     if slider==False: # Set number of columns 
         pl = pl.layout().cols(cols)
     
@@ -438,7 +446,7 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
     gridlines = plt.grid(b = True, linestyle = '-', alpha = 0.2) # Add gridlines 
 
 
-    fmts = ['mo-','cs-','yv-','b*-.','r.-','gD--','k2-.']
+    fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.']
     for year, fmt in zip(years, fmts*100): 
         winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season) # Get data from that winter 
         if winter_da is None: # In case the user inputs a year that doesn't have data, skip this loop iteration to avoid appending None
@@ -522,7 +530,9 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
             
     # Sort by longest --> shortest. This avoids weird issues with x axis trying to be in time order 
     winter_means_list_sorted = sorted(winter_means_list, key=lambda l: (len(l), l))[::-1]
-
+    
+    color_cycle = hv.Cycle(['magenta', 'cyan', 'yellow', 'black'])
+    
     # Combine plots and display
     i = 0
     for da_sorted in winter_means_list_sorted: 
@@ -530,7 +540,7 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
         winter_mean["time"] = pd.to_datetime(da_sorted["time"].values).strftime("%b") # Reassign the time coordinate to be just the months (Nov, Dec, ect). This allows you to easily overlay the plots on top of each other, since they share an axis
         time_str = pd.to_datetime(da_sorted.time).strftime("%Y") # Get time coordinate as string value
 
-        pl = winter_mean.hvplot(grid=True, label="Winter "+time_str[0]+"-"+time_str[-1], frame_width=frame_width, frame_height=frame_height) * winter_mean.hvplot.scatter(marker='o') # Overlay scatter plot to add markers
+        pl = winter_mean.hvplot(grid=True, label=""+time_str[0]+"-"+time_str[-1], frame_width=frame_width, frame_height=frame_height, line_width=3) * winter_mean.hvplot.scatter(marker='o') # Overlay scatter plot to add markers
         if i == 0:
             pl_tot = pl
         else: 
@@ -539,4 +549,10 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
         
     winters_all = pl_tot.opts(hv.opts.Layout(shared_axes=True, merge_tools=True)) # Combine lineplots into a single figure 
     winters_all.opts(title=title) # Add a title 
+    winters_all.opts(legend_position='bottom_right')
+    winters_all.opts({'Scatter': {'color': color_cycle}})
+    winters_all.opts({'Curve': {'color': color_cycle}})
+    
+    
+    
     return winters_all

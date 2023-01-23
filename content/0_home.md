@@ -1,24 +1,32 @@
-ICESat-2 Arctic Sea Ice Analysis
+ICESat-2 Arctic Sea Ice State Analysis
 ============================================= 
 
-NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is the most advanced laser altimetry system ever launched. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well engineered for measuring small-scale sea ice freeboard variability. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.
+NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is an advanced satellite laser altimetry system specially designed to profile Earth's fast-changing polar regions. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well suited for measuring the thickness of polar sea ice - ice that forms and floats on top of the Arctic and Southern Ocean. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.
 
-![ICESat-2 maps](figs/maps_thickness_winter.png "ICESat-2 mean winter Arctic sea ice thickness")
+![ICESat-2 maps](figs/maps_thickness_winterNov2018-Apr2019-Nov2021-Apr2022.png "ICESat-2 mean winter Arctic sea ice thickness")
 <p align = "center">
-Mean winter(November to April) Arctic sea ice thickness from the first three winters profiled by ICESat-2 (data from the IS2SITMOGR4 dataset).
+Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first four winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 
-- See the [ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) notebook](https://www.icesat-2-sea-ice-state.info/content/1_is2sitmogr4_intro.html) for an introduction to the monthly gridded winter Arctic sea ice thickness dataset.
-- Check out the various notebooks in the chapter: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2022) for an analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS data.
-- Continue to watch this space for more sea ice analyses from ICESat-2!
+![ICESat-2 maps](figs/maps_thickness_winter_anomalyNov2018-Apr2019-Nov2021-Apr2022.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
+<p align = "center">
+Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the four winter mean) from the first four winters profiled by ICESat-2.
+</p>
+
 
 ## Background 
 
 The ICESat-2 Project Science Office has produced and disseminated a number of official data products through the National Snow and Ice Data Center [(NSIDC)](https://nsidc.org/data/icesat-2) including the Arctic and Southern Ocean sea ice freeboard dataset [(ATL10)](https://nsidc.org/data/ATL10), which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams of ICESat-2. 
 
-Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data (ATL10) can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model [(NESOSIM)](https://github.com/akpetty/NESOSIM) have been produced and disseminated through the NSIDC (https://nsidc.org/data/IS2SITMOGR4). More information about the methodology behind this dataset can be found in our [original methodology paper](http://www.alekpetty.com/papers/petty2020). A [manuscript is currently in review](https://tc.copernicus.org/preprints/tc-2022-39/) regarding the analysis of the first three winters of data collected, which was the original motivation behind the creation of this Jupyter Book.
+Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data (ATL10) can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model [(NESOSIM)](https://github.com/akpetty/NESOSIM) have been produced and disseminated through the NSIDC (https://nsidc.org/data/IS2SITMOGR4). More information about the methodology behind this dataset can be found in our [original methodology paper](http://www.alekpetty.com/papers/petty2020). A [manuscript has recently been published](https://tc.copernicus.org/articles/17/127/2023/) regarding the analysis of the first three winters of data collected, which was the original motivation behind the creation of this Jupyter Book.
 
 Our goal going forward is to continue to update this book as new data is produced and to share additional analyses of the sea ice state using the incredible data collected by ICESat-2 - going beyond freeboard/thickness. The focus of this back thus far has been on the Arctic, due mainly to our increased confidence regarding snow on sea ice conditions compared to the Southern Ocean. Similarly, we currently do not produce any thickness estimates during summer as melt ponds complicate our retrievals of freeboard and simulations of snow depth. However, do continue to watch this space for futher updates as we learn more about the data from this relatively new mission and further its capabilities. 
+
+## Navigation
+- See the [ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) notebook](https://www.icesat-2-sea-ice-state.info/content/1_is2sitmogr4_intro.html) for an introduction to the monthly gridded winter Arctic sea ice thickness dataset.
+- Check out the notebooks in the chapter: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2023) for the peer-reviewed analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS data.
+- See the [updated winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html) to see the analysis updated to include the 2021-2022 winter period. 
+- Continue to watch this space for more sea ice analyses from ICESat-2!
 
 ## Jupyter Book description
 [Jupyter Books](https://jupyterbook.org/intro.html) provide a novel means of compiling various related Jupyter Notebooks into one convenient and well-indexed location. Here, a series of Jupyter Notebooks are used to provide a visual demonstration of our efforts to analyze winter Arctic sea ice conditions, primiarly freeboard and thickness, derived from ICESat-2 data, along with other relevant datasets.
@@ -52,7 +60,9 @@ All content in this Jupyter Book is distributed under the MIT license.
 
 ## References
 
+Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2023), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere, 17, 127–156, doi: 10.5194/tc-17-127-2023
+
 Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764
 
-Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2022), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere Discuss (preprint), doi: 10.5194/tc-2022-39.
+
  

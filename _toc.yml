@@ -4,7 +4,8 @@ parts:
 - caption: ICESat-2 Arctic sea ice thickness data
   chapters:
   - file: content/1_is2sitmogr4_intro
-- caption: Winter Arctic sea ice thickness analysis (Petty et al., 2022)
+  - file: content/2b_winter_arctic_sea_ice_variability_2022update
+- caption: Winter Arctic sea ice thickness analysis (Petty et al., 2023)
   chapters: 
   - file: content/2_winter_arctic_sea_ice_variability
   - file: content/3_comparisons_with_cryosat-2_and_piomas
@@ -13,6 +14,9 @@ parts:
 # - caption: Interactive plots
 #   chapters:
 #   - file: content/6_interactive_data_viz
+- caption: Winter Arctic sea ice thickness analysis updates
+chapters: 
+  - file: content/2b_winter_arctic_sea_ice_variability_2022update
 - caption: Data wrangling
   chapters:
   - file: content/7_gridded_data_wrangling
