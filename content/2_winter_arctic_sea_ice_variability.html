@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Winter Arctic sea ice state variability &#8212; ICESat-2 Sea Ice State Analysis</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,36 +20,35 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -55,10 +56,35 @@
     <link rel="next" title="Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates" href="3_comparisons_with_cryosat-2_and_piomas.html" />
     <link rel="prev" title="ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)" href="1_is2sitmogr4_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
     
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-J1HEQ5DMT0');
+                </script>
+
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -67,9 +93,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -87,14 +114,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="0_home.html">
-   ICESat-2 Arctic Sea Ice Analysis
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="0_home.html">
+                    ICESat-2 Arctic Sea Ice State Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   ICESat-2 Arctic sea ice thickness data
  </span>
@@ -106,9 +134,9 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Winter Arctic sea ice thickness analysis (Petty et al., 2022)
+  Winter Arctic sea ice thickness analysis (Petty et al., 2023)
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -133,7 +161,19 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Winter Arctic sea ice thickness analysis updates
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2b_winter_arctic_sea_ice_variability_2022update.html">
+   Winter Arctic sea ice state variability (updates through to April 2022)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Data wrangling
  </span>
@@ -155,7 +195,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Ancillary code
  </span>
@@ -174,109 +214,226 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/content/2_winter_arctic_sea_ice_variability.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/akpetty/icesat2-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2Fcontent/2_winter_arctic_sea_ice_variability.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/akpetty/icesat2-book/edit/master/content/2_winter_arctic_sea_ice_variability.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/akpetty/icesat2-book/master?urlpath=tree/content/2_winter_arctic_sea_ice_variability.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/akpetty/icesat2-book/master?urlpath=tree/content/2_winter_arctic_sea_ice_variability.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/akpetty/icesat2-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2Fcontent/2_winter_arctic_sea_ice_variability.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/akpetty/icesat2-book/edit/master/content/2_winter_arctic_sea_ice_variability.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/content/2_winter_arctic_sea_ice_variability.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Winter Arctic sea ice state variability
@@ -319,27 +476,83 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Winter Arctic sea ice state variability</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Winter Arctic sea ice state variability
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-notebook-dependencies">
+   Import notebook dependencies
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-in-the-aggregated-monthly-gridded-winter-arctic-sea-ice-data">
+   Read in the aggregated monthly gridded winter Arctic sea ice data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#static-winter-mean-maps">
+   Static winter mean maps
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overlay-sea-ice-drift-vectors">
+   Overlay sea ice drift vectors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#static-monthly-maps">
+   Static monthly maps
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#thickness-anomaly-plots">
+   Thickness anomaly plots
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#monthly-mean-timeseries">
+   Monthly mean timeseries
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="winter-arctic-sea-ice-state-variability">
-<h1>Winter Arctic sea ice state variability<a class="headerlink" href="#winter-arctic-sea-ice-state-variability" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook, we highlight key additional sea ice variables: snow depth, ice type, snow density, and sea ice drift. We’ll use cartopy and xarray to generate maps and lineplots of the data to demonstrate methods for visualizing the data statically, as opposed to the interactive plotting functions highlighted in the seperate interactive notebooks (which can be slow to render and push the GitHub file size limits!).</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="winter-arctic-sea-ice-state-variability">
+<h1>Winter Arctic sea ice state variability<a class="headerlink" href="#winter-arctic-sea-ice-state-variability" title="Permalink to this headline">#</a></h1>
+<p><strong>Summary:</strong> In this notebook, we highlight key additional sea ice variables: snow depth, ice type, snow density, and sea ice drift. We’ll use cartopy and xarray to generate maps and lineplots of the data to demonstrate methods for visualizing the data statically, as opposed to the interactive plotting functions highlighted in the seperate interactive notebooks (which can be slow to render and push the GitHub file size limits!).</p>
 <p>Please take a look at the ‘Data variables’ tab in the book_ds cell below to explore the potential variables for analysis in this notebook.</p>
 <p>The dataset also includes a few interpolated/smoothed variables (freeboard_int, snow_depth_int, ice_thickness_int) that can be used instead of the raw monthly means to increase coverage in some regions. See the <strong><a class="reference external" href="https://www.icesat-2-sea-ice-state.info/content/9_gridded_interp_demo.html">interp_demo</a></strong> notebook for more information on how they are derived.</p>
-<p>Notes:</p>
-<ul class="simple">
-<li><p>We focus here on showcasing the analysis presented in this paper currently under review: <a class="reference external" href="https://tc.copernicus.org/preprints/tc-2022-39/">https://tc.copernicus.org/preprints/tc-2022-39/</a> and keep the focus on the analysis of the first three winters of data collected. Other notebooks in this book will showcase additional analysis beyond that paper.</p></li>
-</ul>
-</div>
-<div class="section" id="import-notebook-dependencies">
-<h1>Import notebook dependencies<a class="headerlink" href="#import-notebook-dependencies" title="Permalink to this headline">¶</a></h1>
+<p>The analysis presented here was peer-reviewed in <a class="reference external" href="https://tc.copernicus.org/articles/17/127/2023/">this paper in The Cryosphere</a>.</p>
+<p><strong>Version history</strong>: Version 1 (01/01/2022)</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="import-notebook-dependencies">
+<h1>Import notebook dependencies<a class="headerlink" href="#import-notebook-dependencies" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For working with gridded climate data </span>
@@ -2264,11 +2477,11 @@ if (window.Jupyter !== undefined) {
   font-size: var(--jp-ui-font-size1);
   color: var(--jp-ui-font-color1);
 }
-</style></div><div class="output text_html"></div></div>
+</style></div></div>
 </div>
-</div>
-<div class="section" id="read-in-the-aggregated-monthly-gridded-winter-arctic-sea-ice-data">
-<h1>Read in the aggregated monthly gridded winter Arctic sea ice data<a class="headerlink" href="#read-in-the-aggregated-monthly-gridded-winter-arctic-sea-ice-data" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="read-in-the-aggregated-monthly-gridded-winter-arctic-sea-ice-data">
+<h1>Read in the aggregated monthly gridded winter Arctic sea ice data<a class="headerlink" href="#read-in-the-aggregated-monthly-gridded-winter-arctic-sea-ice-data" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">book_ds</span> <span class="o">=</span> <span class="n">read_book_data</span><span class="p">()</span> <span class="c1"># Read/download the data </span>
@@ -2308,6 +2521,7 @@ if (window.Jupyter !== undefined) {
 }
 
 html[theme=dark],
+body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -2320,7 +2534,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -2537,6 +2751,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -2558,14 +2777,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -2575,13 +2796,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -2619,7 +2843,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -2638,7 +2863,7 @@ Coordinates:
     ygrid                 (y, x) float32 ...
 Dimensions without coordinates: y, x
 Data variables: (12/20)
-    projection            (time) float64 -2.147e+09 -2.147e+09 ... -2.147e+09
+    projection            (time) float64 ...
     ice_thickness         (time, y, x) float32 ...
     ice_thickness_unc     (time, y, x) float32 ...
     num_segments          (time, y, x) float32 ...
@@ -2655,7 +2880,7 @@ Attributes:
     contact:      Alek Petty (alek.a.petty@nasa.gov)
     description:  Gridded Oct 2019 Arctic sea ice thickness and ancillary dat...
     reference:    Data doi: 10.5067/CV6JEXEE31HF. Original methodology descri...
-    history:      Created 21/01/22</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-3fe7ccf9-c01c-4a9f-87fc-cde80fa65730' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3fe7ccf9-c01c-4a9f-87fc-cde80fa65730' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 30</li><li><span>y</span>: 448</li><li><span>x</span>: 304</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-1e40f344-ac03-49c1-9104-081364d4b019' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1e40f344-ac03-49c1-9104-081364d4b019' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2018-11-01 ... 2021-04-01</div><input id='attrs-61678088-7023-4778-824d-fb306e285a13' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-61678088-7023-4778-824d-fb306e285a13' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7d9b62f-bc89-4302-8b49-97bac8e3290d' class='xr-var-data-in' type='checkbox'><label for='data-e7d9b62f-bc89-4302-8b49-97bac8e3290d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2018-11-01T00:00:00.000000000&#x27;, &#x27;2018-12-01T00:00:00.000000000&#x27;,
+    history:      Created 21/01/22</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-7c7c9490-e4b8-4253-9627-8dc27d75f855' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-7c7c9490-e4b8-4253-9627-8dc27d75f855' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 30</li><li><span>y</span>: 448</li><li><span>x</span>: 304</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-7fa33b3f-ee3f-4842-b04a-187c6ab82acd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7fa33b3f-ee3f-4842-b04a-187c6ab82acd' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2018-11-01 ... 2021-04-01</div><input id='attrs-fb34b89e-61b8-47cc-890f-09133e4b1c8d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fb34b89e-61b8-47cc-890f-09133e4b1c8d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1af188f4-de70-4749-bdc3-293c99f6c170' class='xr-var-data-in' type='checkbox'><label for='data-1af188f4-de70-4749-bdc3-293c99f6c170' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2018-11-01T00:00:00.000000000&#x27;, &#x27;2018-12-01T00:00:00.000000000&#x27;,
        &#x27;2019-01-01T00:00:00.000000000&#x27;, &#x27;2019-02-01T00:00:00.000000000&#x27;,
        &#x27;2019-03-01T00:00:00.000000000&#x27;, &#x27;2019-04-01T00:00:00.000000000&#x27;,
        &#x27;2019-05-01T00:00:00.000000000&#x27;, &#x27;2019-06-01T00:00:00.000000000&#x27;,
@@ -2670,18 +2895,19 @@ Attributes:
        &#x27;2020-11-01T00:00:00.000000000&#x27;, &#x27;2020-12-01T00:00:00.000000000&#x27;,
        &#x27;2021-01-01T00:00:00.000000000&#x27;, &#x27;2021-02-01T00:00:00.000000000&#x27;,
        &#x27;2021-03-01T00:00:00.000000000&#x27;, &#x27;2021-04-01T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5a81113a-71b7-4bce-9050-f90e8f4c9a80' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5a81113a-71b7-4bce-9050-f90e8f4c9a80' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3823c6be-f573-47b5-8f4f-fe919be2f270' class='xr-var-data-in' type='checkbox'><label for='data-3823c6be-f573-47b5-8f4f-fe919be2f270' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees East</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a2bb553d-f921-4f37-957e-d1e65c294eb8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a2bb553d-f921-4f37-957e-d1e65c294eb8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-75926c2a-66db-49a2-917a-a2de5607d100' class='xr-var-data-in' type='checkbox'><label for='data-75926c2a-66db-49a2-917a-a2de5607d100' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees North</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xgrid</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3428c561-9efe-4726-bda5-0df0da2ea3f6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3428c561-9efe-4726-bda5-0df0da2ea3f6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4b746c73-c902-40db-980a-99afd4b78087' class='xr-var-data-in' type='checkbox'><label for='data-4b746c73-c902-40db-980a-99afd4b78087' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>projection grid x values</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ygrid</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f2468959-ee11-4480-9f39-d636e17c56c7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f2468959-ee11-4480-9f39-d636e17c56c7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b735ae3a-3d6b-4f58-af50-0328ec29381d' class='xr-var-data-in' type='checkbox'><label for='data-b735ae3a-3d6b-4f58-af50-0328ec29381d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>projection grid y values</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0b510bc6-cd50-431d-8ac5-b78ed190efa8' class='xr-section-summary-in' type='checkbox'  ><label for='section-0b510bc6-cd50-431d-8ac5-b78ed190efa8' class='xr-section-summary' >Data variables: <span>(20)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>projection</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c93aceba-b7cc-4ccf-a58c-70853739f77f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c93aceba-b7cc-4ccf-a58c-70853739f77f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-109c2389-8e49-44af-94a3-677c3f6f46fd' class='xr-var-data-in' type='checkbox'><label for='data-109c2389-8e49-44af-94a3-677c3f6f46fd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>NSIDC Sea Ice Polar Stereographic North</dd><dt><span>proj4text :</span></dt><dd>+proj=stere +lat_0=90 +lat_ts=70 +lon_0=-45 +k=1 +x_0=0 +y_0=0 +a=6378273 +b=6356889.449 +units=m +no_defs</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;NSIDC Sea Ice Polar Stereographic North&quot;,GEOGCS[&quot;Unspecified datum based upon the Hughes 1980 ellipsoid&quot;,DATUM[&quot;Not_specified_based_on_Hughes_1980_ellipsoid&quot;,SPHEROID[&quot;Hughes 1980&quot;,6378273,298.279411123061,AUTHORITY[&quot;EPSG&quot;,&quot;7058&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6054&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.01745329251994328,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4054&quot;]],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],PROJECTION[&quot;Polar_Stereographic&quot;],PARAMETER[&quot;latitude_of_origin&quot;,70],PARAMETER[&quot;central_meridian&quot;,-45],PARAMETER[&quot;scale_factor&quot;,1],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],AUTHORITY[&quot;EPSG&quot;,&quot;3411&quot;],AXIS[&quot;X&quot;,UNKNOWN],AXIS[&quot;Y&quot;,UNKNOWN]]</dd><dt><span>grid_mapping_name :</span></dt><dd>polar_stereographic</dd><dt><span>srid :</span></dt><dd>urn:ogc:def:crs:EPSG::3411</dd><dt><span>GeoTransform :</span></dt><dd>-3850000.0 25000.0 0 5850000.0 0 25000.0</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>90.0</dd><dt><span>standard_parallel :</span></dt><dd>70.0</dd><dt><span>longitude_of_projection_origin :</span></dt><dd>-45.0</dd><dt><span>scaling_factor :</span></dt><dd>1.0</dd><dt><span>false_easting :</span></dt><dd>0.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>grid_boundary_top_projected_y :</span></dt><dd>5850000.0</dd><dt><span>grid_boundary_bottom_projected_y :</span></dt><dd>-5350000.0</dd><dt><span>grid_boundary_right_projected_x :</span></dt><dd>3750000.0</dd><dt><span>grid_boundary_left_projected_x :</span></dt><dd>-3850000.0</dd><dt><span>parent_grid_cell_row_subset_start :</span></dt><dd>0.0</dd><dt><span>parent_grid_cell_row_subset_end :</span></dt><dd>448.0</dd><dt><span>parent_grid_cell_column_subset_start :</span></dt><dd>0.0</dd><dt><span>parent_grid_cell_column_subset_end :</span></dt><dd>304.0</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>semimajor_radius :</span></dt><dd>6378273.0</dd><dt><span>semiminor_radius :</span></dt><dd>6356889.449</dd></dl></div><div class='xr-var-data'><pre>array([-2.147484e+09, -2.147484e+09, -2.147484e+09, -2.147484e+09,
-       -2.147484e+09, -2.147484e+09,           nan,           nan,
-                 nan,           nan, -2.147484e+09, -2.147484e+09,
-       -2.147484e+09, -2.147484e+09, -2.147484e+09, -2.147484e+09,
-       -2.147484e+09, -2.147484e+09,           nan,           nan,
-                 nan,           nan, -2.147484e+09, -2.147484e+09,
-       -2.147484e+09, -2.147484e+09, -2.147484e+09, -2.147484e+09,
-       -2.147484e+09, -2.147484e+09])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_thickness</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-26b8e576-1e63-4cde-9477-9c33b22351b8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-26b8e576-1e63-4cde-9477-9c33b22351b8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c1135e7e-35c1-463f-9f7a-bd3e251ca00b' class='xr-var-data-in' type='checkbox'><label for='data-c1135e7e-35c1-463f-9f7a-bd3e251ca00b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean sea ice thickness from redistributed (piecewise) NESOSIM data.</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice thickness</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_thickness_unc</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fd686a1e-2ab3-4ceb-974e-22b3cb76c581' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fd686a1e-2ab3-4ceb-974e-22b3cb76c581' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ad5769b4-82aa-42b1-9118-c6e9d7d8b1ef' class='xr-var-data-in' type='checkbox'><label for='data-ad5769b4-82aa-42b1-9118-c6e9d7d8b1ef' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean ice thickness uncertainty</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice thickness uncertainty</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>num_segments</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0a88f4c5-2fc4-47a3-a7d5-55c4113a9859' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0a88f4c5-2fc4-47a3-a7d5-55c4113a9859' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1cd7bd5a-4aad-4f7f-bfb1-4b47435b26c8' class='xr-var-data-in' type='checkbox'><label for='data-1cd7bd5a-4aad-4f7f-bfb1-4b47435b26c8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of valid freeboard/thickness segments in the given monthly grid-cell</dd><dt><span>units :</span></dt><dd>counts</dd><dt><span>long_name :</span></dt><dd>number of segments</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mean_day_of_month</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a03ff058-6ec5-4859-8a54-2232625696cf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a03ff058-6ec5-4859-8a54-2232625696cf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9e4ab779-69a6-489d-967e-a6b1c60c4067' class='xr-var-data-in' type='checkbox'><label for='data-9e4ab779-69a6-489d-967e-a6b1c60c4067' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean day of the month represented by a given grid-cell based on the date of the along-track data</dd><dt><span>units :</span></dt><dd>day</dd><dt><span>long_name :</span></dt><dd>day of month</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>snow_depth</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d3d54962-1da8-4503-8674-36aa6b207adb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d3d54962-1da8-4503-8674-36aa6b207adb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ae687903-8c0a-497a-be2b-730e4a51304a' class='xr-var-data-in' type='checkbox'><label for='data-ae687903-8c0a-497a-be2b-730e4a51304a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean snow depth from redistributed (piecewise) NESOSIM data</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>snow depth</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>snow_density</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5f76c322-1e18-4011-8b7b-d33f7def073b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5f76c322-1e18-4011-8b7b-d33f7def073b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ab513f95-be7d-4e33-b2b6-5d96e7a6d184' class='xr-var-data-in' type='checkbox'><label for='data-ab513f95-be7d-4e33-b2b6-5d96e7a6d184' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean snow density from NESOSIM</dd><dt><span>units :</span></dt><dd>kilograms per meters cubed</dd><dt><span>long_name :</span></dt><dd>snow density</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>freeboard</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-19a9fdde-0139-41a0-8a9a-17add6c56c33' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-19a9fdde-0139-41a0-8a9a-17add6c56c33' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c93380d-aee0-4801-9fd8-2003d6e3ed50' class='xr-var-data-in' type='checkbox'><label for='data-1c93380d-aee0-4801-9fd8-2003d6e3ed50' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean freeboard from rel005 ATL10</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice freeboard</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_type</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4375fe05-c06f-439e-943d-0e8b13b53637' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4375fe05-c06f-439e-943d-0e8b13b53637' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-69b25271-b8a3-409d-8790-da1ce90f2b75' class='xr-var-data-in' type='checkbox'><label for='data-69b25271-b8a3-409d-8790-da1ce90f2b75' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>source :</span></dt><dd>http://www.osi-saf.org/?q=content/global-sea-ice-type-c</dd><dt><span>description :</span></dt><dd>Mean ice type from OSI SAF (sub-sampled by ICESat-2 along-track prior to gridding)</dd><dt><span>units :</span></dt><dd>ice type flag (0 = first-year ice, 1 = multi-year ice)</dd><dt><span>long_name :</span></dt><dd>OSI SAF sea ice type classification (sub-sampled)</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_density</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e19d66cc-ac68-4105-b043-573922839bf6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e19d66cc-ac68-4105-b043-573922839bf6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-717c20b4-d0aa-4b3d-b03e-040900fe13d1' class='xr-var-data-in' type='checkbox'><label for='data-717c20b4-d0aa-4b3d-b03e-040900fe13d1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Bulk sea ice density</dd><dt><span>units :</span></dt><dd>kilograms per meters cubed</dd><dt><span>long_name :</span></dt><dd>bulk sea ice density</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_thickness_int</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-eba894a3-d00d-406b-a6ab-4f4d58a59e3f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-eba894a3-d00d-406b-a6ab-4f4d58a59e3f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4947e18b-fac6-43a1-bfe0-5861984016e0' class='xr-var-data-in' type='checkbox'><label for='data-4947e18b-fac6-43a1-bfe0-5861984016e0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean interpolated sea ice thickness from redistributed (piecewise) NESOSIM data.</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice thickness interpolated</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>freeboard_int</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-53da5e30-e462-4878-9665-f10ee545d91e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-53da5e30-e462-4878-9665-f10ee545d91e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-45af84fa-aba9-436f-93b7-90b9e449b03e' class='xr-var-data-in' type='checkbox'><label for='data-45af84fa-aba9-436f-93b7-90b9e449b03e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean interpolated freeboard from rel005 ATL10</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice freeboard interpolated</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>snow_depth_int</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d6559423-4e7a-417b-9e37-b0c3fc601320' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d6559423-4e7a-417b-9e37-b0c3fc601320' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8a44e27c-1baa-43e9-a1a9-44cd2fc9ed7e' class='xr-var-data-in' type='checkbox'><label for='data-8a44e27c-1baa-43e9-a1a9-44cd2fc9ed7e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean interpolated snow depth from redistributed (piecewise) NESOSIM data</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>snow depth interpolated</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sea_ice_conc</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-464d3c34-36a5-4dc2-b67f-f8e20e896b14' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-464d3c34-36a5-4dc2-b67f-f8e20e896b14' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-17296fc3-58ac-4474-81e2-cf35b760609f' class='xr-var-data-in' type='checkbox'><label for='data-17296fc3-58ac-4474-81e2-cf35b760609f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>source :</span></dt><dd>https://nsidc.org/data/G02202/</dd><dt><span>description :</span></dt><dd>Mean monthly ice concentration from CDR passive microwave data (raw data not sub-sampled by ICESat-2)</dd><dt><span>units :</span></dt><dd>sea ice concentration (0 to 1, data masked below 0.15)</dd><dt><span>long_name :</span></dt><dd>CDR sea ice concentration</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>region_mask</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-09f30f1a-7815-4a3d-b0b0-1474f44ef09d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-09f30f1a-7815-4a3d-b0b0-1474f44ef09d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2e1da5c8-1cec-4f95-865d-b0c1fc1128f4' class='xr-var-data-in' type='checkbox'><label for='data-2e1da5c8-1cec-4f95-865d-b0c1fc1128f4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>NSIDC Northern Hemisphere region mask (updated v2 NSIDC mask, preliminary)</dd><dt><span>source :</span></dt><dd>W. Meier and S. Stewart, National Snow and Ice Data Center (NSIDC)</dd><dt><span>units :</span></dt><dd>0: Outside of defined regions,    1: Central Arctic, 2: Beaufort Sea, 3: Chukchi Sea, 4: East Siberian Sea, 5: Laptev Sea, 6: Kara Sea, 7: Barents Sea,    8: East Greenland Sea, 9: Baffin Bay and Davis Strait, 10: Gulf of St. Lawrence, 11: Hudson Bay, 12: Canadian Archipelago, 13: Bering Sea    14: Sea of Okhotsk, 15: Sea of Japan, 16: Bohai Sea, 17: Gulf of Bothnia, Baltic Sea, 18: Gulf of Alaska, 30: Land, 31: Coast, 32: Lakes</dd><dt><span>long_name :</span></dt><dd>NSIDC Arctic region mask</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>piomas_ice_thickness</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-32869329-a717-452d-8568-a1a0370b77ff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-32869329-a717-452d-8568-a1a0370b77ff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1edd30e3-dca8-401d-aac4-904beaca2108' class='xr-var-data-in' type='checkbox'><label for='data-1edd30e3-dca8-401d-aac4-904beaca2108' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>PIOMAS sea ice thickness</dd><dt><span>data_download :</span></dt><dd>http://psc.apl.uw.edu/research/projects/arctic-sea-ice-volume-anomaly/data/</dd><dt><span>download_date :</span></dt><dd>08-2020</dd><dt><span>citation :</span></dt><dd>Zhang, J.L. and D.A. Rothrock, “Modeling global sea ice with a thickness and enthalpy distribution model in generalized curvilinear coordinates“, Mon. Weather Rev., 131, 845-861, 2003</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>t2m</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-60b01b04-a390-45bc-948a-2cac4314b242' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-60b01b04-a390-45bc-948a-2cac4314b242' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7039739-a8cd-465f-87a6-47d48705e29b' class='xr-var-data-in' type='checkbox'><label for='data-e7039739-a8cd-465f-87a6-47d48705e29b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>C</dd><dt><span>long_name :</span></dt><dd>2 meter temperature</dd><dt><span>description :</span></dt><dd>era5 monthly averaged data on single levels from 1979 to present</dd><dt><span>website :</span></dt><dd>https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview</dd><dt><span>contact :</span></dt><dd>copernicus-support@ecmwf.int</dd><dt><span>citation :</span></dt><dd>Copernicus Climate Change Service (C3S) (2017): ERA5: Fifth generation of ECMWF atmospheric reanalyses of the global climate . Copernicus Climate Change Service Climate Data Store (CDS), July 2020. https://cds.climate.copernicus.eu/cdsapp#!/home</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>msdwlwrf</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0180e91c-b93e-4abb-a417-f524fe776769' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0180e91c-b93e-4abb-a417-f524fe776769' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9fb94341-0fe5-4636-a2b8-f33f93c97fac' class='xr-var-data-in' type='checkbox'><label for='data-9fb94341-0fe5-4636-a2b8-f33f93c97fac' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>long_name :</span></dt><dd>Mean surface downward long-wave radiation flux</dd><dt><span>description :</span></dt><dd>era5 monthly averaged data on single levels from 1979 to present</dd><dt><span>website :</span></dt><dd>https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview</dd><dt><span>contact :</span></dt><dd>copernicus-support@ecmwf.int</dd><dt><span>citation :</span></dt><dd>Copernicus Climate Change Service (C3S) (2017): ERA5: Fifth generation of ECMWF atmospheric reanalyses of the global climate . Copernicus Climate Change Service Climate Data Store (CDS), July 2020. https://cds.climate.copernicus.eu/cdsapp#!/home</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>x_vel</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1331dcee-a626-400f-9988-a000f26b6af4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1331dcee-a626-400f-9988-a000f26b6af4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c0fa8329-c31e-4f24-b2c8-7955958a67ea' class='xr-var-data-in' type='checkbox'><label for='data-c0fa8329-c31e-4f24-b2c8-7955958a67ea' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>along-x component of the ice motion</dd><dt><span>units :</span></dt><dd>cm/s</dd><dt><span>long_name :</span></dt><dd>sea ice x velocity</dd><dt><span>citation :</span></dt><dd>Lavergne, T., Eastwood, S., Teffah, Z., Schyberg, H., and Breivik, L.-A.: Sea ice motion from low-resolution satellite sensors: An alternative method and its validation in the Arctic, J. Geophys. Res., 115, C10032, https://doi.org/10.1029/2009JC005958, 2010.</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>y_vel</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-839b1ced-4b45-4555-840c-ea36397fca18' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-839b1ced-4b45-4555-840c-ea36397fca18' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bf969d1b-b460-490b-96f3-abce8f018996' class='xr-var-data-in' type='checkbox'><label for='data-bf969d1b-b460-490b-96f3-abce8f018996' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>along-y component of the ice motion</dd><dt><span>units :</span></dt><dd>cm/s</dd><dt><span>long_name :</span></dt><dd>sea ice y velocity</dd><dt><span>citation :</span></dt><dd>Lavergne, T., Eastwood, S., Teffah, Z., Schyberg, H., and Breivik, L.-A.: Sea ice motion from low-resolution satellite sensors: An alternative method and its validation in the Arctic, J. Geophys. Res., 115, C10032, https://doi.org/10.1029/2009JC005958, 2010.</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-692d4e6f-7bf5-4a3a-92ff-3cbde893de9d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-692d4e6f-7bf5-4a3a-92ff-3cbde893de9d' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>contact :</span></dt><dd>Alek Petty (alek.a.petty@nasa.gov)</dd><dt><span>description :</span></dt><dd>Gridded Oct 2019 Arctic sea ice thickness and ancillary data, calculated using ICESat-2 ATL10 rel005 freeboards and NESOSIM v1.1 snow depth/density estimates. Data are projected onto the NSIDC Polar Stereographic projection (EPSG:3411).</dd><dt><span>reference :</span></dt><dd>Data doi: 10.5067/CV6JEXEE31HF. Original methodology described in Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764.</dd><dt><span>history :</span></dt><dd>Created 21/01/22</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e13a3bda-4f73-42f2-b6a8-521f53c8e93a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e13a3bda-4f73-42f2-b6a8-521f53c8e93a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-19110ba3-b0b4-4fb6-8f5b-44211c8c1d9d' class='xr-var-data-in' type='checkbox'><label for='data-19110ba3-b0b4-4fb6-8f5b-44211c8c1d9d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees East</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-36576002-4360-49ce-bdda-b94126f4ff16' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-36576002-4360-49ce-bdda-b94126f4ff16' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f06f95ac-23c8-4420-bb6e-efbf554c9e1a' class='xr-var-data-in' type='checkbox'><label for='data-f06f95ac-23c8-4420-bb6e-efbf554c9e1a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees North</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xgrid</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2d4d23a3-1216-4231-acdd-b33c0560ded6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2d4d23a3-1216-4231-acdd-b33c0560ded6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-98f58f2f-45ac-49dc-b4dc-5aa858b31ce9' class='xr-var-data-in' type='checkbox'><label for='data-98f58f2f-45ac-49dc-b4dc-5aa858b31ce9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>projection grid x values</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ygrid</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-bb90c32a-91c5-440e-a351-1048bfbffb36' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bb90c32a-91c5-440e-a351-1048bfbffb36' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-de3b120c-6c55-4a54-923b-ed50e2c54a72' class='xr-var-data-in' type='checkbox'><label for='data-de3b120c-6c55-4a54-923b-ed50e2c54a72' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>projection grid y values</dd></dl></div><div class='xr-var-data'><pre>[136192 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f168b2bd-44dd-4165-800a-e218d2e16122' class='xr-section-summary-in' type='checkbox'  ><label for='section-f168b2bd-44dd-4165-800a-e218d2e16122' class='xr-section-summary' >Data variables: <span>(20)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>projection</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f197e5fc-03a5-4be4-9569-e9c40eb8d720' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f197e5fc-03a5-4be4-9569-e9c40eb8d720' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f68414dc-d9e9-4768-8290-29df1146effe' class='xr-var-data-in' type='checkbox'><label for='data-f68414dc-d9e9-4768-8290-29df1146effe' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>NSIDC Sea Ice Polar Stereographic North</dd><dt><span>proj4text :</span></dt><dd>+proj=stere +lat_0=90 +lat_ts=70 +lon_0=-45 +k=1 +x_0=0 +y_0=0 +a=6378273 +b=6356889.449 +units=m +no_defs</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;NSIDC Sea Ice Polar Stereographic North&quot;,GEOGCS[&quot;Unspecified datum based upon the Hughes 1980 ellipsoid&quot;,DATUM[&quot;Not_specified_based_on_Hughes_1980_ellipsoid&quot;,SPHEROID[&quot;Hughes 1980&quot;,6378273,298.279411123061,AUTHORITY[&quot;EPSG&quot;,&quot;7058&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6054&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.01745329251994328,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4054&quot;]],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],PROJECTION[&quot;Polar_Stereographic&quot;],PARAMETER[&quot;latitude_of_origin&quot;,70],PARAMETER[&quot;central_meridian&quot;,-45],PARAMETER[&quot;scale_factor&quot;,1],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],AUTHORITY[&quot;EPSG&quot;,&quot;3411&quot;],AXIS[&quot;X&quot;,UNKNOWN],AXIS[&quot;Y&quot;,UNKNOWN]]</dd><dt><span>grid_mapping_name :</span></dt><dd>polar_stereographic</dd><dt><span>srid :</span></dt><dd>urn:ogc:def:crs:EPSG::3411</dd><dt><span>GeoTransform :</span></dt><dd>-3850000.0 25000.0 0 5850000.0 0 25000.0</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>90.0</dd><dt><span>standard_parallel :</span></dt><dd>70.0</dd><dt><span>longitude_of_projection_origin :</span></dt><dd>-45.0</dd><dt><span>scaling_factor :</span></dt><dd>1.0</dd><dt><span>false_easting :</span></dt><dd>0.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>grid_boundary_top_projected_y :</span></dt><dd>5850000.0</dd><dt><span>grid_boundary_bottom_projected_y :</span></dt><dd>-5350000.0</dd><dt><span>grid_boundary_right_projected_x :</span></dt><dd>3750000.0</dd><dt><span>grid_boundary_left_projected_x :</span></dt><dd>-3850000.0</dd><dt><span>parent_grid_cell_row_subset_start :</span></dt><dd>0.0</dd><dt><span>parent_grid_cell_row_subset_end :</span></dt><dd>448.0</dd><dt><span>parent_grid_cell_column_subset_start :</span></dt><dd>0.0</dd><dt><span>parent_grid_cell_column_subset_end :</span></dt><dd>304.0</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>semimajor_radius :</span></dt><dd>6378273.0</dd><dt><span>semiminor_radius :</span></dt><dd>6356889.449</dd></dl></div><div class='xr-var-data'><pre>[30 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_thickness</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-54d21491-f49b-44b9-a324-a1e32c602af4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-54d21491-f49b-44b9-a324-a1e32c602af4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d5d996b8-53e2-4d6a-b129-82bc112ccfd2' class='xr-var-data-in' type='checkbox'><label for='data-d5d996b8-53e2-4d6a-b129-82bc112ccfd2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean sea ice thickness from redistributed (piecewise) NESOSIM data.</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice thickness</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_thickness_unc</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ad8f72cb-e897-4033-b45e-5884e1015075' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ad8f72cb-e897-4033-b45e-5884e1015075' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-240c8d75-49fc-4fb4-a845-1b016afe91f6' class='xr-var-data-in' type='checkbox'><label for='data-240c8d75-49fc-4fb4-a845-1b016afe91f6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean ice thickness uncertainty</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice thickness uncertainty</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>num_segments</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4fe89ff1-579b-4340-82a2-96e64fd77147' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4fe89ff1-579b-4340-82a2-96e64fd77147' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-78e26965-342c-49de-940a-b08a13f107d6' class='xr-var-data-in' type='checkbox'><label for='data-78e26965-342c-49de-940a-b08a13f107d6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of valid freeboard/thickness segments in the given monthly grid-cell</dd><dt><span>units :</span></dt><dd>counts</dd><dt><span>long_name :</span></dt><dd>number of segments</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mean_day_of_month</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7026d717-2808-4756-918c-877e2d14755d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7026d717-2808-4756-918c-877e2d14755d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9e094e22-8447-4c7d-bd7a-ddfb8e38afcd' class='xr-var-data-in' type='checkbox'><label for='data-9e094e22-8447-4c7d-bd7a-ddfb8e38afcd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean day of the month represented by a given grid-cell based on the date of the along-track data</dd><dt><span>units :</span></dt><dd>day</dd><dt><span>long_name :</span></dt><dd>day of month</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>snow_depth</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-17f82ab2-1892-415d-8bdf-1dd27405023d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-17f82ab2-1892-415d-8bdf-1dd27405023d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-85d60a12-8ff2-41f8-bf39-cb117c8031d1' class='xr-var-data-in' type='checkbox'><label for='data-85d60a12-8ff2-41f8-bf39-cb117c8031d1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean snow depth from redistributed (piecewise) NESOSIM data</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>snow depth</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>snow_density</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5443abe7-5c03-4f66-93a5-945b71db2135' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5443abe7-5c03-4f66-93a5-945b71db2135' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bc5f808c-8fea-4bff-88cf-f7d5fc21cf08' class='xr-var-data-in' type='checkbox'><label for='data-bc5f808c-8fea-4bff-88cf-f7d5fc21cf08' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean snow density from NESOSIM</dd><dt><span>units :</span></dt><dd>kilograms per meters cubed</dd><dt><span>long_name :</span></dt><dd>snow density</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>freeboard</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9fa31199-4b2b-42cf-bf87-505c8b115b20' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9fa31199-4b2b-42cf-bf87-505c8b115b20' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-931dd4a8-f9a3-467c-9e98-59e221d5d594' class='xr-var-data-in' type='checkbox'><label for='data-931dd4a8-f9a3-467c-9e98-59e221d5d594' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean freeboard from rel005 ATL10</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice freeboard</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_type</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a598b109-17c1-40db-8dd3-e9414af3d5dd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a598b109-17c1-40db-8dd3-e9414af3d5dd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0437610f-8d27-488a-8c48-f52ab0cf7a77' class='xr-var-data-in' type='checkbox'><label for='data-0437610f-8d27-488a-8c48-f52ab0cf7a77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>source :</span></dt><dd>http://www.osi-saf.org/?q=content/global-sea-ice-type-c</dd><dt><span>description :</span></dt><dd>Mean ice type from OSI SAF (sub-sampled by ICESat-2 along-track prior to gridding)</dd><dt><span>units :</span></dt><dd>ice type flag (0 = first-year ice, 1 = multi-year ice)</dd><dt><span>long_name :</span></dt><dd>OSI SAF sea ice type classification (sub-sampled)</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_density</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4bd4e97a-3616-407c-8201-2bf8c49926e6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4bd4e97a-3616-407c-8201-2bf8c49926e6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fafc8bed-08b7-42db-8a56-ecb3e01c31d0' class='xr-var-data-in' type='checkbox'><label for='data-fafc8bed-08b7-42db-8a56-ecb3e01c31d0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Bulk sea ice density</dd><dt><span>units :</span></dt><dd>kilograms per meters cubed</dd><dt><span>long_name :</span></dt><dd>bulk sea ice density</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ice_thickness_int</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cbc895d5-2d5e-4781-b694-f414b0fa0f27' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cbc895d5-2d5e-4781-b694-f414b0fa0f27' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4e71c73b-0d9b-4003-b829-772bd064d97a' class='xr-var-data-in' type='checkbox'><label for='data-4e71c73b-0d9b-4003-b829-772bd064d97a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean interpolated sea ice thickness from redistributed (piecewise) NESOSIM data.</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice thickness interpolated</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>freeboard_int</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6943b5f3-f995-45ee-ac04-16938293a6b4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6943b5f3-f995-45ee-ac04-16938293a6b4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d2657cdc-15b1-48d2-9688-7ec6c7e07b6a' class='xr-var-data-in' type='checkbox'><label for='data-d2657cdc-15b1-48d2-9688-7ec6c7e07b6a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean interpolated freeboard from rel005 ATL10</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>sea ice freeboard interpolated</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>snow_depth_int</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a599782a-9073-4b29-96dc-e8be2cc9ea50' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a599782a-9073-4b29-96dc-e8be2cc9ea50' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6fc746a7-4e8c-4f5f-af88-32ab93a75e09' class='xr-var-data-in' type='checkbox'><label for='data-6fc746a7-4e8c-4f5f-af88-32ab93a75e09' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mean interpolated snow depth from redistributed (piecewise) NESOSIM data</dd><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>snow depth interpolated</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sea_ice_conc</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cc84cf7c-883d-4f92-a24d-82f84da45769' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cc84cf7c-883d-4f92-a24d-82f84da45769' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-47f148c9-c446-461a-ba5b-a94107cb00ab' class='xr-var-data-in' type='checkbox'><label for='data-47f148c9-c446-461a-ba5b-a94107cb00ab' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>source :</span></dt><dd>https://nsidc.org/data/G02202/</dd><dt><span>description :</span></dt><dd>Mean monthly ice concentration from CDR passive microwave data (raw data not sub-sampled by ICESat-2)</dd><dt><span>units :</span></dt><dd>sea ice concentration (0 to 1, data masked below 0.15)</dd><dt><span>long_name :</span></dt><dd>CDR sea ice concentration</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>region_mask</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-598c9f62-30aa-470a-afb5-953a7e95db39' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-598c9f62-30aa-470a-afb5-953a7e95db39' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f6bb2693-76f9-465e-bd56-79e86e3671fd' class='xr-var-data-in' type='checkbox'><label for='data-f6bb2693-76f9-465e-bd56-79e86e3671fd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>NSIDC Northern Hemisphere region mask (updated v2 NSIDC mask, preliminary)</dd><dt><span>source :</span></dt><dd>W. Meier and S. Stewart, National Snow and Ice Data Center (NSIDC)</dd><dt><span>units :</span></dt><dd>0: Outside of defined regions,    1: Central Arctic, 2: Beaufort Sea, 3: Chukchi Sea, 4: East Siberian Sea, 5: Laptev Sea, 6: Kara Sea, 7: Barents Sea,    8: East Greenland Sea, 9: Baffin Bay and Davis Strait, 10: Gulf of St. Lawrence, 11: Hudson Bay, 12: Canadian Archipelago, 13: Bering Sea    14: Sea of Okhotsk, 15: Sea of Japan, 16: Bohai Sea, 17: Gulf of Bothnia, Baltic Sea, 18: Gulf of Alaska, 30: Land, 31: Coast, 32: Lakes</dd><dt><span>long_name :</span></dt><dd>NSIDC Arctic region mask</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>piomas_ice_thickness</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0765a965-d68c-4ce1-8717-21340f017461' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0765a965-d68c-4ce1-8717-21340f017461' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c016d74a-7402-4269-9e38-9b33ee7705e3' class='xr-var-data-in' type='checkbox'><label for='data-c016d74a-7402-4269-9e38-9b33ee7705e3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd><dt><span>long_name :</span></dt><dd>PIOMAS sea ice thickness</dd><dt><span>data_download :</span></dt><dd>http://psc.apl.uw.edu/research/projects/arctic-sea-ice-volume-anomaly/data/</dd><dt><span>download_date :</span></dt><dd>08-2020</dd><dt><span>citation :</span></dt><dd>Zhang, J.L. and D.A. Rothrock, “Modeling global sea ice with a thickness and enthalpy distribution model in generalized curvilinear coordinates“, Mon. Weather Rev., 131, 845-861, 2003</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>t2m</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1604b7ff-669e-4bcf-a585-6f4389674aff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1604b7ff-669e-4bcf-a585-6f4389674aff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-49396aa7-ef47-467f-896a-7f33201ad7fa' class='xr-var-data-in' type='checkbox'><label for='data-49396aa7-ef47-467f-896a-7f33201ad7fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>C</dd><dt><span>long_name :</span></dt><dd>2 meter temperature</dd><dt><span>description :</span></dt><dd>era5 monthly averaged data on single levels from 1979 to present</dd><dt><span>website :</span></dt><dd>https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview</dd><dt><span>contact :</span></dt><dd>copernicus-support@ecmwf.int</dd><dt><span>citation :</span></dt><dd>Copernicus Climate Change Service (C3S) (2017): ERA5: Fifth generation of ECMWF atmospheric reanalyses of the global climate . Copernicus Climate Change Service Climate Data Store (CDS), July 2020. https://cds.climate.copernicus.eu/cdsapp#!/home</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>msdwlwrf</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-71a0651e-6600-4060-bc3a-e7e4fb4453d0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-71a0651e-6600-4060-bc3a-e7e4fb4453d0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5a1bf802-a4c8-48db-98ee-c3dfdc2d1d1a' class='xr-var-data-in' type='checkbox'><label for='data-5a1bf802-a4c8-48db-98ee-c3dfdc2d1d1a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>W m**-2</dd><dt><span>long_name :</span></dt><dd>Mean surface downward long-wave radiation flux</dd><dt><span>description :</span></dt><dd>era5 monthly averaged data on single levels from 1979 to present</dd><dt><span>website :</span></dt><dd>https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview</dd><dt><span>contact :</span></dt><dd>copernicus-support@ecmwf.int</dd><dt><span>citation :</span></dt><dd>Copernicus Climate Change Service (C3S) (2017): ERA5: Fifth generation of ECMWF atmospheric reanalyses of the global climate . Copernicus Climate Change Service Climate Data Store (CDS), July 2020. https://cds.climate.copernicus.eu/cdsapp#!/home</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>x_vel</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fc939b5c-ff7a-4ceb-83d8-e329ef8ec302' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fc939b5c-ff7a-4ceb-83d8-e329ef8ec302' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-daa49c32-14c4-4bf3-9c67-e0edf527a440' class='xr-var-data-in' type='checkbox'><label for='data-daa49c32-14c4-4bf3-9c67-e0edf527a440' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>along-x component of the ice motion</dd><dt><span>units :</span></dt><dd>cm/s</dd><dt><span>long_name :</span></dt><dd>sea ice x velocity</dd><dt><span>citation :</span></dt><dd>Lavergne, T., Eastwood, S., Teffah, Z., Schyberg, H., and Breivik, L.-A.: Sea ice motion from low-resolution satellite sensors: An alternative method and its validation in the Arctic, J. Geophys. Res., 115, C10032, https://doi.org/10.1029/2009JC005958, 2010.</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>y_vel</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-58844e92-3a7a-4dee-a42d-c4095923ed13' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-58844e92-3a7a-4dee-a42d-c4095923ed13' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2f2c53ef-015b-4a93-81bb-a3ea0b45ada1' class='xr-var-data-in' type='checkbox'><label for='data-2f2c53ef-015b-4a93-81bb-a3ea0b45ada1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>along-y component of the ice motion</dd><dt><span>units :</span></dt><dd>cm/s</dd><dt><span>long_name :</span></dt><dd>sea ice y velocity</dd><dt><span>citation :</span></dt><dd>Lavergne, T., Eastwood, S., Teffah, Z., Schyberg, H., and Breivik, L.-A.: Sea ice motion from low-resolution satellite sensors: An alternative method and its validation in the Arctic, J. Geophys. Res., 115, C10032, https://doi.org/10.1029/2009JC005958, 2010.</dd></dl></div><div class='xr-var-data'><pre>[4085760 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a5cbabcb-b321-4266-b892-698a6e16c9b7' class='xr-section-summary-in' type='checkbox'  ><label for='section-a5cbabcb-b321-4266-b892-698a6e16c9b7' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-fc2460bc-3110-43a7-9d08-e7cb2ba9bcdb' class='xr-index-data-in' type='checkbox'/><label for='index-fc2460bc-3110-43a7-9d08-e7cb2ba9bcdb' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2018-11-01&#x27;, &#x27;2018-12-01&#x27;, &#x27;2019-01-01&#x27;, &#x27;2019-02-01&#x27;,
+               &#x27;2019-03-01&#x27;, &#x27;2019-04-01&#x27;, &#x27;2019-05-01&#x27;, &#x27;2019-06-01&#x27;,
+               &#x27;2019-07-01&#x27;, &#x27;2019-08-01&#x27;, &#x27;2019-09-01&#x27;, &#x27;2019-10-01&#x27;,
+               &#x27;2019-11-01&#x27;, &#x27;2019-12-01&#x27;, &#x27;2020-01-01&#x27;, &#x27;2020-02-01&#x27;,
+               &#x27;2020-03-01&#x27;, &#x27;2020-04-01&#x27;, &#x27;2020-05-01&#x27;, &#x27;2020-06-01&#x27;,
+               &#x27;2020-07-01&#x27;, &#x27;2020-08-01&#x27;, &#x27;2020-09-01&#x27;, &#x27;2020-10-01&#x27;,
+               &#x27;2020-11-01&#x27;, &#x27;2020-12-01&#x27;, &#x27;2021-01-01&#x27;, &#x27;2021-02-01&#x27;,
+               &#x27;2021-03-01&#x27;, &#x27;2021-04-01&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6ca04cc1-1794-46af-bf84-fb1a1c8dbb5e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6ca04cc1-1794-46af-bf84-fb1a1c8dbb5e' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>contact :</span></dt><dd>Alek Petty (alek.a.petty@nasa.gov)</dd><dt><span>description :</span></dt><dd>Gridded Oct 2019 Arctic sea ice thickness and ancillary data, calculated using ICESat-2 ATL10 rel005 freeboards and NESOSIM v1.1 snow depth/density estimates. Data are projected onto the NSIDC Polar Stereographic projection (EPSG:3411).</dd><dt><span>reference :</span></dt><dd>Data doi: 10.5067/CV6JEXEE31HF. Original methodology described in Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764.</dd><dt><span>history :</span></dt><dd>Created 21/01/22</dd></dl></div></li></ul></div></div></div></div>
 </div>
-</div>
-<div class="section" id="static-winter-mean-maps">
-<h1>Static winter mean maps<a class="headerlink" href="#static-winter-mean-maps" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="static-winter-mean-maps">
+<h1>Static winter mean maps<a class="headerlink" href="#static-winter-mean-maps" title="Permalink to this headline">#</a></h1>
 <p>Compute and map (static) gridcell winter means for given variables</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -2811,9 +3037,9 @@ Attributes:
 <img alt="../_images/2_winter_arctic_sea_ice_variability_13_0.png" src="../_images/2_winter_arctic_sea_ice_variability_13_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="overlay-sea-ice-drift-vectors">
-<h1>Overlay sea ice drift vectors<a class="headerlink" href="#overlay-sea-ice-drift-vectors" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="overlay-sea-ice-drift-vectors">
+<h1>Overlay sea ice drift vectors<a class="headerlink" href="#overlay-sea-ice-drift-vectors" title="Permalink to this headline">#</a></h1>
 <p>We can use a modified version of the plotting function used above to overlay sea ice drift vectors on any variable of interest. Below, we’ll generate the plot presented in Petty et al. (2022) that shows mean sea ice thickness and mean sea ice drift for the three winters.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -2932,9 +3158,9 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 <img alt="../_images/2_winter_arctic_sea_ice_variability_21_0.png" src="../_images/2_winter_arctic_sea_ice_variability_21_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="static-monthly-maps">
-<h1>Static monthly maps<a class="headerlink" href="#static-monthly-maps" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="static-monthly-maps">
+<h1>Static monthly maps<a class="headerlink" href="#static-monthly-maps" title="Permalink to this headline">#</a></h1>
 <p>Compute and map (static) data given variables across the three winters for individual months</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2944,7 +3170,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_23_0.png" src="../_images/2_winter_arctic_sea_ice_variability_23_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">freeboard</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Nov 2018&quot;</span><span class="p">,</span><span class="s2">&quot;Nov 2019&quot;</span><span class="p">,</span><span class="s2">&quot;Nov 2020&quot;</span><span class="p">]),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice freeboard&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlOrRd&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;freeboard_november&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_23_1.png" src="../_images/2_winter_arctic_sea_ice_variability_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2955,7 +3197,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_24_0.png" src="../_images/2_winter_arctic_sea_ice_variability_24_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">freeboard</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Apr 2019&quot;</span><span class="p">,</span><span class="s2">&quot;Apr 2020&quot;</span><span class="p">,</span><span class="s2">&quot;Apr 2021&quot;</span><span class="p">]),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice freeboard&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlOrRd&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;freeboard_april&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_24_1.png" src="../_images/2_winter_arctic_sea_ice_variability_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2966,7 +3224,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_25_0.png" src="../_images/2_winter_arctic_sea_ice_variability_25_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">snow_depth</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Nov 2018&quot;</span><span class="p">,</span><span class="s2">&quot;Nov 2019&quot;</span><span class="p">,</span><span class="s2">&quot;Nov 2020&quot;</span><span class="p">]),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Snow depth&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;inferno&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;snowdepth_november&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_25_1.png" src="../_images/2_winter_arctic_sea_ice_variability_25_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2977,7 +3251,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_26_0.png" src="../_images/2_winter_arctic_sea_ice_variability_26_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">snow_depth</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Apr 2019&quot;</span><span class="p">,</span><span class="s2">&quot;Apr 2020&quot;</span><span class="p">,</span><span class="s2">&quot;Apr 2021&quot;</span><span class="p">]),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Snow depth&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;inferno&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;snowdepth_april&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_26_1.png" src="../_images/2_winter_arctic_sea_ice_variability_26_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2988,7 +3278,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_27_0.png" src="../_images/2_winter_arctic_sea_ice_variability_27_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">ice_thickness</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Nov 2018&quot;</span><span class="p">,</span><span class="s2">&quot;Nov 2019&quot;</span><span class="p">,</span><span class="s2">&quot;Nov 2020&quot;</span><span class="p">]),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice thickness&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;thickness_november&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_27_1.png" src="../_images/2_winter_arctic_sea_ice_variability_27_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2999,12 +3305,28 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_28_0.png" src="../_images/2_winter_arctic_sea_ice_variability_28_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">ice_thickness</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Apr 2019&quot;</span><span class="p">,</span><span class="s2">&quot;Apr 2020&quot;</span><span class="p">,</span><span class="s2">&quot;Apr 2021&quot;</span><span class="p">]),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice thickness&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;thickness_april&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_28_1.png" src="../_images/2_winter_arctic_sea_ice_variability_28_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="thickness-anomaly-plots">
-<h1>Thickness anomaly plots<a class="headerlink" href="#thickness-anomaly-plots" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="thickness-anomaly-plots">
+<h1>Thickness anomaly plots<a class="headerlink" href="#thickness-anomaly-plots" title="Permalink to this headline">#</a></h1>
 <p>Compute and map (static) monthly anomaly maps (relative to the mean across the three winters by default) for given variables across the three winters</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3051,7 +3373,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_34_0.png" src="../_images/2_winter_arctic_sea_ice_variability_34_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">freeboard</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">-</span><span class="n">book_ds</span><span class="o">.</span><span class="n">freeboard</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice freeboard anomaly (m)&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;BrBG&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;freeboard_november_anomaly&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_34_1.png" src="../_images/2_winter_arctic_sea_ice_variability_34_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3062,7 +3400,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_35_0.png" src="../_images/2_winter_arctic_sea_ice_variability_35_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">snow_depth</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">-</span><span class="n">book_ds</span><span class="o">.</span><span class="n">snow_depth</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Snow depth anomaly (m)&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;PRGn&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;snow_depth_november_anomaly&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_35_1.png" src="../_images/2_winter_arctic_sea_ice_variability_35_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3073,7 +3427,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_36_0.png" src="../_images/2_winter_arctic_sea_ice_variability_36_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">ice_thickness</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">-</span><span class="n">book_ds</span><span class="o">.</span><span class="n">ice_thickness</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice thickness anomaly (m)&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;thickness_november_anomaly&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_36_1.png" src="../_images/2_winter_arctic_sea_ice_variability_36_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3084,7 +3454,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_37_0.png" src="../_images/2_winter_arctic_sea_ice_variability_37_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">freeboard</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">-</span><span class="n">book_ds</span><span class="o">.</span><span class="n">freeboard</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice freeboard anomaly (m)&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;BrBG&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;freeboard_april_anomaly&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_37_1.png" src="../_images/2_winter_arctic_sea_ice_variability_37_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3095,7 +3481,23 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_38_0.png" src="../_images/2_winter_arctic_sea_ice_variability_38_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">snow_depth</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">-</span><span class="n">book_ds</span><span class="o">.</span><span class="n">snow_depth</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Snow depth anomaly (m)&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;PRGn&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;snow_depth_april_anomaly&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_38_1.png" src="../_images/2_winter_arctic_sea_ice_variability_38_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3106,12 +3508,28 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2_winter_arctic_sea_ice_variability_39_0.png" src="../_images/2_winter_arctic_sea_ice_variability_39_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">staticArcticMaps</span><span class="p">(</span><span class="n">book_ds</span><span class="o">.</span><span class="n">ice_thickness</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">-</span><span class="n">book_ds</span><span class="o">.</span><span class="n">ice_thickness</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">set_cbarlabel</span> <span class="o">=</span> <span class="s2">&quot;Sea ice thickness anomaly (m)&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">out_str</span><span class="o">=</span><span class="s1">&#39;thickness_april_anomaly&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">display</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/akpetty/icesat2-book/content/utils/plotting_utils.py:179,</span> in <span class="ni">staticArcticMaps</span><span class="nt">(da, title, out_str, cmap, col, col_wrap, vmin, vmax, set_cbarlabel, min_lat, savefig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="c1"># save figure</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figs/maps_&#39;</span><span class="o">+</span><span class="n">out_str</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close so it doesnt automatically display in notebook </span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">return</span> <span class="n">fig</span>
+
+<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;replace&#39;
+</pre></div>
+</div>
+<img alt="../_images/2_winter_arctic_sea_ice_variability_39_1.png" src="../_images/2_winter_arctic_sea_ice_variability_39_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="monthly-mean-timeseries">
-<h1>Monthly mean timeseries<a class="headerlink" href="#monthly-mean-timeseries" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="monthly-mean-timeseries">
+<h1>Monthly mean timeseries<a class="headerlink" href="#monthly-mean-timeseries" title="Permalink to this headline">#</a></h1>
 <p>Next we’ll compute monthly means by averaging over all gridcells within a given region. We’ll use this to generate a lineplot to compare across the three winter seasons for each variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3241,7 +3659,7 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 </div>
 </div>
 <p>Play around with some other conditions and see how things look!</p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3265,64 +3683,51 @@ Below, we’ll plot sea ice type with an alpha of 0.7 and a drift vector resolti
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="1_is2sitmogr4_intro.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="1_is2sitmogr4_intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3_comparisons_with_cryosat-2_and_piomas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="3_comparisons_with_cryosat-2_and_piomas.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Nicole Keeney and Alek Petty<br/>
-        
-            &copy; Copyright 2022.<br/>
-          <div class="extra_footer">
-            Distributed under the MIT license
-          </div>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Nicole Keeney and Alek Petty<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      Distributed under the MIT license
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('config', 'G-J1HEQ5DMT0');
-                </script>
 
   </body>
 </html>
