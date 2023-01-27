@@ -24,7 +24,7 @@ html:
 
 execute:
   execute_notebooks         : force
-  allow_errors              : true
+  allow_errors              : false
   timeout                   : 1000
   only_build_toc_files      : true
   exclude_patterns:

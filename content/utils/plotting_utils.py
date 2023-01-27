@@ -94,13 +94,14 @@ def compute_gridcell_winter_means(da, years=None, start_month="Nov", end_month="
     return merged 
 
 
-def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True): 
+def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True): 
     """ Show data on a basemap of the Arctic. Can be one month or multiple months of data. 
     Creates an xarray facet grid. For more info, see: http://xarray.pydata.org/en/stable/user-guide/plotting.html
     
     Args: 
         da (xr DataArray): data to plot
         title (str, optional): title string for plot
+        dates (str list, option): dates to assign to subtitles, else defaults to whatever cartopy thinks they are
         out_str (str, optional): output string when saving
         cmap (str, optional): colormap to use (default to viridis)
         col (str, optional): coordinate to use for creating facet plot (default to "time")
@@ -136,9 +137,7 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
     if col is not None: 
         if sum(da[col].shape)<=1: 
             col_wrap = None
-    
-    dates = da.time.values.tolist()
-    #print('Dates:', dates)
+
     
     # Plot
     if len(set_cbarlabel)==0:
@@ -160,9 +159,9 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
         ax.add_feature(cfeature.LAKES, color = 'grey', zorder = 5)  # Lakes
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
         ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
-
-        ax.set_title(dates[i], fontsize=9, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
-        i+=1
+        if len(dates)>0:
+            ax.set_title(dates[i], fontsize=10, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
+            i+=1
        
         
     # Get figure
@@ -170,19 +169,19 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
     
     # Set title 
     if (sum(ax_iter.shape) == 0) and (title is not None): 
-        ax.set_title(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        ax.set_title(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     elif title is not None:
-        fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        fig.suptitle(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     
     # save figure
     if savefig:
-        plt.savefig('./figs/maps_'+out_str+dates[0].replace(" ", "")+'-'+dates[-1].replace(" ", "")+'.png', dpi=400, facecolor="white", bbox_inches='tight')
+        plt.savefig('./figs/maps_'+out_str+'.png', dpi=400, facecolor="white", bbox_inches='tight')
 
     plt.close() # Close so it doesnt automatically display in notebook 
     return fig
 
 
-def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0.1, scale_vec=0.5, res=6, units_vec=r'm s$^{-1}$', title=None, out_str="out", cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True, figsize=(6,6)): 
+def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0.1, scale_vec=0.5, res=6, units_vec=r'm s$^{-1}$', title=None, out_str="out", dates=[], cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True, figsize=(6,6)): 
     """ Show data on a basemap of the Arctic. Can be one month or multiple months of data. Overlay drift vectors on top 
     Creates an xarray facet grid. For more info, see: http://xarray.pydata.org/en/stable/user-guide/plotting.html
     
@@ -286,15 +285,17 @@ def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0
             ax.add_feature(cfeature.LAKES, color = 'grey', zorder = 5)  # Lakes
             ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
             ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
-        
+            if len(dates)>0:
+                ax.set_title(dates[i], fontsize=10, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
+
     # Get figure
     fig = plt.gcf()
     
     # Set title 
     if (sum(ax_iter.shape) == 0) and (title is not None): 
-        ax.set_title(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        ax.set_title(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     elif title is not None:
-        fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        fig.suptitle(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     
     # save figure
     if savefig:
@@ -494,7 +495,7 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
 
     # save figure
     if savefig:
-        plt.savefig('./figs/'+da.attrs["long_name"]+start_month+end_month+str(years[0])+'-'+str(years[-1])+save_label+'.pdf', 
+        plt.savefig('./figs/'+da.attrs["long_name"]+start_month+end_month+str(years[0])+'-'+str(years[-1]+1)+save_label+'.pdf', 
                     dpi=300, facecolor="white", bbox_inches='tight')
 
     plt.show()
