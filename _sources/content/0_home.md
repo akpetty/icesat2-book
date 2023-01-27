@@ -3,12 +3,12 @@ ICESat-2 Arctic Sea Ice State Analysis
 
 NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is an advanced satellite laser altimetry system specially designed to profile Earth's fast-changing polar regions. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well suited for measuring the thickness of polar sea ice - ice that forms and floats on top of the Arctic and Southern Ocean. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.
 
-![ICESat-2 maps](figs/maps_thickness_winterNov2018-Apr2019-Nov2021-Apr2022.png "ICESat-2 mean winter Arctic sea ice thickness")
+![ICESat-2 maps](figs/maps_thickness_winter_2018_2022.png "ICESat-2 mean winter Arctic sea ice thickness")
 <p align = "center">
 Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first four winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 
-![ICESat-2 maps](figs/maps_thickness_winter_anomalyNov2018-Apr2019-Nov2021-Apr2022.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
+![ICESat-2 maps](figs/maps_thickness_winter_anomaly_2018_2022.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
 <p align = "center">
 Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the four winter mean) from the first four winters profiled by ICESat-2.
 </p>

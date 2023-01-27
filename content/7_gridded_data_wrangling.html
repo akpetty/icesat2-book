@@ -829,19 +829,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2018-11-01&#39;, &#39;2018-12-01&#39;, &#39;2019-01-01&#39;, &#39;2019-02-01&#39;,
-               &#39;2019-03-01&#39;, &#39;2019-04-01&#39;, &#39;2019-05-01&#39;, &#39;2019-06-01&#39;,
-               &#39;2019-07-01&#39;, &#39;2019-08-01&#39;, &#39;2019-09-01&#39;, &#39;2019-10-01&#39;,
-               &#39;2019-11-01&#39;, &#39;2019-12-01&#39;, &#39;2020-01-01&#39;, &#39;2020-02-01&#39;,
-               &#39;2020-03-01&#39;, &#39;2020-04-01&#39;, &#39;2020-05-01&#39;, &#39;2020-06-01&#39;,
-               &#39;2020-07-01&#39;, &#39;2020-08-01&#39;, &#39;2020-09-01&#39;, &#39;2020-10-01&#39;,
-               &#39;2020-11-01&#39;, &#39;2020-12-01&#39;, &#39;2021-01-01&#39;, &#39;2021-02-01&#39;,
-               &#39;2021-03-01&#39;, &#39;2021-04-01&#39;],
-              dtype=&#39;datetime64[ns]&#39;, freq=&#39;MS&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="icesat-2-gridded-monthly-means">
@@ -849,16 +836,6 @@ title="Print to PDF"
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is2_ds</span> <span class="o">=</span> <span class="n">read_is2_data</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="s2">&quot;IS2SITMOGR4/v002&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">read_is2_data</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="s2">&quot;IS2SITMOGR4/v002&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;read_is2_data&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -885,132 +862,6 @@ title="Print to PDF"
               <span class="s1">&#39;website&#39;</span><span class="p">:</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview&#39;</span><span class="p">,</span> 
               <span class="s1">&#39;contact&#39;</span><span class="p">:</span> <span class="s1">&#39;copernicus-support@ecmwf.int&#39;</span><span class="p">,</span>
               <span class="s1">&#39;citation&#39;</span><span class="p">:</span> <span class="s1">&#39;Copernicus Climate Change Service (C3S) (2017): ERA5: Fifth generation of ECMWF atmospheric reanalyses of the global climate . Copernicus Climate Change Service Climate Data Store (CDS), July 2020. https://cds.climate.copernicus.eu/cdsapp#!/home&#39;</span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/file_manager.py:209,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
-<span class="g g-Whitespace">    </span><span class="mi">208</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">209</span>     <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/lru_cache.py:55,</span> in <span class="ni">LRUCache.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">55</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/aapetty/GitHub/akpetty/icesat2-book/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;36b72859-97ea-480f-8bd6-207db1745487&#39;]
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Read data </span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ERA5</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ERA5_path</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ERA5</span> <span class="o">=</span> <span class="n">ERA5</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">)</span> <span class="c1"># Select for date range of interest</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ERA5</span> <span class="o">=</span> <span class="n">ERA5</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ERA5</span><span class="o">.</span><span class="n">latitude</span> <span class="o">&gt;</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="c1"># Restrict to ICESat-2 latitude</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/api.py:539,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, backend_kwargs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="n">decoders</span> <span class="o">=</span> <span class="n">_resolve_decoders_kwargs</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">528</span>     <span class="n">decode_cf</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">529</span>     <span class="n">open_backend_dataset_parameters</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">open_dataset_parameters</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="n">decode_coords</span><span class="o">=</span><span class="n">decode_coords</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">536</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">538</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">539</span> <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">544</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">_dataset_from_backend_dataset</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">546</span>     <span class="n">backend_ds</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">547</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">555</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">556</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="k">return</span> <span class="n">ds</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/netCDF4_.py:572,</span> in <span class="ni">NetCDF4BackendEntrypoint.open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, format, clobber, diskless, persist, lock, autoclose)</span>
-<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="k">def</span> <span class="nf">open_dataset</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">552</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">553</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="n">autoclose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">571</span>     <span class="n">filename_or_obj</span> <span class="o">=</span> <span class="n">_normalize_path</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">572</span>     <span class="n">store</span> <span class="o">=</span> <span class="n">NetCDF4DataStore</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">573</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span>         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">575</span>         <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span>         <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span>         <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span>         <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span>         <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>         <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">581</span>         <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">store_entrypoint</span> <span class="o">=</span> <span class="n">StoreBackendEntrypoint</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/netCDF4_.py:376,</span> in <span class="ni">NetCDF4DataStore.open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span>     <span class="n">clobber</span><span class="o">=</span><span class="n">clobber</span><span class="p">,</span> <span class="n">diskless</span><span class="o">=</span><span class="n">diskless</span><span class="p">,</span> <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="nb">format</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">CachingFileManager</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span>     <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">375</span> <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">376</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/netCDF4_.py:323,</span> in <span class="ni">NetCDF4DataStore.__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
-<span class="ne">--&gt; </span><span class="mi">323</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/netCDF4_.py:385,</span> in <span class="ni">NetCDF4DataStore.ds</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="nd">@property</span>
-<span class="g g-Whitespace">    </span><span class="mi">384</span> <span class="k">def</span> <span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">385</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/netCDF4_.py:379,</span> in <span class="ni">NetCDF4DataStore._acquire</span><span class="nt">(self, needs_lock)</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span> <span class="k">def</span> <span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">379</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">381</span>     <span class="k">return</span> <span class="n">ds</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/contextlib.py:119,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">119</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/file_manager.py:197,</span> in <span class="ni">CachingFileManager.acquire_context</span><span class="nt">(self, needs_lock)</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="k">def</span> <span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">197</span>     <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>         <span class="k">yield</span> <span class="n">file</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/backends/file_manager.py:215,</span> in <span class="ni">CachingFileManager._acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
-<span class="ne">--&gt; </span><span class="mi">215</span> <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="c1"># ensure file doesn&#39;t get overridden when opened again</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
-
-<span class="nn">File src/netCDF4/_netCDF4.pyx:2330,</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
-
-<span class="nn">File src/netCDF4/_netCDF4.pyx:1948,</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: b&#39;/Users/aapetty/GitHub/akpetty/icesat2-book/icesat2-book-data/ERA5/ERA5_monthly_reanalysis.nc&#39;
 </pre></div>
 </div>
 </div>
@@ -1083,34 +934,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pio_da</span> <span class="o">=</span> <span class="n">get_piomas_data</span><span class="p">(</span><span class="n">date_range</span><span class="o">=</span><span class="n">date_range</span><span class="p">,</span> <span class="n">data_dir</span><span class="o">=</span><span class="n">PIOMAS_path</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pio_da</span> <span class="o">=</span> <span class="n">pio_da</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">date_range</span><span class="p">)</span> <span class="c1"># Select for date range of interest</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">pio_da</span> <span class="o">=</span> <span class="n">pio_da</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pio_da</span><span class="o">.</span><span class="n">latitude</span> <span class="o">&gt;</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="c1"># Restrict to ICESat-2 latitude </span>
-
-<span class="nn">Cell In [7], line 23,</span> in <span class="ni">get_piomas_data</span><span class="nt">(date_range, data_dir)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">:</span> 
-<span class="ne">---&gt; </span><span class="mi">23</span>     <span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;heff.H&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> 
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="k">try</span><span class="p">:</span> 
-<span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="n">pio_np</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">360</span><span class="p">]))</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../icesat2-book-data/PIOMAS/heff.H2018&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="osi-saf-sea-ice-drifts">
@@ -1179,44 +1002,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/concat.py:221,</span> in <span class="ni">concat</span><span class="nt">(objs, dim, data_vars, coords, compat, positions, fill_value, join, combine_attrs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">221</span>     <span class="n">first_obj</span><span class="p">,</span> <span class="n">objs</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">peek_at</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/utils.py:184,</span> in <span class="ni">peek_at</span><span class="nt">(iterable)</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span> <span class="n">gen</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">184</span> <span class="n">peek</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="k">return</span> <span class="n">peek</span><span class="p">,</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">([</span><span class="n">peek</span><span class="p">],</span> <span class="n">gen</span><span class="p">)</span>
-
-<span class="ne">StopIteration</span>: 
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">drifts_path</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.nc&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;nh&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">files_xr</span> <span class="o">=</span> <span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">driftsDaily</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">files_xr</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Resample monthly </span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">driftsMonthly</span> <span class="o">=</span> <span class="n">driftsDaily</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">,</span> <span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
-
-<span class="nn">File ~/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/concat.py:223,</span> in <span class="ni">concat</span><span class="nt">(objs, dim, data_vars, coords, compat, positions, fill_value, join, combine_attrs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>     <span class="n">first_obj</span><span class="p">,</span> <span class="n">objs</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">peek_at</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">223</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;must supply at least one object to concatenate&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">if</span> <span class="n">compat</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_VALID_COMPAT</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="sa">f</span><span class="s2">&quot;compat=</span><span class="si">{</span><span class="n">compat</span><span class="si">!r}</span><span class="s2"> invalid: must be &#39;broadcast_equals&#39;, &#39;equals&#39;, &#39;identical&#39;, &#39;no_conflicts&#39; or &#39;override&#39;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="p">)</span>
-
-<span class="ne">ValueError</span>: must supply at least one object to concatenate
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1232,20 +1017,6 @@ title="Print to PDF"
 
 <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
 <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="n">out_lons</span><span class="p">,</span> <span class="n">out_lats</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Initialize map projection and project data to it</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">out_proj</span> <span class="o">=</span> <span class="s1">&#39;EPSG:3411&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">out_lons</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">out_lats</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;is2_ds&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1302,24 +1073,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/aapetty/opt/anaconda3/envs/is2book_p39_env/lib/python3.9/site-packages/pyproj/crs/crs.py:292: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
-  projstring = _prepare_from_string(projparams)
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#initialize map projection and project data to it</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">xptsERA</span><span class="p">,</span> <span class="n">yptsERA</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ERA5</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">ERA5</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="n">out_lons</span><span class="p">,</span> <span class="n">out_lats</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">ERA5_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="ne">NameError</span>: name &#39;ERA5&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id2">
@@ -1337,19 +1090,6 @@ title="Print to PDF"
                              <span class="n">name</span> <span class="o">=</span> <span class="n">pio_da</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="n">pio_regridded</span> <span class="o">=</span> <span class="n">pio_regridded</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">pio_da</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
 <span class="n">pio_regridded</span> <span class="o">=</span> <span class="n">pio_regridded</span><span class="o">.</span><span class="n">to_dataset</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#project data to ICESat-2 map projection</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">xptsPIO</span><span class="p">,</span> <span class="n">yptsPIO</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="n">pio_da</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">pio_da</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#regrid data </span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pio_regridded</span> <span class="o">=</span> <span class="n">regridToICESat2</span><span class="p">(</span><span class="n">pio_da</span><span class="p">,</span> <span class="n">xptsPIO</span><span class="p">,</span> <span class="n">yptsPIO</span><span class="p">,</span> <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;pio_da&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1380,19 +1120,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#project data to ICESat-2 map projection</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">xptsDRIFTS</span><span class="p">,</span> <span class="n">yptsDRIFTS</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="n">monthlyDrifts_proj</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">monthlyDrifts_proj</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Loop through variables of interest and regrid </span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">drifts_list</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="ne">NameError</span>: name &#39;monthlyDrifts_proj&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1405,17 +1132,6 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">is2_ds</span><span class="p">,</span> <span class="n">pio_regridded</span><span class="p">,</span> <span class="n">ERA5_regridded</span><span class="p">,</span> <span class="n">drifts_regridded</span><span class="p">])</span>
 <span class="n">final_ds</span> <span class="o">=</span> <span class="n">final_ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;Nov 2018&quot;</span><span class="p">,</span><span class="n">final_ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># Remove Sep &amp; Oct 2018, which have no data from ICESat-2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">final_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">is2_ds</span><span class="p">,</span> <span class="n">pio_regridded</span><span class="p">,</span> <span class="n">ERA5_regridded</span><span class="p">,</span> <span class="n">drifts_regridded</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">final_ds</span> <span class="o">=</span> <span class="n">final_ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;Nov 2018&quot;</span><span class="p">,</span><span class="n">final_ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># Remove Sep &amp; Oct 2018, which have no data from ICESat-2</span>
-
-<span class="ne">NameError</span>: name &#39;is2_ds&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1438,11 +1154,6 @@ title="Print to PDF"
 
 <span class="k">else</span><span class="p">:</span> 
     <span class="k">pass</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot save file because file by same name already exists
 </pre></div>
 </div>
 </div>
