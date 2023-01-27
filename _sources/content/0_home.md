@@ -43,6 +43,16 @@ All of the notebooks in this notebook utilize [xarray](http://xarray.pydata.org/
 
 All content in this Jupyter Book is distributed under the MIT license.  
 
+## Versions
+
+Version 1.1 (01/27/2023):
+ - Added the new 2021-2022 winter analysis notebook.
+ - A few other little minor bug fixes.
+
+Version 1.0 (12/23/2023): 
+ - First full release associated with release of the TC paper (Petty et al., 2023). 
+ - Tagged/archived on Zenodo:https://zenodo.org/record/7474218.
+
 ## Contributors
 
 **Nicole Keeney (Original book creator)**<br>
