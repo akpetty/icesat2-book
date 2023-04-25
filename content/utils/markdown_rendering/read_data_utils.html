@@ -421,56 +421,126 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_is2_data</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="s2">&quot;IS2SITMOGR4/v002&quot;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;sea-ice-thickness-data&quot;</span><span class="p">):</span> 
-    <span class="sd">&quot;&quot;&quot; Read in ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard dataset. </span>
-<span class="sd">    If the file does not already exist on the user&#39;s local drive, it is downloaded from the books google storage bucket (https://console.cloud.google.com/storage/browser/is2-pso-seaice)</span>
-<span class="sd">    The netcdf files for each month are then read in as an xr.Dataset object</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_IS2SITMOGR4</span><span class="p">(</span><span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;zarr-s3&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;V2&#39;</span><span class="p">,</span> <span class="n">date_str</span><span class="o">=</span><span class="s1">&#39;201811-202204&#39;</span><span class="p">,</span> <span class="n">local_data_path</span><span class="o">=</span><span class="s2">&quot;/data/IS2SITMOGR4/&quot;</span><span class="p">,</span> 
+    <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;icesat-2-sea-ice-us-west-2&quot;</span><span class="p">,</span> <span class="n">persist</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot; Read in IS2SITMOGR4 monthly gridded thickness dataset from local netcdf files or the S3 Zarr collection</span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
-<span class="sd">        data_dir (str, optional): name of data directory containing ICESat-2 data (default to &quot;IS2SITMOGR4/v002&quot;, the name of the directory in the bucket)</span>
-<span class="sd">        bucket_name (str, optional): name of google storage bucket (default to &quot;sea-ice-thickness-data&quot;)</span>
+<span class="sd">        data_type (str, required): (default to &quot;zarr-s3&quot;, but also &quot;netcdf-s3&quot; or &quot;netcdf-local&quot; which is a local version of the netcdf files)</span>
+<span class="sd">        version (str, required): IS2SITMOGR4 version (default &quot;V2&quot;)</span>
+<span class="sd">        date_str (str, required): date string indicating start and end months</span>
+<span class="sd">        local_data_path (str, required): local data directory</span>
+<span class="sd">        bucket_name (str, required): S3 bucket name</span>
+<span class="sd">        persist (boleen, required): if zarr option decide if you want to persist (load) data into memory</span>
+
 <span class="sd">    Returns: </span>
-<span class="sd">        is2_ds (xr.Dataset): data </span>
+<span class="sd">        is2_ds (xr.Dataset): aggregated IS2SITMOGR4 xarray dataset, dask chunked/virtually allocated in the case of the zarr option. </span>
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span> <span class="c1"># Remove slash</span>
-        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">data_dir</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     
-    <span class="n">path</span> <span class="o">=</span> <span class="n">bucket_name</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">data_dir</span>
-    <span class="n">ls_bucket</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s2">&quot;gsutil ls gs://&quot;</span><span class="o">+</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/**.nc &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># List everything in the bucket </span>
-    <span class="n">netcdf_in_bucket</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;gs://&quot;</span><span class="o">+</span><span class="n">path</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">ls_bucket</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.nc&quot;</span><span class="p">)]</span> <span class="c1"># Grab the netcdf files from the list </span>
-    
-    <span class="c1"># Raise error if no files found</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">netcdf_in_bucket</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No netcdf files with extension .nc found at path &quot;</span><span class="o">+</span><span class="n">path</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">data_dir</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">path</span> <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())]:</span>  <span class="c1"># Check if directory data_dir exists on local drive </span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span> <span class="c1"># Download if it doesn&#39;t already exist</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Created directory &quot;</span><span class="o">+</span><span class="n">data_dir</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">netcdf_in_bucket</span><span class="p">:</span> <span class="c1"># Loop through each file in the bucket, see if it exists in the local drive, download if it doesn&#39;t exist</span>
-        <span class="k">if</span> <span class="n">file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span> 
-            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;gsutil -m -o &#39;GSUtil:parallel_process_count=1&#39; cp gs://&quot;</span><span class="o">+</span><span class="n">bucket_name</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">data_dir</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">file</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">data_dir</span><span class="p">)</span> <span class="c1"># Make sure theres a space before the final segment, idicating the download directory ./ (i.e. &quot; download dir&quot;)</span>
+    <span class="k">if</span> <span class="n">data_type</span><span class="o">==</span><span class="s1">&#39;zarr-s3&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;load zarr from S3 bucket: &#39;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="p">)</span>
+        <span class="n">s3_path</span> <span class="o">=</span> <span class="s1">&#39;s3://&#39;</span><span class="o">+</span><span class="n">bucket_name</span><span class="o">+</span><span class="s1">&#39;/IS2SITMOGR4_&#39;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/zarr/IS2SITMOGR4_&#39;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">date_str</span><span class="o">+</span><span class="s1">&#39;.zarr/all/&#39;</span>
+        <span class="n">s3</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3Map</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">s3_path</span><span class="p">,</span> <span class="n">s3</span><span class="o">=</span><span class="n">s3</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">persist</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+            <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">persist</span><span class="p">()</span>
 
-    <span class="c1"># Read in files for each month as a single xr.Dataset</span>
-    <span class="n">filenames</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
-    <span class="n">datasets_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span> 
-        <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">)</span>
-        <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">set_coords</span><span class="p">([</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;xgrid&quot;</span><span class="p">,</span><span class="s2">&quot;ygrid&quot;</span><span class="p">])</span> <span class="c1"># Set data variables as coordinates</span>
-        <span class="n">time</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;IS2SITMOGR4_01_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Get time from filename </span>
-        <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;%Y%m&quot;</span><span class="p">)})</span> <span class="c1"># Add time as coordinate</span>
-        <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span> <span class="c1"># Set month as a dimension </span>
-        <span class="n">datasets_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds_monthly</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">data_type</span><span class="o">==</span><span class="s1">&#39;netcdf&#39;</span><span class="p">:</span>
 
-    <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">datasets_list</span><span class="p">)</span>
-    <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+        <span class="n">current_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">current_path</span><span class="p">)</span>
+        <span class="c1"># Read in files for each month as a single xr.Dataset</span>
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">current_path</span><span class="o">+</span><span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/*.nc&#39;</span><span class="p">)</span>
+        <span class="c1">#print(&#39;Number of netcdf files available locally:&#39;, len(filenames), filenames, current_path+local_data_path+version+&#39;/&#39;)</span>
+
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dir does not include all netcdf files, download from S3 bucket: &quot;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="p">)</span>
+
+            <span class="c1"># Download netCDF data files</span>
+            <span class="n">s3_path</span> <span class="o">=</span> <span class="s1">&#39;s3://&#39;</span><span class="o">+</span><span class="n">bucket_name</span><span class="o">+</span><span class="s1">&#39;/IS2SITMOGR4_&#39;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/netcdf/&#39;</span>
+            <span class="n">fs</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1">#files references the entire bucket.</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">s3_path</span><span class="o">+</span><span class="s1">&#39;*.nc&#39;</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+                <span class="c1">#print(current_path+local_data_path+version+&#39;/test.nc&#39;)</span>
+                <span class="c1">#fs.open(file)</span>
+                <span class="n">fs</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">current_path</span><span class="o">+</span><span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;local netcdf files available, use these&#39;</span><span class="p">)</span>
+
+        <span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">current_path</span><span class="o">+</span><span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/*.nc&#39;</span><span class="p">)</span>
+        <span class="c1"># Raise error if no files found</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Still not files, exit&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Load in netcdf files to xarray dataset&#39;</span><span class="p">)</span>
+        <span class="n">datasets_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">set_coords</span><span class="p">([</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;xgrid&quot;</span><span class="p">,</span><span class="s2">&quot;ygrid&quot;</span><span class="p">])</span> <span class="c1"># Set data variables as coordinates</span>
+            <span class="n">time</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;IS2SITMOGR4_01_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Get time from filename </span>
+            <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;%Y%m&quot;</span><span class="p">)})</span> <span class="c1"># Add time as coordinate</span>
+            <span class="n">ds_monthly</span> <span class="o">=</span> <span class="n">ds_monthly</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span> <span class="c1"># Set month as a dimension </span>
+            <span class="n">datasets_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds_monthly</span><span class="p">)</span>
+
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">datasets_list</span><span class="p">)</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+    
     <span class="k">return</span> <span class="n">is2_ds</span>
+
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_book_data</span><span class="p">():</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_book_data</span><span class="p">(</span><span class="n">local_path</span><span class="o">=</span><span class="s1">&#39;/data/&#39;</span><span class="p">,</span> <span class="n">CS2</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
     <span class="sd">&quot;&quot;&quot; Read in data for ICESat2 jupyter book. </span>
-<span class="sd">    If the file does not already exist on the user&#39;s local drive, it is downloaded from the books google storage bucket (https://console.cloud.google.com/storage/browser/is2-pso-seaice)</span>
+<span class="sd">    If the file does not already exist on the user&#39;s local drive, it is downloaded from our S3 bucket</span>
 <span class="sd">    The netcdf file is then read in as an xr.Dataset object </span>
+
+<span class="sd">    To do:</span>
+<span class="sd">     - Add zarr functionality to this to avoid having to download the netcdf.</span>
+<span class="sd">    </span>
+<span class="sd">    Args: </span>
+<span class="sd">        local_path (str, required): local data directory</span>
+<span class="sd">        CS2 (boleen, required): choose if we want to also read in the wrangled CS-2 thickness data</span>
+<span class="sd">    Returns: </span>
+<span class="sd">        book_ds (xr.Dataset): data </span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">CS2</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;IS2_CS2_jbook_dataset_201811-202104.nc&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;IS2_jbook_dataset_201811-202104.nc&quot;</span>
+    
+    <span class="c1"># Check if file exists on local drive</span>
+    <span class="n">current_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+    <span class="n">exists_locally</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">current_path</span><span class="o">+</span><span class="n">local_path</span><span class="o">+</span><span class="n">filename</span><span class="p">)</span> 
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">exists_locally</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span> 
+        <span class="c1"># Download data </span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading jupyter book data from the S3 bucket...&quot;</span><span class="p">)</span>
+        <span class="n">s3_path</span> <span class="o">=</span> <span class="s1">&#39;s3://icesat-2-sea-ice-us-west-2/book_data/&#39;</span><span class="o">+</span><span class="n">filename</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">fs</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">current_path</span><span class="o">+</span><span class="n">local_data_path</span><span class="p">)</span>
+
+    <span class="n">book_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">current_path</span><span class="o">+</span><span class="n">local_path</span><span class="o">+</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">book_ds</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_cs2_book_data</span><span class="p">(</span><span class="n">local_path</span><span class="o">=</span><span class="s1">&#39;./data/&#39;</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot; Read in data for ICESat2 jupyter book including CryoSat-2 thickness data.</span>
+<span class="sd">    If the file does not already exist on the user&#39;s local drive, it is downloaded from our S3 bucket</span>
+<span class="sd">    The netcdf file is then read in as an xr.Dataset object </span>
+
+<span class="sd">    To do:</span>
+<span class="sd">     - Add zarr functionality to this to avoid having to download the netcdf.</span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
 <span class="sd">        None</span>
@@ -478,14 +548,15 @@ title="Print to PDF"
 <span class="sd">        book_ds (xr.Dataset): data </span>
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;icesat2-book-data.nc&quot;</span>
-    <span class="n">exists_locally</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="c1"># Check if file exists on local drive</span>
+    
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;IS2_CS2_jbook_dataset_201811-202104.nc&quot;</span>
+    <span class="n">exists_locally</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">local_path</span><span class="o">+</span><span class="n">filename</span><span class="p">)</span> <span class="c1"># Check if file exists on local drive</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">exists_locally</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span> <span class="c1"># Download data </span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading jupyter book data from the google storage bucket...&quot;</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;gsutil -m cp gs://sea-ice-thickness-data/icesat2-book-data/&quot;</span><span class="o">+</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot; ./&quot;</span><span class="p">)</span> <span class="c1"># Make sure theres a space before the final ./ (i.e. &quot; ./&quot;)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;gsutil -m cp gs://sea-ice-thickness-data/icesat2-book-data/&quot;</span><span class="o">+</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">local_path</span><span class="p">)</span> <span class="c1"># Make sure theres a space before the final ./ (i.e. &quot; ./&quot;)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Download complete&quot;</span><span class="p">)</span>
 
-    <span class="n">book_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">book_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">local_path</span><span class="o">+</span><span class="n">filename</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">book_ds</span>
 </pre></div>
 </div>
