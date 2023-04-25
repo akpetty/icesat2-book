@@ -97,18 +97,19 @@ def compute_gridcell_winter_means(da, years=None, start_month="Nov", end_month="
     merged = xr.merge(winter_means) # Combine each winter mean Dataset into a single Dataset, with the time period maintained as a coordinate
     merged = merged[list(merged.data_vars)[0]] # Convert to DataArray
     merged.time.attrs["description"] = "Time period over which mean was computed" # Add descriptive attribute 
-    return merged 
+    return merged  
 ```
 
 
 ```
-def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True): 
+def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True): 
     """ Show data on a basemap of the Arctic. Can be one month or multiple months of data. 
     Creates an xarray facet grid. For more info, see: http://xarray.pydata.org/en/stable/user-guide/plotting.html
     
     Args: 
         da (xr DataArray): data to plot
         title (str, optional): title string for plot
+        dates (str list, option): dates to assign to subtitles, else defaults to whatever cartopy thinks they are
         out_str (str, optional): output string when saving
         cmap (str, optional): colormap to use (default to viridis)
         col (str, optional): coordinate to use for creating facet plot (default to "time")
@@ -144,6 +145,7 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
     if col is not None: 
         if sum(da[col].shape)<=1: 
             col_wrap = None
+
     
     # Plot
     if len(set_cbarlabel)==0:
@@ -158,21 +160,26 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
     ax_iter = im.axes
     if type(ax_iter) != np.array: # If the data is just a single month, ax.iter returns an axis object. We need to iterate through a list or array
         ax_iter = np.array(ax_iter)
+    i=0
     for ax in ax_iter.flatten():
         ax.coastlines(linewidth=0.15, color = 'black', zorder = 10) # Coastlines
         ax.add_feature(cfeature.LAND, color ='0.95', zorder = 5)    # Land
         ax.add_feature(cfeature.LAKES, color = 'grey', zorder = 5)  # Lakes
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
         ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
-    
+        if len(dates)>0:
+            ax.set_title(dates[i], fontsize=10, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
+            i+=1
+       
+        
     # Get figure
     fig = plt.gcf()
     
     # Set title 
     if (sum(ax_iter.shape) == 0) and (title is not None): 
-        ax.set_title(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        ax.set_title(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     elif title is not None:
-        fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        fig.suptitle(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     
     # save figure
     if savefig:
@@ -184,7 +191,7 @@ def staticArcticMaps(da, title=None, out_str="out", cmap="viridis", col=None, co
 
 
 ```
-def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0.1, scale_vec=0.5, res=6, units_vec=r'm s$^{-1}$', title=None, out_str="out", cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True, figsize=(6,6)): 
+def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0.1, scale_vec=0.5, res=6, units_vec=r'm s$^{-1}$', title=None, out_str="out", dates=[], cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True, figsize=(6,6)): 
     """ Show data on a basemap of the Arctic. Can be one month or multiple months of data. Overlay drift vectors on top 
     Creates an xarray facet grid. For more info, see: http://xarray.pydata.org/en/stable/user-guide/plotting.html
     
@@ -288,15 +295,17 @@ def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0
             ax.add_feature(cfeature.LAKES, color = 'grey', zorder = 5)  # Lakes
             ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
             ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
-        
+            if len(dates)>0:
+                ax.set_title(dates[i], fontsize=10, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
+
     # Get figure
     fig = plt.gcf()
     
     # Set title 
     if (sum(ax_iter.shape) == 0) and (title is not None): 
-        ax.set_title(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        ax.set_title(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     elif title is not None:
-        fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        fig.suptitle(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
     
     # save figure
     if savefig:
@@ -308,7 +317,7 @@ def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0
 
 
 ```
-def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=None, vmax=None, title="", ylim=(60,90), frame_width=250, slider=True, cols=3): 
+def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=None, vmax=None, title="", ylim=(60,90), frame_width=500, slider=True, cols=3): 
     """ Generative one or more interactive maps 
     Using the argument "slide", the user can set whether each map should be displayed together, or displayed in the form of a slider 
     To show each map together (no slider), set slider=False
@@ -342,7 +351,7 @@ def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=N
     #https://hvplot.holoviz.org/user_guide/Subplots.html
     subplots=False
     shared_axes=False
-    show_title=True
+    show_title=False
     if ("time" in da.coords):
         if (sum(da["time"].shape) > 1): 
             subplots=True
@@ -361,7 +370,7 @@ def interactiveArcticMaps(da, clabel=None, cmap="viridis", colorbar=True, vmin=N
                             colorbar=colorbar, clim=(vmin,vmax), cmap=cmap, clabel=clabel, # Colorbar settings 
                             project=True, ylim=ylim, frame_width=frame_width,
                             subplots=subplots, shared_axes=shared_axes,
-                            dynamic=False) 
+                            dynamic=False, rasterize=True) 
     if slider==False: # Set number of columns 
         pl = pl.layout().cols(cols)
     
@@ -411,7 +420,9 @@ def interactive_winter_mean_maps(da, years=None, end_year=None, start_month="Sep
 
 
 ```
-def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3), start_month="Sep", end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, region_str='', force_complete_season=False): 
+def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3), start_month="Sep", 
+    end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', 
+    annotation = '', force_complete_season=False, loc_pos=0): 
     """ Make a lineplot with markers comparing monthly mean data across winter seasons 
     
     Args: 
@@ -422,12 +433,13 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
         set_units (str, optional): prescribed y label unit string
         legend (bool): print legend
         savefig (bool): output figure
-        region_str (str, optional): regional string for output
+        save_label (str, optional): additional string for output
         figsize (tuple, optional): figure size to display in notebook (default to (5,3))
         start_month (str, optional): first month in winter (default to September)
         end_month (str, optional): second month in winter; this is the following calender year after start_month (default to April)
         force_complete_season (bool, optional): require that winter season returns data if and only if all months have data? i.e. if Sep and Oct have no data, return nothing even if Nov-Apr have data? (default to False) 
-        
+        loc_pos (int, optional): if greater than one use that, if not default to "best"
+
        Returns: 
            Figure displayed in notebook
         
@@ -451,7 +463,7 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
     gridlines = plt.grid(b = True, linestyle = '-', alpha = 0.2) # Add gridlines 
 
 
-    fmts = ['mo-','cs-','yv-','b*-.','r.-','gD--','k2-.']
+    fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.']
     for year, fmt in zip(years, fmts*100): 
         winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season) # Get data from that winter 
         if winter_da is None: # In case the user inputs a year that doesn't have data, skip this loop iteration to avoid appending None
@@ -471,7 +483,14 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
 
     # Add legend, title, and axis labels, and display plot in notebook 
     if legend:
-        plt.legend(fontsize=8, loc="best")
+        if loc_pos>0:
+            plt.legend(fontsize=8, loc=loc_pos)
+        else:
+            plt.legend(fontsize=8, loc="best")
+    
+    # Add annotation if provided
+    ax.annotate(annotation, xy=(0.02, 0.98),xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=8, zorder=2)
+
     
     plt.title(title, fontsize=9)
     if len(set_ylabel)>0:
@@ -492,7 +511,7 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
 
     # save figure
     if savefig:
-        plt.savefig('./figs/'+da.attrs["long_name"]+start_month+end_month+str(years[0])+'-'+str(years[-1])+region_str+'.pdf', 
+        plt.savefig('./figs/'+da.attrs["long_name"]+start_month+end_month+str(years[0])+'-'+str(years[-1]+1)+save_label+'.pdf', 
                     dpi=300, facecolor="white", bbox_inches='tight')
 
     plt.show()
@@ -500,6 +519,7 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
 
 
 ```
+
 def interactive_winter_comparison_lineplot(da, years=None, title="Winter comparison", frame_width=600, frame_height=350, start_month="Sep", end_month="Apr", force_complete_season=False):
     """ Make a bokeh lineplot with markers comparing monthly mean data across winter seasons 
     
@@ -530,7 +550,9 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
             
     # Sort by longest --> shortest. This avoids weird issues with x axis trying to be in time order 
     winter_means_list_sorted = sorted(winter_means_list, key=lambda l: (len(l), l))[::-1]
-
+    
+    color_cycle = hv.Cycle(['magenta', 'cyan', 'yellow', 'black'])
+    
     # Combine plots and display
     i = 0
     for da_sorted in winter_means_list_sorted: 
@@ -538,7 +560,7 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
         winter_mean["time"] = pd.to_datetime(da_sorted["time"].values).strftime("%b") # Reassign the time coordinate to be just the months (Nov, Dec, ect). This allows you to easily overlay the plots on top of each other, since they share an axis
         time_str = pd.to_datetime(da_sorted.time).strftime("%Y") # Get time coordinate as string value
 
-        pl = winter_mean.hvplot(grid=True, label="Winter "+time_str[0]+"-"+time_str[-1], frame_width=frame_width, frame_height=frame_height) * winter_mean.hvplot.scatter(marker='o') # Overlay scatter plot to add markers
+        pl = winter_mean.hvplot(grid=True, label=""+time_str[0]+"-"+time_str[-1], frame_width=frame_width, frame_height=frame_height, line_width=3) * winter_mean.hvplot.scatter(marker='o') # Overlay scatter plot to add markers
         if i == 0:
             pl_tot = pl
         else: 
@@ -547,5 +569,9 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
         
     winters_all = pl_tot.opts(hv.opts.Layout(shared_axes=True, merge_tools=True)) # Combine lineplots into a single figure 
     winters_all.opts(title=title) # Add a title 
+    winters_all.opts(legend_position='bottom_right')
+    winters_all.opts({'Scatter': {'color': color_cycle}})
+    winters_all.opts({'Curve': {'color': color_cycle}})
+    
     return winters_all
 ```

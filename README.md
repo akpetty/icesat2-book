@@ -35,7 +35,7 @@ To activate the environment, run the following in the command line:
 conda activate is2book_p39_env
 ```
 
-note there was an issue with ipykernal in the 6.18.1 upgrade hence our use of ipykernel=6.17.1 in the conda environment.
+note there was an issue with ipykernal in the 6.18.1 upgrade hence our use of ipykernel=6.17.1 in the conda environment. Users have also noted some issues with conda and the boto3/s3fs packages. I'm still working on that so either try and fix yourself with further conda installs or drop the s3 imports/read options from your cloned repository.
 
 # Updating the Jupyter Book
 Simple instructions for how to construct/update this book are pasted below for the author's benefit, but don't go into detail on any of the steps. For a more detailed description on Jupyter Books and how to build one of your own, see their page: https://jupyterbook.org/intro.html. <br>
