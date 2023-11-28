@@ -21,7 +21,6 @@ dependencies:
   - pip
   - datashader
   - firefox 
-  - geckodriver 
   - selenium
   - s3fs
   - jupyter-book
@@ -31,7 +30,7 @@ dependencies:
   - boto3
   - xarray
   - fsspec
-
+# giving problems  - geckodriver 
  # - pip: 
  #   - geoviews==1.9.1
  #   - jupyter-book==0.11.3 

@@ -12,6 +12,10 @@ _build/
 content/gridded_interp_test.ipynb
 content/comparisons_with_cryosat-2.ipynb
 
+# Demo files
+content/2c_winter_arctic_sea_ice_variability_2023update.ipynb
+content/2d_winter_arctic_sea_ice_variability_IS_to_IS2.ipynb
+
 # pycache 
 __pycache__/*
 */__pycache__/**
@@ -19,6 +23,7 @@ __pycache__/*
 # data 
 content/data/*
 content/data/IS2SITMOGR4/*
+content/data/ISSITGR4/*/*
 
 #update script
 update_book.sh
