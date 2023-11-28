@@ -97,7 +97,7 @@ def compute_gridcell_winter_means(da, years=None, start_month="Nov", end_month="
     merged = xr.merge(winter_means) # Combine each winter mean Dataset into a single Dataset, with the time period maintained as a coordinate
     merged = merged[list(merged.data_vars)[0]] # Convert to DataArray
     merged.time.attrs["description"] = "Time period over which mean was computed" # Add descriptive attribute 
-    return merged  
+    return merged 
 ```
 
 
@@ -145,14 +145,13 @@ def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", co
     if col is not None: 
         if sum(da[col].shape)<=1: 
             col_wrap = None
-
     
     # Plot
     if len(set_cbarlabel)==0:
         set_cbarlabel=da.attrs["long_name"]+' ['+da.attrs["units"]+']'
 
     im = da.plot(x="longitude", y="latitude", col_wrap=col_wrap, col=col, transform=ccrs.PlateCarree(), cmap=cmap, zorder=8, 
-             cbar_kwargs={'pad':0.02,'shrink': 0.8,'extend':'both', 'label':set_cbarlabel},
+             cbar_kwargs={'pad':0.02,'shrink': 0.8,'extend':'both', 'label':set_cbarlabel, 'location':'left'},
              vmin=vmin, vmax=vmax, 
              subplot_kws={'projection':ccrs.NorthPolarStereo(central_longitude=-45)})
 
@@ -168,7 +167,10 @@ def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", co
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
         ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
         if len(dates)>0:
-            ax.set_title(dates[i], fontsize=10, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
+            try:
+                ax.set_title(dates[i], fontsize=10, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
+            except:
+                ('no date')
             i+=1
        
         
@@ -187,6 +189,7 @@ def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", co
 
     plt.close() # Close so it doesnt automatically display in notebook 
     return fig
+
 ```
 
 
@@ -416,13 +419,14 @@ def interactive_winter_mean_maps(da, years=None, end_year=None, start_month="Sep
                                     ylim=ylim, frame_width=frame_width, slider=slider, cols=cols)
     hv.output(widget_location="bottom")
     return pl_means
+
 ```
 
 
 ```
 def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3), start_month="Sep", 
     end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', 
-    annotation = '', force_complete_season=False, loc_pos=0): 
+    annotation = '', force_complete_season=False, loc_pos=0, fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.']): 
     """ Make a lineplot with markers comparing monthly mean data across winter seasons 
     
     Args: 
@@ -461,16 +465,14 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
     fig, ax = plt.subplots(figsize=figsize)
     ax.plot(xaxis_months, np.empty((len(xaxis_months),1))*np.nan, color=None, label=None) # Set x axis using winter months 
     gridlines = plt.grid(b = True, linestyle = '-', alpha = 0.2) # Add gridlines 
-
-
-    fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.']
+    
     for year, fmt in zip(years, fmts*100): 
         winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season) # Get data from that winter 
         if winter_da is None: # In case the user inputs a year that doesn't have data, skip this loop iteration to avoid appending None
             continue
         y = winter_da.mean(dim=["x","y"], keep_attrs=True)
         x = pd.to_datetime(y.time.values)
-        ax.plot(x.strftime("%b"), y, fmt, label="Winter "+str(x.year[0])+"-"+str(x.year[-1])[2:])
+        ax.plot(x.strftime("%b"), y, fmt, label=""+str(x.year[0])+"-"+str(x.year[-1])[2:])
 
         if da_unc is not None:
             # Get uncertaintiy data from that winter 
@@ -484,9 +486,9 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
     # Add legend, title, and axis labels, and display plot in notebook 
     if legend:
         if loc_pos>0:
-            plt.legend(fontsize=8, loc=loc_pos)
+            plt.legend(fontsize=8, frameon=False,loc=loc_pos)
         else:
-            plt.legend(fontsize=8, loc="best")
+            plt.legend(fontsize=8, frameon=False, loc="best")
     
     # Add annotation if provided
     ax.annotate(annotation, xy=(0.02, 0.98),xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=8, zorder=2)
@@ -515,11 +517,11 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
                     dpi=300, facecolor="white", bbox_inches='tight')
 
     plt.show()
-```
-
 
 ```
 
+
+```
 def interactive_winter_comparison_lineplot(da, years=None, title="Winter comparison", frame_width=600, frame_height=350, start_month="Sep", end_month="Apr", force_complete_season=False):
     """ Make a bokeh lineplot with markers comparing monthly mean data across winter seasons 
     
@@ -573,5 +575,7 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
     winters_all.opts({'Scatter': {'color': color_cycle}})
     winters_all.opts({'Curve': {'color': color_cycle}})
     
+    
     return winters_all
+
 ```
