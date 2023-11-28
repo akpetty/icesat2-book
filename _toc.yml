@@ -16,7 +16,7 @@ parts:
 - caption: Winter Arctic sea ice thickness analysis updates
   chapters:
   - file: content/2b_winter_arctic_sea_ice_variability_2022update
-  - file: content/2b_winter_arctic_sea_ice_variability_2023update
+  - file: content/2c_winter_arctic_sea_ice_variability_2023update
 - caption: Data wrangling
   chapters:
   - file: content/7_gridded_data_wrangling
