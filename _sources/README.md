@@ -54,3 +54,6 @@ cd icesat2-book
 ```
 ghp-import -n -p -f _build/html
 ```
+I'm having some issues with this so in the latest version I pip installed this package to my base environment and ran this from there.
+
+Finally, if serving onto a custom domain you may need to go into the GitHub settings (Settings/Pages) and make sure it's pointing to the right custom domain and is indicating DNS check successful.
