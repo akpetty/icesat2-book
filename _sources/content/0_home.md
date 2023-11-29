@@ -49,7 +49,11 @@ All content in this Jupyter Book is distributed under the MIT license.
 
 ## Versions
 
-Version 1.1 (01/27/2023):
+Version 1.2 (11/27/2023):
+ - Added the new 2022-2023 winter analysis notebook which also describes the new Version 2 IS2SITMOGR4 dataset.
+ - A few other little minor bug fixes.
+ 
+ Version 1.1 (01/27/2023):
  - Added the new 2021-2022 winter analysis notebook.
  - A few other little minor bug fixes.
 
@@ -59,11 +63,11 @@ Version 1.0 (12/23/2023):
 
 ## Contributors
 
-**Nicole Keeney (Original book creator)**<br>
-[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/nicolejkeeney)
-
 **Alek Petty (Current book lead, summer 2022 onwards)**<br>
 [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/akpetty) 
+
+**Nicole Keeney (Original book creator)**<br>
+[![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/nicolejkeeney)
 
 <!-- <iframe src="/flowers.html"
     width="100%"

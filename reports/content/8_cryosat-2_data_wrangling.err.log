@@ -1,0 +1,149 @@
+Traceback (most recent call last):
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+cs2_gsfc = []
+valid_dates=[]
+for date in date_range:
+    #print(date)
+    try:
+        xpts_cs2_gsfc, ypts_cs2_gsfc, cs2_gsfc_temp = getCS2gsfc(dataPathCS2, str(date.year), '%02d' %(date.month))
+    except:
+        print(date)
+        print('no GSFC CS-2 data so skipping...')
+        continue
+    valid_dates.append(date)
+    
+    cs2_gsfc_temp_is2grid = regridToICESat2(cs2_gsfc_temp, xpts_cs2_gsfc, ypts_cs2_gsfc, xptsIS2, yptsIS2) 
+    cs2_gsfc_temp_is2grid_xr = xr.DataArray(data = cs2_gsfc_temp_is2grid, 
+                            dims = ['y', 'x'], 
+                            coords = {'latitude': (('y','x'), out_lats), 'longitude': (('y','x'), out_lons)}, 
+                            name = 'CS-2_GSFC')
+
+    cs2_gsfc.append(cs2_gsfc_temp_is2grid_xr)
+                         
+cs2_gsfc = xr.concat(cs2_gsfc, 'time')
+cs2_gsfc = cs2_gsfc.assign_coords(time=valid_dates)
+cs2_gsfc_attrs = {'units': 'meters', 'long_name': 'GSFC CryoSat-2 monthly mean Arctic sea ice thickness', 'data_download': 'https://nsidc.org/data/rdeft4/', 
+        'download_date': '09-2022', 'citation': 'Kurtz, N. and J. Harbeck. (2017). CryoSat-2 Level-4 Sea Ice Elevation, Freeboard, and Thickness, Version 1 [Data Set]. Boulder, Colorado USA. NASA National Snow and Ice Data Center Distributed Active Archive Center. https://doi.org/10.5067/96JO0KIFDAS8'}
+
+cs2_gsfc = cs2_gsfc.assign_attrs(cs2_gsfc_attrs)  
+# Add to book
+book_ds['cs2_sea_ice_thickness_GSFC']=cs2_gsfc
+------------------
+
+----- stdout -----
+2018-11-01 00:00:00
+no GSFC CS-2 data so skipping...
+2018-12-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-01-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-02-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-03-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-04-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-05-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-06-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-07-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-08-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-09-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-10-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-11-01 00:00:00
+no GSFC CS-2 data so skipping...
+2019-12-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-01-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-02-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-03-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-04-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-05-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-06-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-07-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-08-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-09-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-10-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-11-01 00:00:00
+no GSFC CS-2 data so skipping...
+2020-12-01 00:00:00
+no GSFC CS-2 data so skipping...
+2021-01-01 00:00:00
+no GSFC CS-2 data so skipping...
+2021-02-01 00:00:00
+no GSFC CS-2 data so skipping...
+2021-03-01 00:00:00
+no GSFC CS-2 data so skipping...
+2021-04-01 00:00:00
+no GSFC CS-2 data so skipping...
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mStopIteration[0m                             Traceback (most recent call last)
+File [0;32m~/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/concat.py:226[0m, in [0;36mconcat[0;34m(objs, dim, data_vars, coords, compat, positions, fill_value, join, combine_attrs)[0m
+[1;32m    225[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 226[0m     first_obj, objs [38;5;241m=[39m [43mutils[49m[38;5;241;43m.[39;49m[43mpeek_at[49m[43m([49m[43mobjs[49m[43m)[49m
+[1;32m    227[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
+
+File [0;32m~/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/utils.py:186[0m, in [0;36mpeek_at[0;34m(iterable)[0m
+[1;32m    185[0m gen [38;5;241m=[39m [38;5;28miter[39m(iterable)
+[0;32m--> 186[0m peek [38;5;241m=[39m [38;5;28;43mnext[39;49m[43m([49m[43mgen[49m[43m)[49m
+[1;32m    187[0m [38;5;28;01mreturn[39;00m peek, itertools[38;5;241m.[39mchain([peek], gen)
+
+[0;31mStopIteration[0m: 
+
+During handling of the above exception, another exception occurred:
+
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[12], line 21[0m
+[1;32m     14[0m     cs2_gsfc_temp_is2grid_xr [38;5;241m=[39m xr[38;5;241m.[39mDataArray(data [38;5;241m=[39m cs2_gsfc_temp_is2grid, 
+[1;32m     15[0m                             dims [38;5;241m=[39m [[38;5;124m'[39m[38;5;124my[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m], 
+[1;32m     16[0m                             coords [38;5;241m=[39m {[38;5;124m'[39m[38;5;124mlatitude[39m[38;5;124m'[39m: (([38;5;124m'[39m[38;5;124my[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m), out_lats), [38;5;124m'[39m[38;5;124mlongitude[39m[38;5;124m'[39m: (([38;5;124m'[39m[38;5;124my[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m), out_lons)}, 
+[1;32m     17[0m                             name [38;5;241m=[39m [38;5;124m'[39m[38;5;124mCS-2_GSFC[39m[38;5;124m'[39m)
+[1;32m     19[0m     cs2_gsfc[38;5;241m.[39mappend(cs2_gsfc_temp_is2grid_xr)
+[0;32m---> 21[0m cs2_gsfc [38;5;241m=[39m [43mxr[49m[38;5;241;43m.[39;49m[43mconcat[49m[43m([49m[43mcs2_gsfc[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mtime[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[1;32m     22[0m cs2_gsfc [38;5;241m=[39m cs2_gsfc[38;5;241m.[39massign_coords(time[38;5;241m=[39mvalid_dates)
+[1;32m     23[0m cs2_gsfc_attrs [38;5;241m=[39m {[38;5;124m'[39m[38;5;124munits[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mmeters[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mlong_name[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mGSFC CryoSat-2 monthly mean Arctic sea ice thickness[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mdata_download[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mhttps://nsidc.org/data/rdeft4/[39m[38;5;124m'[39m, 
+[1;32m     24[0m         [38;5;124m'[39m[38;5;124mdownload_date[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124m09-2022[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mcitation[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mKurtz, N. and J. Harbeck. (2017). CryoSat-2 Level-4 Sea Ice Elevation, Freeboard, and Thickness, Version 1 [Data Set]. Boulder, Colorado USA. NASA National Snow and Ice Data Center Distributed Active Archive Center. https://doi.org/10.5067/96JO0KIFDAS8[39m[38;5;124m'[39m}
+
+File [0;32m~/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/concat.py:228[0m, in [0;36mconcat[0;34m(objs, dim, data_vars, coords, compat, positions, fill_value, join, combine_attrs)[0m
+[1;32m    226[0m     first_obj, objs [38;5;241m=[39m utils[38;5;241m.[39mpeek_at(objs)
+[1;32m    227[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
+[0;32m--> 228[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mmust supply at least one object to concatenate[39m[38;5;124m"[39m)
+[1;32m    230[0m [38;5;28;01mif[39;00m compat [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m _VALID_COMPAT:
+[1;32m    231[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m    232[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mcompat=[39m[38;5;132;01m{[39;00mcompat[38;5;132;01m!r}[39;00m[38;5;124m invalid: must be [39m[38;5;124m'[39m[38;5;124mbroadcast_equals[39m[38;5;124m'[39m[38;5;124m, [39m[38;5;124m'[39m[38;5;124mequals[39m[38;5;124m'[39m[38;5;124m, [39m[38;5;124m'[39m[38;5;124midentical[39m[38;5;124m'[39m[38;5;124m, [39m[38;5;124m'[39m[38;5;124mno_conflicts[39m[38;5;124m'[39m[38;5;124m or [39m[38;5;124m'[39m[38;5;124moverride[39m[38;5;124m'[39m[38;5;124m"[39m
+[1;32m    233[0m     )
+
+[0;31mValueError[0m: must supply at least one object to concatenate
+

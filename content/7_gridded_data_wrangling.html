@@ -1,119 +1,171 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Data wrangling &#8212; ICESat-2 Sea Ice State Analysis</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/7_gridded_data_wrangling';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CryoSat-2 data wrangling" href="8_cryosat-2_data_wrangling.html" />
     <link rel="prev" title="Winter Arctic sea ice state variability (updates through to April 2022)" href="2b_winter_arctic_sea_ice_variability_2022update.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-J1HEQ5DMT0');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="0_home.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">ICESat-2 Sea Ice State Analysis</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -122,596 +174,362 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  ICESat-2 Arctic sea ice thickness data
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2 Arctic sea ice thickness data</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="1_is2sitmogr4_intro.html">
-   ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="1_is2sitmogr4_intro.html">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)</a></li>
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Winter Arctic sea ice thickness analysis (Petty et al., 2023)
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis (Petty et al., 2023)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="2_winter_arctic_sea_ice_variability.html">
-   Winter Arctic sea ice state variability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3_comparisons_with_cryosat-2_and_piomas.html">
-   Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="4_comparisons_with_BGEP.html">
-   Comparisons with BGEP ULS sea ice draft estimates
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5_atmospheric_variability.html">
-   Atmospheric variability
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="2_winter_arctic_sea_ice_variability.html">Winter Arctic sea ice state variability</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_comparisons_with_cryosat-2_and_piomas.html">Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="4_comparisons_with_BGEP.html">Comparisons with BGEP ULS sea ice draft estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="5_atmospheric_variability.html">Atmospheric variability</a></li>
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Winter Arctic sea ice thickness analysis updates
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="2b_winter_arctic_sea_ice_variability_2022update.html">
-   Winter Arctic sea ice state variability (updates through to April 2022)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Data wrangling
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Data wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8_cryosat-2_data_wrangling.html">
-   CryoSat-2 data wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="9_gridded_interp_demo.html">
-   ICESat-2 interpolation workflow
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data wrangling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8_cryosat-2_data_wrangling.html">CryoSat-2 data wrangling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="9_gridded_interp_demo.html">ICESat-2 interpolation workflow</a></li>
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Ancillary code
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ancillary code</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="utils/markdown_rendering/read_data_utils.html">
-   Functions for reading data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="utils/markdown_rendering/plotting_utils.html">
-   Functions for plotting and mapping
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="utils/markdown_rendering/read_data_utils.html">Functions for reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/markdown_rendering/plotting_utils.html">Functions for plotting and mapping</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/akpetty/icesat2-book/master?urlpath=tree/content/7_gridded_data_wrangling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/akpetty/icesat2-book/master?urlpath=tree/content/7_gridded_data_wrangling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/edit/master/content/7_gridded_data_wrangling.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2Fcontent/7_gridded_data_wrangling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/7_gridded_data_wrangling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/akpetty/icesat2-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2Fcontent/7_gridded_data_wrangling.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/akpetty/icesat2-book/edit/master/content/7_gridded_data_wrangling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/content/7_gridded_data_wrangling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Data wrangling
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#details-on-each-dataset">
-     Details on each dataset
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#atlas-icesat-2-monthly-gridded-sea-ice-freeboard">
-       ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#noaa-nsidc-climate-data-record-of-passive-microwave-sea-ice-concentration">
-       NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#era5-monthly-averaged-data-on-single-levels">
-       ERA5 monthly averaged data on single levels
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#piomas-mean-monthly-ice-thickness">
-       PIOMAS mean monthly ice thickness
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-low-resolution-sea-ice-drifts-from-the-european-organization-for-the-exploitation-of-meteorological-satellites-eumetsat-ocean-and-sea-ice-satellite-application-facility-osi-saf">
-       Global Low Resolution Sea Ice Drifts from the European Organization for the Exploitation of Meteorological Satellites (EUMETSAT) Ocean and Sea Ice Satellite Application Facility (OSI SAF)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-notebook-dependencies">
-   Import notebook dependencies
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-in-data">
-   Read in data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#define-filepaths">
-     Define filepaths
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-date-range-of-interest">
-     Set date range of interest
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#icesat-2-gridded-monthly-means">
-     ICESat-2 gridded monthly means
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#era5-climate-reanalysis">
-     ERA5 climate reanalysis
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#piomas-sea-ice-thickness">
-     PIOMAS sea ice thickness
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#osi-saf-sea-ice-drifts">
-     OSI-SAF Sea Ice Drifts
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regrid-all-datasets-to-icesat-2-grid">
-   Regrid all datasets to ICESat-2 grid
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     ERA5 climate reanalysis
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     PIOMAS sea ice thickness
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     OSI-SAF Sea Ice Drifts
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-and-save-final-dataset">
-   Compile and save final dataset
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#combine-datasets">
-     Combine datasets
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-data-to-local-machine-as-a-netcdf4-file">
-     Save data to local machine as a netcdf4 file
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data wrangling</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Data wrangling
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#details-on-each-dataset">
-     Details on each dataset
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#atlas-icesat-2-monthly-gridded-sea-ice-freeboard">
-       ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#noaa-nsidc-climate-data-record-of-passive-microwave-sea-ice-concentration">
-       NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#era5-monthly-averaged-data-on-single-levels">
-       ERA5 monthly averaged data on single levels
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#piomas-mean-monthly-ice-thickness">
-       PIOMAS mean monthly ice thickness
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-low-resolution-sea-ice-drifts-from-the-european-organization-for-the-exploitation-of-meteorological-satellites-eumetsat-ocean-and-sea-ice-satellite-application-facility-osi-saf">
-       Global Low Resolution Sea Ice Drifts from the European Organization for the Exploitation of Meteorological Satellites (EUMETSAT) Ocean and Sea Ice Satellite Application Facility (OSI SAF)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-notebook-dependencies">
-   Import notebook dependencies
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-in-data">
-   Read in data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#define-filepaths">
-     Define filepaths
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-date-range-of-interest">
-     Set date range of interest
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#icesat-2-gridded-monthly-means">
-     ICESat-2 gridded monthly means
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#era5-climate-reanalysis">
-     ERA5 climate reanalysis
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#piomas-sea-ice-thickness">
-     PIOMAS sea ice thickness
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#osi-saf-sea-ice-drifts">
-     OSI-SAF Sea Ice Drifts
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regrid-all-datasets-to-icesat-2-grid">
-   Regrid all datasets to ICESat-2 grid
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     ERA5 climate reanalysis
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     PIOMAS sea ice thickness
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     OSI-SAF Sea Ice Drifts
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compile-and-save-final-dataset">
-   Compile and save final dataset
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#combine-datasets">
-     Combine datasets
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-data-to-local-machine-as-a-netcdf4-file">
-     Save data to local machine as a netcdf4 file
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data wrangling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data wrangling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-on-each-dataset">Details on each dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atlas-icesat-2-monthly-gridded-sea-ice-freeboard">ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noaa-nsidc-climate-data-record-of-passive-microwave-sea-ice-concentration">NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-monthly-averaged-data-on-single-levels">ERA5 monthly averaged data on single levels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#piomas-mean-monthly-ice-thickness">PIOMAS mean monthly ice thickness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-low-resolution-sea-ice-drifts-from-the-european-organization-for-the-exploitation-of-meteorological-satellites-eumetsat-ocean-and-sea-ice-satellite-application-facility-osi-saf">Global Low Resolution Sea Ice Drifts from the European Organization for the Exploitation of Meteorological Satellites (EUMETSAT) Ocean and Sea Ice Satellite Application Facility (OSI SAF)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-notebook-dependencies">Import notebook dependencies</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-data">Read in data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-filepaths">Define filepaths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-date-range-of-interest">Set date range of interest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icesat-2-gridded-monthly-means">ICESat-2 gridded monthly means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-climate-reanalysis">ERA5 climate reanalysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#piomas-sea-ice-thickness">PIOMAS sea ice thickness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-saf-sea-ice-drifts">OSI-SAF Sea Ice Drifts</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regrid-all-datasets-to-icesat-2-grid">Regrid all datasets to ICESat-2 grid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ERA5 climate reanalysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">PIOMAS sea ice thickness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">OSI-SAF Sea Ice Drifts</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-and-save-final-dataset">Compile and save final dataset</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-datasets">Combine datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data-to-local-machine-as-a-netcdf4-file">Save data to local machine as a netcdf4 file</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="data-wrangling">
-<h1>Data wrangling<a class="headerlink" href="#data-wrangling" title="Permalink to this headline">#</a></h1>
+<h1>Data wrangling<a class="headerlink" href="#data-wrangling" title="Permalink to this heading">#</a></h1>
 <p><strong>Summary</strong>: This notebook loads the different datasets used in the analysis into a single NETCDF4 file, with descriptive attributes maintained for each dataset. Each dataset is regridded to the ICESat2 grid shape [304, 448] (x,y). The datasets used in this notebook are listed below. Data are available on an AWS S3 Bucket as netCDF-4 or S3.</p>
 <p><strong>Version history</strong>: Version 1 (01/01/2022)</p>
 <section id="details-on-each-dataset">
-<h2>Details on each dataset<a class="headerlink" href="#details-on-each-dataset" title="Permalink to this headline">#</a></h2>
+<h2>Details on each dataset<a class="headerlink" href="#details-on-each-dataset" title="Permalink to this heading">#</a></h2>
 <p>Detailed information about each of the datasets used to compile the final data product are provided below in the order they appear in the notebook workflow. The information provided here was last updated 08-21-2021.</p>
 <section id="atlas-icesat-2-monthly-gridded-sea-ice-freeboard">
-<h3>ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard<a class="headerlink" href="#atlas-icesat-2-monthly-gridded-sea-ice-freeboard" title="Permalink to this headline">#</a></h3>
+<h3>ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard<a class="headerlink" href="#atlas-icesat-2-monthly-gridded-sea-ice-freeboard" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Product Type</strong>: Northern hemisphere gridded monthly means</p></li>
 <li><p><strong>Download link</strong>:</p>
@@ -724,7 +542,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="noaa-nsidc-climate-data-record-of-passive-microwave-sea-ice-concentration">
-<h3>NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration<a class="headerlink" href="#noaa-nsidc-climate-data-record-of-passive-microwave-sea-ice-concentration" title="Permalink to this headline">#</a></h3>
+<h3>NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration<a class="headerlink" href="#noaa-nsidc-climate-data-record-of-passive-microwave-sea-ice-concentration" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Variables used</strong>: NOAA/NSIDC sea ice concentration CDR</p></li>
 <li><p><strong>Download link</strong>: <a class="reference external" href="https://nsidc.org/data/g02202">https://nsidc.org/data/g02202</a></p></li>
@@ -733,16 +551,16 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="era5-monthly-averaged-data-on-single-levels">
-<h3>ERA5 monthly averaged data on single levels<a class="headerlink" href="#era5-monthly-averaged-data-on-single-levels" title="Permalink to this headline">#</a></h3>
+<h3>ERA5 monthly averaged data on single levels<a class="headerlink" href="#era5-monthly-averaged-data-on-single-levels" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Variables used</strong>: 2m temperature; Mean surface downward long-wave radiation flux</p></li>
 <li><p><strong>Product type</strong>: Monthly averaged reanalysis</p></li>
-<li><p><strong>Download link</strong>: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/reanalysis-era5-single-levels-monthly-means">https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means</a></p></li>
+<li><p><strong>Download link</strong>: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means">https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means</a></p></li>
 <li><p><strong>Reference</strong>: Hersbach, H., Bell, B., Berrisford, P., Biavati, G., Horányi, A., Muñoz Sabater, J., Nicolas, J., Peubey, C., Radu, R., Rozum, I., Schepers, D., Simmons, A., Soci, C., Dee, D., Thépaut, J-N. (2019): ERA5 monthly averaged data on single levels from 1979 to present. Copernicus Climate Change Service (C3S) Climate Data Store (CDS). (Accessed on 16-08-2021), 10.24381/cds.f17050d7</p></li>
 </ul>
 </section>
 <section id="piomas-mean-monthly-ice-thickness">
-<h3>PIOMAS mean monthly ice thickness<a class="headerlink" href="#piomas-mean-monthly-ice-thickness" title="Permalink to this headline">#</a></h3>
+<h3>PIOMAS mean monthly ice thickness<a class="headerlink" href="#piomas-mean-monthly-ice-thickness" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Product Type</strong>: Sea ice thickness (Volume per unit Area), monthly mean</p></li>
 <li><p><strong>Variables used</strong>: Sea ice thickness (Volume per unit Area) monthly mean; Grid lon and lat for scalar fields (txt file)</p></li>
@@ -752,7 +570,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="global-low-resolution-sea-ice-drifts-from-the-european-organization-for-the-exploitation-of-meteorological-satellites-eumetsat-ocean-and-sea-ice-satellite-application-facility-osi-saf">
-<h3>Global Low Resolution Sea Ice Drifts from the European Organization for the Exploitation of Meteorological Satellites (EUMETSAT) Ocean and Sea Ice Satellite Application Facility (OSI SAF)<a class="headerlink" href="#global-low-resolution-sea-ice-drifts-from-the-european-organization-for-the-exploitation-of-meteorological-satellites-eumetsat-ocean-and-sea-ice-satellite-application-facility-osi-saf" title="Permalink to this headline">#</a></h3>
+<h3>Global Low Resolution Sea Ice Drifts from the European Organization for the Exploitation of Meteorological Satellites (EUMETSAT) Ocean and Sea Ice Satellite Application Facility (OSI SAF)<a class="headerlink" href="#global-low-resolution-sea-ice-drifts-from-the-european-organization-for-the-exploitation-of-meteorological-satellites-eumetsat-ocean-and-sea-ice-satellite-application-facility-osi-saf" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Product Type</strong>: Global Low Resolution Sea Ice Drift</p></li>
 <li><p><strong>Download link</strong>: <a class="reference external" href="https://osi-saf.eumetsat.int/products/osi-405-c">https://osi-saf.eumetsat.int/products/osi-405-c</a></p></li>
@@ -766,7 +584,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="import-notebook-dependencies">
-<h1>Import notebook dependencies<a class="headerlink" href="#import-notebook-dependencies" title="Permalink to this headline">#</a></h1>
+<h1>Import notebook dependencies<a class="headerlink" href="#import-notebook-dependencies" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -789,23 +607,23 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">utils.read_data_utils</span> <span class="kn">import</span> <span class="n">read_is2_data</span> <span class="c1"># This allows us to read the ICESAT2 data directly from the google storage bucket</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Ignore warnings in the notebook to improve display</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="ne">ImportError</span>: cannot import name &#39;read_is2_data&#39; from &#39;utils.read_data_utils&#39; (/Users/aapetty/GitHub/akpetty/icesat2-book/content/utils/read_data_utils.py)
+<span class="ne">ImportError</span>: cannot import name &#39;read_is2_data&#39; from &#39;utils.read_data_utils&#39; (/Users/akpetty/GitHub/icesat2-book/content/utils/read_data_utils.py)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="read-in-data">
-<h1>Read in data<a class="headerlink" href="#read-in-data" title="Permalink to this headline">#</a></h1>
+<h1>Read in data<a class="headerlink" href="#read-in-data" title="Permalink to this heading">#</a></h1>
 <section id="define-filepaths">
-<h2>Define filepaths<a class="headerlink" href="#define-filepaths" title="Permalink to this headline">#</a></h2>
+<h2>Define filepaths<a class="headerlink" href="#define-filepaths" title="Permalink to this heading">#</a></h2>
 <p>Define filepaths to data on your local machine</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -818,7 +636,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="set-date-range-of-interest">
-<h2>Set date range of interest<a class="headerlink" href="#set-date-range-of-interest" title="Permalink to this headline">#</a></h2>
+<h2>Set date range of interest<a class="headerlink" href="#set-date-range-of-interest" title="Permalink to this heading">#</a></h2>
 <p>We’ll restrict data to this date range, corresponding to years/months in our later analysis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -832,7 +650,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="icesat-2-gridded-monthly-means">
-<h2>ICESat-2 gridded monthly means<a class="headerlink" href="#icesat-2-gridded-monthly-means" title="Permalink to this headline">#</a></h2>
+<h2>ICESat-2 gridded monthly means<a class="headerlink" href="#icesat-2-gridded-monthly-means" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is2_ds</span> <span class="o">=</span> <span class="n">read_is2_data</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="s2">&quot;IS2SITMOGR4/v002&quot;</span><span class="p">)</span>
@@ -842,7 +660,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="era5-climate-reanalysis">
-<h2>ERA5 climate reanalysis<a class="headerlink" href="#era5-climate-reanalysis" title="Permalink to this headline">#</a></h2>
+<h2>ERA5 climate reanalysis<a class="headerlink" href="#era5-climate-reanalysis" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read data </span>
@@ -868,11 +686,11 @@ title="Print to PDF"
 </div>
 </section>
 <section id="piomas-sea-ice-thickness">
-<h2>PIOMAS sea ice thickness<a class="headerlink" href="#piomas-sea-ice-thickness" title="Permalink to this headline">#</a></h2>
+<h2>PIOMAS sea ice thickness<a class="headerlink" href="#piomas-sea-ice-thickness" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_piomas_data</span><span class="p">(</span><span class="n">date_range</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">):</span> 
-    <span class="sd">&quot;&quot;&quot; Read in a PIOMAS yearly files and convert to an xr.DataArray object </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Read in a PIOMAS yearly files and convert to an xr.DataArray object </span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
 <span class="sd">        date_range (pandas DatetimeIndex): date range to grab data for </span>
@@ -937,12 +755,12 @@ title="Print to PDF"
 </div>
 </section>
 <section id="osi-saf-sea-ice-drifts">
-<h2>OSI-SAF Sea Ice Drifts<a class="headerlink" href="#osi-saf-sea-ice-drifts" title="Permalink to this headline">#</a></h2>
+<h2>OSI-SAF Sea Ice Drifts<a class="headerlink" href="#osi-saf-sea-ice-drifts" title="Permalink to this heading">#</a></h2>
 <p>First, we read in the data and resample it to produce monthly means. Then, we reproject the data to the ICESat-2 projection (EPSG 3411).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_projected_vectors</span><span class="p">(</span><span class="n">fmonthly</span><span class="p">,</span> <span class="n">proj</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Project osisaf drifts to map projection (x/y pointing in the new map projection coordinates)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Project osisaf drifts to map projection (x/y pointing in the new map projection coordinates)</span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
 <span class="sd">        fmonthly (xr.Dataset): monthly OSI-SAF vectors </span>
@@ -1006,7 +824,7 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="regrid-all-datasets-to-icesat-2-grid">
-<h1>Regrid all datasets to ICESat-2 grid<a class="headerlink" href="#regrid-all-datasets-to-icesat-2-grid" title="Permalink to this headline">#</a></h1>
+<h1>Regrid all datasets to ICESat-2 grid<a class="headerlink" href="#regrid-all-datasets-to-icesat-2-grid" title="Permalink to this heading">#</a></h1>
 <p>In order to merge all the datasets into a singe netcdf4 file, they need to be on the same grid.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1024,7 +842,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">regridToICESat2</span><span class="p">(</span><span class="n">dataArrayNEW</span><span class="p">,</span> <span class="n">xptsNEW</span><span class="p">,</span> <span class="n">yptsNEW</span><span class="p">,</span> <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span><span class="p">):</span>  
-    <span class="sd">&quot;&quot;&quot; Regrid new data to ICESat-2 grid </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Regrid new data to ICESat-2 grid </span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
 <span class="sd">        dataArrayNEW (xarray DataArray): DataArray to be gridded to ICESat-2 grid </span>
@@ -1048,7 +866,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="id1">
-<h2>ERA5 climate reanalysis<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>ERA5 climate reanalysis<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose data variables of interest </span>
@@ -1076,7 +894,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id2">
-<h2>PIOMAS sea ice thickness<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2>PIOMAS sea ice thickness<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#project data to ICESat-2 map projection</span>
@@ -1096,7 +914,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id3">
-<h2>OSI-SAF Sea Ice Drifts<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2>OSI-SAF Sea Ice Drifts<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#project data to ICESat-2 map projection</span>
@@ -1124,10 +942,10 @@ title="Print to PDF"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="compile-and-save-final-dataset">
-<h1>Compile and save final dataset<a class="headerlink" href="#compile-and-save-final-dataset" title="Permalink to this headline">#</a></h1>
+<h1>Compile and save final dataset<a class="headerlink" href="#compile-and-save-final-dataset" title="Permalink to this heading">#</a></h1>
 <p>Now that all the data is on the same grid, we can use xarray to merge all the datasets.</p>
 <section id="combine-datasets">
-<h2>Combine datasets<a class="headerlink" href="#combine-datasets" title="Permalink to this headline">#</a></h2>
+<h2>Combine datasets<a class="headerlink" href="#combine-datasets" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">is2_ds</span><span class="p">,</span> <span class="n">pio_regridded</span><span class="p">,</span> <span class="n">ERA5_regridded</span><span class="p">,</span> <span class="n">drifts_regridded</span><span class="p">])</span>
@@ -1138,7 +956,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="save-data-to-local-machine-as-a-netcdf4-file">
-<h2>Save data to local machine as a netcdf4 file<a class="headerlink" href="#save-data-to-local-machine-as-a-netcdf4-file" title="Permalink to this headline">#</a></h2>
+<h2>Save data to local machine as a netcdf4 file<a class="headerlink" href="#save-data-to-local-machine-as-a-netcdf4-file" title="Permalink to this heading">#</a></h2>
 <p>We also uploaded this same file to the google storage bucket.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1173,7 +991,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./content"
         },
         predefinedOutput: true
@@ -1181,53 +999,136 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="2b_winter_arctic_sea_ice_variability_2022update.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Winter Arctic sea ice state variability (updates through to April 2022)</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2b_winter_arctic_sea_ice_variability_2022update.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Winter Arctic sea ice state variability (updates through to April 2022)</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="8_cryosat-2_data_wrangling.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="8_cryosat-2_data_wrangling.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">CryoSat-2 data wrangling</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Data wrangling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-on-each-dataset">Details on each dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atlas-icesat-2-monthly-gridded-sea-ice-freeboard">ATLAS/ICESat-2 Monthly Gridded Sea Ice Freeboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noaa-nsidc-climate-data-record-of-passive-microwave-sea-ice-concentration">NOAA/NSIDC Climate Data Record of Passive Microwave Sea Ice Concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-monthly-averaged-data-on-single-levels">ERA5 monthly averaged data on single levels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#piomas-mean-monthly-ice-thickness">PIOMAS mean monthly ice thickness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-low-resolution-sea-ice-drifts-from-the-european-organization-for-the-exploitation-of-meteorological-satellites-eumetsat-ocean-and-sea-ice-satellite-application-facility-osi-saf">Global Low Resolution Sea Ice Drifts from the European Organization for the Exploitation of Meteorological Satellites (EUMETSAT) Ocean and Sea Ice Satellite Application Facility (OSI SAF)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-notebook-dependencies">Import notebook dependencies</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-data">Read in data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-filepaths">Define filepaths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-date-range-of-interest">Set date range of interest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icesat-2-gridded-monthly-means">ICESat-2 gridded monthly means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-climate-reanalysis">ERA5 climate reanalysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#piomas-sea-ice-thickness">PIOMAS sea ice thickness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-saf-sea-ice-drifts">OSI-SAF Sea Ice Drifts</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regrid-all-datasets-to-icesat-2-grid">Regrid all datasets to ICESat-2 grid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ERA5 climate reanalysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">PIOMAS sea ice thickness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">OSI-SAF Sea Ice Drifts</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-and-save-final-dataset">Compile and save final dataset</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-datasets">Combine datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data-to-local-machine-as-a-netcdf4-file">Save data to local machine as a netcdf4 file</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Nicole Keeney and Alek Petty<br/>
-  
-      &copy; Copyright 2022.<br/>
-    <div class="extra_footer">
-      Distributed under the MIT license
-    </div>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Nicole Keeney and Alek Petty
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Distributed under the MIT license
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
