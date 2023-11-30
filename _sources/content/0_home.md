@@ -3,12 +3,12 @@ ICESat-2 Arctic Sea Ice State Analysis
 
 NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is an advanced satellite laser altimetry system specially designed to profile Earth's fast-changing polar regions. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well suited for measuring the thickness of polar sea ice - ice that forms and floats on top of the Arctic and Southern Ocean. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.
 
-![ICESat-2 maps](figs/maps_thickness_winter_2018_2022.png "ICESat-2 mean winter Arctic sea ice thickness")
+![ICESat-2 maps](figs/maps_thickness_winter_2018_2023.png "ICESat-2 mean winter Arctic sea ice thickness")
 <p align = "center">
 Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first four winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 
-![ICESat-2 maps](figs/maps_thickness_winter_anomaly_2018_2022.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
+![ICESat-2 maps](figs/maps_thickness_winter_anomaly_2018_2023.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
 <p align = "center">
 Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the four winter mean) from the first four winters profiled by ICESat-2.
 </p>
@@ -31,7 +31,7 @@ There are three different ways to use this Jupyter Book:
 ## Navigation
 - See the [ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) notebook](https://www.icesat-2-sea-ice-state.info/content/1_is2sitmogr4_intro.html) for an introduction to the monthly gridded winter Arctic sea ice thickness dataset.
 - Check out the notebooks in the chapter: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2023) for the peer-reviewed analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS data.
-- See the [updated winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html) to see the analysis updated to include the 2021-2022 winter period. 
+- See the [2021-2022 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html) and [most recent 2022-2023 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html) to see the analysis updated to include the more recent winter periods. 
 - Continue to watch this space for more sea ice analyses from ICESat-2!
 
 ## Jupyter Book description
