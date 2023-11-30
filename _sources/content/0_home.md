@@ -5,12 +5,12 @@ NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.g
 
 ![ICESat-2 maps](figs/maps_thickness_winter_2018_2023.png "ICESat-2 mean winter Arctic sea ice thickness")
 <p align = "center">
-Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first four winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
+Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first five winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 
 ![ICESat-2 maps](figs/maps_thickness_winter_anomaly_2018_2023.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
 <p align = "center">
-Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the four winter mean) from the first four winters profiled by ICESat-2.
+Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the five winter mean) from the first five winters profiled by ICESat-2.
 </p>
 
 
