@@ -38,7 +38,7 @@ There are three different ways to use this Jupyter Book:
 [Jupyter Books](https://jupyterbook.org/intro.html) provide a novel means of compiling various related Jupyter Notebooks into one convenient and well-indexed location. Here, a series of Jupyter Notebooks are used to provide a visual demonstration of our efforts to analyze winter Arctic sea ice conditions, primiarly freeboard and thickness, derived from ICESat-2 data, along with other relevant datasets.
 
 ## Accessing the data 
-The monthly gridded ICESat-2 winter Arctic sea ice thickness data are archived and made publically available at the NSIDC (https://nsidc.org/data/IS2SITMOGR4). However, to simply our analysis we have also uploaded these same data to a [AWS S3 Bucket](https://icesat-2-sea-ice-us-west-2.s3.us-west-2.amazonaws.com). We have also generated and uploaded aggregated netcdf files containing all the data presented in this Jupyter Book in the S3 bucket under the name `IS2_jbook_dataset_201811-202104.nc` and `IS2_CS2_jbook_dataset_201811-202104.nc`. This dataset contains all the gridded ICESat-2 sea ice thickness data along with all other datasets used in the notebook to help contextualize the sea ice and atmospheric conditions through each winter. All datasets included have been regridded to the same NSIDC North Polar Sterographic grid (the native grid of the ICESat-2 sea ice data used), to simplify the mapping and comparisons. See the Data Wrangling pages for more information each dataset and on on the regridding process.
+The monthly gridded ICESat-2 winter Arctic sea ice thickness data are archived and made publicly available at the NSIDC (https://nsidc.org/data/IS2SITMOGR4). However, to simplify our analysis we have also uploaded these same data to an [AWS S3 Bucket](https://icesat-2-sea-ice-us-west-2.s3.us-west-2.amazonaws.com). In this first release of this Jupyter Book we also generated and uploaded aggregated netcdf files containing all the data needed for the original analysis in an S3 bucket under the name `IS2_jbook_dataset_201811-202104.nc` and `IS2_CS2_jbook_dataset_201811-202104.nc`. These datasets contains all the gridded ICESat-2 sea ice thickness data along with all other datasets used in the notebook to help contextualize the sea ice and atmospheric conditions through each winter. All datasets included have been regridded to the same NSIDC North Polar Stereographic grid (the native grid of the ICESat-2 sea ice data used), to simplify the mapping and comparisons. See the Data Wrangling pages for more information each dataset and on on the regridding process.
 
 ## Packages 
 All of the notebooks in this notebook utilize [xarray](http://xarray.pydata.org/en/stable/), a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot. 
@@ -50,7 +50,7 @@ All content in this Jupyter Book is distributed under the MIT license.
 ## Versions
 
 Version 1.2 (11/27/2023):
- - Added the new 2022-2023 winter analysis notebook which also describes the new Version 2 IS2SITMOGR4 dataset.
+ - Added the new 2022-2023 winter analysis notebook which also describes the new Version 3 IS2SITMOGR4 dataset.
  - A few other little minor bug fixes.
  
  Version 1.1 (01/27/2023):
