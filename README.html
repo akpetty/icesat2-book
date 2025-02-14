@@ -488,6 +488,7 @@ document.write(`
 <li><p>11/01/2022: included new CryoSat-2 and BGEP comparison notebooks.</p></li>
 <li><p>12/01/2022: upgraded the conda environment and included a new AWS S3 bucket data link, including zarr data (no download needed)</p></li>
 <li><p>12/06/2023: Added the new 2022-2023 winter analysis notebook which also describes the new Version 3 IS2SITMOGR4 dataset. Updated the read dataset function. A few other little minor bug fixes.</p></li>
+<li><p>02/14/2025: Added the new 2023-2024 winter analysis notebook. More updates to the read dataset function (mainly hard-coding the zarr links). A few other little minor bug fixes.</p></li>
 </ul>
 <p>If you find any issues in the code or have any suggestions for the book, feel free to open an issue, which you can find by mousing over the GitHub icon at the top of each page. If you are familiar with GitHub, you can also fork the book’s repository and suggest an edit that way.</p>
 </section>
@@ -503,6 +504,11 @@ To create the environment, run the following in the command line:</p>
 </pre></div>
 </div>
 <p>Note that there was an issue with ipykernal in the 6.18.1 upgrade hence our use of ipykernel=6.17.1 in the conda environment. Users have also noted some issues with conda and the boto3/s3fs packages. I’m still working on that so either try and fix yourself with further conda installs or drop the s3 imports/read options from your cloned repository.</p>
+<p>Update (02/14/25): I noticed some issues with cartopy and needed to reinstall shapely. Unsure what exactly changed, but I now also provide the complete conda environment I am currently using if that helps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment_021425</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>Will eventually transition to mamba or uv..!</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="updating-the-jupyter-book">
 <h1>Updating the Jupyter Book<a class="headerlink" href="#updating-the-jupyter-book" title="Permalink to this heading">#</a></h1>
