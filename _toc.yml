@@ -17,7 +17,7 @@ parts:
   chapters:
   - file: content/2b_winter_arctic_sea_ice_variability_2022update
   - file: content/2c_winter_arctic_sea_ice_variability_2023update
-  - file: content/2c_winter_arctic_sea_ice_variability_2024update
+  - file: content/2d_winter_arctic_sea_ice_variability_2024update
 - caption: Data wrangling
   chapters:
   - file: content/7_gridded_data_wrangling
