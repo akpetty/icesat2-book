@@ -1,6 +1,13 @@
 # Folder view configuration files
 .DS_Store
 
+# scratch files
+content/scratch/*
+
+#bokeh files
+content/bokeh
+content/bokeh/*
+
 # notebook checkpoints
 .ipynb_checkpoints
 */.ipynb_checkpoints/**
@@ -26,6 +33,4 @@ content/data/ISSITGR4/*/*
 #update script
 update_book.sh
 
-# scratch
-scratch/
-scratch/*
+
