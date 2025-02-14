@@ -3,14 +3,14 @@ ICESat-2 Arctic Sea Ice State Analysis
 
 NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is an advanced satellite laser altimetry system specially designed to profile Earth's fast-changing polar regions. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well suited for measuring the thickness of polar sea ice - ice that forms and floats on top of the Arctic and Southern Ocean. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.
 
-![ICESat-2 maps](figs/maps_thickness_winter_2018_2023.png "ICESat-2 mean winter Arctic sea ice thickness")
+![ICESat-2 maps](figs/maps_thickness_winter_2018_2024.png "ICESat-2 mean winter Arctic sea ice thickness")
 <p align = "center">
-Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first five winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
+Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first six winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 
-![ICESat-2 maps](figs/maps_thickness_winter_anomaly_2018_2023.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
+![ICESat-2 maps](figs/maps_thickness_winter_anomaly_2018_2024.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
 <p align = "center">
-Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the five winter mean) from the first five winters profiled by ICESat-2.
+Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the six winter mean) from the first five winters profiled by ICESat-2.
 </p>
 
 
@@ -31,7 +31,11 @@ There are three different ways to use this Jupyter Book:
 ## Navigation
 - See the [ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) notebook](https://www.icesat-2-sea-ice-state.info/content/1_is2sitmogr4_intro.html) for an introduction to the monthly gridded winter Arctic sea ice thickness dataset.
 - Check out the notebooks in the chapter: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2023) for the peer-reviewed analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS data.
-- See the [2021-2022 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html) and [most recent 2022-2023 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html) to see the analysis updated to include the more recent winter periods. 
+- See the following notebooks to get the annual updates, much of this was used to support the NOAA Arctic Report Cards:
+    - [2021-2022 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html)
+    - [2022-2023 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2c_winter_arctic_sea_ice_variability_2023update.html).
+    - [2023-2024 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2d_winter_arctic_sea_ice_variability_2024update.html).
+
 - Continue to watch this space for more sea ice analyses from ICESat-2!
 
 ## Jupyter Book description
@@ -49,7 +53,11 @@ All content in this Jupyter Book is distributed under the MIT license.
 
 ## Versions
 
-Version 1.2 (11/27/2023):
+Version 1.3 (02/14/2025):
+ - Added the new 2023-2024 winter analysis notebook.
+ - Updated the read_IS2SITMOGR4 function with the new zarr path for the V3 data up to 2024.
+ 
+ Version 1.2 (11/27/2023):
  - Added the new 2022-2023 winter analysis notebook which also describes the new Version 3 IS2SITMOGR4 dataset.
  - A few other little minor bug fixes.
  
@@ -78,9 +86,17 @@ Version 1.0 (12/23/2023):
 
 ## References
 
+Druckenmiller, M. L., Thoman, R., and T. Moon, Eds., (2024) The Arctic [in “State of the Climate in 2023”]. Bull. Amer. Meteor. Soc., 105 (8), S277–S330, doi: 10.1175/BAMS-D-24-0101.1.
+
+Meier, W., A. Petty, S. Hendricks, et al., (2023), "Sea Ice", NOAA Arctic Report Card 2023, T. A. Moon, M. L. Druckenmiller, and R. L. Thoman, Eds, doi: 10.25923/f5t4-b865.
+
+Meier, W., A. Petty, S. Hendricks, et al., (2024), "Sea Ice", NOAA Arctic Report Card 2024, T. A. Moon, M. L. Druckenmiller, and R. L. Thoman, Eds, doi: 10.25923/aksk-7p66.
+
 Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2023), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere, 17, 127–156, doi: 10.5194/tc-17-127-2023
 
 Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764
+
+Thoman, R., M. L. Druckenmiller, and T. Moon,, Eds., (2023) The Arctic [in “State of the Climate in 2022”]. Bull. Amer. Meteor. Soc., 104 (9), S271–S321, doi: 10.1175/BAMS-D-23-0079.1
 
 
  

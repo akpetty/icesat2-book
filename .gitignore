@@ -8,12 +8,10 @@
 # build files for jupyter book
 _build/
 
-# Big files 
-content/gridded_interp_test.ipynb
-content/comparisons_with_cryosat-2.ipynb
-
-# Demo files
-
+# Notebooks in prep for new paper!
+content/10_*
+content/10b_comparisons_with_BGEP_2024.ipynb
+content/10c_comparisons_with_BGEP_2024summer.ipynb
 
 # pycache 
 __pycache__/*
@@ -22,6 +20,7 @@ __pycache__/*
 # data 
 content/data/*
 content/data/IS2SITMOGR4/*
+content/data/IS2SITMOGR4_SUMMER/*
 content/data/ISSITGR4/*/*
 
 #update script

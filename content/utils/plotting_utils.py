@@ -177,7 +177,7 @@ def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", co
     
     # save figure
     if savefig:
-        plt.savefig('./figs/maps_'+out_str+'.png', dpi=400, facecolor="white", bbox_inches='tight')
+        plt.savefig('./figs/maps_'+out_str+'.png', dpi=300, facecolor="white", bbox_inches='tight')
 
     plt.close() # Close so it doesnt automatically display in notebook 
     return fig
@@ -446,8 +446,13 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
     # Set up plot 
     fig, ax = plt.subplots(figsize=figsize)
     ax.plot(xaxis_months, np.empty((len(xaxis_months),1))*np.nan, color=None, label=None) # Set x axis using winter months 
-    gridlines = plt.grid(b = True, linestyle = '-', alpha = 0.2) # Add gridlines 
-    
+    try:
+        gridlines = plt.grid(b = True, linestyle = '-', alpha = 0.2) # Add gridlines 
+    except:
+        try:
+            gridlines = plt.grid(visible = True, linestyle = '-', alpha = 0.2) # Add gridlines 
+        except:
+            print("No gridlines")
     for year, fmt in zip(years, fmts*100): 
         winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season) # Get data from that winter 
         if winter_da is None: # In case the user inputs a year that doesn't have data, skip this loop iteration to avoid appending None
