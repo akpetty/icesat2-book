@@ -16,9 +16,10 @@ content/bokeh/*
 _build/
 
 # Notebooks in prep for new paper!
-content/10_*
-content/10b_comparisons_with_BGEP_2024.ipynb
-content/10c_comparisons_with_BGEP_2024summer.ipynb
+content/10*
+
+# start adding in files once I'm happy with them
+!content/10a_all_season_arctic_sea_ice_variability_prelim.ipynb
 
 # pycache 
 __pycache__/*
@@ -29,6 +30,9 @@ content/data/*
 content/data/IS2SITMOGR4/*
 content/data/IS2SITMOGR4_SUMMER/*
 content/data/ISSITGR4/*/*
+
+# figures 
+content/figs/*
 
 #update script
 update_book.sh

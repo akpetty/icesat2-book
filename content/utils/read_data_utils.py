@@ -113,8 +113,8 @@ def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/
         s3 = s3fs.S3FileSystem(anon=True)
         store = s3fs.S3Map(root=zarr_path, s3=s3, check=False)
         is2_ds = xr.open_zarr(store=store)
-        print(is2_ds)
-        # Had a problem with these being loaded as dask arrays which cartopy doesnt like
+        #print(is2_ds)
+        # Had a problem with these being loaded as dask arrays which cartopy doesnt love
         is2_ds = is2_ds.assign_coords(longitude=(["y","x"], is2_ds.longitude.values))
         is2_ds = is2_ds.assign_coords(latitude=(["y","x"], is2_ds.latitude.values))
 
@@ -163,7 +163,6 @@ def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/
     
     is2_ds = is2_ds.assign_attrs(description="Aggregated IS2SITMOGR4 "+version+" dataset.")
 
-    
     return is2_ds
 
 

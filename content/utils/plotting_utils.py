@@ -162,18 +162,17 @@ def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", co
             try:
                 ax.set_title(dates[i], fontsize=10, horizontalalignment="center",verticalalignment="bottom", x=0.5, y=1.01, fontweight='medium')
             except:
-                ('no date')
+                print('no date')
             i+=1
-       
-        
+
     # Get figure
     fig = plt.gcf()
     
     # Set title 
     if (sum(ax_iter.shape) == 0) and (title is not None): 
-        ax.set_title(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        ax.set_title(title, fontsize=10, horizontalalignment="center", x=0.5, y=1.06, fontweight='medium')
     elif title is not None:
-        fig.suptitle(title, fontsize=10, horizontalalignment="center", x=0.45, y=1.06, fontweight='medium')
+        fig.suptitle(title, fontsize=10, horizontalalignment="center", x=0.5, y=1.06, fontweight='medium')
     
     # save figure
     if savefig:
