@@ -30,6 +30,9 @@ execute:
   exclude_patterns:
     - 'data_wrangling.ipynb'
     - 'delete/*'
+    - '_build/*'
+
+    
 
 launch_buttons: 
   binderhub_url: "https://mybinder.org"

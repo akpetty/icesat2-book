@@ -17,6 +17,12 @@ from datetime import datetime
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
+# Interpolating/smoothing packages 
+from scipy.interpolate import griddata
+from scipy.spatial import KDTree
+from astropy.convolution import convolve
+from astropy.convolution import Gaussian2DKernel
+
 def get_summer_data(da, year_start=None, start_month="May", end_month="Jul", force_complete_season=False):
     """ Select data for summer seasons corresponding to the input time range 
     
@@ -96,7 +102,7 @@ def add_time_dim_v3(xda):
     xda = xda.expand_dims(time = [datetime.now()])
     return xda
 
-def read_IS2SITMOGR4_SUMMER(version='V0', local_data_path="./data/IS2SITMOGR4_SUMMER/"): 
+def read_IS2SITMOGR4S(version='V0', local_data_path="./data/IS2SITMOGR4_SUMMER/"): 
     """ Read in IS2SITMOGR4 summer monthly gridded thickness dataset from local netcdf files
 
     """
@@ -248,3 +254,176 @@ def regrid_ubris_to_is2(mapProj, xIS2, yIS2, out_lons, out_lats, date_range, dat
 
     return cs2_ubris
 
+def get_cs2is2_snow(mapProj, xIS2, yIS2, dataPathCS2='./data/uit_cs2-is2-ak_snow_depth_25km_v3.nc'):
+    """
+    Load, process and regrid CS2-IS2 snow depth data to the IS2 grid for winter months between 2018-2023.
+    
+    This function:
+    1. Creates a time array for winter months (Oct-Apr) from 2018-2023
+    2. Loads CS2-IS2 snow depth data from a netCDF file
+    3. Regrids the data to match the IS2 grid coordinates
+    4. Returns the regridded data as an xarray DataArray
+    
+    Parameters
+    ----------
+    mapProj : function
+        Map projection function to convert lat/lon to x/y coordinates
+    xIS2 : numpy.ndarray
+        1D array of x-coordinates for the IS2 grid
+    yIS2 : numpy.ndarray
+        1D array of y-coordinates for the IS2 grid
+    dataPathCS2 : str, optional
+        Path to the CS2-IS2 snow depth netCDF file
+        Default is './data/uit_cs2-is2-ak_snow_depth_25km_v3.nc'
+    
+    Returns
+    -------
+    xarray.DataArray
+        Regridded snow depth data with dimensions:
+        - time: winter months from 2018-2023
+        - y: IS2 grid y-coordinates
+        - x: IS2 grid x-coordinates
+        
+    Notes
+    -----
+    Winter season is defined as October through April of the following year.
+    The data is regridded from the original CS2 grid to the IS2 grid using
+    the regridToICESat2 function.
+    """
+    
+    # Create date range for Oct-Apr periods from 2018-2023
+    dates = []
+    for year in range(2018, 2023):
+        # October to December of current year
+        dates.extend(pd.date_range(start=f'{year}-10-01', end=f'{year}-12-31', freq='MS'))
+        # January to April of next year
+        dates.extend(pd.date_range(start=f'{year+1}-01-01', end=f'{year+1}-04-30', freq='MS'))
+
+    # Convert to numpy datetime64 array
+    dates_cs2is2 = np.array(dates, dtype='datetime64[ns]')
+
+    # Get the IS-2/CS-2 snow depths
+    xptsIS2, yptsIS2 = np.meshgrid(xIS2, yIS2)
+    
+
+    cs2is2_snow = xr.open_dataset(dataPathCS2, decode_times=False)
+    xptsT_ubris, yptsT_ubris = mapProj(cs2is2_snow.isel(t=0).Longitude, cs2is2_snow.isel(t=0).Latitude)
+
+    cs2is2_snow_regridded = []
+    for t in cs2is2_snow.t.values:
+        #print(t)
+        cs2is2_snow_is2grid = regridToICESat2(cs2is2_snow.sel(t=t).Snow_Depth_KuLa.values, 
+                                                xptsT_ubris, yptsT_ubris, xptsIS2, yptsIS2) 
+        cs2is2_snow_regridded.append(cs2is2_snow_is2grid)
+    # Convert list to numpy array with proper dimensions
+    cs2is2_snow_regridded_array = np.array(cs2is2_snow_regridded)
+
+    # Create a new DataArray with the regridded data
+    cs2is2_snow_regridded_da = xr.DataArray(
+        cs2is2_snow_regridded_array,
+        dims=['time', 'y', 'x'],
+        coords={
+            'time': dates_cs2is2,
+            'y': yIS2,
+            'x': xIS2
+        },
+        name='cs2is2_snow_depth'
+    ) 
+    cs2is2_snow_regridded_da  
+
+    return cs2is2_snow_regridded_da
+
+def apply_interpolation_time(dataset_og, xptsIS2, yptsIS2, variables, force_copy=False, method = "linear"):
+    # Apply interpolation to all data for consistency
+    # Interpolation settings 
+    # Force copy is used to force a copy of the data to be made, otherwise the data will not be overwritten if already exists
+    # Create a copy of the dataset to avoid modifying the original
+    dataset = dataset_og.copy(deep=True)
+
+    
+    for var in variables:
+        if var+'_int' not in dataset or force_copy:
+            print(f'Creating/forcing new variable {var}_int')
+            dataset[var+'_int'] = xr.DataArray(
+                data=np.full_like(dataset[var].values, np.nan),
+                dims=dataset[var].dims,
+                coords=dataset[var].coords
+            )
+        # Loop over each time step
+        for time_index in range(dataset.dims['time']):
+
+            print(var, time_index)# Perform linear interpolation for the current time step
+            try:
+                is2_to_interp = dataset[var].isel(time=time_index).values
+                is2_to_interp[np.where(dataset.sea_ice_conc.isel(time=time_index) < 0.15)] = 0  # Set 15% conc or less to 0 thickness
+                np_interpolated = griddata((xptsIS2[(np.isfinite(is2_to_interp))], 
+                                            yptsIS2[(np.isfinite(is2_to_interp))]), 
+                                            is2_to_interp[(np.isfinite(is2_to_interp))].flatten(),
+                                            (xptsIS2, yptsIS2), 
+                                            fill_value=np.nan,
+                                            method=method)
+                np_interpolated[~(np.isfinite(dataset.sea_ice_conc.isel(time=time_index)))] = np.nan  # Remove thickness data where cdr data is nan 
+                np_interpolated[np.where(dataset.sea_ice_conc.isel(time=time_index) < 0.5)] = np.nan  # Remove thickness data where cdr data < 50% concentration
+
+                x_stddev = 0.5
+                kernel = Gaussian2DKernel(x_stddev=x_stddev)
+                np_interpolated_gauss = convolve(np_interpolated, kernel)
+                np_interpolated_gauss[~(np.isfinite(dataset.sea_ice_conc.isel(time=time_index)))] = np.nan  # Remove thickness data where cdr data is nan 
+                np_interpolated_gauss[np.where(dataset.sea_ice_conc.isel(time=time_index) < 0.5)] = np.nan  # Remove thickness data where cdr data < 50% concentration
+                
+                #print(np_interpolated_gauss.shape)
+                # Ensure the data is in the correct shape
+                #np_interpolated_gauss = np_interpolated_gauss[np.newaxis, :, :]  # Add a new axis for time
+
+                # Add the interpolated data to the new dataset
+                # Update the data using loc indexer
+                #dataset[var+'_int'] = dataset[var+'_int'].copy(deep=True)
+                dataset[var+'_int'][dict(time=time_index)] = np_interpolated_gauss
+                print('Interpolated.')
+
+            except:
+                print('no data or issue with gridding, so skipping...')
+                dataset[var+'_int'].isel(time=time_index)[:] = np.full(dataset[var+'_int'].isel(time=time_index)[:].shape, np.nan)
+                continue
+    print('done, returning new dataset')
+    return dataset
+
+def apply_interpolation_timestep(IS2_CS2_allseason, xptsIS2, yptsIS2, variables):
+    # Apply interpolation to all data for consistency
+    # Interpolation settings 
+    method = "linear" 
+
+    # Create a new dataset to store the interpolated values
+    IS2_CS2_allseason_int = IS2_CS2_allseason.copy(deep=True)
+
+    for var in variables:
+        print(var)# Perform linear interpolation for the current time step
+        #try:
+        is2_to_interp = IS2_CS2_allseason[var].values.copy()
+        is2_to_interp[np.where(IS2_CS2_allseason.sea_ice_conc < 0.15)] = 0  # Set 15% conc or less to 0 thickness
+        np_interpolated = griddata((xptsIS2[(np.isfinite(is2_to_interp))], 
+                                    yptsIS2[(np.isfinite(is2_to_interp))]), 
+                                    is2_to_interp[(np.isfinite(is2_to_interp))].flatten(),
+                                    (xptsIS2, yptsIS2), 
+                                    fill_value=np.nan,
+                                    method=method)
+        np_interpolated[~(np.isfinite(IS2_CS2_allseason.sea_ice_conc))] = np.nan  # Remove thickness data where cdr data is nan 
+        np_interpolated[np.where(IS2_CS2_allseason.sea_ice_conc < 0.5)] = np.nan  # Remove thickness data where cdr data < 50% concentration
+
+        x_stddev = 0.5
+        kernel = Gaussian2DKernel(x_stddev=x_stddev)
+        np_interpolated_gauss = convolve(np_interpolated, kernel)
+        np_interpolated_gauss[~(np.isfinite(IS2_CS2_allseason.sea_ice_conc))] = np.nan  # Remove thickness data where cdr data is nan 
+        np_interpolated_gauss[np.where(IS2_CS2_allseason.sea_ice_conc < 0.5)] = np.nan  # Remove thickness data where cdr data < 50% concentration
+        print('Interpolated.')
+        print(np_interpolated_gauss.shape)
+        # Ensure the data is in the correct shape
+        #np_interpolated_gauss = np_interpolated_gauss[np.newaxis, :, :]  # Add a new axis for time
+
+        # Add the interpolated data to the new dataset
+        IS2_CS2_allseason_int[var+'_int'][:] = np_interpolated_gauss
+        #except:
+        #    print('no data or issue with gridding, so skipping...')
+        #    #IS2SITMOGR4_v3[var].isel(time=time_index)[:] = np.full(np_interpolated_gauss.shape, np.nan)
+        #    continue
+    return IS2_CS2_allseason_int
