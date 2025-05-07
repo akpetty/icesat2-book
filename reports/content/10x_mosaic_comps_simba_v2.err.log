@@ -1,0 +1,110 @@
+Traceback (most recent call last):
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# OLD WAY WITHOUT MAP
+# 
+
+
+mpl.rcParams.update({
+    "text.usetex": False,  # Use LaTeX for rendering
+    "font.family": "serif",
+    "font.size": 7,  # Match typical LaTeX 10pt font
+    "axes.labelsize": 8,
+    "xtick.labelsize": 8,
+    "ytick.labelsize": 8,
+    "legend.fontsize": 8
+})
+
+# Validation plot with subplots for each option
+plt.rc('font', **{'family': 'sans-serif', 'sans-serif': ['Arial']})
+
+fig, axes = plt.subplots(2, 3, figsize=(6.8, 6.8*0.65), gridspec_kw={'hspace': 0.06, 'wspace': 0.04})  # Adjust hspace and wspace for less whitespace
+axes = axes.flatten()  # Flatten the 2D array of axes for easy iteration
+panel_labels = ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)']  # Panel labels
+
+# Leave the third subplot on the top row empty
+axes[2].axis('off')
+
+for i, option in enumerate(variables_ice):
+    ax = axes[i if i < 2 else i + 1]  # Skip the third subplot on the top row
+    #ax = axes[i]  # Skip the third subplot on the top row
+    ax.scatter(validation_results[option]['IB_comps'], validation_results[option]['IS2_comps'], c=validation_results[option]['IB_time'], alpha=0.8, vmin=0, vmax=300, label='A')
+
+    # Retrieve validation results for the current option
+    r_str= validation_results[option]['r_str']
+    mb_str = validation_results[option]['mb_str']
+    sd_str = validation_results[option]['sd_str']
+    n_str =  str(len(validation_results[option]['IS2_comps']))
+
+    # Calculate RMSE for each ULS
+    rmse = validation_results[option]['rmse']
+
+    # Annotate the plot with RMSE, mean bias, and standard deviation
+    #ax.annotate(f"A  r$^2$: {r_str_a}  MB: {mb_str_a} (m) SD: {sd_str_a} (m)  RMSE: {rmse_a:.02f} (m)", color='b', xy=(0.02, 0.98), xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=9)
+    #ax.annotate(f"B  r$^2$: {r_str_b}  MB: {mb_str_b} (m) SD: {sd_str_b} (m)  RMSE: {rmse_b:.02f} (m)", color='tab:red', xy=(0.02, 0.92), xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=9)
+    #ax.annotate(f"D  r$^2$: {r_str_d}  MB: {mb_str_d} (m) SD: {sd_str_d} (m)  RMSE: {rmse_d:.02f} (m)", color='tab:orange', xy=(0.02, 0.86), xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=9)
+    ax.annotate(f"r$^2$: {r_str} \nMB: {mb_str} (m)\nSD: {sd_str} (m)\nRMSE: {rmse} (m)\nN: {n_str}", color='k', xy=(0.98, 0.02), xycoords='axes fraction', horizontalalignment='right', verticalalignment='bottom', fontsize=7)
+
+    # Combine panel label with option label
+    ax.annotate(f"{panel_labels[i]} "+option, xy=(0.02, 0.98), xycoords='axes fraction', horizontalalignment='left', verticalalignment='top')
+
+    # Set x and y labels only for the leftmost and bottom plots
+    if (i==0):
+        ax.legend(frameon=False, loc="upper right")
+    if (i == 0)|(i==2):
+        ax.set_ylabel('IS-2/CS-2 ice thickness (m)')
+    else:
+        ax.set_yticklabels('')
+    if i >= 2:
+        ax.set_xlabel('MOSAIC ice thickness (m)')
+    else:
+        ax.set_xlabel('')
+        ax.set_xticklabels('')
+
+    ax.set_xlim([0, 6])
+    ax.set_ylim([0, 6])
+    lims = [
+        np.min([ax.get_xlim(), ax.get_ylim()]),  # min of both axes
+        np.max([ax.get_xlim(), ax.get_ylim()]),  # max of both axes
+    ]
+    ax.plot(lims, lims, 'k--', linewidth=0.5, alpha=0.5, zorder=0)
+    ax.set_aspect('equal')
+    ax.set_xlim(lims)
+    ax.set_ylim(lims)
+    #ax.legend()
+
+#plt.tight_layout()
+plt.subplots_adjust(left=0.065, right=0.98, top=0.98, bottom=0.09)  # Adjust these values to reduce whitespace
+
+#plt.savefig('./figs/MOSAIC_scatter_inccs2_'+ib_agg_str+'_'+str(grid_size)+'km_nomap.pdf', dpi=300)
+plt.show()
+
+# ... existing code ...
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mIndexError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[28], line 26[0m
+[1;32m     23[0m axes[[38;5;241m2[39m][38;5;241m.[39maxis([38;5;124m'[39m[38;5;124moff[39m[38;5;124m'[39m)
+[1;32m     25[0m [38;5;28;01mfor[39;00m i, option [38;5;129;01min[39;00m [38;5;28menumerate[39m(variables_ice):
+[0;32m---> 26[0m     ax [38;5;241m=[39m [43maxes[49m[43m[[49m[43mi[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mi[49m[43m [49m[38;5;241;43m<[39;49m[43m [49m[38;5;241;43m2[39;49m[43m [49m[38;5;28;43;01melse[39;49;00m[43m [49m[43mi[49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[38;5;241;43m1[39;49m[43m][49m  [38;5;66;03m# Skip the third subplot on the top row[39;00m
+[1;32m     27[0m     [38;5;66;03m#ax = axes[i]  # Skip the third subplot on the top row[39;00m
+[1;32m     28[0m     ax[38;5;241m.[39mscatter(validation_results[option][[38;5;124m'[39m[38;5;124mIB_comps[39m[38;5;124m'[39m], validation_results[option][[38;5;124m'[39m[38;5;124mIS2_comps[39m[38;5;124m'[39m], c[38;5;241m=[39mvalidation_results[option][[38;5;124m'[39m[38;5;124mIB_time[39m[38;5;124m'[39m], alpha[38;5;241m=[39m[38;5;241m0.8[39m, vmin[38;5;241m=[39m[38;5;241m0[39m, vmax[38;5;241m=[39m[38;5;241m300[39m, label[38;5;241m=[39m[38;5;124m'[39m[38;5;124mA[39m[38;5;124m'[39m)
+
+[0;31mIndexError[0m: index 6 is out of bounds for axis 0 with size 6
+

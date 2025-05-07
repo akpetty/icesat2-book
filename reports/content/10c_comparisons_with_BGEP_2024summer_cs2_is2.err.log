@@ -1,0 +1,85 @@
+Traceback (most recent call last):
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/akpetty/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from utils.plotting_utils import static_winter_comparison_lineplot, staticArcticMaps
+plot = IS2SITMOGR4_v3['cs2_sea_ice_thickness_UBRIS'].sel(time=['2019-06', '2019-07', '2019-08'])
+staticArcticMaps(plot, dates=plot.time.values,title="", set_cbarlabel = "Sea ice thickness (m)", col_wrap=3, cmap="viridis", vmin=0, vmax=5, out_str='thickness_summer_2019_2021')
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+Cell [0;32mIn[20], line 2[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mplotting_utils[39;00m [38;5;28;01mimport[39;00m static_winter_comparison_lineplot, staticArcticMaps
+[0;32m----> 2[0m plot [38;5;241m=[39m [43mIS2SITMOGR4_v3[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mcs2_sea_ice_thickness_UBRIS[39;49m[38;5;124;43m'[39;49m[43m][49m[38;5;241;43m.[39;49m[43msel[49m[43m([49m[43mtime[49m[38;5;241;43m=[39;49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43m2019-06[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43m2019-07[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43m2019-08[39;49m[38;5;124;43m'[39;49m[43m][49m[43m)[49m
+[1;32m      3[0m staticArcticMaps(plot, dates[38;5;241m=[39mplot[38;5;241m.[39mtime[38;5;241m.[39mvalues,title[38;5;241m=[39m[38;5;124m"[39m[38;5;124m"[39m, set_cbarlabel [38;5;241m=[39m [38;5;124m"[39m[38;5;124mSea ice thickness (m)[39m[38;5;124m"[39m, col_wrap[38;5;241m=[39m[38;5;241m3[39m, cmap[38;5;241m=[39m[38;5;124m"[39m[38;5;124mviridis[39m[38;5;124m"[39m, vmin[38;5;241m=[39m[38;5;241m0[39m, vmax[38;5;241m=[39m[38;5;241m5[39m, out_str[38;5;241m=[39m[38;5;124m'[39m[38;5;124mthickness_summer_2019_2021[39m[38;5;124m'[39m)
+
+File [0;32m~/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/dataarray.py:1536[0m, in [0;36mDataArray.sel[0;34m(self, indexers, method, tolerance, drop, **indexers_kwargs)[0m
+[1;32m   1426[0m [38;5;28;01mdef[39;00m [38;5;21msel[39m(
+[1;32m   1427[0m     [38;5;28mself[39m: T_DataArray,
+[1;32m   1428[0m     indexers: Mapping[Any, Any] [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m,
+[0;32m   (...)[0m
+[1;32m   1432[0m     [38;5;241m*[39m[38;5;241m*[39mindexers_kwargs: Any,
+[1;32m   1433[0m ) [38;5;241m-[39m[38;5;241m>[39m T_DataArray:
+[1;32m   1434[0m [38;5;250m    [39m[38;5;124;03m"""Return a new DataArray whose data is given by selecting index[39;00m
+[1;32m   1435[0m [38;5;124;03m    labels along the specified dimension(s).[39;00m
+[1;32m   1436[0m 
+[0;32m   (...)[0m
+[1;32m   1534[0m [38;5;124;03m    Dimensions without coordinates: points[39;00m
+[1;32m   1535[0m [38;5;124;03m    """[39;00m
+[0;32m-> 1536[0m     ds [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_to_temp_dataset[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43msel[49m[43m([49m
+[1;32m   1537[0m [43m        [49m[43mindexers[49m[38;5;241;43m=[39;49m[43mindexers[49m[43m,[49m
+[1;32m   1538[0m [43m        [49m[43mdrop[49m[38;5;241;43m=[39;49m[43mdrop[49m[43m,[49m
+[1;32m   1539[0m [43m        [49m[43mmethod[49m[38;5;241;43m=[39;49m[43mmethod[49m[43m,[49m
+[1;32m   1540[0m [43m        [49m[43mtolerance[49m[38;5;241;43m=[39;49m[43mtolerance[49m[43m,[49m
+[1;32m   1541[0m [43m        [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mindexers_kwargs[49m[43m,[49m
+[1;32m   1542[0m [43m    [49m[43m)[49m
+[1;32m   1543[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_from_temp_dataset(ds)
+
+File [0;32m~/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/dataset.py:2573[0m, in [0;36mDataset.sel[0;34m(self, indexers, method, tolerance, drop, **indexers_kwargs)[0m
+[1;32m   2512[0m [38;5;250m[39m[38;5;124;03m"""Returns a new dataset with each array indexed by tick labels[39;00m
+[1;32m   2513[0m [38;5;124;03malong the specified dimension(s).[39;00m
+[1;32m   2514[0m 
+[0;32m   (...)[0m
+[1;32m   2570[0m [38;5;124;03mDataArray.sel[39;00m
+[1;32m   2571[0m [38;5;124;03m"""[39;00m
+[1;32m   2572[0m indexers [38;5;241m=[39m either_dict_or_kwargs(indexers, indexers_kwargs, [38;5;124m"[39m[38;5;124msel[39m[38;5;124m"[39m)
+[0;32m-> 2573[0m query_results [38;5;241m=[39m [43mmap_index_queries[49m[43m([49m
+[1;32m   2574[0m [43m    [49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mindexers[49m[38;5;241;43m=[39;49m[43mindexers[49m[43m,[49m[43m [49m[43mmethod[49m[38;5;241;43m=[39;49m[43mmethod[49m[43m,[49m[43m [49m[43mtolerance[49m[38;5;241;43m=[39;49m[43mtolerance[49m
+[1;32m   2575[0m [43m[49m[43m)[49m
+[1;32m   2577[0m [38;5;28;01mif[39;00m drop:
+[1;32m   2578[0m     no_scalar_variables [38;5;241m=[39m {}
+
+File [0;32m~/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/indexing.py:188[0m, in [0;36mmap_index_queries[0;34m(obj, indexers, method, tolerance, **indexers_kwargs)[0m
+[1;32m    186[0m         results[38;5;241m.[39mappend(IndexSelResult(labels))
+[1;32m    187[0m     [38;5;28;01melse[39;00m:
+[0;32m--> 188[0m         results[38;5;241m.[39mappend([43mindex[49m[38;5;241;43m.[39;49m[43msel[49m[43m([49m[43mlabels[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43moptions[49m[43m)[49m)
+[1;32m    190[0m merged [38;5;241m=[39m merge_sel_results(results)
+[1;32m    192[0m [38;5;66;03m# drop dimension coordinates found in dimension indexers[39;00m
+[1;32m    193[0m [38;5;66;03m# (also drop multi-index if any)[39;00m
+[1;32m    194[0m [38;5;66;03m# (.sel() already ensures alignment)[39;00m
+
+File [0;32m~/miniconda3/envs/is2book_p39_env/lib/python3.9/site-packages/xarray/core/indexes.py:489[0m, in [0;36mPandasIndex.sel[0;34m(self, labels, method, tolerance)[0m
+[1;32m    487[0m     indexer [38;5;241m=[39m get_indexer_nd([38;5;28mself[39m[38;5;241m.[39mindex, label_array, method, tolerance)
+[1;32m    488[0m     [38;5;28;01mif[39;00m np[38;5;241m.[39many(indexer [38;5;241m<[39m [38;5;241m0[39m):
+[0;32m--> 489[0m         [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m([38;5;124mf[39m[38;5;124m"[39m[38;5;124mnot all values found in index [39m[38;5;132;01m{[39;00mcoord_name[38;5;132;01m!r}[39;00m[38;5;124m"[39m)
+[1;32m    491[0m [38;5;66;03m# attach dimension names and/or coordinates to positional indexer[39;00m
+[1;32m    492[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(label, Variable):
+
+[0;31mKeyError[0m: "not all values found in index 'time'"
+

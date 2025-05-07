@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>ICESat-2 Arctic Sea Ice State Analysis &#8212; ICESat-2 Sea Ice State Analysis</title>
   
@@ -15,47 +14,45 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,14 +60,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-J1HEQ5DMT0');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/0_home';</script>
-    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)" href="1_is2sitmogr4_intro.html" />
@@ -83,28 +84,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -126,12 +122,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -146,9 +152,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="#">
+  
   
   
   
@@ -158,12 +168,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ICESat-2 Sea Ice State Analysis - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="ICESat-2 Sea Ice State Analysis - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -217,6 +238,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2c_winter_arctic_sea_ice_variability_2023update.html">Winter Arctic sea ice state variability (updates through to April 2023)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2d_winter_arctic_sea_ice_variability_2024update.html">Winter Arctic sea ice state variability (updates through to April 2024)</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">All season Arctic sea ice thickness analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10a_all_season_arctic_sea_ice_variability_prelim.html">All-season Arctic sea ice thickness (preliminary, using new summer ICESat-2 ice thickness estimates)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="10b_comparisons_with_BGEP_allseason.html">Comparisons of all-season thickness data with BGEP ULS sea ice draft estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="10c_comparisons_with_BGEP_2024winter_multivar.html">Comparisons with BGEP ULS sea ice draft estimates updated with new data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10d_icebird_comps.html">Comparisons with AWI IceBird 2019</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10e_mosaic_comps_simba.html">Comparisons with MOSAiC SIMBA buoys</a></li>
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="7_gridded_data_wrangling.html">Data wrangling</a></li>
@@ -252,7 +288,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -261,14 +297,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -407,26 +443,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -447,16 +485,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-products">Data Products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-scope">Current Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-history">Version History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-book">Using the book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation">Navigation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book-description">Jupyter Book description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versions">Versions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -466,27 +506,82 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="icesat-2-arctic-sea-ice-state-analysis">
-<h1>ICESat-2 Arctic Sea Ice State Analysis<a class="headerlink" href="#icesat-2-arctic-sea-ice-state-analysis" title="Permalink to this heading">#</a></h1>
-<p>NASA’s Ice, Cloud, and Land Elevation Satellite-2 (<a class="reference external" href="https://icesat-2.gsfc.nasa.gov/">ICESat-2</a>) is an advanced satellite laser altimetry system specially designed to profile Earth’s fast-changing polar regions. The combination of meter-scale horizontal resolution and centimeter-scale vertical precision, makes ICESat-2 extremely well suited for measuring the thickness of polar sea ice - ice that forms and floats on top of the Arctic and Southern Ocean. In this Jupyter Book we provide a top-level analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.</p>
+<h1>ICESat-2 Arctic Sea Ice State Analysis<a class="headerlink" href="#icesat-2-arctic-sea-ice-state-analysis" title="Link to this heading">#</a></h1>
+<p>=============================================</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>NASA’s Ice, Cloud, and Land Elevation Satellite-2 (<a class="reference external" href="https://icesat-2.gsfc.nasa.gov/">ICESat-2</a>) is an advanced satellite laser altimetry system designed to profile Earth’s polar regions with meter-scale horizontal resolution and centimeter-scale vertical precision. This makes it particularly well-suited for measuring Arctic sea ice thickness. This Jupyter Book provides a comprehensive analysis of winter Arctic sea ice thickness variability derived from ICESat-2 freeboards and NESOSIM snow loading since its launch in fall 2018.</p>
 <p><img alt="ICESat-2 maps" src="../_images/maps_thickness_winter_2018_2024.png" /></p>
 <p align = "center">
-Fig 1: Mean winter(November to April) Arctic sea ice thickness from the first six winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
+Fig 1: Mean winter (November to April) Arctic sea ice thickness from the first six winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 <p><img alt="ICESat-2 maps" src="../_images/maps_thickness_winter_anomaly_2018_2024.png" /></p>
 <p align = "center">
-Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relative to the six winter mean) from the first five winters profiled by ICESat-2.
+Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relative to the six winter mean) from the first five winters profiled by ICESat-2.
 </p>
-<section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
-<p>The ICESat-2 Project Science Office has produced and disseminated a number of official data products through the National Snow and Ice Data Center <a class="reference external" href="https://nsidc.org/data/icesat-2">(NSIDC)</a> including the Arctic and Southern Ocean sea ice freeboard dataset <a class="reference external" href="https://nsidc.org/data/ATL10">(ATL10)</a>, which provides along-track estimates of the extension of sea ice above the local sea surface for each of the six beams of ICESat-2.</p>
-<p>Using assumptions regarding the depth and density of the snow layer on top of the ice, along with estimates of the density of the sea ice itself,  ICESat-2 freeboard data (ATL10) can be converted to an estimate of sea ice thickness. Estimates of Winter Arctic sea ice thickness using snow loading from the NASA Eulerian Snow on Sea Ice Model <a class="reference external" href="https://github.com/akpetty/NESOSIM">(NESOSIM)</a> have been produced and disseminated through the NSIDC (<a class="reference external" href="https://nsidc.org/data/IS2SITMOGR4">https://nsidc.org/data/IS2SITMOGR4</a>). More information about the methodology behind this dataset can be found in our <a class="reference external" href="http://www.alekpetty.com/papers/petty2020">original methodology paper</a>. A new manuscript has recently been publishedregarding the <a class="reference external" href="https://tc.copernicus.org/articles/17/127/2023/">analysis of the first three winters of data collected</a>, which was the original motivation behind the creation of this Jupyter Book.</p>
-<p>Our goal going forward is to continue to update this book as new data is produced and to share additional analyses of the sea ice state using data collected by ICESat-2. The analysis presented here has focussed on the Arctic only to-date, due mainly to our increased confidence regarding snow on sea ice conditions compared to the Southern Ocean. Similarly, we currently do not produce any thickness estimates during summer as melt ponds complicate our retrievals of freeboard and simulations of snow depth. However, do continue to watch this space for futher updates as we learn more about the data from this relatively new mission and further its capabilities.</p>
+</section>
+<section id="data-products">
+<h2>Data Products<a class="headerlink" href="#data-products" title="Link to this heading">#</a></h2>
+<p>The ICESat-2 Project Science Office has produced several official data products through the National Snow and Ice Data Center <a class="reference external" href="https://nsidc.org/data/icesat-2">(NSIDC)</a>, including:</p>
+<ul class="simple">
+<li><p><strong>ATL10</strong>: Arctic and Southern Ocean sea ice freeboard dataset providing along-track estimates of sea ice elevation above the local sea surface</p></li>
+<li><p><strong>IS2SITMOGR4</strong>: Monthly gridded sea ice thickness estimates using snow loading from the NASA Eulerian Snow on Sea Ice Model <a class="reference external" href="https://github.com/akpetty/NESOSIM">(NESOSIM)</a></p></li>
+</ul>
+<p>For detailed methodology, see our <a class="reference external" href="http://www.alekpetty.com/papers/petty2020">original methodology paper</a> and the <a class="reference external" href="https://tc.copernicus.org/articles/17/127/2023/">analysis of the first three winters</a>.</p>
+</section>
+<section id="current-scope">
+<h2>Current Scope<a class="headerlink" href="#current-scope" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Focus on Arctic analysis due to higher confidence in snow-on-sea-ice conditions</p></li>
+<li><p>Winter-only analysis (November-April) as melt ponds complicate summer retrievals</p></li>
+<li><p>Regular updates as new data becomes available</p></li>
+</ul>
+</section>
+<section id="version-history">
+<h2>Version History<a class="headerlink" href="#version-history" title="Link to this heading">#</a></h2>
+<p>Version 1.3 (02/14/2025):</p>
+<ul class="simple">
+<li><p>Added 2023-2024 winter analysis notebook</p></li>
+<li><p>Updated read_IS2SITMOGR4 function with new zarr path for V3 data up to 2024</p></li>
+</ul>
+<p>Version 1.2 (11/27/2023):</p>
+<ul class="simple">
+<li><p>Added 2022-2023 winter analysis notebook</p></li>
+<li><p>Described new Version 3 IS2SITMOGR4 dataset</p></li>
+<li><p>Minor bug fixes</p></li>
+</ul>
+<p>Version 1.1 (01/27/2023):</p>
+<ul class="simple">
+<li><p>Added 2021-2022 winter analysis notebook</p></li>
+<li><p>Minor bug fixes</p></li>
+</ul>
+<p>Version 1.0 (12/23/2023):</p>
+<ul class="simple">
+<li><p>First full release associated with TC paper (Petty et al., 2023)</p></li>
+<li><p>Archived on Zenodo: <a class="reference external" href="https://zenodo.org/record/7474218">https://zenodo.org/record/7474218</a></p></li>
+</ul>
+</section>
+<section id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
+<p><strong>Alek Petty (Current book lead, summer 2022 onwards)</strong><br>
+<a class="reference external" href="https://github.com/akpetty"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
+<p><strong>Nicole Keeney (Original book creator)</strong><br>
+<a class="reference external" href="https://github.com/nicolejkeeney"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Druckenmiller, M. L., Thoman, R., and T. Moon, Eds., (2024) The Arctic [in “State of the Climate in 2023”]. Bull. Amer. Meteor. Soc., 105 (8), S277–S330, doi: 10.1175/BAMS-D-24-0101.1.</p>
+<p>Meier, W., A. Petty, S. Hendricks, et al., (2023), “Sea Ice”, NOAA Arctic Report Card 2023, T. A. Moon, M. L. Druckenmiller, and R. L. Thoman, Eds, doi: 10.25923/f5t4-b865.</p>
+<p>Meier, W., A. Petty, S. Hendricks, et al., (2024), “Sea Ice”, NOAA Arctic Report Card 2024, T. A. Moon, M. L. Druckenmiller, and R. L. Thoman, Eds, doi: 10.25923/aksk-7p66.</p>
+<p>Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2023), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere, 17, 127–156, doi: 10.5194/tc-17-127-2023</p>
+<p>Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764</p>
+<p>Thoman, R., M. L. Druckenmiller, and T. Moon,, Eds., (2023) The Arctic [in “State of the Climate in 2022”]. Bull. Amer. Meteor. Soc., 104 (9), S271–S321, doi: 10.1175/BAMS-D-23-0079.1</p>
 </section>
 <section id="using-the-book">
-<h2>Using the book<a class="headerlink" href="#using-the-book" title="Permalink to this heading">#</a></h2>
+<h2>Using the book<a class="headerlink" href="#using-the-book" title="Link to this heading">#</a></h2>
 <p>There are three different ways to use this Jupyter Book:</p>
 <ol class="arabic simple">
 <li><p>View the rendered Jupyter Notebooks by clicking through the links on the left. Note that there is no interactivity with this option.</p></li>
@@ -495,7 +590,7 @@ Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relati
 </ol>
 </section>
 <section id="navigation">
-<h2>Navigation<a class="headerlink" href="#navigation" title="Permalink to this heading">#</a></h2>
+<h2>Navigation<a class="headerlink" href="#navigation" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>See the <a class="reference external" href="https://www.icesat-2-sea-ice-state.info/content/1_is2sitmogr4_intro.html">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) notebook</a> for an introduction to the monthly gridded winter Arctic sea ice thickness dataset.</p></li>
 <li><p>Check out the notebooks in the chapter: WINTER ARCTIC SEA ICE THICKNESS ANALYSIS (PETTY ET AL., 2023) for the peer-reviewed analysis of winter Arctic sea ice conditions from 2018 to 2021, including comparisons with BGEP, CryoSat-2 and PIOMAS data.</p></li>
@@ -510,50 +605,20 @@ Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relati
 </ul>
 </section>
 <section id="jupyter-book-description">
-<h2>Jupyter Book description<a class="headerlink" href="#jupyter-book-description" title="Permalink to this heading">#</a></h2>
+<h2>Jupyter Book description<a class="headerlink" href="#jupyter-book-description" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Books</a> provide a novel means of compiling various related Jupyter Notebooks into one convenient and well-indexed location. Here, a series of Jupyter Notebooks are used to provide a visual demonstration of our efforts to analyze winter Arctic sea ice conditions, primiarly freeboard and thickness, derived from ICESat-2 data, along with other relevant datasets.</p>
 </section>
 <section id="accessing-the-data">
-<h2>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this heading">#</a></h2>
+<h2>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Link to this heading">#</a></h2>
 <p>The monthly gridded ICESat-2 winter Arctic sea ice thickness data are archived and made publicly available at the NSIDC (<a class="reference external" href="https://nsidc.org/data/IS2SITMOGR4">https://nsidc.org/data/IS2SITMOGR4</a>). However, to simplify our analysis we have also uploaded these same data to an <a class="reference external" href="https://icesat-2-sea-ice-us-west-2.s3.us-west-2.amazonaws.com">AWS S3 Bucket</a>. In this first release of this Jupyter Book we also generated and uploaded aggregated netcdf files containing all the data needed for the original analysis in an S3 bucket under the name <code class="docutils literal notranslate"><span class="pre">IS2_jbook_dataset_201811-202104.nc</span></code> and <code class="docutils literal notranslate"><span class="pre">IS2_CS2_jbook_dataset_201811-202104.nc</span></code>. These datasets contains all the gridded ICESat-2 sea ice thickness data along with all other datasets used in the notebook to help contextualize the sea ice and atmospheric conditions through each winter. All datasets included have been regridded to the same NSIDC North Polar Stereographic grid (the native grid of the ICESat-2 sea ice data used), to simplify the mapping and comparisons. See the Data Wrangling pages for more information each dataset and on on the regridding process.</p>
 </section>
 <section id="packages">
-<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this heading">#</a></h2>
+<h2>Packages<a class="headerlink" href="#packages" title="Link to this heading">#</a></h2>
 <p>All of the notebooks in this notebook utilize <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a>, a python package built for working with multi-dimensional data like the monthly gridded sea ice data. Xarray is especially useful for time series data and allows for easily plotting data on map projections via compatability with the python packages cartopy and hvplot.</p>
 </section>
 <section id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h2>
+<h2>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h2>
 <p>All content in this Jupyter Book is distributed under the MIT license.</p>
-</section>
-<section id="versions">
-<h2>Versions<a class="headerlink" href="#versions" title="Permalink to this heading">#</a></h2>
-<p>Version 1.3 (02/14/2025):</p>
-<ul class="simple">
-<li><p>Added the new 2023-2024 winter analysis notebook.</p></li>
-<li><p>Updated the read_IS2SITMOGR4 function with the new zarr path for the V3 data up to 2024.</p></li>
-</ul>
-<p>Version 1.2 (11/27/2023):</p>
-<ul class="simple">
-<li><p>Added the new 2022-2023 winter analysis notebook which also describes the new Version 3 IS2SITMOGR4 dataset.</p></li>
-<li><p>A few other little minor bug fixes.</p></li>
-</ul>
-<p>Version 1.1 (01/27/2023):</p>
-<ul class="simple">
-<li><p>Added the new 2021-2022 winter analysis notebook.</p></li>
-<li><p>A few other little minor bug fixes.</p></li>
-</ul>
-<p>Version 1.0 (12/23/2023):</p>
-<ul class="simple">
-<li><p>First full release associated with release of the TC paper (Petty et al., 2023).</p></li>
-<li><p>Tagged/archived on Zenodo:<a class="reference external" href="https://zenodo.org/record/7474218">https://zenodo.org/record/7474218</a>.</p></li>
-</ul>
-</section>
-<section id="contributors">
-<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this heading">#</a></h2>
-<p><strong>Alek Petty (Current book lead, summer 2022 onwards)</strong><br>
-<a class="reference external" href="https://github.com/akpetty"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
-<p><strong>Nicole Keeney (Original book creator)</strong><br>
-<a class="reference external" href="https://github.com/nicolejkeeney"><img alt="GitHub" src="https://badgen.net/badge/icon/github?icon=github&amp;label" /></a></p>
 <!-- <iframe src="/flowers.html"
     width="100%"
     allow="encrypted-media"
@@ -561,15 +626,8 @@ Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relati
     >
 </iframe> -->
 </section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p>Druckenmiller, M. L., Thoman, R., and T. Moon, Eds., (2024) The Arctic [in “State of the Climate in 2023”]. Bull. Amer. Meteor. Soc., 105 (8), S277–S330, doi: 10.1175/BAMS-D-24-0101.1.</p>
-<p>Meier, W., A. Petty, S. Hendricks, et al., (2023), “Sea Ice”, NOAA Arctic Report Card 2023, T. A. Moon, M. L. Druckenmiller, and R. L. Thoman, Eds, doi: 10.25923/f5t4-b865.</p>
-<p>Meier, W., A. Petty, S. Hendricks, et al., (2024), “Sea Ice”, NOAA Arctic Report Card 2024, T. A. Moon, M. L. Druckenmiller, and R. L. Thoman, Eds, doi: 10.25923/aksk-7p66.</p>
-<p>Petty A. A., N. Keeney, A. Cabaj, P. Kushner, M. Bagnardi (2023), Winter Arctic sea ice thickness from ICESat-2: upgrades to freeboard and snow loading estimates and an assessment of the first three winters of data collection, The Cryosphere, 17, 127–156, doi: 10.5194/tc-17-127-2023</p>
-<p>Petty, A. A., N. T. Kurtz, R. Kwok, T. Markus, T. A. Neumann (2020), Winter Arctic sea ice thickness from ICESat‐2 freeboards, Journal of Geophysical Research: Oceans, 125, e2019JC015764. doi:10.1029/2019JC015764</p>
-<p>Thoman, R., M. L. Druckenmiller, and T. Moon,, Eds., (2023) The Arctic [in “State of the Climate in 2022”]. Bull. Amer. Meteor. Soc., 104 (9), S271–S321, doi: 10.1175/BAMS-D-23-0079.1</p>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -609,8 +667,8 @@ Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relati
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="right-next"
        href="1_is2sitmogr4_intro.html"
@@ -630,22 +688,25 @@ Fig 2: Mean winter(November to April) Arctic sea ice thickness anomalies (relati
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-products">Data Products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-scope">Current Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-history">Version History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-book">Using the book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation">Navigation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book-description">Jupyter Book description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versions">Versions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
@@ -667,6 +728,7 @@ By Nicole Keeney and Alek Petty
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -696,8 +758,8 @@ By Nicole Keeney and Alek Petty
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
