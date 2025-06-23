@@ -1,6 +1,6 @@
 # Book settings
 title: ICESat-2 Sea Ice State Analysis
-author: Nicole Keeney and Alek Petty
+author: Alek Petty and Nicole Keeney
 copyright: "2022"  # Copyright year to be placed in the footer
 logo: content/figs/logo.png
 
@@ -28,12 +28,11 @@ execute:
   timeout                   : 1000
   only_build_toc_files      : true
   exclude_patterns:
-    - 'data_wrangling.ipynb'
+#    - 'data_wrangling.ipynb'
     - 'delete/*'
     - '_build/*'
 
     
-
 launch_buttons: 
   binderhub_url: "https://mybinder.org"
 

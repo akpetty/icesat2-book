@@ -16,10 +16,10 @@ content/bokeh/*
 _build/
 
 # Notebooks in prep for new paper!
-content/10*
+#content/10*
 
 # start adding in files once I'm happy with them
-!content/10a_all_season_arctic_sea_ice_variability_prelim.ipynb
+#!content/10a_all_season_arctic_sea_ice_variability_prelim.ipynb
 
 # pycache 
 __pycache__/*
