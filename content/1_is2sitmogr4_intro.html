@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4) &#8212; ICESat-2 Sea Ice State Analysis</title>
   
@@ -15,47 +14,45 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,14 +60,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-J1HEQ5DMT0');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/1_is2sitmogr4_intro';</script>
-    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Winter Arctic sea ice state variability" href="2_winter_arctic_sea_ice_variability.html" />
@@ -84,28 +85,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -127,12 +123,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -147,9 +151,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="0_home.html">
+  
   
   
   
@@ -159,12 +167,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ICESat-2 Sea Ice State Analysis - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="ICESat-2 Sea Ice State Analysis - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -220,18 +239,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">All season Arctic sea ice thickness analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="10a_all_season_arctic_sea_ice_variability_prelim.html">All-season Arctic sea ice thickness (preliminary, using new summer ICESat-2 ice thickness estimates)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10a_all_season_arctic_sea_ice_variability.html">All-season Arctic sea ice thickness using new summer ICESat-2 ice thickness estimates</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="10b_comparisons_with_BGEP_allseason.html">Comparisons of all-season thickness data with BGEP ULS sea ice draft estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10b_comparisons_with_BGEP_allseason.html">Comparisons of all-season ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="10c_comparisons_with_BGEP_2024winter_multivar.html">Comparisons with BGEP ULS sea ice draft estimates updated with new data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10d_comparisons_with_icebird.html">Comparisons with AWI IceBird 2019 airborne data</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="10d_icebird_comps.html">Comparisons with AWI IceBird 2019</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10e_comparisons_with_mosaic_simba.html">Comparisons with MOSAiC SIMBA buoys</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="10e_mosaic_comps_simba.html">Comparisons with MOSAiC SIMBA buoys</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="10f_map.html">Map of all-season assessment data locations</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
 <ul class="nav bd-sidenav">
@@ -268,7 +286,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -277,14 +295,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -307,16 +325,16 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/akpetty/icesat2-book/master?urlpath=tree/content/1_is2sitmogr4_intro.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/akpetty/icesat2-book/main?urlpath=tree/content/1_is2sitmogr4_intro.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -355,7 +373,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/akpetty/icesat2-book/edit/master/content/1_is2sitmogr4_intro.ipynb" target="_blank"
+      <li><a href="https://github.com/akpetty/icesat2-book/edit/main/content/1_is2sitmogr4_intro.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -454,26 +472,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -513,34 +533,34 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="icesat-2-l4-monthly-gridded-sea-ice-thickness-dataset-is2sitmogr4">
-<h1>ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)<a class="headerlink" href="#icesat-2-l4-monthly-gridded-sea-ice-thickness-dataset-is2sitmogr4" title="Permalink to this heading">#</a></h1>
+<h1>ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)<a class="headerlink" href="#icesat-2-l4-monthly-gridded-sea-ice-thickness-dataset-is2sitmogr4" title="Link to this heading">#</a></h1>
 <p><strong>Summary</strong> In this notebook, we provide a basic look at the Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4). We will show you how to easily download the data from our public google storage bucket and how to generate some simple plots for a few variables of interest. Our current focus is on this simpler, monthly gridded dataset. We hope in future efforts to showcase the hgiher-resolution along-track thickness dataset also: <a class="reference external" href="https://nsidc.org/data/is2sitdat4">https://nsidc.org/data/is2sitdat4</a>.</p>
 <p><strong>Raw data link</strong>: <a class="reference external" href="https://nsidc.org/data/is2sitmogr4/">https://nsidc.org/data/is2sitmogr4/</a> (put in the data folder of this book to bypass the various access/download options we provide)</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="import-notebook-dependencies">
-<h1>Import notebook dependencies<a class="headerlink" href="#import-notebook-dependencies" title="Permalink to this heading">#</a></h1>
+<h1>Import notebook dependencies<a class="headerlink" href="#import-notebook-dependencies" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span> 
 <span class="c1"># Helper function for reading the data from the bucket</span>
-<span class="kn">from</span> <span class="nn">utils.read_data_utils</span> <span class="kn">import</span> <span class="n">read_IS2SITMOGR4</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils.read_data_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_IS2SITMOGR4</span> 
 <span class="c1">#import s3fs</span>
 
 <span class="c1"># Plotting dependencies</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">wrap</span>
-<span class="kn">from</span> <span class="nn">matplotlib.axes</span> <span class="kn">import</span> <span class="n">Axes</span>
-<span class="kn">from</span> <span class="nn">cartopy.mpl.geoaxes</span> <span class="kn">import</span> <span class="n">GeoAxes</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span> <span class="n">wrap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.axes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartopy.mpl.geoaxes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoAxes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Helps avoid some weird issues with the polar projection </span>
 <span class="n">GeoAxes</span><span class="o">.</span><span class="n">_pcolormesh_patched</span> <span class="o">=</span> <span class="n">Axes</span><span class="o">.</span><span class="n">pcolormesh</span> 
 
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># Sets effective figure size in the notebook</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">9</span>
@@ -549,7 +569,7 @@ document.write(`
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">9</span>
 
 <span class="c1"># Remove warnings to improve display</span>
-<span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span> 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -557,7 +577,7 @@ document.write(`
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="read-in-monthly-gridded-is2sitmogr4-thickness-data">
-<h1>Read in monthly gridded IS2SITMOGR4 thickness data<a class="headerlink" href="#read-in-monthly-gridded-is2sitmogr4-thickness-data" title="Permalink to this heading">#</a></h1>
+<h1>Read in monthly gridded IS2SITMOGR4 thickness data<a class="headerlink" href="#read-in-monthly-gridded-is2sitmogr4-thickness-data" title="Link to this heading">#</a></h1>
 <p>Here, we’ll read in the data from the jupyter book using a function <code class="docutils literal notranslate"><span class="pre">read_IS2SITMOGR4</span></code> , defined in the <code class="docutils literal notranslate"><span class="pre">read_data_utils</span></code> module. You can also download this same data from the NSIDC. See the <code class="docutils literal notranslate"><span class="pre">data_wrangling</span></code> notebook for more information on this dataset.</p>
 <p>We inclue two different ways of accessing the data:</p>
 <ul class="simple">
@@ -581,10 +601,47 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/aapetty/GitHub/akpetty/icesat2-book/content
+local netcdf files available, use these
+Load in netcdf files to xarray dataset
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201910_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202111_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201901_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202011_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201904_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202203_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201909_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201912_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202204_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201903_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202102_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201812_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202002_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202201_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202010_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202104_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201811_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202109_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202202_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202001_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201911_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202004_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202110_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202101_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202009_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202012_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202003_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202112_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_201902_005_002.nc
+/Users/aapetty/GitHub/akpetty/icesat2-book/content/data/IS2SITMOGR4/V2/IS2SITMOGR4_01_202103_005_002.nc
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="overlay-sea-ice-thickness-on-a-map-of-the-arctic">
-<h1>Overlay sea ice thickness on a map of the Arctic<a class="headerlink" href="#overlay-sea-ice-thickness-on-a-map-of-the-arctic" title="Permalink to this heading">#</a></h1>
+<h1>Overlay sea ice thickness on a map of the Arctic<a class="headerlink" href="#overlay-sea-ice-thickness-on-a-map-of-the-arctic" title="Link to this heading">#</a></h1>
 <p>xarray allows us to generate a quick and simple map of the data in just a few lines of code. Below, we’ll plot sea ice thickness for a single month.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -601,12 +658,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/78c72521a925eb0862ad4d93c1409565b95aa38dd202cd9b318728adea5b2a63.png" src="../_images/78c72521a925eb0862ad4d93c1409565b95aa38dd202cd9b318728adea5b2a63.png" />
+<img alt="../_images/9a6a69448637137d111e49db5482053f39326be8ba4747704500a66d2a51f036.png" src="../_images/9a6a69448637137d111e49db5482053f39326be8ba4747704500a66d2a51f036.png" />
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="simple-sea-ice-thickness-maps">
-<h1>Simple sea ice thickness maps<a class="headerlink" href="#simple-sea-ice-thickness-maps" title="Permalink to this heading">#</a></h1>
+<h1>Simple sea ice thickness maps<a class="headerlink" href="#simple-sea-ice-thickness-maps" title="Link to this heading">#</a></h1>
 <p>Using the function arguments <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">col_wrap</span></code>, we can modify the code for plotting one month of data to plot several months of data. Below, we’ll plot sea ice thickness for Nov 2020 - Apr 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -628,12 +685,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/424059aff8227071da11decad7d4748e63e3a5be55cacaca3274ce818d136ce5.png" src="../_images/424059aff8227071da11decad7d4748e63e3a5be55cacaca3274ce818d136ce5.png" />
+<img alt="../_images/73a6a15b6656df05eb88ff8fec738ca5c63bcae600bb97fca31b487a4c6fcf6e.png" src="../_images/73a6a15b6656df05eb88ff8fec738ca5c63bcae600bb97fca31b487a4c6fcf6e.png" />
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="plot-mean-sea-ice-freeboard-over-time">
-<h1>Plot mean sea ice freeboard over time<a class="headerlink" href="#plot-mean-sea-ice-freeboard-over-time" title="Permalink to this heading">#</a></h1>
+<h1>Plot mean sea ice freeboard over time<a class="headerlink" href="#plot-mean-sea-ice-freeboard-over-time" title="Link to this heading">#</a></h1>
 <p>Maybe we want to know how the mean has changed over time. Below, we’ll compute the mean monthly sea ice freeboard for Sep 2020 - Apr 2021, and display the information in a simple lineplot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -651,11 +708,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3b4efe8a1a9782925e30f6f425c49e7dfd2890997b14e84654c31bce8e27628b.png" src="../_images/3b4efe8a1a9782925e30f6f425c49e7dfd2890997b14e84654c31bce8e27628b.png" />
+<img alt="../_images/8a653e22070b56a03e115a3a7f1a105832ae302228ca7e5d5c81da8bf92267be.png" src="../_images/8a653e22070b56a03e115a3a7f1a105832ae302228ca7e5d5c81da8bf92267be.png" />
 </div>
 </div>
 <section id="restrict-data-to-a-given-region">
-<h2>Restrict data to a given region<a class="headerlink" href="#restrict-data-to-a-given-region" title="Permalink to this heading">#</a></h2>
+<h2>Restrict data to a given region<a class="headerlink" href="#restrict-data-to-a-given-region" title="Link to this heading">#</a></h2>
 <p>We use a region mask of the Arctic to allow us to select for regions of interest, and ignore other regions. This mask is included as a data variable in the ICESat-2 v2 data, and was provided courtesy W. Meier &amp; S. Stewart, National Snow and Ice Data Center (NSIDC).</p>
 <p>In most of the analysis presented in this Jupyter Book, we restrict the data to the Inner Arctic domain, defined as the combined area of the Central Arctic, Beaufort Sea, Chukchi Sea, E Siberian Sea, Laptev Sea and Kara Sea. Freeboards and snow depths are generally more uncertain in the lower latitude peripheral seas of the Arctic.</p>
 <p><img alt="Arctic region mask" src="../_images/region_mask.png" /></p>
@@ -689,7 +746,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/17298e6921ba06e75aaa51b54fde1c770b19707adbbba06453b1057c2e2b7cba.png" src="../_images/17298e6921ba06e75aaa51b54fde1c770b19707adbbba06453b1057c2e2b7cba.png" />
+<img alt="../_images/a49ce5340091686898703cab893fa93344ce23532fe9854812cb8185792613c9.png" src="../_images/a49ce5340091686898703cab893fa93344ce23532fe9854812cb8185792613c9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -700,7 +757,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken for notebook completion&#39;: 2.49 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken for notebook completion&#39;: 18.53 s
 </pre></div>
 </div>
 </div>
@@ -735,8 +792,8 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="0_home.html"
@@ -764,6 +821,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -802,9 +860,10 @@ By Alek Petty and Nicole Keeney
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2025.
       <br/>
     
   </p>
@@ -831,8 +890,8 @@ By Alek Petty and Nicole Keeney
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
