@@ -20,11 +20,12 @@ parts:
   - file: content/2d_winter_arctic_sea_ice_variability_2024update
 - caption: All season Arctic sea ice thickness analysis
   chapters:
-  - file: content/10a_all_season_arctic_sea_ice_variability_prelim
+  - file: content/10a_all_season_arctic_sea_ice_variability
   - file: content/10b_comparisons_with_BGEP_allseason
-  - file: content/10c_comparisons_with_BGEP_2024winter_multivar
-  - file: content/10d_icebird_comps
-  - file: content/10e_mosaic_comps_simba
+  - file: content/10c_comparisons_with_BGEP_2024winter
+  - file: content/10d_comparisons_with_icebird
+  - file: content/10e_comparisons_with_mosaic_simba
+  - file: content/10f_map
 - caption: Data wrangling
   chapters:
   - file: content/7_gridded_data_wrangling

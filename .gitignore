@@ -25,6 +25,12 @@ _build/
 __pycache__/*
 */__pycache__/**
 
+# Virtual environments
+is2book_uv_env/
+venv/
+env/
+.env
+
 # data 
 content/data/*
 content/data/IS2SITMOGR4/*

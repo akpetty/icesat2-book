@@ -407,11 +407,13 @@ def interactive_winter_mean_maps(da, years=None, end_year=None, start_month="Sep
 
 def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3), start_month="Sep", 
     end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', 
-    annotation = '', force_complete_season=False, loc_pos=0, fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.']): 
+    annotation = '', force_complete_season=False, loc_pos=0, fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.'],
+    reanalysis_option=None): 
     """ Make a lineplot with markers comparing monthly mean data across winter seasons 
     
     Args: 
         da (xr.DataArray): data to plot and compute mean for; must contain "time" as a coordinate 
+        da_unc (xr.DataArray, optional): uncertainty data to plot as error bars
         years (list of str): list of years for which to plot data. 2020 would correspond to the winter season defined by start month 2020 - end month 2021 (default to all unique years in da)
         title (str, optional): title to give plot (default to no title) 
         set_ylabel (str, optional): prescribed y label string
@@ -424,6 +426,8 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
         end_month (str, optional): second month in winter; this is the following calender year after start_month (default to April)
         force_complete_season (bool, optional): require that winter season returns data if and only if all months have data? i.e. if Sep and Oct have no data, return nothing even if Nov-Apr have data? (default to False) 
         loc_pos (int, optional): if greater than one use that, if not default to "best"
+        fmts (list, optional): list of format strings for different years
+        reanalysis_option (str, optional): specify which reanalysis to use for snow depth ('m2' or 'e5'). If None, uses the default snow_depth variable.
 
        Returns: 
            Figure displayed in notebook
@@ -432,6 +436,27 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
     if years is None: 
         years = np.unique(pd.to_datetime(da.time.values).strftime("%Y")) # Unique years in the dataset 
         print("No years specified. Using "+", ".join(years))
+    
+    # Handle reanalysis option for snow depth
+    if reanalysis_option is not None:
+        if reanalysis_option.lower() == 'm2':
+            # Use M2 reanalysis snow depth
+            if hasattr(da, 'snow_depth_sm_m2'):
+                da = da.snow_depth_sm_m2
+            elif hasattr(da, 'snow_depth_sm_m2_int'):
+                da = da.snow_depth_sm_m2_int
+            else:
+                print(f"Warning: M2 snow depth variable not found in dataset. Using default snow depth.")
+        elif reanalysis_option.lower() == 'e5':
+            # Use E5 reanalysis snow depth
+            if hasattr(da, 'snow_depth_sm_e5'):
+                da = da.snow_depth_sm_e5
+            elif hasattr(da, 'snow_depth_sm_e5_int'):
+                da = da.snow_depth_sm_e5_int
+            else:
+                print(f"Warning: E5 snow depth variable not found in dataset. Using default snow depth.")
+        else:
+            print(f"Warning: Invalid reanalysis option '{reanalysis_option}'. Using default snow depth.")
     
     # Set up x-axis 
     # This avoids having a set x-axis of winter months between Sep-Apr, even if there's no data for Sep, Oct etc 
@@ -458,7 +483,14 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
             continue
         y = winter_da.mean(dim=["x","y"], keep_attrs=True)
         x = pd.to_datetime(y.time.values)
-        ax.plot(x.strftime("%b"), y, fmt, label=""+str(x.year[0])+"-"+str(x.year[-1])[2:])
+        
+        # Add reanalysis info to legend if specified
+        if reanalysis_option is not None:
+            label = f"{x.year[0]}-{str(x.year[-1])[2:]} ({reanalysis_option.upper()})"
+        else:
+            label = f"{x.year[0]}-{str(x.year[-1])[2:]}"
+            
+        ax.plot(x.strftime("%b"), y, fmt, label=label)
 
         if da_unc is not None:
             # Get uncertaintiy data from that winter 
@@ -499,65 +531,90 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
 
     # save figure
     if savefig:
-        plt.savefig('./figs/'+da.attrs["long_name"]+start_month+end_month+str(years[0])+'-'+str(years[-1]+1)+save_label+'.pdf', 
-                    dpi=300, facecolor="white", bbox_inches='tight')
+        # Include reanalysis option in filename if specified
+        if reanalysis_option is not None:
+            filename = f'./figs/{da.attrs.get("long_name", "data")}{start_month}{end_month}{years[0]}-{years[-1]+1}{save_label}_{reanalysis_option}.pdf'
+        else:
+            filename = f'./figs/{da.attrs.get("long_name", "data")}{start_month}{end_month}{years[0]}-{years[-1]+1}{save_label}.pdf'
+        plt.savefig(filename, dpi=300, facecolor="white", bbox_inches='tight')
 
     plt.show()
 
 
-def interactive_winter_comparison_lineplot(da, years=None, title="Winter comparison", frame_width=600, frame_height=350, start_month="Sep", end_month="Apr", force_complete_season=False):
-    """ Make a bokeh lineplot with markers comparing monthly mean data across winter seasons 
+def static_winter_comparison_lineplot_with_reanalysis(da, reanalysis_option='m2', da_unc=None, years=None, figsize=(5,3), start_month="Sep", 
+    end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', 
+    annotation = '', force_complete_season=False, loc_pos=0, fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.']): 
+    """ Make a lineplot with markers comparing monthly mean data across winter seasons with reanalysis option for snow depth
+    
+    This is a convenience function that calls static_winter_comparison_lineplot with the reanalysis_option parameter.
     
     Args: 
-        da (xr.DataArray): data; must contain "time" coordinate
+        da (xr.DataArray): data to plot and compute mean for; must contain "time" as a coordinate 
+        reanalysis_option (str): specify which reanalysis to use for snow depth ('m2' or 'e5')
+        da_unc (xr.DataArray, optional): uncertainty data to plot as error bars
         years (list of str): list of years for which to plot data. 2020 would correspond to the winter season defined by start month 2020 - end month 2021 (default to all unique years in da)
-        title (str, optional): title to give plot (default to "Winter comparison") 
-        frame_width (int, optional): width of figure (default to 600) 
-        frame_height (int, optional): height of figure (default to 350) 
+        title (str, optional): title to give plot (default to no title) 
+        set_ylabel (str, optional): prescribed y label string
+        set_units (str, optional): prescribed y label unit string
+        legend (bool): print legend
+        savefig (bool): output figure
+        save_label (str, optional): additional string for output
+        figsize (tuple, optional): figure size to display in notebook (default to (5,3))
+        start_month (str, optional): first month in winter (default to September)
+        end_month (str, optional): second month in winter; this is the following calender year after start_month (default to April)
+        force_complete_season (bool, optional): require that winter season returns data if and only if all months have data? i.e. if Sep and Oct have no data, return nothing even if Nov-Apr have data? (default to False) 
+        loc_pos (int, optional): if greater than one use that, if not default to "best"
+        fmts (list, optional): list of format strings for different years
+
+       Returns: 
+           Figure displayed in notebook
+        
+    """
+    return static_winter_comparison_lineplot(da, da_unc=da_unc, years=years, figsize=figsize, start_month=start_month,
+                                           end_month=end_month, title=title, set_ylabel=set_ylabel, set_units=set_units,
+                                           legend=legend, savefig=savefig, save_label=save_label, annotation=annotation,
+                                           force_complete_season=force_complete_season, loc_pos=loc_pos, fmts=fmts,
+                                           reanalysis_option=reanalysis_option)
+
+
+def interactive_winter_comparison_lineplot(da, years=None, title="Winter comparison", frame_width=600, frame_height=350, start_month="Sep", end_month="Apr", force_complete_season=False):
+    """ Make an interactive lineplot with markers comparing monthly mean data across winter seasons 
+    
+    Args: 
+        da (xr.DataArray): data to plot and compute mean for; must contain "time" as a coordinate 
+        years (list of str): list of years for which to plot data. 2020 would correspond to the winter season defined by start month 2020 - end month 2021 (default to all unique years in da)
+        title (str, optional): title to give plot (default to "Winter comparison")
+        frame_width (int, optional): width of plot frame (default to 600)
+        frame_height (int, optional): height of plot frame (default to 350)
         start_month (str, optional): first month in winter (default to September)
         end_month (str, optional): second month in winter; this is the following calender year after start_month (default to April)
         force_complete_season (bool, optional): require that winter season returns data if and only if all months have data? i.e. if Sep and Oct have no data, return nothing even if Nov-Apr have data? (default to False) 
         
-       Returns: 
-           pl (bokeh lineplot) 
+    Returns: 
+        Interactive plot displayed in notebook
         
     """
-    
     if years is None: 
         years = np.unique(pd.to_datetime(da.time.values).strftime("%Y")) # Unique years in the dataset 
+        print("No years specified. Using "+", ".join(years))
     
-    winter_means_list = []
+    # Get winter data for each year
+    winter_data = []
     for year in years:
-        winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season) # Get data from that winter 
-        if winter_da is None: # In case the user inputs a year that doesn't have data, skip this loop iteration to avoid appending None
-            continue
-        winter_means_list.append(winter_da)
-            
-    # Sort by longest --> shortest. This avoids weird issues with x axis trying to be in time order 
-    winter_means_list_sorted = sorted(winter_means_list, key=lambda l: (len(l), l))[::-1]
+        winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season)
+        if winter_da is not None:
+            winter_mean = winter_da.mean(dim=["x","y"], keep_attrs=True)
+            winter_data.append(winter_mean)
     
-    color_cycle = hv.Cycle(['magenta', 'cyan', 'yellow', 'black'])
+    if len(winter_data) == 0:
+        print("No winter data found for the specified years")
+        return None
     
-    # Combine plots and display
-    i = 0
-    for da_sorted in winter_means_list_sorted: 
-        winter_mean = da_sorted.mean(dim=["x","y"], keep_attrs=True) # Compute mean 
-        winter_mean["time"] = pd.to_datetime(da_sorted["time"].values).strftime("%b") # Reassign the time coordinate to be just the months (Nov, Dec, ect). This allows you to easily overlay the plots on top of each other, since they share an axis
-        time_str = pd.to_datetime(da_sorted.time).strftime("%Y") # Get time coordinate as string value
-
-        pl = winter_mean.hvplot(grid=True, label=""+time_str[0]+"-"+time_str[-1], frame_width=frame_width, frame_height=frame_height, line_width=3) * winter_mean.hvplot.scatter(marker='o') # Overlay scatter plot to add markers
-        if i == 0:
-            pl_tot = pl
-        else: 
-            pl_tot *= pl 
-        i+=1
-        
-    winters_all = pl_tot.opts(hv.opts.Layout(shared_axes=True, merge_tools=True)) # Combine lineplots into a single figure 
-    winters_all.opts(title=title) # Add a title 
-    winters_all.opts(legend_position='bottom_right')
-    winters_all.opts({'Scatter': {'color': color_cycle}})
-    winters_all.opts({'Curve': {'color': color_cycle}})
+    # Combine all winter data
+    combined_data = xr.concat(winter_data, dim='year')
+    combined_data['year'] = years[:len(winter_data)]
     
+    # Create interactive plot
+    p = combined_data.hvplot.line(x='time', by='year', title=title, frame_width=frame_width, frame_height=frame_height)
     
-    
-    return winters_all
+    return p

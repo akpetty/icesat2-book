@@ -102,7 +102,7 @@ def add_time_dim_v3(xda):
     xda = xda.expand_dims(time = [datetime.now()])
     return xda
 
-def read_IS2SITMOGR4S(version='V0', local_data_path="./data/IS2SITMOGR4_SUMMER/"): 
+def read_IS2SITMOGR4S(version='V1', local_data_path="./data/IS2SITMOGR4_SUMMER/"): 
     """ Read in IS2SITMOGR4 summer monthly gridded thickness dataset from local netcdf files
 
     """
