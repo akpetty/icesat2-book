@@ -12,26 +12,22 @@ repository:
   url                       : https://github.com/akpetty/icesat2-book
   branch                    : main  
 
-sphinx:
-  config:
+#sphinx:
+#  config:
     # Better search
-    html_search_language: 'en'
-    html_search_options: {'type': 'default'}
+#    html_search_language: 'en'
+#    html_search_options: {'type': 'default'}
     # Remove right sidebar (table of contents) but keep left navigation
-    html_sidebars:
-      "**": ["sbt-sidebar-nav.html"]  # Only show left navigation, no right TOC
+#    html_sidebars:
+#      "**": ["sbt-sidebar-nav.html"]  # Only show left navigation, no right TOC
     # Additional settings to remove TOC
-    html_show_sourcelink: false
-    html_show_sphinx: false
-    # Theme options to remove right TOC
-    html_theme_options:
-      show_toc: false
-      toc_show: false
+#    html_show_sourcelink: false
+#    html_show_sphinx: false
     # Exclude environment directory from processing
-    exclude_patterns:
-      - 'is2book_uv_env/**'
-      - 'delete/**'
-      - '_build/**'
+#    exclude_patterns:
+#      - 'is2book_uv_env/**'
+#      - 'delete/**'
+#      - '_build/**'
 
 # Interactive features
 interactive:
@@ -50,13 +46,20 @@ html:
   extra_footer: Distributed under the MIT license
   # Disable right sidebar (table of contents)
   show_toc: false
+  # Additional theme options to remove right TOC
+  theme_options:
+    show_toc: false
+    toc_show: false
+  # Custom CSS to hide right sidebar
+  #extra_css:
+  #  - _static/custom.css
 
 
 execute:
   execute_notebooks   : "auto"
   allow_errors              : true
   timeout                   : 1000
-  only_build_toc_files      : true
+  only_build_toc_files      : false
   cache: ".jupyter_cache"
   exclude_patterns:
 #    - 'data_wrangling.ipynb'
@@ -64,7 +67,6 @@ execute:
     - '_build/*'
     - 'is2book_uv_env/*'
 
-    
 launch_buttons: 
   binderhub_url: "https://mybinder.org"
 

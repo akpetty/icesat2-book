@@ -1,0 +1,42 @@
+/* Hide the right sidebar (table of contents) completely */
+.bd-sidebar-secondary {
+    display: none !important;
+}
+
+.sidebar-secondary {
+    display: none !important;
+}
+
+.toc-content {
+    display: none !important;
+}
+
+/* Ensure main content takes full width */
+.bd-main {
+    flex: 1 1 0%;
+    min-width: 0;
+}
+
+.bd-content {
+    max-width: none;
+}
+
+/* Hide any TOC elements */
+.toc {
+    display: none !important;
+}
+
+#toc {
+    display: none !important;
+}
+
+/* Hide any right sidebar elements */
+.sidebar {
+    display: none !important;
+}
+
+/* Make sure the main content area expands to fill the space */
+.bd-main .bd-content {
+    max-width: 100%;
+}
+
