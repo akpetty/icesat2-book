@@ -31,6 +31,9 @@ venv/
 env/
 .env
 
+# Scratch directory (may contain sensitive files)
+content/scratch/
+
 # data 
 content/data/*
 content/data/IS2SITMOGR4/*

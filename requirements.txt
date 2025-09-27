@@ -40,7 +40,7 @@ kiwisolver==1.4.5
 pillow==9.2.0
 
 # Jupyter ecosystem
-jupyter-book==0.15.1
+jupyter-book==1.0.4.post1
 jupyterlab==3.1.12
 notebook==6.5.4
 ipykernel==6.17.1

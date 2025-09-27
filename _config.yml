@@ -17,6 +17,21 @@ sphinx:
     # Better search
     html_search_language: 'en'
     html_search_options: {'type': 'default'}
+    # Remove right sidebar (table of contents) but keep left navigation
+    html_sidebars:
+      "**": ["sbt-sidebar-nav.html"]  # Only show left navigation, no right TOC
+    # Additional settings to remove TOC
+    html_show_sourcelink: false
+    html_show_sphinx: false
+    # Theme options to remove right TOC
+    html_theme_options:
+      show_toc: false
+      toc_show: false
+    # Exclude environment directory from processing
+    exclude_patterns:
+      - 'is2book_uv_env/**'
+      - 'delete/**'
+      - '_build/**'
 
 # Interactive features
 interactive:
@@ -27,23 +42,27 @@ html:
   use_issues_button         : true
   use_edit_page_button      : true
   favicon                   : "content/figs/logo.png"
-  google_analytics_id       : "G-J1HEQ5DMT0"
+  analytics:
+    google_analytics_id: "G-J1HEQ5DMT0"
   navigation_depth: 4
   show_navbar_depth: 2
   extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
   extra_footer: Distributed under the MIT license
+  # Disable right sidebar (table of contents)
+  show_toc: false
 
 
 execute:
-  execute_notebooks         : "auto"
-  allow_errors              : false
+  execute_notebooks   : "auto"
+  allow_errors              : true
   timeout                   : 1000
   only_build_toc_files      : true
-  cache                     : true
+  cache: ".jupyter_cache"
   exclude_patterns:
 #    - 'data_wrangling.ipynb'
     - 'delete/*'
     - '_build/*'
+    - 'is2book_uv_env/*'
 
     
 launch_buttons: 
