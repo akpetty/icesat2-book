@@ -39,6 +39,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ## Creating the UV Environment
+NB: It's best to make this in the directory above the jupyter book as I've had issues with the build executing the notebooks in that env folder..
 ```bash
 # Create environment with Python 3.9
 uv venv --python 3.9 is2book_uv_env
@@ -50,6 +51,9 @@ is2book_uv_env\Scripts\activate    # On Windows
 
 # Install packages
 uv pip install -r requirements.txt
+
+# Verify jupyter-book is installed
+uv run jb --help
 ```
 
 ## Adding as Jupyter Kernel
@@ -63,6 +67,19 @@ python -m ipykernel install --user --name is2book_uv_env --display-name "ICESat-
 ```
 
 **Note**: Some geospatial packages (cartopy, rasterio) may require system-level libraries (GEOS, PROJ, GDAL). Install these with your system package manager if needed.
+
+## Building the Book
+To build the Jupyter Book using the UV environment:
+```bash
+# Activate the environment
+source is2book_uv_env/bin/activate
+
+# Build the book
+jb build icesat2-book
+
+# Or use uv run (if jb is available)
+uv run jb build icesat2-book
+```
 
 # OG ENV approach: Conda environments
 This book still has an associated conda environment stored in the file environment.yml. This file can be downloaded and used to set up the environment on your local computer so that you have all the required dependencies needed to run the notebooks. You'll need anaconda and python installed on your computer first. The environment file is also required by Binder in order to set up the computational environment for running the notebooks in the book interactively. <br><br> 

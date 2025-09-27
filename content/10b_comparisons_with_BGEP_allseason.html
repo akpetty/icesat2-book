@@ -32,9 +32,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=62c03b7f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -53,9 +54,22 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/10b_comparisons_with_BGEP_allseason';</script>
     <link rel="icon" href="../_static/logo.png"/>
@@ -101,8 +115,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search..."
-         aria-label="Search..."
+         placeholder="Search this book..."
+         aria-label="Search this book..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -139,6 +153,14 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="0_home.html">
+                    ICESat-2 Arctic Sea Ice State Analysis
+                </a>
+            </li>
+        </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2 Arctic sea ice thickness data</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_is2sitmogr4_intro.html">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)</a></li>
@@ -175,7 +197,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
-
 
 
 
@@ -258,6 +279,101 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/akpetty/icesat2-book/main?urlpath=tree/content/10b_comparisons_with_BGEP_allseason.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/edit/main/content/10b_comparisons_with_BGEP_allseason.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2Fcontent/10b_comparisons_with_BGEP_allseason.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
 
 
 
@@ -427,17 +543,1078 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span> 
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;xarray&#39;
-</pre></div>
+  var force = true;
+  var py_version = '3.4.3'.replace('rc', '-rc.').replace('.dev', '-dev.');
+  var reloading = false;
+  var Bokeh = root.Bokeh;
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks;
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, js_modules, js_exports, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+    if (js_modules == null) js_modules = [];
+    if (js_exports == null) js_exports = {};
+
+    root._bokeh_onload_callbacks.push(callback);
+
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls.length === 0 && js_modules.length === 0 && Object.keys(js_exports).length === 0) {
+      run_callbacks();
+      return null;
+    }
+    if (!reloading) {
+      console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    }
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+    window._bokeh_on_load = on_load
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      window.requirejs.config({'packages': {}, 'paths': {}, 'shim': {}});
+      root._bokeh_is_loading = css_urls.length + 0;
+    } else {
+      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length + Object.keys(js_exports).length;
+    }
+
+    var existing_stylesheets = []
+    var links = document.getElementsByTagName('link')
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i]
+      if (link.href != null) {
+	existing_stylesheets.push(link.href)
+      }
+    }
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      if (existing_stylesheets.indexOf(url) !== -1) {
+	on_load()
+	continue;
+      }
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }    var existing_scripts = []
+    var scripts = document.getElementsByTagName('script')
+    for (var i = 0; i < scripts.length; i++) {
+      var script = scripts[i]
+      if (script.src != null) {
+	existing_scripts.push(script.src)
+      }
+    }
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (var i = 0; i < js_modules.length; i++) {
+      var url = js_modules[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (const name in js_exports) {
+      var url = js_exports[name];
+      if (skip.indexOf(url) >= 0 || root[name] != null) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onerror = on_error;
+      element.async = false;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      element.textContent = `
+      import ${name} from "${url}"
+      window.${name} = ${name}
+      window._bokeh_on_load()
+      `
+      document.head.appendChild(element);
+    }
+    if (!js_urls.length && !js_modules.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.3.min.js", "https://cdn.holoviz.org/panel/1.4.5/dist/panel.min.js"];
+  var js_modules = [];
+  var js_exports = {};
+  var css_urls = [];
+  var inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+	try {
+          inline_js[i].call(root, root.Bokeh);
+	} catch(e) {
+	  if (!reloading) {
+	    throw e;
+	  }
+	}
+      }
+      // Cache old bokeh versions
+      if (Bokeh != undefined && !reloading) {
+	var NewBokeh = root.Bokeh;
+	if (Bokeh.versions === undefined) {
+	  Bokeh.versions = new Map();
+	}
+	if (NewBokeh.version !== Bokeh.version) {
+	  Bokeh.versions.set(NewBokeh.version, NewBokeh)
+	}
+	root.Bokeh = Bokeh;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+    root._bokeh_is_initializing = false
+  }
+
+  function load_or_wait() {
+    // Implement a backoff loop that tries to ensure we do not load multiple
+    // versions of Bokeh and its dependencies at the same time.
+    // In recent versions we use the root._bokeh_is_initializing flag
+    // to determine whether there is an ongoing attempt to initialize
+    // bokeh, however for backward compatibility we also try to ensure
+    // that we do not start loading a newer (Panel>=1.0 and Bokeh>3) version
+    // before older versions are fully initialized.
+    if (root._bokeh_is_initializing && Date.now() > root._bokeh_timeout) {
+      root._bokeh_is_initializing = false;
+      root._bokeh_onload_callbacks = undefined;
+      console.log("Bokeh: BokehJS was loaded multiple times but one version failed to initialize.");
+      load_or_wait();
+    } else if (root._bokeh_is_initializing || (typeof root._bokeh_is_initializing === "undefined" && root._bokeh_onload_callbacks !== undefined)) {
+      setTimeout(load_or_wait, 100);
+    } else {
+      root._bokeh_is_initializing = true
+      root._bokeh_onload_callbacks = []
+      var bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
+      if (!reloading && !bokeh_loaded) {
+	root.Bokeh = undefined;
+      }
+      load_libs(css_urls, js_urls, js_modules, js_exports, function() {
+	console.debug("Bokeh: BokehJS plotting callback run at", now());
+	run_inline_js();
+      });
+    }
+  }
+  // Give older versions of the autoload script a head-start to ensure
+  // they initialize before we start loading newer version.
+  setTimeout(load_or_wait, 100)
+}(window));</script><script type="application/javascript">
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        let retries = 0;
+        const open = () => {
+          if (comm.active) {
+            comm.open();
+          } else if (retries > 3) {
+            console.warn('Comm target never activated')
+          } else {
+            retries += 1
+            setTimeout(open, 500)
+          }
+        }
+        if (comm.active) {
+          comm.open();
+        } else {
+          setTimeout(open, 500)
+        }
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        })
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+</script><div class="output text_html"><style>*[data-root-id],
+*[data-root-id] > * {
+  box-sizing: border-box;
+  font-family: var(--jp-ui-font-family);
+  font-size: var(--jp-ui-font-size1);
+  color: var(--vscode-editor-foreground, var(--jp-ui-font-color1));
+}
+
+/* Override VSCode background color */
+.cell-output-ipywidget-background:has(
+    > .cell-output-ipywidget-background > .lm-Widget > *[data-root-id]
+  ),
+.cell-output-ipywidget-background:has(> .lm-Widget > *[data-root-id]) {
+  background-color: transparent !important;
+}
+</style></div><div class="output text_html"><div id='e07f34bb-e424-470f-bf84-cc3d67ff6b88'>
+  <div id="cd18475e-d4dc-494c-b786-857a0d339f0a" data-root-id="e07f34bb-e424-470f-bf84-cc3d67ff6b88" style="display: contents;"></div>
 </div>
-</div>
+<script type="application/javascript">(function(root) {
+  var docs_json = {"7d2dd1ea-eae2-441c-a082-895e1632f33d":{"version":"3.4.3","title":"Bokeh Application","roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"e07f34bb-e424-470f-bf84-cc3d67ff6b88"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"6a48c774-5db9-4099-88d3-a0b54742c5bb","attributes":{"plot_id":"e07f34bb-e424-470f-bf84-cc3d67ff6b88","comm_id":"c6ce2c8b030b452e9a80a1acbc34b086","client_comm_id":"33b6d6426c67469293eef20c6849e04d"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"gap","kind":"Any","default":""},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"TemplateEditor1","properties":[{"name":"layout","kind":"Any","default":[]}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"value","kind":"Any","default":null}]}]}};
+  var render_items = [{"docid":"7d2dd1ea-eae2-441c-a082-895e1632f33d","roots":{"e07f34bb-e424-470f-bf84-cc3d67ff6b88":"cd18475e-d4dc-494c-b786-857a0d339f0a"},"root_ids":["e07f34bb-e424-470f-bf84-cc3d67ff6b88"]}];
+  var docs = Object.values(docs_json)
+  if (!docs) {
+    return
+  }
+  const py_version = docs[0].version.replace('rc', '-rc.').replace('.dev', '-dev.')
+  async function embed_document(root) {
+    var Bokeh = get_bokeh(root)
+    await Bokeh.embed.embed_items_notebook(docs_json, render_items);
+    for (const render_item of render_items) {
+      for (const root_id of render_item.root_ids) {
+	const id_el = document.getElementById(root_id)
+	if (id_el.children.length && id_el.children[0].hasAttribute('data-root-id')) {
+	  const root_el = id_el.children[0]
+	  root_el.id = root_el.id + '-rendered'
+	  for (const child of root_el.children) {
+            // Ensure JupyterLab does not capture keyboard shortcuts
+            // see: https://jupyterlab.readthedocs.io/en/4.1.x/extension/notebook.html#keyboard-interaction-model
+	    child.setAttribute('data-lm-suppress-shortcuts', 'true')
+	  }
+	}
+      }
+    }
+  }
+  function get_bokeh(root) {
+    if (root.Bokeh === undefined) {
+      return null
+    } else if (root.Bokeh.version !== py_version) {
+      if (root.Bokeh.versions === undefined || !root.Bokeh.versions.has(py_version)) {
+	return null
+      }
+      return root.Bokeh.versions.get(py_version);
+    } else if (root.Bokeh.version === py_version) {
+      return root.Bokeh
+    }
+    return null
+  }
+  function is_loaded(root) {
+    var Bokeh = get_bokeh(root)
+    return (Bokeh != null && Bokeh.Panel !== undefined)
+  }
+  if (is_loaded(root)) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (is_loaded(root)) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+	  var Bokeh = get_bokeh(root)
+	  if (Bokeh == null || Bokeh.Panel == null) {
+            console.warn("Panel: ERROR: Unable to run Panel code because Bokeh or Panel library is missing");
+	  } else {
+	    console.warn("Panel: WARNING: Attempting to render but not all required libraries could be resolved.")
+	    embed_document(root)
+	  }
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div><script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+  var py_version = '3.4.3'.replace('rc', '-rc.').replace('.dev', '-dev.');
+  var reloading = true;
+  var Bokeh = root.Bokeh;
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks;
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, js_modules, js_exports, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+    if (js_modules == null) js_modules = [];
+    if (js_exports == null) js_exports = {};
+
+    root._bokeh_onload_callbacks.push(callback);
+
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls.length === 0 && js_modules.length === 0 && Object.keys(js_exports).length === 0) {
+      run_callbacks();
+      return null;
+    }
+    if (!reloading) {
+      console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    }
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+    window._bokeh_on_load = on_load
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      window.requirejs.config({'packages': {}, 'paths': {}, 'shim': {}});
+      root._bokeh_is_loading = css_urls.length + 0;
+    } else {
+      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length + Object.keys(js_exports).length;
+    }
+
+    var existing_stylesheets = []
+    var links = document.getElementsByTagName('link')
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i]
+      if (link.href != null) {
+	existing_stylesheets.push(link.href)
+      }
+    }
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      if (existing_stylesheets.indexOf(url) !== -1) {
+	on_load()
+	continue;
+      }
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }    var existing_scripts = []
+    var scripts = document.getElementsByTagName('script')
+    for (var i = 0; i < scripts.length; i++) {
+      var script = scripts[i]
+      if (script.src != null) {
+	existing_scripts.push(script.src)
+      }
+    }
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (var i = 0; i < js_modules.length; i++) {
+      var url = js_modules[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (const name in js_exports) {
+      var url = js_exports[name];
+      if (skip.indexOf(url) >= 0 || root[name] != null) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onerror = on_error;
+      element.async = false;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      element.textContent = `
+      import ${name} from "${url}"
+      window.${name} = ${name}
+      window._bokeh_on_load()
+      `
+      document.head.appendChild(element);
+    }
+    if (!js_urls.length && !js_modules.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = [];
+  var js_modules = [];
+  var js_exports = {};
+  var css_urls = [];
+  var inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+	try {
+          inline_js[i].call(root, root.Bokeh);
+	} catch(e) {
+	  if (!reloading) {
+	    throw e;
+	  }
+	}
+      }
+      // Cache old bokeh versions
+      if (Bokeh != undefined && !reloading) {
+	var NewBokeh = root.Bokeh;
+	if (Bokeh.versions === undefined) {
+	  Bokeh.versions = new Map();
+	}
+	if (NewBokeh.version !== Bokeh.version) {
+	  Bokeh.versions.set(NewBokeh.version, NewBokeh)
+	}
+	root.Bokeh = Bokeh;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+    root._bokeh_is_initializing = false
+  }
+
+  function load_or_wait() {
+    // Implement a backoff loop that tries to ensure we do not load multiple
+    // versions of Bokeh and its dependencies at the same time.
+    // In recent versions we use the root._bokeh_is_initializing flag
+    // to determine whether there is an ongoing attempt to initialize
+    // bokeh, however for backward compatibility we also try to ensure
+    // that we do not start loading a newer (Panel>=1.0 and Bokeh>3) version
+    // before older versions are fully initialized.
+    if (root._bokeh_is_initializing && Date.now() > root._bokeh_timeout) {
+      root._bokeh_is_initializing = false;
+      root._bokeh_onload_callbacks = undefined;
+      console.log("Bokeh: BokehJS was loaded multiple times but one version failed to initialize.");
+      load_or_wait();
+    } else if (root._bokeh_is_initializing || (typeof root._bokeh_is_initializing === "undefined" && root._bokeh_onload_callbacks !== undefined)) {
+      setTimeout(load_or_wait, 100);
+    } else {
+      root._bokeh_is_initializing = true
+      root._bokeh_onload_callbacks = []
+      var bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
+      if (!reloading && !bokeh_loaded) {
+	root.Bokeh = undefined;
+      }
+      load_libs(css_urls, js_urls, js_modules, js_exports, function() {
+	console.debug("Bokeh: BokehJS plotting callback run at", now());
+	run_inline_js();
+      });
+    }
+  }
+  // Give older versions of the autoload script a head-start to ensure
+  // they initialize before we start loading newer version.
+  setTimeout(load_or_wait, 100)
+}(window));</script><script type="application/javascript">
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        let retries = 0;
+        const open = () => {
+          if (comm.active) {
+            comm.open();
+          } else if (retries > 3) {
+            console.warn('Comm target never activated')
+          } else {
+            retries += 1
+            setTimeout(open, 500)
+          }
+        }
+        if (comm.active) {
+          comm.open();
+        } else {
+          setTimeout(open, 500)
+        }
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        })
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+</script><div class="output text_html"><style>*[data-root-id],
+*[data-root-id] > * {
+  box-sizing: border-box;
+  font-family: var(--jp-ui-font-family);
+  font-size: var(--jp-ui-font-size1);
+  color: var(--vscode-editor-foreground, var(--jp-ui-font-color1));
+}
+
+/* Override VSCode background color */
+.cell-output-ipywidget-background:has(
+    > .cell-output-ipywidget-background > .lm-Widget > *[data-root-id]
+  ),
+.cell-output-ipywidget-background:has(> .lm-Widget > *[data-root-id]) {
+  background-color: transparent !important;
+}
+</style></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -445,7 +1622,8 @@ document.write(`
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
     <span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="c1"># Use LaTeX for rendering</span>
     <span class="s2">&quot;font.family&quot;</span><span class="p">:</span> <span class="s2">&quot;sans-serif&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;lines.linewidth&quot;</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
+    <span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">:</span> <span class="s1">&#39;stixsans&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;lines.linewidth&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
     <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
     <span class="c1">#&quot;lines.alpha&quot;: 0.8,</span>
     <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
@@ -455,29 +1633,6 @@ document.write(`
 <span class="p">})</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arial&#39;</span><span class="p">]</span>
 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Set some plotting parameters</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="c1"># Use LaTeX for rendering</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s2">&quot;font.family&quot;</span><span class="p">:</span> <span class="s2">&quot;sans-serif&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="s2">&quot;lines.linewidth&quot;</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="c1">#&quot;lines.alpha&quot;: 0.8,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="s2">&quot;axes.labelsize&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="s2">&quot;xtick.labelsize&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="s2">&quot;ytick.labelsize&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="s2">&quot;legend.fontsize&quot;</span><span class="p">:</span> <span class="mi">8</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="p">})</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arial&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span> 
-
-<span class="ne">NameError</span>: name &#39;mpl&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -507,14 +1662,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Load the all-season wrangled dataset</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">IS2_CS2_allseason</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;./data/book_data_allseason_v2.nc&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully loaded all-season wrangled dataset&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;xr&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully loaded all-season wrangled dataset
 </pre></div>
 </div>
 </div>
@@ -531,20 +1679,6 @@ document.write(`
 
 <span class="n">out_lons</span> <span class="o">=</span> <span class="n">IS2_CS2_allseason</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span>
 <span class="n">out_lats</span> <span class="o">=</span> <span class="n">IS2_CS2_allseason</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Get some map proj info needed for later functions</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">out_proj</span> <span class="o">=</span> <span class="s1">&#39;EPSG:3411&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">xIS2</span> <span class="o">=</span> <span class="n">IS2_CS2_allseason</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">yIS2</span> <span class="o">=</span> <span class="n">IS2_CS2_allseason</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">values</span>
-
-<span class="ne">NameError</span>: name &#39;pyproj&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -605,22 +1739,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">int_str</span> <span class="o">=</span> <span class="s1">&#39;_int&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Define the variables for each option</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#IS-2</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;ice_draft_IS2/SMLG-&#39;</span><span class="o">+</span><span class="n">reanalysis</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()]</span> <span class="o">=</span> <span class="p">(</span><span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="s1">&#39;ice_thickness_sm_&#39;</span><span class="o">+</span><span class="n">reanalysis</span><span class="o">+</span><span class="n">int_str</span><span class="p">]</span> <span class="o">-</span> <span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="s1">&#39;freeboard&#39;</span><span class="o">+</span><span class="n">int_str</span><span class="p">]</span> <span class="o">+</span> <span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="s1">&#39;snow_depth_sm_&#39;</span><span class="o">+</span><span class="n">reanalysis</span><span class="o">+</span><span class="n">int_str</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;ice_draft_IS2/SMLG-&#39;</span><span class="o">+</span><span class="n">reanalysis_two</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()]</span> <span class="o">=</span> <span class="p">(</span><span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="s1">&#39;ice_thickness_sm_&#39;</span><span class="o">+</span><span class="n">reanalysis_two</span><span class="o">+</span><span class="n">int_str</span><span class="p">]</span> <span class="o">-</span> <span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="s1">&#39;freeboard&#39;</span><span class="o">+</span><span class="n">int_str</span><span class="p">]</span> <span class="o">+</span> <span class="n">IS2_CS2_allseason</span><span class="p">[</span><span class="s1">&#39;snow_depth_sm_&#39;</span><span class="o">+</span><span class="n">reanalysis_two</span><span class="o">+</span><span class="n">int_str</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># CS-2</span>
-
-<span class="ne">NameError</span>: name &#39;IS2_CS2_allseason&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,19 +1748,6 @@ document.write(`
 <span class="c1">#IS2_date_range = IS2_date_range[((IS2_date_range.month &lt;5) | (IS2_date_range.month &gt; 8))]</span>
 <span class="n">IS2_date_range_strs</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-</span><span class="si">%02d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span><span class="p">]</span>
 <span class="c1">#IS2_date_range_strs</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Get date range</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">IS2_date_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span><span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span><span class="c1"># MS indicates a time frequency of start of the month</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#IS2_date_range = IS2_date_range[((IS2_date_range.month &lt;5) | (IS2_date_range.month &gt; 8))]</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">IS2_date_range_strs</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-</span><span class="si">%02d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -706,21 +1811,49 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring A (75.0 N, 150 W)
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">uls_mean_daily_draft_a_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_a_18</span><span class="p">,</span> <span class="n">uls_x_a</span><span class="p">,</span> <span class="n">uls_y_a</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">uls_mean_daily_draft_b_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_b_18</span><span class="p">,</span> <span class="n">uls_x_b</span><span class="p">,</span> <span class="n">uls_y_b</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">uls_mean_daily_draft_d_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_d_18</span><span class="p">,</span> <span class="n">uls_x_d</span><span class="p">,</span> <span class="n">uls_y_d</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">)</span>
-
-<span class="nn">Cell In[10], line 16,</span> in <span class="ni">get_uls_year</span><span class="nt">(letter, year)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">if</span> <span class="n">letter</span><span class="o">==</span><span class="s1">&#39;a&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mooring A (75.0 N, 150 W)&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="n">uls_x</span><span class="p">,</span> <span class="n">uls_y</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="o">-</span><span class="mf">150.</span><span class="p">,</span> <span class="mf">75.</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="k">if</span> <span class="n">letter</span><span class="o">==</span><span class="s1">&#39;b&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mooring B (78.4 N, 150.0 W)&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;mapProj&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       date    time  draft
+0  20180925  234211    0.0
+1  20180925  234212    0.0
+2  20180925  234213    0.0
+3  20180925  234214    0.0
+4  20180925  234215    0.0
+5  20180925  234216    0.0
+6  20180925  234217    0.0
+7  20180925  234218    0.0
+8  20180925  234219    0.0
+9  20180925  234220    0.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring B (78.4 N, 150.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       date   time  draft
+0  20180923  20901    0.0
+1  20180923  20902    0.0
+2  20180923  20903    0.0
+3  20180923  20904    0.0
+4  20180923  20905    0.0
+5  20180923  20906    0.0
+6  20180923  20907    0.0
+7  20180923  20908    0.0
+8  20180923  20909    0.0
+9  20180923  20910    0.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring D (74.0 N, 140.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       date   time  draft
+0  20180915  10011    0.0
+1  20180915  10012    0.0
+2  20180915  10013    0.0
+3  20180915  10014    0.0
+4  20180915  10015    0.0
+5  20180915  10016    0.0
+6  20180915  10017    0.0
+7  20180915  10018    0.0
+8  20180915  10019    0.0
+9  20180915  10020    0.0
 </pre></div>
 </div>
 </div>
@@ -737,21 +1870,49 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring A (75.0 N, 150 W)
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">uls_mean_daily_draft_a_21</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_a_21</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">uls_mean_daily_draft_b_21</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_b_21</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">uls_mean_daily_draft_d_21</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_d_21</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">)</span>   
-
-<span class="nn">Cell In[10], line 16,</span> in <span class="ni">get_uls_year</span><span class="nt">(letter, year)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">if</span> <span class="n">letter</span><span class="o">==</span><span class="s1">&#39;a&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mooring A (75.0 N, 150 W)&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="n">uls_x</span><span class="p">,</span> <span class="n">uls_y</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="o">-</span><span class="mf">150.</span><span class="p">,</span> <span class="mf">75.</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="k">if</span> <span class="n">letter</span><span class="o">==</span><span class="s1">&#39;b&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mooring B (78.4 N, 150.0 W)&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;mapProj&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       date    time  draft
+0  20210828  235411   2.11
+1  20210828  235412   2.04
+2  20210828  235413   1.96
+3  20210828  235414   1.89
+4  20210828  235415   1.82
+5  20210828  235416   1.75
+6  20210828  235417   1.68
+7  20210828  235418   1.61
+8  20210828  235419   1.54
+9  20210828  235420   1.48
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring B (78.4 N, 150.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       date    time  draft
+0  20210831  222825    0.0
+1  20210831  222826    0.0
+2  20210831  222827    0.0
+3  20210831  222828    0.0
+4  20210831  222829    0.0
+5  20210831  222830    0.0
+6  20210831  222831    0.0
+7  20210831  222832    0.0
+8  20210831  222833    0.0
+9  20210831  222834    0.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring D (74.0 N, 140.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       date  time  draft
+0  20210909  4745    0.0
+1  20210909  4746    0.0
+2  20210909  4747    0.0
+3  20210909  4748    0.0
+4  20210909  4749    0.0
+5  20210909  4750    0.0
+6  20210909  4751    0.0
+7  20210909  4752    0.0
+8  20210909  4753    0.0
+9  20210909  4754    0.0
 </pre></div>
 </div>
 </div>
@@ -767,19 +1928,6 @@ document.write(`
 <span class="n">uls_mean_monthly_draft_a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">uls_mean_monthly_draft_a_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_a_21</span><span class="p">])</span>
 <span class="n">uls_mean_monthly_draft_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">uls_mean_monthly_draft_b_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_b_21</span><span class="p">])</span>
 <span class="n">uls_mean_monthly_draft_d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">uls_mean_monthly_draft_d_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_d_21</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Combine data for all years</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">uls_mean_daily_draft_a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">uls_mean_daily_draft_a_18</span><span class="p">,</span> <span class="n">uls_mean_daily_draft_a_21</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">uls_mean_daily_draft_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">uls_mean_daily_draft_b_18</span><span class="p">,</span> <span class="n">uls_mean_daily_draft_b_21</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">uls_mean_daily_draft_d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">uls_mean_daily_draft_d_18</span><span class="p">,</span> <span class="n">uls_mean_daily_draft_d_21</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -803,19 +1951,6 @@ document.write(`
 <span class="n">uls_mean_monthly_draft_a</span> <span class="o">=</span> <span class="n">uls_mean_monthly_draft_a</span><span class="p">[</span><span class="n">uls_mean_monthly_draft_a</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">uls_mean_monthly_draft_b</span> <span class="o">=</span> <span class="n">uls_mean_monthly_draft_b</span><span class="p">[</span><span class="n">uls_mean_monthly_draft_b</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">uls_mean_monthly_draft_d</span> <span class="o">=</span> <span class="n">uls_mean_monthly_draft_d</span><span class="p">[</span><span class="n">uls_mean_monthly_draft_d</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2021-08-01&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">uls_mean_daily_draft_a</span> <span class="o">=</span> <span class="n">uls_mean_daily_draft_a</span><span class="p">[</span><span class="n">uls_mean_daily_draft_a</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">end_date</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">uls_mean_daily_draft_b</span> <span class="o">=</span> <span class="n">uls_mean_daily_draft_b</span><span class="p">[</span><span class="n">uls_mean_daily_draft_b</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">end_date</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">uls_mean_daily_draft_d</span> <span class="o">=</span> <span class="n">uls_mean_daily_draft_d</span><span class="p">[</span><span class="n">uls_mean_daily_draft_d</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">end_date</span><span class="p">)]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;uls_mean_daily_draft_a&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -868,22 +2003,307 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">29</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">monthly_IS2_at_ULS_all_options</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="ne">---&gt; </span><span class="mi">29</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">uls_x_a</span><span class="p">,</span> <span class="n">uls_y_a</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="n">monthly_IS2_at_ULS_b_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span><span class="n">uls_x_b</span><span class="p">,</span> <span class="n">uls_y_b</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span>     <span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">monthly_IS2_at_ULS_d_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span><span class="n">uls_x_d</span><span class="p">,</span> <span class="n">uls_y_d</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;IS2_date_range&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2018-11-15 00:00:00 IS2/SMLG-E5 0.5941154
+2018-12-15 00:00:00 IS2/SMLG-E5 0.94798076
+2019-01-15 00:00:00 IS2/SMLG-E5 1.1232307
+2019-02-15 00:00:00 IS2/SMLG-E5 1.3838845
+2019-03-15 00:00:00 IS2/SMLG-E5 1.9214809
+2019-04-15 00:00:00 IS2/SMLG-E5 2.057269
+2019-05-15 00:00:00 IS2/SMLG-E5 2.1249423
+2019-06-15 00:00:00 IS2/SMLG-E5 1.8776155
+2019-07-15 00:00:00 IS2/SMLG-E5 nan
+2019-08-15 00:00:00 IS2/SMLG-E5 nan
+2019-09-15 00:00:00 IS2/SMLG-E5 nan
+2019-10-15 00:00:00 IS2/SMLG-E5 nan
+2019-11-15 00:00:00 IS2/SMLG-E5 0.60698074
+2019-12-15 00:00:00 IS2/SMLG-E5 0.93857694
+2020-01-15 00:00:00 IS2/SMLG-E5 1.1105962
+2020-02-15 00:00:00 IS2/SMLG-E5 1.1857885
+2020-03-15 00:00:00 IS2/SMLG-E5 1.4347501
+2020-04-15 00:00:00 IS2/SMLG-E5 1.6431346
+2020-05-15 00:00:00 IS2/SMLG-E5 1.8750578
+2020-06-15 00:00:00 IS2/SMLG-E5 1.8289809
+2020-07-15 00:00:00 IS2/SMLG-E5 0.70578855
+2020-08-15 00:00:00 IS2/SMLG-E5 0.55099994
+2020-09-15 00:00:00 IS2/SMLG-E5 0.639
+2020-10-15 00:00:00 IS2/SMLG-E5 0.7787885
+2020-11-15 00:00:00 IS2/SMLG-E5 0.8914616
+2020-12-15 00:00:00 IS2/SMLG-E5 0.89913464
+2021-01-15 00:00:00 IS2/SMLG-E5 1.0287114
+2021-02-15 00:00:00 IS2/SMLG-E5 1.1929231
+2021-03-15 00:00:00 IS2/SMLG-E5 1.5794616
+2021-04-15 00:00:00 IS2/SMLG-E5 1.8243078
+2021-05-15 00:00:00 IS2/SMLG-E5 2.0777307
+2021-06-15 00:00:00 IS2/SMLG-E5 1.71525
+2021-07-15 00:00:00 IS2/SMLG-E5 0.7386345
+2018-11-15 00:00:00 IS2/SMLG-E5 0.47373998
+2018-12-15 00:00:00 IS2/SMLG-E5 0.65224
+2019-01-15 00:00:00 IS2/SMLG-E5 0.88808
+2019-02-15 00:00:00 IS2/SMLG-E5 0.97352004
+2019-03-15 00:00:00 IS2/SMLG-E5 1.41274
+2019-04-15 00:00:00 IS2/SMLG-E5 1.55278
+2019-05-15 00:00:00 IS2/SMLG-E5 2.16676
+2019-06-15 00:00:00 IS2/SMLG-E5 2.27472
+2019-07-15 00:00:00 IS2/SMLG-E5 nan
+2019-08-15 00:00:00 IS2/SMLG-E5 0.81884444
+2019-09-15 00:00:00 IS2/SMLG-E5 0.7974516
+2019-10-15 00:00:00 IS2/SMLG-E5 0.8662801
+2019-11-15 00:00:00 IS2/SMLG-E5 0.95692
+2019-12-15 00:00:00 IS2/SMLG-E5 1.09812
+2020-01-15 00:00:00 IS2/SMLG-E5 1.26266
+2020-02-15 00:00:00 IS2/SMLG-E5 1.53642
+2020-03-15 00:00:00 IS2/SMLG-E5 1.53142
+2020-04-15 00:00:00 IS2/SMLG-E5 1.62696
+2020-05-15 00:00:00 IS2/SMLG-E5 1.6374398
+2020-06-15 00:00:00 IS2/SMLG-E5 1.8070999
+2020-07-15 00:00:00 IS2/SMLG-E5 0.62468004
+2020-08-15 00:00:00 IS2/SMLG-E5 0.651
+2020-09-15 00:00:00 IS2/SMLG-E5 0.6016667
+2020-10-15 00:00:00 IS2/SMLG-E5 0.52062005
+2020-11-15 00:00:00 IS2/SMLG-E5 0.5832
+2020-12-15 00:00:00 IS2/SMLG-E5 0.9466599
+2021-01-15 00:00:00 IS2/SMLG-E5 1.25126
+2021-02-15 00:00:00 IS2/SMLG-E5 1.4481
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-03-15 00:00:00 IS2/SMLG-E5 1.66464
+2021-04-15 00:00:00 IS2/SMLG-E5 1.80984
+2021-05-15 00:00:00 IS2/SMLG-E5 1.9285
+2021-06-15 00:00:00 IS2/SMLG-E5 1.64134
+2021-07-15 00:00:00 IS2/SMLG-E5 1.0927
+2018-11-15 00:00:00 IS2/SMLG-E5 0.72830003
+2018-12-15 00:00:00 IS2/SMLG-E5 1.0467399
+2019-01-15 00:00:00 IS2/SMLG-E5 1.4275
+2019-02-15 00:00:00 IS2/SMLG-E5 1.7822199
+2019-03-15 00:00:00 IS2/SMLG-E5 2.0918798
+2019-04-15 00:00:00 IS2/SMLG-E5 2.06964
+2019-05-15 00:00:00 IS2/SMLG-E5 1.99894
+2019-06-15 00:00:00 IS2/SMLG-E5 1.5218371
+2019-07-15 00:00:00 IS2/SMLG-E5 nan
+2019-08-15 00:00:00 IS2/SMLG-E5 nan
+2019-09-15 00:00:00 IS2/SMLG-E5 nan
+2019-10-15 00:00:00 IS2/SMLG-E5 0.5838518
+2019-11-15 00:00:00 IS2/SMLG-E5 0.64522004
+2019-12-15 00:00:00 IS2/SMLG-E5 1.0899799
+2020-01-15 00:00:00 IS2/SMLG-E5 1.2973601
+2020-02-15 00:00:00 IS2/SMLG-E5 1.4109399
+2020-03-15 00:00:00 IS2/SMLG-E5 1.6935998
+2020-04-15 00:00:00 IS2/SMLG-E5 2.0563002
+2020-05-15 00:00:00 IS2/SMLG-E5 2.07406
+2020-06-15 00:00:00 IS2/SMLG-E5 1.76022
+2020-07-15 00:00:00 IS2/SMLG-E5 0.73486006
+2020-08-15 00:00:00 IS2/SMLG-E5 0.50064105
+2020-09-15 00:00:00 IS2/SMLG-E5 nan
+2020-10-15 00:00:00 IS2/SMLG-E5 0.50060004
+2020-11-15 00:00:00 IS2/SMLG-E5 0.67644
+2020-12-15 00:00:00 IS2/SMLG-E5 1.06558
+2021-01-15 00:00:00 IS2/SMLG-E5 1.7070401
+2021-02-15 00:00:00 IS2/SMLG-E5 1.71338
+2021-03-15 00:00:00 IS2/SMLG-E5 1.9271
+2021-04-15 00:00:00 IS2/SMLG-E5 2.0232198
+2021-05-15 00:00:00 IS2/SMLG-E5 2.32064
+2021-06-15 00:00:00 IS2/SMLG-E5 1.7958002
+2021-07-15 00:00:00 IS2/SMLG-E5 0.82938004
+2018-11-15 00:00:00 IS2/SMLG-M2 0.58128846
+2018-12-15 00:00:00 IS2/SMLG-M2 0.98536533
+2019-01-15 00:00:00 IS2/SMLG-M2 1.1121539
+2019-02-15 00:00:00 IS2/SMLG-M2 1.3677884
+2019-03-15 00:00:00 IS2/SMLG-M2 1.9236153
+2019-04-15 00:00:00 IS2/SMLG-M2 2.1319232
+2019-05-15 00:00:00 IS2/SMLG-M2 2.0145383
+2019-06-15 00:00:00 IS2/SMLG-M2 1.3804231
+2019-07-15 00:00:00 IS2/SMLG-M2 nan
+2019-08-15 00:00:00 IS2/SMLG-M2 nan
+2019-09-15 00:00:00 IS2/SMLG-M2 nan
+2019-10-15 00:00:00 IS2/SMLG-M2 nan
+2019-11-15 00:00:00 IS2/SMLG-M2 0.54715383
+2019-12-15 00:00:00 IS2/SMLG-M2 0.7850384
+2020-01-15 00:00:00 IS2/SMLG-M2 0.91053843
+2020-02-15 00:00:00 IS2/SMLG-M2 1.0032308
+2020-03-15 00:00:00 IS2/SMLG-M2 1.3775386
+2020-04-15 00:00:00 IS2/SMLG-M2 1.5185578
+2020-05-15 00:00:00 IS2/SMLG-M2 1.7076347
+2020-06-15 00:00:00 IS2/SMLG-M2 1.2663846
+2020-07-15 00:00:00 IS2/SMLG-M2 0.6146731
+2020-08-15 00:00:00 IS2/SMLG-M2 0.5667778
+2020-09-15 00:00:00 IS2/SMLG-M2 0.5906666
+2020-10-15 00:00:00 IS2/SMLG-M2 0.66394234
+2020-11-15 00:00:00 IS2/SMLG-M2 0.70473075
+2020-12-15 00:00:00 IS2/SMLG-M2 0.7486538
+2021-01-15 00:00:00 IS2/SMLG-M2 0.90103847
+2021-02-15 00:00:00 IS2/SMLG-M2 1.0790384
+2021-03-15 00:00:00 IS2/SMLG-M2 1.4899423
+2021-04-15 00:00:00 IS2/SMLG-M2 1.6401731
+2021-05-15 00:00:00 IS2/SMLG-M2 1.8792884
+2021-06-15 00:00:00 IS2/SMLG-M2 1.3924807
+2021-07-15 00:00:00 IS2/SMLG-M2 0.6779999
+2018-11-15 00:00:00 IS2/SMLG-M2 0.48632
+2018-12-15 00:00:00 IS2/SMLG-M2 0.76694
+2019-01-15 00:00:00 IS2/SMLG-M2 1.0925599
+2019-02-15 00:00:00 IS2/SMLG-M2 1.2165
+2019-03-15 00:00:00 IS2/SMLG-M2 1.4892
+2019-04-15 00:00:00 IS2/SMLG-M2 1.5948399
+2019-05-15 00:00:00 IS2/SMLG-M2 2.0525
+2019-06-15 00:00:00 IS2/SMLG-M2 1.70138
+2019-07-15 00:00:00 IS2/SMLG-M2 nan
+2019-08-15 00:00:00 IS2/SMLG-M2 0.81720006
+2019-09-15 00:00:00 IS2/SMLG-M2 0.77454835
+2019-10-15 00:00:00 IS2/SMLG-M2 0.79902005
+2019-11-15 00:00:00 IS2/SMLG-M2 0.90511996
+2019-12-15 00:00:00 IS2/SMLG-M2 1.0577999
+2020-01-15 00:00:00 IS2/SMLG-M2 1.2289
+2020-02-15 00:00:00 IS2/SMLG-M2 1.5128
+2020-03-15 00:00:00 IS2/SMLG-M2 1.5317799
+2020-04-15 00:00:00 IS2/SMLG-M2 1.3895999
+2020-05-15 00:00:00 IS2/SMLG-M2 1.3124601
+2020-06-15 00:00:00 IS2/SMLG-M2 1.0246
+2020-07-15 00:00:00 IS2/SMLG-M2 0.57628
+2020-08-15 00:00:00 IS2/SMLG-M2 0.60800004
+2020-09-15 00:00:00 IS2/SMLG-M2 0.5086667
+2020-10-15 00:00:00 IS2/SMLG-M2 0.42316
+2020-11-15 00:00:00 IS2/SMLG-M2 0.48127997
+2020-12-15 00:00:00 IS2/SMLG-M2 0.79047996
+2021-01-15 00:00:00 IS2/SMLG-M2 1.21528
+2021-02-15 00:00:00 IS2/SMLG-M2 1.49848
+2021-03-15 00:00:00 IS2/SMLG-M2 1.6951401
+2021-04-15 00:00:00 IS2/SMLG-M2 1.77276
+2021-05-15 00:00:00 IS2/SMLG-M2 1.7695199
+2021-06-15 00:00:00 IS2/SMLG-M2 1.2318
+2021-07-15 00:00:00 IS2/SMLG-M2 0.73498
+2018-11-15 00:00:00 IS2/SMLG-M2 0.7534799
+2018-12-15 00:00:00 IS2/SMLG-M2 1.14638
+2019-01-15 00:00:00 IS2/SMLG-M2 1.5150399
+2019-02-15 00:00:00 IS2/SMLG-M2 1.8269199
+2019-03-15 00:00:00 IS2/SMLG-M2 2.0876
+2019-04-15 00:00:00 IS2/SMLG-M2 2.09132
+2019-05-15 00:00:00 IS2/SMLG-M2 1.9558799
+2019-06-15 00:00:00 IS2/SMLG-M2 1.3864883
+2019-07-15 00:00:00 IS2/SMLG-M2 nan
+2019-08-15 00:00:00 IS2/SMLG-M2 nan
+2019-09-15 00:00:00 IS2/SMLG-M2 nan
+2019-10-15 00:00:00 IS2/SMLG-M2 0.5557408
+2019-11-15 00:00:00 IS2/SMLG-M2 0.61566
+2019-12-15 00:00:00 IS2/SMLG-M2 1.05398
+2020-01-15 00:00:00 IS2/SMLG-M2 1.30022
+2020-02-15 00:00:00 IS2/SMLG-M2 1.41456
+2020-03-15 00:00:00 IS2/SMLG-M2 1.6998
+2020-04-15 00:00:00 IS2/SMLG-M2 2.01522
+2020-05-15 00:00:00 IS2/SMLG-M2 1.9481399
+2020-06-15 00:00:00 IS2/SMLG-M2 1.3949798
+2020-07-15 00:00:00 IS2/SMLG-M2 0.70324004
+2020-08-15 00:00:00 IS2/SMLG-M2 0.498359
+2020-09-15 00:00:00 IS2/SMLG-M2 nan
+2020-10-15 00:00:00 IS2/SMLG-M2 0.48438
+2020-11-15 00:00:00 IS2/SMLG-M2 0.55828
+2020-12-15 00:00:00 IS2/SMLG-M2 0.95022005
+2021-01-15 00:00:00 IS2/SMLG-M2 1.6225199
+2021-02-15 00:00:00 IS2/SMLG-M2 1.65444
+2021-03-15 00:00:00 IS2/SMLG-M2 1.89406
+2021-04-15 00:00:00 IS2/SMLG-M2 1.8850999
+2021-05-15 00:00:00 IS2/SMLG-M2 2.1650999
+2021-06-15 00:00:00 IS2/SMLG-M2 1.6275799
+2021-07-15 00:00:00 IS2/SMLG-M2 0.92748
+2018-11-15 00:00:00 CS2/SMLG-M2 0.6012352533367209
+2018-12-15 00:00:00 CS2/SMLG-M2 0.8153927884093556
+2019-01-15 00:00:00 CS2/SMLG-M2 0.820761489965925
+2019-02-15 00:00:00 CS2/SMLG-M2 1.3837659994796316
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019-03-15 00:00:00 CS2/SMLG-M2 1.580826687857736
+2019-04-15 00:00:00 CS2/SMLG-M2 1.6413879863377534
+2019-05-15 00:00:00 CS2/SMLG-M2 1.32761573572704
+2019-06-15 00:00:00 CS2/SMLG-M2 1.7003042666719357
+2019-07-15 00:00:00 CS2/SMLG-M2 nan
+2019-08-15 00:00:00 CS2/SMLG-M2 nan
+2019-09-15 00:00:00 CS2/SMLG-M2 nan
+2019-10-15 00:00:00 CS2/SMLG-M2 nan
+2019-11-15 00:00:00 CS2/SMLG-M2 0.47650766155409785
+2019-12-15 00:00:00 CS2/SMLG-M2 1.0206371958674971
+2020-01-15 00:00:00 CS2/SMLG-M2 1.0568214743240307
+2020-02-15 00:00:00 CS2/SMLG-M2 1.1867087817287838
+2020-03-15 00:00:00 CS2/SMLG-M2 1.9237640769937654
+2020-04-15 00:00:00 CS2/SMLG-M2 2.1665528786591066
+2020-05-15 00:00:00 CS2/SMLG-M2 2.044249189875285
+2020-06-15 00:00:00 CS2/SMLG-M2 1.5002631096173984
+2020-07-15 00:00:00 CS2/SMLG-M2 0.741398082861264
+2020-08-15 00:00:00 CS2/SMLG-M2 0.4980433208030213
+2020-09-15 00:00:00 CS2/SMLG-M2 0.33014988809817625
+2020-10-15 00:00:00 CS2/SMLG-M2 0.45906926549658805
+2020-11-15 00:00:00 CS2/SMLG-M2 0.7334303098769551
+2020-12-15 00:00:00 CS2/SMLG-M2 1.148670707871999
+2021-01-15 00:00:00 CS2/SMLG-M2 1.2575137693318048
+2021-02-15 00:00:00 CS2/SMLG-M2 1.32912911803362
+2021-03-15 00:00:00 CS2/SMLG-M2 1.3862593583960234
+2021-04-15 00:00:00 CS2/SMLG-M2 1.3968793180275763
+2021-05-15 00:00:00 CS2/SMLG-M2 1.485933057266566
+2021-06-15 00:00:00 CS2/SMLG-M2 1.1857245496700957
+2021-07-15 00:00:00 CS2/SMLG-M2 0.6922791350711676
+2018-11-15 00:00:00 CS2/SMLG-M2 0.8900703058804867
+2018-12-15 00:00:00 CS2/SMLG-M2 1.0272280098773467
+2019-01-15 00:00:00 CS2/SMLG-M2 1.0842384206235876
+2019-02-15 00:00:00 CS2/SMLG-M2 1.5727490997116547
+2019-03-15 00:00:00 CS2/SMLG-M2 2.299593233370688
+2019-04-15 00:00:00 CS2/SMLG-M2 2.6398721525818107
+2019-05-15 00:00:00 CS2/SMLG-M2 2.3272748774766425
+2019-06-15 00:00:00 CS2/SMLG-M2 1.982525247734178
+2019-07-15 00:00:00 CS2/SMLG-M2 nan
+2019-08-15 00:00:00 CS2/SMLG-M2 0.6069288799142842
+2019-09-15 00:00:00 CS2/SMLG-M2 0.7617646319119442
+2019-10-15 00:00:00 CS2/SMLG-M2 0.7296049716976696
+2019-11-15 00:00:00 CS2/SMLG-M2 1.148426669004703
+2019-12-15 00:00:00 CS2/SMLG-M2 1.2224763077963388
+2020-01-15 00:00:00 CS2/SMLG-M2 1.2958453032421704
+2020-02-15 00:00:00 CS2/SMLG-M2 1.4356376438929477
+2020-03-15 00:00:00 CS2/SMLG-M2 1.9897230537640218
+2020-04-15 00:00:00 CS2/SMLG-M2 2.6687034559107725
+2020-05-15 00:00:00 CS2/SMLG-M2 2.724749518152022
+2020-06-15 00:00:00 CS2/SMLG-M2 2.1451169637475433
+2020-07-15 00:00:00 CS2/SMLG-M2 0.9211726258119474
+2020-08-15 00:00:00 CS2/SMLG-M2 0.7728285254906487
+2020-09-15 00:00:00 CS2/SMLG-M2 0.6942013536079124
+2020-10-15 00:00:00 CS2/SMLG-M2 0.4981439843644604
+2020-11-15 00:00:00 CS2/SMLG-M2 1.059649091301835
+2020-12-15 00:00:00 CS2/SMLG-M2 1.3118944999554325
+2021-01-15 00:00:00 CS2/SMLG-M2 1.3984070512906968
+2021-02-15 00:00:00 CS2/SMLG-M2 1.4423321557512918
+2021-03-15 00:00:00 CS2/SMLG-M2 1.7942473122567377
+2021-04-15 00:00:00 CS2/SMLG-M2 1.9939921988802844
+2021-05-15 00:00:00 CS2/SMLG-M2 1.976713356655778
+2021-06-15 00:00:00 CS2/SMLG-M2 1.674475880176959
+2021-07-15 00:00:00 CS2/SMLG-M2 1.694108700943081
+2018-11-15 00:00:00 CS2/SMLG-M2 0.7037313676034664
+2018-12-15 00:00:00 CS2/SMLG-M2 1.2806824003663386
+2019-01-15 00:00:00 CS2/SMLG-M2 1.2365055428902272
+2019-02-15 00:00:00 CS2/SMLG-M2 1.1538694160336618
+2019-03-15 00:00:00 CS2/SMLG-M2 1.2426630765833202
+2019-04-15 00:00:00 CS2/SMLG-M2 1.4436240634656081
+2019-05-15 00:00:00 CS2/SMLG-M2 1.353567757986005
+2019-06-15 00:00:00 CS2/SMLG-M2 1.3976132189098807
+2019-07-15 00:00:00 CS2/SMLG-M2 nan
+2019-08-15 00:00:00 CS2/SMLG-M2 nan
+2019-09-15 00:00:00 CS2/SMLG-M2 nan
+2019-10-15 00:00:00 CS2/SMLG-M2 0.28340840518076615
+2019-11-15 00:00:00 CS2/SMLG-M2 0.7736675487826595
+2019-12-15 00:00:00 CS2/SMLG-M2 1.0296410412303538
+2020-01-15 00:00:00 CS2/SMLG-M2 1.1166483985068079
+2020-02-15 00:00:00 CS2/SMLG-M2 1.140647365007332
+2020-03-15 00:00:00 CS2/SMLG-M2 1.5181499437727135
+2020-04-15 00:00:00 CS2/SMLG-M2 1.692634520566162
+2020-05-15 00:00:00 CS2/SMLG-M2 1.5910504115331505
+2020-06-15 00:00:00 CS2/SMLG-M2 1.4056480181975148
+2020-07-15 00:00:00 CS2/SMLG-M2 0.5528738459595642
+2020-08-15 00:00:00 CS2/SMLG-M2 0.5237700486186677
+2020-09-15 00:00:00 CS2/SMLG-M2 nan
+2020-10-15 00:00:00 CS2/SMLG-M2 0.36194746606696365
+2020-11-15 00:00:00 CS2/SMLG-M2 0.8604620451339605
+2020-12-15 00:00:00 CS2/SMLG-M2 1.0621956450171963
+2021-01-15 00:00:00 CS2/SMLG-M2 1.2477460216177167
+2021-02-15 00:00:00 CS2/SMLG-M2 1.3017887439281566
+2021-03-15 00:00:00 CS2/SMLG-M2 1.362111304209406
+2021-04-15 00:00:00 CS2/SMLG-M2 1.421457172960295
+2021-05-15 00:00:00 CS2/SMLG-M2 1.3658561715339803
+2021-06-15 00:00:00 CS2/SMLG-M2 1.2646598346397024
+2021-07-15 00:00:00 CS2/SMLG-M2 0.5397154018492917
 </pre></div>
 </div>
 </div>
@@ -900,18 +2320,6 @@ document.write(`
 <span class="n">uls_mean_monthly_draft_d_IS2_period</span>  <span class="o">=</span> <span class="p">[</span><span class="n">get_ULS_dates</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_d</span><span class="p">,</span> <span class="n">uls_dates</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range_strs</span><span class="p">]</span>
                                         
 <span class="n">uls_mean_monthly_draft_IS2_period</span> <span class="o">=</span> <span class="n">uls_mean_monthly_draft_a_IS2_period</span><span class="o">+</span><span class="n">uls_mean_monthly_draft_b_IS2_period</span><span class="o">+</span><span class="n">uls_mean_monthly_draft_d_IS2_period</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">uls_dates</span><span class="o">=</span><span class="n">uls_mean_monthly_draft_a</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">uls_mean_monthly_draft_a_IS2_period</span>  <span class="o">=</span> <span class="p">[</span><span class="n">get_ULS_dates</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_a</span><span class="p">,</span> <span class="n">uls_dates</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range_strs</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">uls_dates</span><span class="o">=</span><span class="n">uls_mean_monthly_draft_b</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;uls_mean_monthly_draft_a&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -977,21 +2385,46 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IS2/SMLG-E5
+IS2/SMLG-M2
+CS2/SMLG-M2
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># ULS A</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">mask_a</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">])</span><span class="o">&amp;</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_a_IS2_period</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">res_a</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">])[</span><span class="n">mask_a</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_a_IS2_period</span><span class="p">)[</span><span class="n">mask_a</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">r_str_a</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.02f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res_a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;IS2/SMLG-E5&#39;: {&#39;r_str_a&#39;: &#39;0.79&#39;,
+  &#39;mb_str_a&#39;: &#39;0.14&#39;,
+  &#39;sd_str_a&#39;: &#39;0.24&#39;,
+  &#39;r_str_b&#39;: &#39;0.72&#39;,
+  &#39;mb_str_b&#39;: &#39;0.15&#39;,
+  &#39;sd_str_b&#39;: &#39;0.31&#39;,
+  &#39;r_str_d&#39;: &#39;0.85&#39;,
+  &#39;mb_str_d&#39;: &#39;0.21&#39;,
+  &#39;sd_str_d&#39;: &#39;0.26&#39;,
+  &#39;r_str_all&#39;: &#39;0.76&#39;,
+  &#39;mb_str_all&#39;: &#39;0.16&#39;,
+  &#39;sd_str_all&#39;: &#39;0.27&#39;},
+ &#39;IS2/SMLG-M2&#39;: {&#39;r_str_a&#39;: &#39;0.74&#39;,
+  &#39;mb_str_a&#39;: &#39;0.01&#39;,
+  &#39;sd_str_a&#39;: &#39;0.26&#39;,
+  &#39;r_str_b&#39;: &#39;0.76&#39;,
+  &#39;mb_str_b&#39;: &#39;0.07&#39;,
+  &#39;sd_str_b&#39;: &#39;0.30&#39;,
+  &#39;r_str_d&#39;: &#39;0.79&#39;,
+  &#39;mb_str_d&#39;: &#39;0.16&#39;,
+  &#39;sd_str_d&#39;: &#39;0.28&#39;,
+  &#39;r_str_all&#39;: &#39;0.73&#39;,
+  &#39;mb_str_all&#39;: &#39;0.08&#39;,
+  &#39;sd_str_all&#39;: &#39;0.29&#39;},
+ &#39;CS2/SMLG-M2&#39;: {&#39;r_str_a&#39;: &#39;0.74&#39;,
+  &#39;mb_str_a&#39;: &#39;0.02&#39;,
+  &#39;sd_str_a&#39;: &#39;0.26&#39;,
+  &#39;r_str_b&#39;: &#39;0.82&#39;,
+  &#39;mb_str_b&#39;: &#39;0.42&#39;,
+  &#39;sd_str_b&#39;: &#39;0.28&#39;,
+  &#39;r_str_d&#39;: &#39;0.77&#39;,
+  &#39;mb_str_d&#39;: &#39;-0.10&#39;,
+  &#39;sd_str_d&#39;: &#39;0.32&#39;,
+  &#39;r_str_all&#39;: &#39;0.60&#39;,
+  &#39;mb_str_all&#39;: &#39;0.11&#39;,
+  &#39;sd_str_all&#39;: &#39;0.36&#39;}}
 </pre></div>
 </div>
 </div>
@@ -1003,12 +2436,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">uls_mean_monthly_draft_a</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">()</span><span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;uls_mean_monthly_draft_a&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2018-11-15&#39;, &#39;2018-12-15&#39;, &#39;2019-01-15&#39;, &#39;2019-02-15&#39;,
+               &#39;2019-03-15&#39;, &#39;2019-04-15&#39;, &#39;2019-05-15&#39;, &#39;2019-06-15&#39;,
+               &#39;2019-07-15&#39;, &#39;2019-08-15&#39;, &#39;2019-09-15&#39;, &#39;2019-10-15&#39;,
+               &#39;2019-11-15&#39;, &#39;2019-12-15&#39;, &#39;2020-01-15&#39;, &#39;2020-02-15&#39;,
+               &#39;2020-03-15&#39;, &#39;2020-04-15&#39;, &#39;2020-05-15&#39;, &#39;2020-06-15&#39;,
+               &#39;2020-07-15&#39;, &#39;2020-08-15&#39;, &#39;2020-09-15&#39;, &#39;2020-10-15&#39;,
+               &#39;2020-11-15&#39;, &#39;2020-12-15&#39;, &#39;2021-01-15&#39;, &#39;2021-02-15&#39;,
+               &#39;2021-03-15&#39;, &#39;2021-04-15&#39;, &#39;2021-05-15&#39;, &#39;2021-06-15&#39;,
+               &#39;2021-07-15&#39;],
+              dtype=&#39;datetime64[ns]&#39;, name=&#39;date&#39;, freq=None)
 </pre></div>
 </div>
 </div>
@@ -1071,18 +2508,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Define a function to create plots for a given option</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">option_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IS2/SMLG-&#39;</span><span class="o">+</span><span class="n">reanalysis</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="s1">&#39;IS2/SMLG-&#39;</span><span class="o">+</span><span class="n">reanalysis_two</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="s1">&#39;CS2/SMLG-M2&#39;</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Plot for ULS A</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">uls_mean_daily_draft_a</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">uls_mean_daily_draft_a</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Daily ULS&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="../_images/a2c14433fc9e746932aa283ab54f7f7573902d7b0121b88c30d6351cd094afdf.png"><img alt="../_images/a2c14433fc9e746932aa283ab54f7f7573902d7b0121b88c30d6351cd094afdf.png" src="../_images/a2c14433fc9e746932aa283ab54f7f7573902d7b0121b88c30d6351cd094afdf.png" style="width: 2030px; height: 1965px;" />
+</a>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1142,17 +2569,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Create a single column with two rows for the two options</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">})</span>  <span class="c1"># Adjust hspace for less whitespace</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>  <span class="c1"># Flatten the 2D array of axes for easy iteration</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">panel_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">,</span> <span class="s1">&#39;(c)&#39;</span><span class="p">]</span>  <span class="c1"># Panel labels</span>
-
-<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="../_images/d473f0567c2d01a808e64ef124b055ca5998ad8d366277af9414c23d353e1b05.png"><img alt="../_images/d473f0567c2d01a808e64ef124b055ca5998ad8d366277af9414c23d353e1b05.png" src="../_images/d473f0567c2d01a808e64ef124b055ca5998ad8d366277af9414c23d353e1b05.png" style="width: 2053px; height: 702px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1171,15 +2589,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Filter for summer months (May=5 through August=8)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">IS2_date_range</span> <span class="o">=</span> <span class="n">IS2_date_range</span><span class="p">[</span><span class="n">IS2_date_range</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Create date strings for filtered range</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">IS2_date_range_strs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-</span><span class="si">%02d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;IS2_date_range&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summer dates: [&#39;2019-05&#39;, &#39;2019-06&#39;, &#39;2019-07&#39;, &#39;2019-08&#39;, &#39;2020-05&#39;, &#39;2020-06&#39;, &#39;2020-07&#39;, &#39;2020-08&#39;, &#39;2021-05&#39;, &#39;2021-06&#39;, &#39;2021-07&#39;]
 </pre></div>
 </div>
 </div>
@@ -1213,22 +2623,105 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">monthly_IS2_at_ULS_all_options</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="ne">---&gt; </span><span class="mi">10</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">uls_x_a</span><span class="p">,</span> <span class="n">uls_y_a</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">monthly_IS2_at_ULS_b_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span><span class="n">uls_x_b</span><span class="p">,</span> <span class="n">uls_y_b</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">monthly_IS2_at_ULS_d_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span><span class="n">uls_x_d</span><span class="p">,</span> <span class="n">uls_y_d</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;IS2_date_range&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019-05-15 00:00:00 IS2/SMLG-E5 2.1249423
+2019-06-15 00:00:00 IS2/SMLG-E5 1.8776155
+2019-07-15 00:00:00 IS2/SMLG-E5 nan
+2019-08-15 00:00:00 IS2/SMLG-E5 nan
+2020-05-15 00:00:00 IS2/SMLG-E5 1.8750578
+2020-06-15 00:00:00 IS2/SMLG-E5 1.8289809
+2020-07-15 00:00:00 IS2/SMLG-E5 0.70578855
+2020-08-15 00:00:00 IS2/SMLG-E5 0.55099994
+2021-05-15 00:00:00 IS2/SMLG-E5 2.0777307
+2021-06-15 00:00:00 IS2/SMLG-E5 1.71525
+2021-07-15 00:00:00 IS2/SMLG-E5 0.7386345
+2019-05-15 00:00:00 IS2/SMLG-E5 2.16676
+2019-06-15 00:00:00 IS2/SMLG-E5 2.27472
+2019-07-15 00:00:00 IS2/SMLG-E5 nan
+2019-08-15 00:00:00 IS2/SMLG-E5 0.81884444
+2020-05-15 00:00:00 IS2/SMLG-E5 1.6374398
+2020-06-15 00:00:00 IS2/SMLG-E5 1.8070999
+2020-07-15 00:00:00 IS2/SMLG-E5 0.62468004
+2020-08-15 00:00:00 IS2/SMLG-E5 0.651
+2021-05-15 00:00:00 IS2/SMLG-E5 1.9285
+2021-06-15 00:00:00 IS2/SMLG-E5 1.64134
+2021-07-15 00:00:00 IS2/SMLG-E5 1.0927
+2019-05-15 00:00:00 IS2/SMLG-E5 1.99894
+2019-06-15 00:00:00 IS2/SMLG-E5 1.5218371
+2019-07-15 00:00:00 IS2/SMLG-E5 nan
+2019-08-15 00:00:00 IS2/SMLG-E5 nan
+2020-05-15 00:00:00 IS2/SMLG-E5 2.07406
+2020-06-15 00:00:00 IS2/SMLG-E5 1.76022
+2020-07-15 00:00:00 IS2/SMLG-E5 0.73486006
+2020-08-15 00:00:00 IS2/SMLG-E5 0.50064105
+2021-05-15 00:00:00 IS2/SMLG-E5 2.32064
+2021-06-15 00:00:00 IS2/SMLG-E5 1.7958002
+2021-07-15 00:00:00 IS2/SMLG-E5 0.82938004
+2019-05-15 00:00:00 IS2/SMLG-M2 2.0145383
+2019-06-15 00:00:00 IS2/SMLG-M2 1.3804231
+2019-07-15 00:00:00 IS2/SMLG-M2 nan
+2019-08-15 00:00:00 IS2/SMLG-M2 nan
+2020-05-15 00:00:00 IS2/SMLG-M2 1.7076347
+2020-06-15 00:00:00 IS2/SMLG-M2 1.2663846
+2020-07-15 00:00:00 IS2/SMLG-M2 0.6146731
+2020-08-15 00:00:00 IS2/SMLG-M2 0.5667778
+2021-05-15 00:00:00 IS2/SMLG-M2 1.8792884
+2021-06-15 00:00:00 IS2/SMLG-M2 1.3924807
+2021-07-15 00:00:00 IS2/SMLG-M2 0.6779999
+2019-05-15 00:00:00 IS2/SMLG-M2 2.0525
+2019-06-15 00:00:00 IS2/SMLG-M2 1.70138
+2019-07-15 00:00:00 IS2/SMLG-M2 nan
+2019-08-15 00:00:00 IS2/SMLG-M2 0.81720006
+2020-05-15 00:00:00 IS2/SMLG-M2 1.3124601
+2020-06-15 00:00:00 IS2/SMLG-M2 1.0246
+2020-07-15 00:00:00 IS2/SMLG-M2 0.57628
+2020-08-15 00:00:00 IS2/SMLG-M2 0.60800004
+2021-05-15 00:00:00 IS2/SMLG-M2 1.7695199
+2021-06-15 00:00:00 IS2/SMLG-M2 1.2318
+2021-07-15 00:00:00 IS2/SMLG-M2 0.73498
+2019-05-15 00:00:00 IS2/SMLG-M2 1.9558799
+2019-06-15 00:00:00 IS2/SMLG-M2 1.3864883
+2019-07-15 00:00:00 IS2/SMLG-M2 nan
+2019-08-15 00:00:00 IS2/SMLG-M2 nan
+2020-05-15 00:00:00 IS2/SMLG-M2 1.9481399
+2020-06-15 00:00:00 IS2/SMLG-M2 1.3949798
+2020-07-15 00:00:00 IS2/SMLG-M2 0.70324004
+2020-08-15 00:00:00 IS2/SMLG-M2 0.498359
+2021-05-15 00:00:00 IS2/SMLG-M2 2.1650999
+2021-06-15 00:00:00 IS2/SMLG-M2 1.6275799
+2021-07-15 00:00:00 IS2/SMLG-M2 0.92748
+2019-05-15 00:00:00 CS2/SMLG-M2 1.32761573572704
+2019-06-15 00:00:00 CS2/SMLG-M2 1.7003042666719357
+2019-07-15 00:00:00 CS2/SMLG-M2 nan
+2019-08-15 00:00:00 CS2/SMLG-M2 nan
+2020-05-15 00:00:00 CS2/SMLG-M2 2.044249189875285
+2020-06-15 00:00:00 CS2/SMLG-M2 1.5002631096173984
+2020-07-15 00:00:00 CS2/SMLG-M2 0.741398082861264
+2020-08-15 00:00:00 CS2/SMLG-M2 0.4980433208030213
+2021-05-15 00:00:00 CS2/SMLG-M2 1.485933057266566
+2021-06-15 00:00:00 CS2/SMLG-M2 1.1857245496700957
+2021-07-15 00:00:00 CS2/SMLG-M2 0.6922791350711676
+2019-05-15 00:00:00 CS2/SMLG-M2 2.3272748774766425
+2019-06-15 00:00:00 CS2/SMLG-M2 1.982525247734178
+2019-07-15 00:00:00 CS2/SMLG-M2 nan
+2019-08-15 00:00:00 CS2/SMLG-M2 0.6069288799142842
+2020-05-15 00:00:00 CS2/SMLG-M2 2.724749518152022
+2020-06-15 00:00:00 CS2/SMLG-M2 2.1451169637475433
+2020-07-15 00:00:00 CS2/SMLG-M2 0.9211726258119474
+2020-08-15 00:00:00 CS2/SMLG-M2 0.7728285254906487
+2021-05-15 00:00:00 CS2/SMLG-M2 1.976713356655778
+2021-06-15 00:00:00 CS2/SMLG-M2 1.674475880176959
+2021-07-15 00:00:00 CS2/SMLG-M2 1.694108700943081
+2019-05-15 00:00:00 CS2/SMLG-M2 1.353567757986005
+2019-06-15 00:00:00 CS2/SMLG-M2 1.3976132189098807
+2019-07-15 00:00:00 CS2/SMLG-M2 nan
+2019-08-15 00:00:00 CS2/SMLG-M2 nan
+2020-05-15 00:00:00 CS2/SMLG-M2 1.5910504115331505
+2020-06-15 00:00:00 CS2/SMLG-M2 1.4056480181975148
+2020-07-15 00:00:00 CS2/SMLG-M2 0.5528738459595642
+2020-08-15 00:00:00 CS2/SMLG-M2 0.5237700486186677
+2021-05-15 00:00:00 CS2/SMLG-M2 1.3658561715339803
+2021-06-15 00:00:00 CS2/SMLG-M2 1.2646598346397024
+2021-07-15 00:00:00 CS2/SMLG-M2 0.5397154018492917
 </pre></div>
 </div>
 </div>
@@ -1245,18 +2738,6 @@ document.write(`
 <span class="n">uls_mean_monthly_draft_d_IS2_period</span>  <span class="o">=</span> <span class="p">[</span><span class="n">get_ULS_dates</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_d</span><span class="p">,</span> <span class="n">uls_dates</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range_strs</span><span class="p">]</span>
                                         
 <span class="n">uls_mean_monthly_draft_IS2_period</span> <span class="o">=</span> <span class="n">uls_mean_monthly_draft_a_IS2_period</span><span class="o">+</span><span class="n">uls_mean_monthly_draft_b_IS2_period</span><span class="o">+</span><span class="n">uls_mean_monthly_draft_d_IS2_period</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">uls_dates</span><span class="o">=</span><span class="n">uls_mean_monthly_draft_a</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">uls_mean_monthly_draft_a_IS2_period</span>  <span class="o">=</span> <span class="p">[</span><span class="n">get_ULS_dates</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_a</span><span class="p">,</span> <span class="n">uls_dates</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range_strs</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">uls_dates</span><span class="o">=</span><span class="n">uls_mean_monthly_draft_b</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;uls_mean_monthly_draft_a&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1322,21 +2803,46 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IS2/SMLG-E5
+IS2/SMLG-M2
+CS2/SMLG-M2
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># ULS A</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">mask_a</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">])</span><span class="o">&amp;</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_a_IS2_period</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">res_a</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">])[</span><span class="n">mask_a</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">uls_mean_monthly_draft_a_IS2_period</span><span class="p">)[</span><span class="n">mask_a</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">r_str_a</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.02f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res_a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;IS2/SMLG-E5&#39;: {&#39;r_str_a&#39;: &#39;0.71&#39;,
+  &#39;mb_str_a&#39;: &#39;0.10&#39;,
+  &#39;sd_str_a&#39;: &#39;0.33&#39;,
+  &#39;r_str_b&#39;: &#39;0.70&#39;,
+  &#39;mb_str_b&#39;: &#39;0.28&#39;,
+  &#39;sd_str_b&#39;: &#39;0.36&#39;,
+  &#39;r_str_d&#39;: &#39;0.73&#39;,
+  &#39;mb_str_d&#39;: &#39;0.03&#39;,
+  &#39;sd_str_d&#39;: &#39;0.33&#39;,
+  &#39;r_str_all&#39;: &#39;0.67&#39;,
+  &#39;mb_str_all&#39;: &#39;0.12&#39;,
+  &#39;sd_str_all&#39;: &#39;0.36&#39;},
+ &#39;IS2/SMLG-M2&#39;: {&#39;r_str_a&#39;: &#39;0.61&#39;,
+  &#39;mb_str_a&#39;: &#39;-0.12&#39;,
+  &#39;sd_str_a&#39;: &#39;0.33&#39;,
+  &#39;r_str_b&#39;: &#39;0.53&#39;,
+  &#39;mb_str_b&#39;: &#39;0.01&#39;,
+  &#39;sd_str_b&#39;: &#39;0.42&#39;,
+  &#39;r_str_d&#39;: &#39;0.61&#39;,
+  &#39;mb_str_d&#39;: &#39;-0.08&#39;,
+  &#39;sd_str_d&#39;: &#39;0.33&#39;,
+  &#39;r_str_all&#39;: &#39;0.59&#39;,
+  &#39;mb_str_all&#39;: &#39;-0.07&#39;,
+  &#39;sd_str_all&#39;: &#39;0.36&#39;},
+ &#39;CS2/SMLG-M2&#39;: {&#39;r_str_a&#39;: &#39;0.65&#39;,
+  &#39;mb_str_a&#39;: &#39;-0.16&#39;,
+  &#39;sd_str_a&#39;: &#39;0.29&#39;,
+  &#39;r_str_b&#39;: &#39;0.92&#39;,
+  &#39;mb_str_b&#39;: &#39;0.50&#39;,
+  &#39;sd_str_b&#39;: &#39;0.27&#39;,
+  &#39;r_str_d&#39;: &#39;0.65&#39;,
+  &#39;mb_str_d&#39;: &#39;-0.37&#39;,
+  &#39;sd_str_d&#39;: &#39;0.33&#39;,
+  &#39;r_str_all&#39;: &#39;0.45&#39;,
+  &#39;mb_str_all&#39;: &#39;-0.05&#39;,
+  &#39;sd_str_all&#39;: &#39;0.46&#39;}}
 </pre></div>
 </div>
 </div>
@@ -1397,17 +2903,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Create a single column with two rows for the two options</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">})</span>   <span class="c1"># Adjust hspace for less whitespace</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>  <span class="c1"># Flatten the 2D array of axes for easy iteration</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">panel_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;(d)&#39;</span><span class="p">,</span> <span class="s1">&#39;(e)&#39;</span><span class="p">,</span> <span class="s1">&#39;(f)&#39;</span><span class="p">]</span>  <span class="c1"># Panel labels</span>
-
-<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="../_images/32d85cd92064e1ae8604c614899e95dac23579bc805036b000b742efd0a2d1bc.png"><img alt="../_images/32d85cd92064e1ae8604c614899e95dac23579bc805036b000b742efd0a2d1bc.png" src="../_images/32d85cd92064e1ae8604c614899e95dac23579bc805036b000b742efd0a2d1bc.png" style="width: 2062px; height: 793px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1517,6 +3014,9 @@ By Alek Petty and Nicole Keeney
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  Distributed under the MIT license
+</div>
   </div>
   
 </div>
