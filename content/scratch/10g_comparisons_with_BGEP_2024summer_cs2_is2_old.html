@@ -151,6 +151,39 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../0_home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ICESat-2 Sea Ice State Analysis - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="ICESat-2 Sea Ice State Analysis - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -538,12 +571,14 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span> 
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.interpolate</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">utils.read_data_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_book_data</span><span class="p">,</span> <span class="n">read_IS2SITMOGR4</span> <span class="c1"># Helper function for reading the data from the bucket</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span><span class="w"> </span><span class="nn">utils.plotting_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_gridcell_winter_means</span><span class="p">,</span> <span class="n">interactiveArcticMaps</span><span class="p">,</span> <span class="n">interactive_winter_mean_maps</span><span class="p">,</span> <span class="n">interactive_winter_comparison_lineplot</span> <span class="c1"># Plotting</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;xarray&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;utils&#39;
 </pre></div>
 </div>
 </div>
@@ -649,16 +684,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/akpetty/GitHub/is2book_uv_env/lib/python3.9/site-packages/pyproj/crs/crs.py:141: FutureWarning: &#39;+init=&lt;authority&gt;:&lt;code&gt;&#39; syntax is deprecated. &#39;&lt;authority&gt;:&lt;code&gt;&#39; is the preferred initialization method. When making the change, be mindful of axis order changes: https://pyproj4.github.io/pyproj/stable/gotchas.html#axis-order-changes-in-proj-6
+  in_crs_string = _prepare_from_proj_string(in_crs_string)
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Get some map proj info needed for later functions</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">out_proj</span> <span class="o">=</span> <span class="s1">&#39;EPSG:3411&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">xIS2</span> <span class="o">=</span> <span class="n">IS2SITMOGR4_v3</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mapProj</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="s2">&quot;+init=&quot;</span> <span class="o">+</span> <span class="n">out_proj</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">xIS2</span> <span class="o">=</span> <span class="n">IS2SITMOGR4_v3</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">yIS2</span> <span class="o">=</span> <span class="n">IS2SITMOGR4_v3</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">values</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xIS2</span><span class="p">,</span> <span class="n">yIS2</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;pyproj&#39; is not defined
+<span class="ne">NameError</span>: name &#39;IS2SITMOGR4_v3&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -787,11 +826,10 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">102</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span> <span class="n">end_date_cs2</span> <span class="o">=</span> <span class="s2">&quot;July 2022&quot;</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">104</span>
 <span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="c1"># MS indicates a time frequency of start of the month</span>
-<span class="ne">--&gt; </span><span class="mi">102</span> <span class="n">date_range_cs2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start_date_cs2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date_cs2</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span> 
-<span class="g g-Whitespace">    </span><span class="mi">104</span> <span class="n">cs2_ubris</span> <span class="o">=</span> <span class="n">regrid_ubris_is2</span><span class="p">(</span><span class="n">mapProj</span><span class="p">,</span> <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span><span class="p">,</span> <span class="n">out_lons</span><span class="p">,</span> <span class="n">out_lats</span><span class="p">,</span> <span class="n">date_range_cs2</span><span class="p">,</span> <span class="n">IS2SITMOGR4_summer_v0</span><span class="o">.</span><span class="n">region_mask</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+<span class="g g-Whitespace">    </span><span class="mi">102</span> <span class="n">date_range_cs2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start_date_cs2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date_cs2</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span> 
+<span class="ne">--&gt; </span><span class="mi">104</span> <span class="n">cs2_ubris</span> <span class="o">=</span> <span class="n">regrid_ubris_is2</span><span class="p">(</span><span class="n">mapProj</span><span class="p">,</span> <span class="n">xptsIS2</span><span class="p">,</span> <span class="n">yptsIS2</span><span class="p">,</span> <span class="n">out_lons</span><span class="p">,</span> <span class="n">out_lats</span><span class="p">,</span> <span class="n">date_range_cs2</span><span class="p">,</span> <span class="n">IS2SITMOGR4_summer_v0</span><span class="o">.</span><span class="n">region_mask</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
 <span class="g g-Whitespace">    </span><span class="mi">105</span>                              <span class="n">dataPathCS2</span><span class="o">=</span><span class="s1">&#39;/Users/akpetty/Data/CS2/&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;uit_cryosat2_seaicethickness_nh_80km_v1p7.nc&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="c1"># Add 1D x and y coordinates</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="c1">#cs2_ubris = cs2_ubris.assign_coords(</span>
@@ -799,8 +837,9 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="c1">#    y=cs2_ubris[&#39;ygrid&#39;][:, 0]   # Assuming ygrid is 2D, take the first column</span>
 <span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="c1">#)</span>
 <span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="c1">#cs2_ubris = cs2_ubris.drop_vars([&#39;xgrid&#39;, &#39;ygrid&#39;])</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="n">cs2_ubris</span> <span class="o">=</span> <span class="n">cs2_ubris</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;cs2_sea_ice_thickness_UBRIS&#39;</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<span class="ne">NameError</span>: name &#39;xptsIS2&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -918,16 +957,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;May 2019&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;Jul 2021&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">IS2_date_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span> <span class="c1"># MS indicates a time frequency of start of the month</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">IS2_date_range</span> <span class="o">=</span> <span class="n">IS2_date_range</span><span class="p">[((</span><span class="n">IS2_date_range</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;</span><span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">IS2_date_range</span><span class="o">.</span><span class="n">month</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">))]</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">IS2_date_range_strs</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-</span><span class="si">%02d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;2019-05&#39;,
+ &#39;2019-06&#39;,
+ &#39;2019-07&#39;,
+ &#39;2019-08&#39;,
+ &#39;2020-05&#39;,
+ &#39;2020-06&#39;,
+ &#39;2020-07&#39;,
+ &#39;2020-08&#39;,
+ &#39;2021-05&#39;,
+ &#39;2021-06&#39;,
+ &#39;2021-07&#39;]
 </pre></div>
 </div>
 </div>
@@ -1004,20 +1044,75 @@ document.write(`
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">uls_mean_daily_draft_a_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_a_18</span><span class="p">,</span> <span class="n">uls_x_a</span><span class="p">,</span> <span class="n">uls_y_a</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">uls_mean_daily_draft_b_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_b_18</span><span class="p">,</span> <span class="n">uls_x_b</span><span class="p">,</span> <span class="n">uls_y_b</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">uls_mean_daily_draft_d_18</span><span class="p">,</span> <span class="n">uls_mean_monthly_draft_d_18</span><span class="p">,</span> <span class="n">uls_x_d</span><span class="p">,</span> <span class="n">uls_y_d</span> <span class="o">=</span> <span class="n">get_uls_year</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">)</span>
 
-<span class="nn">Cell In[13], line 16,</span> in <span class="ni">get_uls_year</span><span class="nt">(letter, year)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">if</span> <span class="n">letter</span><span class="o">==</span><span class="s1">&#39;a&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mooring A (75.0 N, 150 W)&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="n">uls_x</span><span class="p">,</span> <span class="n">uls_y</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="o">-</span><span class="mf">150.</span><span class="p">,</span> <span class="mf">75.</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="k">if</span> <span class="n">letter</span><span class="o">==</span><span class="s1">&#39;b&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mooring B (78.4 N, 150.0 W)&#39;</span><span class="p">)</span>
+<span class="nn">Cell In[13], line 24,</span> in <span class="ni">get_uls_year</span><span class="nt">(letter, year)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mooring D (74.0 N, 140.0 W)&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">uls_x</span><span class="p">,</span> <span class="n">uls_y</span> <span class="o">=</span> <span class="n">mapProj</span><span class="p">(</span><span class="o">-</span><span class="mf">140.</span><span class="p">,</span> <span class="mf">74.</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">uls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataPathULS</span><span class="o">+</span><span class="s1">&#39;uls&#39;</span><span class="o">+</span><span class="n">year</span><span class="o">+</span><span class="n">letter</span><span class="o">+</span><span class="s1">&#39;_draft.dat&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;draft&#39;</span><span class="p">],</span> <span class="n">header</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">utc_datetime_uls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">uls</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">uls_mean_daily_draft</span> <span class="o">=</span> <span class="n">uls</span><span class="p">[</span><span class="s1">&#39;draft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">utc_datetime_uls</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
 
-<span class="ne">NameError</span>: name &#39;mapProj&#39; is not defined
+<span class="nn">File ~/GitHub/is2book_uv_env/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/is2book_uv_env/lib/python3.9/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/GitHub/is2book_uv_env/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/GitHub/is2book_uv_env/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/GitHub/is2book_uv_env/lib/python3.9/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./data/uls18a_draft.dat&#39;
 </pre></div>
 </div>
 </div>
@@ -1073,7 +1168,20 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">30</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">29</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">monthly_IS2_at_ULS_all_options</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="ne">---&gt; </span><span class="mi">29</span>     <span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">uls_x_a</span><span class="p">,</span> <span class="n">uls_y_a</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="n">monthly_IS2_at_ULS_b_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span><span class="n">uls_x_b</span><span class="p">,</span> <span class="n">uls_y_b</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="n">monthly_IS2_at_ULS_d_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span><span class="n">uls_x_d</span><span class="p">,</span> <span class="n">uls_y_d</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="p">]</span>
+
+<span class="nn">Cell In[15], line 30,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">monthly_IS2_at_ULS_all_options</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
 <span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="n">monthly_IS2_at_ULS_a_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
@@ -1086,7 +1194,7 @@ document.write(`
 <span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span><span class="n">uls_x_d</span><span class="p">,</span> <span class="n">uls_y_d</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">IS2_date_range</span>
 <span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="p">]</span>
 
-<span class="ne">NameError</span>: name &#39;IS2_date_range&#39; is not defined
+<span class="ne">NameError</span>: name &#39;uls_x_a&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1120,7 +1228,7 @@ document.write(`
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">grid_IS2_nearby</span><span class="p">(</span><span class="n">IS2_date_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;IS-2/SM&#39;</span><span class="p">,</span> <span class="n">uls_x_a</span><span class="p">,</span> <span class="n">uls_y_a</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">comp_res</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;IS2_date_range&#39; is not defined
+<span class="ne">NameError</span>: name &#39;uls_x_a&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1287,7 +1395,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">validation_results</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -1299,7 +1407,7 @@ document.write(`
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">r_str_a</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.02f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res_a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+<span class="ne">KeyError</span>: &#39;IS-2/SM&#39;
 </pre></div>
 </div>
 </div>
