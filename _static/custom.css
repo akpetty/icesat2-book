@@ -40,3 +40,19 @@
     max-width: 100%;
 }
 
+/* Prevent vertical stretching of figures/images */
+img, .figure img, .output_png, .output_jpeg {
+    height: auto !important;
+}
+
+/* Ensure figures scale down to container width but keep aspect ratio */
+.bd-content img {
+    max-width: 100% !important;
+    width: auto !important;
+}
+
+/* Prevent plotly/bokeh hv outputs from stretching vertically */
+.bk-root, .hv-plot, .holoviews-plot, .bokeh-plot {
+    height: auto !important;
+}
+

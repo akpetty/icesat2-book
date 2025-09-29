@@ -21,6 +21,10 @@ Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relat
 </p>
 
 ## Version History
+Version 1.5 (10/01/2025):
+- Finalized the all-season notebooks following peer review. 
+- Added UV package manager environment support (see the GitHub README).
+
 Version 1.4 (05/20/2025):
 - Added new preliminary all-season chapter
 - Added all-season data wrangling notebook and dataset
