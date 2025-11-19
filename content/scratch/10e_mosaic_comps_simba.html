@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=62c03b7f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=5b5be228" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -203,6 +203,17 @@
 
 
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2e_winter_arctic_sea_ice_variability_2025update.html">Winter Arctic sea ice state variability (updates through to April 2025)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2d_winter_arctic_sea_ice_variability_2024update.html">Winter Arctic sea ice state variability (updates through to April 2024)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2c_winter_arctic_sea_ice_variability_2023update.html">Winter Arctic sea ice state variability (updates through to April 2023)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
+
+
+
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis (Petty et al., 2023)</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../2_winter_arctic_sea_ice_variability.html">Winter Arctic sea ice state variability</a></li>
@@ -227,16 +238,6 @@
 
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../2c_winter_arctic_sea_ice_variability_2023update.html">Winter Arctic sea ice state variability (updates through to April 2023)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2d_winter_arctic_sea_ice_variability_2024update.html">Winter Arctic sea ice state variability (updates through to April 2024)</a></li>
-</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">All season Arctic sea ice thickness analysis</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../10a_all_season_arctic_sea_ice_variability.html">All-season Arctic sea ice thickness using new summer ICESat-2 ice thickness estimates</a></li>
@@ -244,6 +245,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../10b_comparisons_with_BGEP_allseason.html">Comparisons of all-season ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
 
+
+<li class="toctree-l1"><a class="reference internal" href="../10c_comparisons_with_BGEP_winter.html">Comparisons of winter (November to April) ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../10d_comparisons_with_icebird.html">Comparisons with AWI IceBird 2019 airborne data</a></li>
 
@@ -258,6 +261,7 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../7b_gridded_data_wrangling_allseason.html">All-season gridded data wrangling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../8_cryosat-2_data_wrangling.html">CryoSat-2 data wrangling</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../9_gridded_interp_demo.html">ICESat-2 interpolation workflow</a></li>
@@ -671,7 +675,7 @@ document.write(`
 <span class="ne">---&gt; </span><span class="mi">56</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
-<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/akpetty/GitHub/icesat2-book/content/scratch/data/book_data_allseason.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;7f83d73b-dab4-4a41-b4cf-e87e24e93793&#39;]
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/Users/akpetty/GitHub/icesat2-book/content/scratch/data/book_data_allseason.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False)), &#39;bd16be00-190d-4219-8189-476b8b4fd827&#39;]
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
@@ -1008,7 +1012,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/zh/0ld8p3k54w36_66pm8lcg_540000gq/T/ipykernel_78923/3763836609.py:14: RuntimeWarning: Mean of empty slice
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/zh/0ld8p3k54w36_66pm8lcg_540000gq/T/ipykernel_21056/3763836609.py:14: RuntimeWarning: Mean of empty slice
   mean_simba_time = np.nanmean(month_time, axis=0)
 </pre></div>
 </div>

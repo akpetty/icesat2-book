@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=62c03b7f" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=5b5be228" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ICESat-2 interpolation workflow" href="9_gridded_interp_demo.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="7b_gridded_data_wrangling_allseason.html" />
+    <link rel="prev" title="All-season gridded data wrangling" href="7b_gridded_data_wrangling_allseason.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,6 +203,17 @@
 
 
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2e_winter_arctic_sea_ice_variability_2025update.html">Winter Arctic sea ice state variability (updates through to April 2025)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2d_winter_arctic_sea_ice_variability_2024update.html">Winter Arctic sea ice state variability (updates through to April 2024)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2c_winter_arctic_sea_ice_variability_2023update.html">Winter Arctic sea ice state variability (updates through to April 2023)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
+
+
+
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis (Petty et al., 2023)</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2_winter_arctic_sea_ice_variability.html">Winter Arctic sea ice state variability</a></li>
@@ -227,16 +238,6 @@
 
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="2c_winter_arctic_sea_ice_variability_2023update.html">Winter Arctic sea ice state variability (updates through to April 2023)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2d_winter_arctic_sea_ice_variability_2024update.html">Winter Arctic sea ice state variability (updates through to April 2024)</a></li>
-</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">All season Arctic sea ice thickness analysis</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="10a_all_season_arctic_sea_ice_variability.html">All-season Arctic sea ice thickness using new summer ICESat-2 ice thickness estimates</a></li>
@@ -244,6 +245,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="10b_comparisons_with_BGEP_allseason.html">Comparisons of all-season ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
 
+
+<li class="toctree-l1"><a class="reference internal" href="10c_comparisons_with_BGEP_winter.html">Comparisons of winter (November to April) ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="10d_comparisons_with_icebird.html">Comparisons with AWI IceBird 2019 airborne data</a></li>
 
@@ -258,6 +261,7 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="7b_gridded_data_wrangling_allseason.html">All-season gridded data wrangling</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">CryoSat-2 data wrangling</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="9_gridded_interp_demo.html">ICESat-2 interpolation workflow</a></li>
@@ -1148,12 +1152,12 @@ if (window.Jupyter !== undefined) {
 .cell-output-ipywidget-background:has(> .lm-Widget > *[data-root-id]) {
   background-color: transparent !important;
 }
-</style></div><div class="output text_html"><div id='3f522959-700d-425b-ac0a-ddc7958f1899'>
-  <div id="ae997a63-9594-4afb-94de-af9dd3eb25a2" data-root-id="3f522959-700d-425b-ac0a-ddc7958f1899" style="display: contents;"></div>
+</style></div><div class="output text_html"><div id='a51b14bd-2650-496b-9e70-8ebc9ab26ae4'>
+  <div id="d82b591e-7212-43e0-9e18-24c8d00863ad" data-root-id="a51b14bd-2650-496b-9e70-8ebc9ab26ae4" style="display: contents;"></div>
 </div>
 <script type="application/javascript">(function(root) {
-  var docs_json = {"e3333765-7b2b-4df7-8c39-c7393225d48e":{"version":"3.4.3","title":"Bokeh Application","roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"3f522959-700d-425b-ac0a-ddc7958f1899"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"8bc3a115-e634-4d3f-99c3-6b08729e7dd5","attributes":{"plot_id":"3f522959-700d-425b-ac0a-ddc7958f1899","comm_id":"ff444f578b624ee58270cdbd44c92f65","client_comm_id":"890127664ce2499485afc071753a1e14"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"gap","kind":"Any","default":""},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"TemplateEditor1","properties":[{"name":"layout","kind":"Any","default":[]}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"value","kind":"Any","default":null}]}]}};
-  var render_items = [{"docid":"e3333765-7b2b-4df7-8c39-c7393225d48e","roots":{"3f522959-700d-425b-ac0a-ddc7958f1899":"ae997a63-9594-4afb-94de-af9dd3eb25a2"},"root_ids":["3f522959-700d-425b-ac0a-ddc7958f1899"]}];
+  var docs_json = {"5f86be2b-5b43-4bf7-9019-22fa9d61219e":{"version":"3.4.3","title":"Bokeh Application","roots":[{"type":"object","name":"panel.models.browser.BrowserInfo","id":"a51b14bd-2650-496b-9e70-8ebc9ab26ae4"},{"type":"object","name":"panel.models.comm_manager.CommManager","id":"0b310f9a-3804-4d35-8be6-e0f550e68db5","attributes":{"plot_id":"a51b14bd-2650-496b-9e70-8ebc9ab26ae4","comm_id":"b6f635f669e94859a0ea9c3180897864","client_comm_id":"0e220bc751944ca38f835f7d6e10c40e"}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"gap","kind":"Any","default":""},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"TemplateEditor1","properties":[{"name":"layout","kind":"Any","default":[]}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"fill","kind":"Any","default":"none"},{"name":"value","kind":"Any","default":null}]}]}};
+  var render_items = [{"docid":"5f86be2b-5b43-4bf7-9019-22fa9d61219e","roots":{"a51b14bd-2650-496b-9e70-8ebc9ab26ae4":"d82b591e-7212-43e0-9e18-24c8d00863ad"},"root_ids":["a51b14bd-2650-496b-9e70-8ebc9ab26ae4"]}];
   var docs = Object.values(docs_json)
   if (!docs) {
     return
@@ -1547,9 +1551,7 @@ no GSFC CS-2 data so skipping...
 no GSFC CS-2 data so skipping...
 2019-09-01 00:00:00
 no GSFC CS-2 data so skipping...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-06-01 00:00:00
+2020-06-01 00:00:00
 no GSFC CS-2 data so skipping...
 2020-07-01 00:00:00
 no GSFC CS-2 data so skipping...
@@ -1605,9 +1607,7 @@ no CS-2 data so skipping...
 no CS-2 data so skipping...
 2019-09-01 00:00:00
 no CS-2 data so skipping...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-05-01 00:00:00
+2020-05-01 00:00:00
 no CS-2 data so skipping...
 2020-06-01 00:00:00
 no CS-2 data so skipping...
@@ -1659,9 +1659,7 @@ no CS-2 data so skipping...
 no CS-2 data so skipping...
 no CS-2 data so skipping...
 no CS-2 data so skipping...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>no CS-2 data so skipping...
+no CS-2 data so skipping...
 no CS-2 data so skipping...
 no CS-2 data so skipping...
 no CS-2 data so skipping...
@@ -1768,9 +1766,7 @@ no CS-2 data so skipping...
 /Users/akpetty/Data/CS2/KacimiKwok/thk_1812.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_1901.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_1902.txt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/akpetty/Data/CS2/KacimiKwok/thk_1903.txt
+/Users/akpetty/Data/CS2/KacimiKwok/thk_1903.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_1904.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_1905.txt
 2019-05-01 00:00:00
@@ -1789,15 +1785,11 @@ no CS-2 data so skipping...
 no CS-2 data so skipping...
 /Users/akpetty/Data/CS2/KacimiKwok/thk_1910.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_1911.txt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/akpetty/Data/CS2/KacimiKwok/thk_1912.txt
+/Users/akpetty/Data/CS2/KacimiKwok/thk_1912.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2001.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2002.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2003.txt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/akpetty/Data/CS2/KacimiKwok/thk_2004.txt
+/Users/akpetty/Data/CS2/KacimiKwok/thk_2004.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2005.txt
 2020-05-01 00:00:00
 no CS-2 data so skipping...
@@ -1816,9 +1808,7 @@ no CS-2 data so skipping...
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2010.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2011.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2012.txt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/akpetty/Data/CS2/KacimiKwok/thk_2101.txt
+/Users/akpetty/Data/CS2/KacimiKwok/thk_2101.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2102.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2103.txt
 /Users/akpetty/Data/CS2/KacimiKwok/thk_2104.txt
@@ -1892,7 +1882,7 @@ no CS-2 data so skipping...
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">All-season gridded data wrangling</p>
       </div>
     </a>
     <a class="right-next"
