@@ -65,7 +65,7 @@ There are three different ways to use this Jupyter Book:
     - [2021-2022 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html)
     - [2022-2023 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2c_winter_arctic_sea_ice_variability_2023update.html).
     - [2023-2024 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2d_winter_arctic_sea_ice_variability_2024update.html).
-     - [2024-2025 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2d_winter_arctic_sea_ice_variability_2025update.html).
+     - [2024-2025 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2e_winter_arctic_sea_ice_variability_2025update.html).
 - Check out the new notebooks in the chapter: "All season Arctic sea ice thickness analysis" for the inclusion of summer ICESat-2 ice thickness using SnowModel-LG snow loading and comparisons with CryoSat-2 and ULS/BGEP, ICEBIRD-2019 and MOSAiC/SIMBA validation data.
 - Continue to watch this space for more sea ice analyses from ICESat-2!
 
