@@ -122,6 +122,45 @@ def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/
             is2_ds = is2_ds.persist()
         
         return is2_ds
+    
+    if data_type=='zarr-s3-v4':
+
+        print('load zarr from S3 bucket')
+
+        print('zarr_path:', zarr_path)
+        s3 = s3fs.S3FileSystem(anon=True)
+        store = s3fs.S3Map(root=zarr_path, s3=s3, check=False)
+        is2_ds = xr.open_zarr(store=store)
+        #print(is2_ds)
+        # Had a problem with these being loaded as dask arrays which cartopy doesnt love
+        #is2_ds = is2_ds.assign_coords(longitude=(["y","x"], is2_ds.longitude.values))
+        #is2_ds = is2_ds.assign_coords(latitude=(["y","x"], is2_ds.latitude.values))
+
+        # Drop time dimension from grid-cell area, longitude, latitude, and region mask
+        # These are static variables that shouldn't have a time dimension
+        if 'grid_cell_area' in is2_ds.data_vars:
+            is2_ds['grid_cell_area'] = is2_ds['grid_cell_area'].isel(time=0, drop=True)
+        if 'longitude' in is2_ds.data_vars:
+            is2_ds['longitude'] = is2_ds['longitude'].isel(time=0, drop=True)
+        if 'latitude' in is2_ds.data_vars:
+            is2_ds['latitude'] = is2_ds['latitude'].isel(time=0, drop=True)
+        if 'region_mask' in is2_ds.data_vars:
+            is2_ds['region_mask'] = is2_ds['region_mask'].isel(time=0, drop=True)
+
+        # Had a problem with these being loaded as dask arrays which cartopy doesnt love
+        is2_ds = is2_ds.assign_coords(longitude=(["y","x"], is2_ds.longitude.values))
+        is2_ds = is2_ds.assign_coords(latitude=(["y","x"], is2_ds.latitude.values))
+
+        # Move time from 15th of the month to the 1st
+        # Convert time to pandas datetime, extract year and month, then create new datetime for 1st of month
+        time_pd = pd.to_datetime(is2_ds.time.values)
+        new_time = pd.to_datetime([f"{t.year}-{t.month:02d}-01" for t in time_pd])
+        is2_ds = is2_ds.assign_coords(time=new_time)
+
+        if persist==True:
+            is2_ds = is2_ds.persist()
+        
+        return is2_ds
 
     if data_type=='netcdf-s3':
         # Download data from S3 to local bucket
@@ -137,19 +176,24 @@ def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/
             fs.download(file, local_data_path+version+'/')
 
     # Read in files for each month as a single xr.Dataset
+    print('Searching for files in: ', local_data_path+version+'/*.nc')
+    
     filenames = glob.glob(local_data_path+version+'/*.nc')
     if len(filenames) == 0: 
         raise ValueError("No files, exit")
         return None
     
-    dates = [pd.to_datetime(file.split("IS2SITMOGR4_01_")[1].split("_")[0], format = "%Y%m")  for file in filenames]
+    
     # Add a dummy time then add the dates I want, seemed the easiest solution
     if version=='V2':
         is2_ds = xr.open_mfdataset(filenames, preprocess = add_time_dim_v2, engine='netcdf4')
-    else:
+    elif version=='V3':
         is2_ds = xr.open_mfdataset(filenames, preprocess = add_time_dim_v3, engine='netcdf4')
-            
-    is2_ds["time"] = dates
+    else:
+        is2_ds = xr.open_mfdataset(filenames, engine='netcdf4')
+    
+    #dates = [pd.to_datetime(file.split("IS2SITMOGR4_01_")[1].split("_")[0], format = "%Y%m")  for file in filenames]
+    #is2_ds["time"] = dates
 
     # Sort by time as glob file list wasn't!
     is2_ds = is2_ds.sortby("time")
@@ -157,6 +201,13 @@ def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/
         is2_ds = is2_ds.set_coords(["latitude","longitude","xgrid","ygrid"]) 
     else:
         is2_ds = is2_ds.set_coords(["latitude","longitude","x","y"])
+    
+    # Drop time dimension from longitude and latitude if they have it
+    # These are static variables that shouldn't have a time dimension
+    if 'time' in is2_ds.longitude.dims:
+        is2_ds['longitude'] = is2_ds['longitude'].isel(time=0, drop=True)
+    if 'time' in is2_ds.latitude.dims:
+        is2_ds['latitude'] = is2_ds['latitude'].isel(time=0, drop=True)
     
     is2_ds = is2_ds.assign_coords(longitude=(["y","x"], is2_ds.longitude.values))
     is2_ds = is2_ds.assign_coords(latitude=(["y","x"], is2_ds.latitude.values))

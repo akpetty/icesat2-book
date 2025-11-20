@@ -76,18 +76,22 @@ def compute_gridcell_winter_means(da, years=None, start_month="Nov", end_month="
 
     winter_means = []
     for year in years: # Loop through each year and grab the winter months, compute winter mean, and append to list 
+        #print(year)
         da_winter_i = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season)
+        #print(da_winter_i)
         if da_winter_i is None: 
+            print('no data')
             continue
-        da_mean_i = da_winter_i.mean(dim="time", keep_attrs=True) # Comput mean over time dimension
-
+        da_mean_i = da_winter_i.mean(dim="time", keep_attrs=True) # Compute mean over time dimension
+        #print(da_mean_i)
         # Assign time coordinate 
         time_arr = pd.to_datetime(da_winter_i.time.values)
         da_mean_i = da_mean_i.assign_coords({"time":time_arr[0].strftime("%b %Y")+" - "+time_arr[-1].strftime("%b %Y")})
         da_mean_i = da_mean_i.expand_dims("time")
 
         winter_means.append(da_mean_i)
-
+    
+    #print(winter_means)
     merged = xr.merge(winter_means) # Combine each winter mean Dataset into a single Dataset, with the time period maintained as a coordinate
     merged = merged[list(merged.data_vars)[0]] # Convert to DataArray
     merged.time.attrs["description"] = "Time period over which mean was computed" # Add descriptive attribute 
@@ -178,6 +182,135 @@ def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", co
     if savefig:
         plt.savefig('./figs/maps_'+out_str+'.png', dpi=300, facecolor="white", bbox_inches='tight')
 
+    plt.close() # Close so it doesnt automatically display in notebook 
+    return fig
+
+
+def staticArcticMaps_2025(da, title=None, dates=[], out_str="out", cmap="viridis", col=None, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True): 
+    """ Show data on a basemap of the Arctic with special 2025 layout for 7 winters.
+    Creates a custom layout where the first 6 winters are in regular panels and the 7th winter 
+    is larger (spans 2 rows and 2 columns) and positioned on the right side.
+    
+    Args: 
+        da (xr DataArray): data to plot (should have 7 time periods)
+        title (str, optional): title string for plot
+        dates (str list, option): dates to assign to subtitles, else defaults to whatever cartopy thinks they are
+        out_str (str, optional): output string when saving
+        cmap (str, optional): colormap to use (default to viridis)
+        col (str, optional): coordinate to use for creating facet plot (default to "time")
+        vmin (float, optional): minimum on colorbar (default to 1st percentile)
+        vmax (float, optional): maximum on colorbar (default to 99th percentile)
+        min_lat (float, optional): minimum latitude to set extent of plot (default to 50 deg lat)
+        set_cbarlabel (str, optional): set colorbar label
+        savefig (bool): output figure
+    
+    Returns:
+        Figure displayed in notebook 
+    
+    """ 
+    # Compute min and max for plotting
+    def compute_vmin_vmax(da): 
+        vmin = np.nanpercentile(da.values, 1)
+        vmax = np.nanpercentile(da.values, 99)
+        return vmin, vmax
+    vmin_data, vmax_data = compute_vmin_vmax(da)
+    vmin = vmin if vmin is not None else vmin_data # Set to smallest value of the two 
+    vmax = vmax if vmax is not None else vmax_data # Set to largest value of the two 
+    
+    # All of this col maddness is to try and make this function as generalizable as possible
+    if col is None: 
+        col = "time"
+        try: # Assign time coordinate if it doesn't exist
+            da["time"]
+        except AttributeError: 
+            da = da.assign_coords({col:"unknown"})
+    col = col if sum(da[col].shape) > 1 else None
+    
+    # Plot
+    if len(set_cbarlabel)==0:
+        set_cbarlabel=da.attrs["long_name"]+' ['+da.attrs["units"]+']'
+
+    # Create custom subplot layout: 2 rows, 5 columns (optimized for 7 winters)
+    # First 3 columns for regular panels (6 panels), last 2 columns for the large panel (1 panel)
+    fig = plt.figure(figsize=(15, 6))  # 2 rows × 6 height units
+    
+    # Create GridSpec for custom layout
+    gs = fig.add_gridspec(2, 5, width_ratios=[1, 1, 1, 1, 1], height_ratios=[1, 1])
+    
+    # Plot regular panels (first 6 winters)
+    axes = []
+    for i in range(6):  # First 6 winters
+        row = i // 3
+        col_idx = i % 3
+        ax = fig.add_subplot(gs[row, col_idx], projection=ccrs.NorthPolarStereo(central_longitude=0))
+        axes.append(ax)
+        
+        # Plot data
+        if col is not None:
+            data_to_plot = da.isel({col: i})
+        else:
+            data_to_plot = da
+            
+        im = data_to_plot.plot(ax=ax, x="longitude", y="latitude", transform=ccrs.PlateCarree(), 
+                               cmap=cmap, zorder=8, vmin=vmin, vmax=vmax, add_colorbar=False)
+        
+        # Add map features
+        ax.coastlines(linewidth=0.15, color='black', zorder=10)
+        ax.add_feature(cfeature.LAND, color='0.95', zorder=5)
+        ax.add_feature(cfeature.LAKES, color='grey', zorder=5)
+        ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6)
+        ax.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
+        
+        # Set title
+        if len(dates) > i:
+            ax.set_title(dates[i], fontsize=10, horizontalalignment="center", verticalalignment="bottom", 
+                        x=0.5, y=0.97, fontweight='medium')
+    
+    # Plot the large panel (7th winter, spans 2 rows and 2 columns)
+    ax_large = fig.add_subplot(gs[:, 3:], projection=ccrs.NorthPolarStereo(central_longitude=0))
+    axes.append(ax_large)
+    
+    # Plot data for the 7th winter
+    if col is not None:
+        data_to_plot = da.isel({col: 6})  # 7th winter (index 6)
+    else:
+        data_to_plot = da
+        
+    im_large = data_to_plot.plot(ax=ax_large, x="longitude", y="latitude", transform=ccrs.PlateCarree(), 
+                                 cmap=cmap, zorder=8, vmin=vmin, vmax=vmax, add_colorbar=False)
+    
+    # Add map features
+    ax_large.coastlines(linewidth=0.15, color='black', zorder=10)
+    ax_large.add_feature(cfeature.LAND, color='0.95', zorder=5)
+    ax_large.add_feature(cfeature.LAKES, color='grey', zorder=5)
+    ax_large.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6)
+    ax_large.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
+    
+    # Set title
+    if len(dates) > 6:
+        ax_large.set_title(dates[6], fontsize=10, horizontalalignment="center", verticalalignment="bottom", 
+                         x=0.5, y=0.99, fontweight='medium')
+    
+    # Add colorbar inside the large panel (bottom left) without affecting panel position
+    from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+    cbar_ax = inset_axes(ax_large, width="30%", height="3%", loc='lower left')
+    cbar = fig.colorbar(im_large, cax=cbar_ax, orientation='horizontal', extend='both')
+    cbar.set_label(set_cbarlabel, fontsize=10, labelpad=10)
+    cbar.ax.xaxis.set_ticks_position('top')
+    cbar.ax.xaxis.set_label_position('top')
+    cbar.set_ticks(np.linspace(vmin, vmax, 6))  # Set ticks from 0 to 5 in steps of 1
+    
+    # Set overall title
+    if title is not None:
+        fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.5, y=0.95, fontweight='medium')
+    
+    # Adjust layout with reduced spacing
+    plt.subplots_adjust(left=0.05, right=0.95, top=0.95, bottom=0.02, wspace=0.03, hspace=0.05)
+    
+    # Save figure
+    if savefig:
+        plt.savefig('./figs/maps_'+out_str+'.png', dpi=300, facecolor="white", bbox_inches='tight')
+    
     plt.close() # Close so it doesnt automatically display in notebook 
     return fig
 
@@ -490,7 +623,7 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
         else:
             label = f"{x.year[0]}-{str(x.year[-1])[2:]}"
             
-        ax.plot(x.strftime("%b"), y, fmt, label=label)
+        ax.plot(x.strftime("%b"), y, fmt, label=label, markersize=4)
 
         if da_unc is not None:
             # Get uncertaintiy data from that winter 

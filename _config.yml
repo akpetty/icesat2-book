@@ -12,22 +12,24 @@ repository:
   url                       : https://github.com/akpetty/icesat2-book
   branch                    : main  
 
-#sphinx:
-#  config:
+sphinx:
+  config:
+    # Copy CNAME file to build output for custom domain
+    html_extra_path: ["CNAME"]
     # Better search
-#    html_search_language: 'en'
-#    html_search_options: {'type': 'default'}
+    html_search_language: 'en'
+    html_search_options: {'type': 'default'}
     # Remove right sidebar (table of contents) but keep left navigation
-#    html_sidebars:
-#      "**": ["sbt-sidebar-nav.html"]  # Only show left navigation, no right TOC
+    html_sidebars:
+      "**": ["sbt-sidebar-nav.html"]  # Only show left navigation, no right TOC
     # Additional settings to remove TOC
-#    html_show_sourcelink: false
-#    html_show_sphinx: false
+    html_show_sourcelink: false
+    html_show_sphinx: false
     # Exclude environment directory from processing
-#    exclude_patterns:
-#      - 'is2book_uv_env/**'
-#      - 'delete/**'
-#      - '_build/**'
+    exclude_patterns:
+      - 'is2book_uv_env/**'
+      - 'delete/**'
+      - '_build/**'
 
 # Interactive features
 interactive:
@@ -42,8 +44,12 @@ html:
     google_analytics_id: "G-J1HEQ5DMT0"
   navigation_depth: 4
   show_navbar_depth: 2
-  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  extra_navbar              :  ""
   extra_footer: Distributed under the MIT license
+  use_fullscreen_button: true
+  theme:
+    options:
+      page_width: "90%"   # try values like "80%", "90%", or "1200px"
   # Disable right sidebar (table of contents)
   show_toc: false
   # Additional theme options to remove right TOC
@@ -51,21 +57,45 @@ html:
     show_toc: false
     toc_show: false
   # Custom CSS to hide right sidebar
-  #extra_css:
-  #  - _static/custom.css
-
+  extra_css:
+    - _static/custom.css
+  theme:
+    name: pydata_sphinx_theme
+    options:
+      secondary_sidebar_items: []   # removes the right-hand sidebar column entirely
 
 execute:
   execute_notebooks   : "auto"
   allow_errors              : true
   timeout                   : 1000
-  only_build_toc_files      : false
+  only_build_toc_files      : true
   cache: ".jupyter_cache"
   exclude_patterns:
 #    - 'data_wrangling.ipynb'
     - 'delete/*'
     - '_build/*'
     - 'is2book_uv_env/*'
+    - 'content/1_is2sitmogr4_intro.ipynb'
+    - 'content/2_winter_arctic_sea_ice_variability.ipynb'
+    - 'content/3_comparisons_with_cryosat-2_and_piomas.ipynb'
+    - 'content/4_comparisons_with_BGEP.ipynb'
+    - 'content/5_atmospheric_variability.ipynb'
+    - 'content/2b_winter_arctic_sea_ice_variability_2022update.ipynb'
+    - 'content/2c_winter_arctic_sea_ice_variability_2023update.ipynb'
+    - 'content/2d_winter_arctic_sea_ice_variability_2024update.ipynb'
+    #- 'content/2e_winter_arctic_sea_ice_variability_2025update.ipynb'
+    - 'content/10a_all_season_arctic_sea_ice_variability.ipynb'
+    - 'content/10b_comparisons_with_BGEP_allseason.ipynb'
+    - 'content/10c_comparisons_with_BGEP_winter.ipynb'
+    - 'content/10d_comparisons_with_icebird.ipynb'
+    - 'content/10e_comparisons_with_mosaic_simba.ipynb'
+    - 'content/10f_map.ipynb'
+    - 'content/7_gridded_data_wrangling.ipynb'
+    - 'content/7b_gridded_data_wrangling_allseason.ipynb'
+    - 'content/8_cryosat-2_data_wrangling.ipynb'
+    - 'content/9_gridded_interp_demo.ipynb'
+    - 'content/utils/markdown_rendering/read_data_utils.ipynb'
+    - 'content/utils/markdown_rendering/plotting_utils.ipynb'
 
 launch_buttons: 
   binderhub_url: "https://mybinder.org"
