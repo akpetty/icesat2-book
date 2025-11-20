@@ -10,12 +10,12 @@ NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.g
 **Nicole Keeney (Original book creator)**<br>
 [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/nicolejkeeney)
 
-![ICESat-2 maps](figs/maps_thickness_winter_2018_2025.png "ICESat-2 mean winter Arctic sea ice thickness")
+![ICESat-2 maps](../maps_thickness_winter_2018_2025.png "ICESat-2 mean winter Arctic sea ice thickness")
 <p align = "center">
 Fig 1: Mean winter (November to April) Arctic sea ice thickness from the first seven winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 
-![ICESat-2 maps](figs/maps_thickness_winter_2018_2025.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
+![ICESat-2 maps](../maps_thickness_winter_2018_2025_anomalies.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
 <p align = "center">
 Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relative to the seven winter mean) from the first seven winters profiled by ICESat-2.
 </p>
