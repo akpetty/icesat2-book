@@ -112,10 +112,8 @@ jb build icesat2-book
 ```
 cd icesat2-book
 ```
-7. Next you'll update the github page associated with all the html files. You won't be able to see any of the changes to the webpage hosting the book until you do this. In the command line, run: 
+6. Next you'll update the github page associated with all the html files. You won't be able to see any of the changes to the webpage hosting the book until you do this. In the command line, run: 
 ```
-ghp-import -n -p -f _build/html
+ghp-import -n -p -c www.icesat-2-sea-ice-state.info _build/html
 ```
-I'm having some issues with this so in the latest version I pip installed this package to my base environment and ran this from there.
-
-Finally, if serving onto a custom domain you may need to go into the GitHub settings (Settings/Pages) and make sure it's pointing to the right custom domain and is indicating DNS check successful.
+The `-c` flag automatically creates/updates the CNAME file with your custom domain, so you won't need to manually update the DNS settings in GitHub anymore.

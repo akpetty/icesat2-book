@@ -151,39 +151,6 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
-<a class="navbar-brand logo" href="content/0_home.html">
-  
-  
-  
-  
-  
-    
-    
-      
-    
-    
-    <img src="_static/logo.png" class="logo__image only-light" alt="ICESat-2 Sea Ice State Analysis - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="ICESat-2 Sea Ice State Analysis - Home"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -634,14 +601,13 @@ To create the environment, run the following in the command line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">icesat2</span><span class="o">-</span><span class="n">book</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="6">
 <li><p>Next you’ll update the github page associated with all the html files. You won’t be able to see any of the changes to the webpage hosting the book until you do this. In the command line, run:</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span><span class="w"> </span><span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span><span class="w"> </span><span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">c</span> <span class="n">www</span><span class="o">.</span><span class="n">icesat</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">sea</span><span class="o">-</span><span class="n">ice</span><span class="o">-</span><span class="n">state</span><span class="o">.</span><span class="n">info</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
 </pre></div>
 </div>
-<p>I’m having some issues with this so in the latest version I pip installed this package to my base environment and ran this from there.</p>
-<p>Finally, if serving onto a custom domain you may need to go into the GitHub settings (Settings/Pages) and make sure it’s pointing to the right custom domain and is indicating DNS check successful.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-c</span></code> flag automatically creates/updates the CNAME file with your custom domain, so you won’t need to manually update the DNS settings in GitHub anymore.</p>
 </section>
 
     <script type="text/x-thebe-config">
