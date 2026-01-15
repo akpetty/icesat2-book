@@ -73,16 +73,16 @@ def add_time_dim_v3(xda):
     xda = xda.expand_dims(time = [datetime.now()])
     return xda
 
-def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/IS2SITMOGR4/", 
-                     zarr_path='s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V3/IS2SITMOGR4_V3_201811-202404.zarr',
-                     netcdf_s3_path='s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V3/netcdf/', 
+def read_IS2SITMOGR4(data_type='zarr-s3-v4', version='V4', local_data_path="./data/IS2SITMOGR4/", 
+                     zarr_path='s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/zarr/IS2SITMOGR4_V4_201811-202504.zarr',
+                     netcdf_s3_path='s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/netcdf/', 
                      persist=True): 
     """ Read in IS2SITMOGR4 monthly gridded thickness dataset from local netcdf files, 
     download the netcdf files from S3 storage, or read in the aggregated zarr dataset from S3. 
     Currently supports either Version 2 (V2) or Version 3 (V3) data. 
     
     Args: 
-        data_type (str, required): (default to "zarr-s3", but also "netcdf-s3" or "netcdf-local" which is a local version of the netcdf files)
+        data_type (str, required): (default to "zarr-s3-v4", but also "netcdf-s3" or "netcdf-local" which is a local version of the netcdf files)
         version (str, required): dataset version, the default is V3 but V2 has some little changes we need to adapt for.
         local_data_path (str, required): local data directory
         zarr_path (str): path to zarr file
@@ -93,7 +93,11 @@ def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/
         is2_ds (xr.Dataset): aggregated IS2SITMOGR4 xarray dataset, dask chunked/virtually allocated in the case of the zarr option (or allocated to memory if persisted). 
         
     Version History: 
-        February 2025
+        January 2026: 
+            - Added V4 data support (zarr-s3-v4 and netcdf-s3)
+            - Made zarr-s3-v4 the default option for V4 data
+
+        February 2025:
             - hard-coded the datapaths as mostly just V3 at this point and the V2/V3 stuff was getting confusing
             - now you just provide the path to the zarr or netcdf files as desired which I think is easier. 
      
@@ -105,7 +109,7 @@ def read_IS2SITMOGR4(data_type='zarr-s3', version='V3', local_data_path="./data/
             Note than in Version 3 there was a change in the xgrid/ygrid coordinates to x/y.
     """
             
-    if data_type=='zarr-s3':
+    if data_type=='zarr-s3-v3':
 
         print('load zarr from S3 bucket')
 
