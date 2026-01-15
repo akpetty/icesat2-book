@@ -511,7 +511,7 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="new-virtual-env-approach-uv-a-better-faster-package-manager">
 <h1>New Virtual Env approach: UV (a better faster package manager)<a class="headerlink" href="#new-virtual-env-approach-uv-a-better-faster-package-manager" title="Link to this heading">#</a></h1>
-<p>For faster package installation and better dependency resolution comapred to conda, I’ve now switched to UV. UV is significantly faster than conda and handles Python package management more efficiently.</p>
+<p>For faster package installation and better dependency resolution compared to conda, I’ve now switched to UV. UV is significantly faster than conda and handles Python package management more efficiently.</p>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <p>Install UV first:</p>
@@ -522,15 +522,25 @@ document.write(`
 <section id="creating-the-uv-environment">
 <h2>Creating the UV Environment<a class="headerlink" href="#creating-the-uv-environment" title="Link to this heading">#</a></h2>
 <p>NB: It’s best to make this in the directory above the jupyter book as I’ve had issues with the build executing the notebooks in that env folder..</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create environment with Python 3.9</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to the parent directory (one level above icesat2-book)</span>
+<span class="nb">cd</span><span class="w"> </span>..
+
+<span class="c1"># Create environment with Python 3.9</span>
 uv<span class="w"> </span>venv<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.9<span class="w"> </span>is2book_uv_env
 
 <span class="c1"># Activate the environment</span>
+<span class="c1"># If you&#39;re in the parent directory:</span>
 <span class="nb">source</span><span class="w"> </span>is2book_uv_env/bin/activate<span class="w">  </span><span class="c1"># On macOS/Linux</span>
 <span class="c1"># or</span>
 is2book_uv_env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">    </span><span class="c1"># On Windows</span>
 
-<span class="c1"># Install packages</span>
+<span class="c1"># If you&#39;re in the icesat2-book directory, use:</span>
+<span class="nb">source</span><span class="w"> </span>../is2book_uv_env/bin/activate<span class="w">  </span><span class="c1"># On macOS/Linux</span>
+<span class="c1"># or</span>
+..<span class="se">\i</span>s2book_uv_env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">    </span><span class="c1"># On Windows</span>
+
+<span class="c1"># Install packages (from icesat2-book directory)</span>
+<span class="nb">cd</span><span class="w"> </span>icesat2-book
 uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 
 <span class="c1"># Verify jupyter-book is installed</span>
@@ -542,7 +552,10 @@ uv<span class="w"> </span>run<span class="w"> </span>jb<span class="w"> </span>-
 <h2>Adding as Jupyter Kernel<a class="headerlink" href="#adding-as-jupyter-kernel" title="Link to this heading">#</a></h2>
 <p>To use this environment in Jupyter notebooks:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Activate the environment first</span>
+<span class="c1"># If in parent directory:</span>
 <span class="nb">source</span><span class="w"> </span>is2book_uv_env/bin/activate
+<span class="c1"># If in icesat2-book directory:</span>
+<span class="nb">source</span><span class="w"> </span>../is2book_uv_env/bin/activate
 
 <span class="c1"># Install as Jupyter kernel</span>
 python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>is2book_uv_env<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;ICESat-2 Book (UV)&quot;</span>
@@ -554,9 +567,12 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
 <h2>Building the Book<a class="headerlink" href="#building-the-book" title="Link to this heading">#</a></h2>
 <p>To build the Jupyter Book using the UV environment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Activate the environment</span>
+<span class="c1"># If in parent directory:</span>
 <span class="nb">source</span><span class="w"> </span>is2book_uv_env/bin/activate
+<span class="c1"># If in icesat2-book directory:</span>
+<span class="nb">source</span><span class="w"> </span>../is2book_uv_env/bin/activate
 
-<span class="c1"># Build the book</span>
+<span class="c1"># Build the book (from parent directory)</span>
 jb<span class="w"> </span>build<span class="w"> </span>icesat2-book
 
 <span class="c1"># Or use uv run (if jb is available)</span>
