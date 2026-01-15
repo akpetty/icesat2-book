@@ -458,7 +458,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="functions-for-reading-data">
 <h1>Functions for reading data<a class="headerlink" href="#functions-for-reading-data" title="Link to this heading">#</a></h1>
-<p>This is a markdown rendering of the <code class="docutils literal notranslate"><span class="pre">read_data_utils</span></code> module used in the notebooks. It is provided here for user reference, and may not reflect any changes to the code after 12/15/2021. The code can be viewed and downloaded from the github repository.</p>
+<p>This is a markdown rendering of the <code class="docutils literal notranslate"><span class="pre">read_data_utils</span></code> module used in the notebooks. It is provided here for user reference, and may not reflect any changes to the code after 01/2026. The code can be viewed and downloaded from the github repository.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; read_data_utils.py </span>
 
 <span class="sd">Helper functions for reading ICESat2 data from a local drive and the book netcdf file from the google storage bucket</span>
@@ -484,7 +484,6 @@ document.write(`
 <span class="sd">        is_ds (xr.Dataset): aggregated ISSITGR4 xarray dataset.</span>
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
 
     <span class="n">current_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">current_path</span><span class="p">)</span>
@@ -517,7 +516,6 @@ document.write(`
     <span class="n">is_ds</span> <span class="o">=</span> <span class="n">is_ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="n">is_ds</span>
-
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add_time_dim_v2</span><span class="p">(</span><span class="n">xda</span><span class="p">):</span>
@@ -535,93 +533,154 @@ document.write(`
     <span class="k">return</span> <span class="n">xda</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_IS2SITMOGR4</span><span class="p">(</span><span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;zarr-s3&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;V3&#39;</span><span class="p">,</span> <span class="n">local_data_path</span><span class="o">=</span><span class="s2">&quot;/data/IS2SITMOGR4/&quot;</span><span class="p">,</span> 
-    <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;icesat-2-sea-ice-us-west-2&quot;</span><span class="p">,</span> <span class="n">persist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Read in IS2SITMOGR4 monthly gridded thickness dataset from local netcdf files, download the netcdf files from S3 storage, or read in the aggregated zarr dataset from S3. Currently supports either Version 2 (V2) or Version 3 (V3) data. </span>
-<span class="sd">    </span>
-<span class="sd">    Note than in Version 3 there was a change in the xgrid/ygrid coordinates to x/y.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_IS2SITMOGR4</span><span class="p">(</span><span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;zarr-s3-v4&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;V4&#39;</span><span class="p">,</span> <span class="n">local_data_path</span><span class="o">=</span><span class="s2">&quot;./data/IS2SITMOGR4/&quot;</span><span class="p">,</span> 
+                     <span class="n">zarr_path</span><span class="o">=</span><span class="s1">&#39;s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/zarr/IS2SITMOGR4_V4_201811-202504.zarr&#39;</span><span class="p">,</span>
+                     <span class="n">netcdf_s3_path</span><span class="o">=</span><span class="s1">&#39;s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/netcdf/&#39;</span><span class="p">,</span> 
+                     <span class="n">persist</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Read in IS2SITMOGR4 monthly gridded thickness dataset from local netcdf files, </span>
+<span class="sd">    download the netcdf files from S3 storage, or read in the aggregated zarr dataset from S3. </span>
+<span class="sd">    Currently supports either Version 2 (V2) or Version 3 (V3) data. </span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
-<span class="sd">        data_type (str, required): (default to &quot;zarr-s3&quot;, but also &quot;netcdf-s3&quot; or &quot;netcdf-local&quot; which is a local version of the netcdf files)</span>
-<span class="sd">        version (str, required): IS2SITMOGR4 version (default &quot;V2&quot;)</span>
+<span class="sd">        data_type (str, required): (default to &quot;zarr-s3-v4&quot;, but also &quot;netcdf-s3&quot; or &quot;netcdf-local&quot; which is a local version of the netcdf files)</span>
+<span class="sd">        version (str, required): dataset version, the default is V3 but V2 has some little changes we need to adapt for.</span>
 <span class="sd">        local_data_path (str, required): local data directory</span>
-<span class="sd">        bucket_name (str, required): S3 bucket name</span>
-<span class="sd">        persist (boleen, required): if zarr option decide if you want to persist (load) data into memory</span>
-<span class="sd">        download (boleen, required): download from s3 bucket to local storage</span>
+<span class="sd">        zarr_path (str): path to zarr file</span>
+<span class="sd">        netcdf_s3_path (str): path to netcdf files stored on s3</span>
+<span class="sd">        persist (boleen): if zarr option decide if you want to persist (load) data into memory</span>
 
 <span class="sd">    Returns: </span>
 <span class="sd">        is2_ds (xr.Dataset): aggregated IS2SITMOGR4 xarray dataset, dask chunked/virtually allocated in the case of the zarr option (or allocated to memory if persisted). </span>
 <span class="sd">        </span>
 <span class="sd">    Version History: </span>
-<span class="sd">        (November 2023 for V3 data release):  </span>
+<span class="sd">        January 2026: </span>
+<span class="sd">            - Added V4 data support (zarr-s3-v4 and netcdf-s3)</span>
+<span class="sd">            - Made zarr-s3-v4 the default option for V4 data</span>
+
+<span class="sd">        February 2025:</span>
+<span class="sd">            - hard-coded the datapaths as mostly just V3 at this point and the V2/V3 stuff was getting confusing</span>
+<span class="sd">            - now you just provide the path to the zarr or netcdf files as desired which I think is easier. </span>
+<span class="sd">     </span>
+<span class="sd">        November 2023 (for V3 data release):  </span>
 <span class="sd">            - Moved the download code to it&#39;s own section at the start of the function</span>
 <span class="sd">            - Changed local paths</span>
 <span class="sd">            - Baked in the date_str label as that is just a function of the dataset version anyway</span>
 <span class="sd">            - Adapted the netcdf reader to use open_mfdataset, required a preprocessing data dimension step. Much more elegant!</span>
-<span class="sd">    </span>
+<span class="sd">            Note than in Version 3 there was a change in the xgrid/ygrid coordinates to x/y.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="k">if</span> <span class="n">download</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;download from S3 bucket: &quot;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="p">)</span>
+            
+    <span class="k">if</span> <span class="n">data_type</span><span class="o">==</span><span class="s1">&#39;zarr-s3-v3&#39;</span><span class="p">:</span>
 
-        <span class="c1"># Download netCDF data files</span>
-        <span class="n">s3_path</span> <span class="o">=</span> <span class="s1">&#39;s3://&#39;</span><span class="o">+</span><span class="n">bucket_name</span><span class="o">+</span><span class="s1">&#39;/IS2SITMOGR4_&#39;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/netcdf/&#39;</span>
-        <span class="n">fs</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;load zarr from S3 bucket&#39;</span><span class="p">)</span>
 
-        <span class="c1">#files references the entire bucket.</span>
-        <span class="n">files</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">s3_path</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloading file from bucket to local storage...&#39;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
-            <span class="n">fs</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-        
-    <span class="k">if</span> <span class="n">data_type</span><span class="o">==</span><span class="s1">&#39;zarr-s3&#39;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;V2&#39;</span><span class="p">:</span>
-            <span class="n">date_str</span><span class="o">=</span><span class="s1">&#39;201811-202204&#39;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">date_str</span><span class="o">=</span><span class="s1">&#39;201811-202304&#39;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;load zarr from S3 bucket: &#39;</span><span class="p">,</span> <span class="n">bucket_name</span><span class="p">)</span>
-        <span class="n">s3_path</span> <span class="o">=</span> <span class="s1">&#39;s3://&#39;</span><span class="o">+</span><span class="n">bucket_name</span><span class="o">+</span><span class="s1">&#39;/IS2SITMOGR4_&#39;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/zarr/IS2SITMOGR4_&#39;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">date_str</span><span class="o">+</span><span class="s1">&#39;.zarr/all/&#39;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zarr_path:&#39;</span><span class="p">,</span> <span class="n">s3_path</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zarr_path:&#39;</span><span class="p">,</span> <span class="n">zarr_path</span><span class="p">)</span>
         <span class="n">s3</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">store</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3Map</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">s3_path</span><span class="p">,</span> <span class="n">s3</span><span class="o">=</span><span class="n">s3</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3Map</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">zarr_path</span><span class="p">,</span> <span class="n">s3</span><span class="o">=</span><span class="n">s3</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
-        
-        <span class="c1"># Had a problem with these being loaded as dask arrays which cartopy doesnt like</span>
+        <span class="c1">#print(is2_ds)</span>
+        <span class="c1"># Had a problem with these being loaded as dask arrays which cartopy doesnt love</span>
         <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="p">([</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
         <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="p">([</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">persist</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
             <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">persist</span><span class="p">()</span>
+        
+        <span class="k">return</span> <span class="n">is2_ds</span>
+    
+    <span class="k">if</span> <span class="n">data_type</span><span class="o">==</span><span class="s1">&#39;zarr-s3-v4&#39;</span><span class="p">:</span>
 
-    <span class="k">elif</span> <span class="n">data_type</span><span class="o">==</span><span class="s1">&#39;netcdf&#39;</span><span class="p">:</span>
-        
-        <span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/*.nc&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No files, exit&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">None</span>
-        
-        <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;IS2SITMOGR4_01_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;%Y%m&quot;</span><span class="p">)</span>  <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
-        <span class="c1"># Add a dummy time then add the dates I want, seemed the easiest solution</span>
-        <span class="k">if</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;V2&#39;</span><span class="p">:</span>
-            <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">add_time_dim_v2</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">add_time_dim_v3</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span><span class="p">)</span>
-                
-        <span class="n">is2_ds</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dates</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;load zarr from S3 bucket&#39;</span><span class="p">)</span>
 
-        <span class="c1"># Sort by time as glob file list wasn&#39;t!</span>
-        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;V2&#39;</span><span class="p">:</span>
-            <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">set_coords</span><span class="p">([</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;xgrid&quot;</span><span class="p">,</span><span class="s2">&quot;ygrid&quot;</span><span class="p">])</span> 
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">set_coords</span><span class="p">([</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
-        
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zarr_path:&#39;</span><span class="p">,</span> <span class="n">zarr_path</span><span class="p">)</span>
+        <span class="n">s3</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3Map</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">zarr_path</span><span class="p">,</span> <span class="n">s3</span><span class="o">=</span><span class="n">s3</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
+        <span class="c1">#print(is2_ds)</span>
+        <span class="c1"># Had a problem with these being loaded as dask arrays which cartopy doesnt love</span>
+        <span class="c1">#is2_ds = is2_ds.assign_coords(longitude=([&quot;y&quot;,&quot;x&quot;], is2_ds.longitude.values))</span>
+        <span class="c1">#is2_ds = is2_ds.assign_coords(latitude=([&quot;y&quot;,&quot;x&quot;], is2_ds.latitude.values))</span>
+
+        <span class="c1"># Drop time dimension from grid-cell area, longitude, latitude, and region mask</span>
+        <span class="c1"># These are static variables that shouldn&#39;t have a time dimension</span>
+        <span class="k">if</span> <span class="s1">&#39;grid_cell_area&#39;</span> <span class="ow">in</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span>
+            <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;grid_cell_area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;grid_cell_area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;longitude&#39;</span> <span class="ow">in</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span>
+            <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;latitude&#39;</span> <span class="ow">in</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span>
+            <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;region_mask&#39;</span> <span class="ow">in</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span>
+            <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;region_mask&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;region_mask&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Had a problem with these being loaded as dask arrays which cartopy doesnt love</span>
         <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="p">([</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
         <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="p">([</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+
+        <span class="c1"># Move time from 15th of the month to the 1st</span>
+        <span class="c1"># Convert time to pandas datetime, extract year and month, then create new datetime for 1st of month</span>
+        <span class="n">time_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">is2_ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">new_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-01&quot;</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">time_pd</span><span class="p">])</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">new_time</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">persist</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+            <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">persist</span><span class="p">()</span>
         
-        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Aggregated IS2SITMOGR4 &quot;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s2">&quot; dataset.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">is2_ds</span>
+
+    <span class="k">if</span> <span class="n">data_type</span><span class="o">==</span><span class="s1">&#39;netcdf-s3&#39;</span><span class="p">:</span>
+        <span class="c1"># Download data from S3 to local bucket</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;download from S3 bucket: &quot;</span><span class="p">,</span> <span class="n">netcdf_s3_path</span><span class="p">)</span>
+
+        <span class="c1"># Download netCDF data files</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1">#files references the entire bucket.</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">netcdf_s3_path</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloading file from bucket to local storage...&#39;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="n">fs</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Read in files for each month as a single xr.Dataset</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Searching for files in: &#39;</span><span class="p">,</span> <span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/*.nc&#39;</span><span class="p">)</span>
+    
+    <span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">local_data_path</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s1">&#39;/*.nc&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No files, exit&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    
+    
+    <span class="c1"># Add a dummy time then add the dates I want, seemed the easiest solution</span>
+    <span class="k">if</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;V2&#39;</span><span class="p">:</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">add_time_dim_v2</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;V3&#39;</span><span class="p">:</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">add_time_dim_v3</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">filenames</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span><span class="p">)</span>
+    
+    <span class="c1">#dates = [pd.to_datetime(file.split(&quot;IS2SITMOGR4_01_&quot;)[1].split(&quot;_&quot;)[0], format = &quot;%Y%m&quot;)  for file in filenames]</span>
+    <span class="c1">#is2_ds[&quot;time&quot;] = dates</span>
+
+    <span class="c1"># Sort by time as glob file list wasn&#39;t!</span>
+    <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">version</span><span class="o">==</span><span class="s1">&#39;V2&#39;</span><span class="p">:</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">set_coords</span><span class="p">([</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;xgrid&quot;</span><span class="p">,</span><span class="s2">&quot;ygrid&quot;</span><span class="p">])</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">set_coords</span><span class="p">([</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+    
+    <span class="c1"># Drop time dimension from longitude and latitude if they have it</span>
+    <span class="c1"># These are static variables that shouldn&#39;t have a time dimension</span>
+    <span class="k">if</span> <span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+        <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+        <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="p">([</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+    <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="p">([</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+    
+    <span class="n">is2_ds</span> <span class="o">=</span> <span class="n">is2_ds</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Aggregated IS2SITMOGR4 &quot;</span><span class="o">+</span><span class="n">version</span><span class="o">+</span><span class="s2">&quot; dataset.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">is2_ds</span>
+
+
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_book_data</span><span class="p">(</span><span class="n">local_path</span><span class="o">=</span><span class="s1">&#39;/data/&#39;</span><span class="p">,</span> <span class="n">CS2</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
