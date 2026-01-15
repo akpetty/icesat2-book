@@ -30,7 +30,7 @@ ICESat-2 Sea Ice State Analysis Jupyter Book
 If you find any issues in the code or have any suggestions for the book, feel free to open an issue, which you can find by mousing over the GitHub icon at the top of each page. If you are familiar with GitHub, you can also fork the book's repository and suggest an edit that way. 
 
 # New Virtual Env approach: UV (a better faster package manager)
-For faster package installation and better dependency resolution comapred to conda, I've now switched to UV. UV is significantly faster than conda and handles Python package management more efficiently.
+For faster package installation and better dependency resolution compared to conda, I've now switched to UV. UV is significantly faster than conda and handles Python package management more efficiently.
 
 ## Prerequisites
 Install UV first:
@@ -41,15 +41,25 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ## Creating the UV Environment
 NB: It's best to make this in the directory above the jupyter book as I've had issues with the build executing the notebooks in that env folder..
 ```bash
+# Navigate to the parent directory (one level above icesat2-book)
+cd ..
+
 # Create environment with Python 3.9
 uv venv --python 3.9 is2book_uv_env
 
 # Activate the environment
+# If you're in the parent directory:
 source is2book_uv_env/bin/activate  # On macOS/Linux
 # or
 is2book_uv_env\Scripts\activate    # On Windows
 
-# Install packages
+# If you're in the icesat2-book directory, use:
+source ../is2book_uv_env/bin/activate  # On macOS/Linux
+# or
+..\is2book_uv_env\Scripts\activate    # On Windows
+
+# Install packages (from icesat2-book directory)
+cd icesat2-book
 uv pip install -r requirements.txt
 
 # Verify jupyter-book is installed
@@ -60,7 +70,10 @@ uv run jb --help
 To use this environment in Jupyter notebooks:
 ```bash
 # Activate the environment first
+# If in parent directory:
 source is2book_uv_env/bin/activate
+# If in icesat2-book directory:
+source ../is2book_uv_env/bin/activate
 
 # Install as Jupyter kernel
 python -m ipykernel install --user --name is2book_uv_env --display-name "ICESat-2 Book (UV)"
@@ -72,9 +85,12 @@ python -m ipykernel install --user --name is2book_uv_env --display-name "ICESat-
 To build the Jupyter Book using the UV environment:
 ```bash
 # Activate the environment
+# If in parent directory:
 source is2book_uv_env/bin/activate
+# If in icesat2-book directory:
+source ../is2book_uv_env/bin/activate
 
-# Build the book
+# Build the book (from parent directory)
 jb build icesat2-book
 
 # Or use uv run (if jb is available)
