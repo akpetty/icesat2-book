@@ -117,19 +117,36 @@ I'm trying to move away from conda now, so these methods are no longer supported
 
 # Updating the Jupyter Book
 Simple instructions for how to construct/update this book are pasted below for the author's benefit, but don't go into detail on any of the steps. For a more detailed description on Jupyter Books and how to build one of your own, see their page: https://jupyterbook.org/intro.html. <br>
-1. Activate virtual environment associated with book
-2. Update github repository with any changes 
-3. cd out of local book directory into the next highest directory
-4. Next you'll need to construct the html files that make up the pages in the book. Each notebook will be executed and the outputs will be cached in the build folder. In the commmand line, run: 
-```
-jb build icesat2-book
-```
-5. Move back cd local book directory... There must be a way to do this without changing in and out of the book directory, but if there is, it's not very intuitive. 
-```
-cd icesat2-book
-```
-6. Next you'll update the github page associated with all the html files. You won't be able to see any of the changes to the webpage hosting the book until you do this. In the command line, run: 
-```
-ghp-import -n -p -c www.icesat-2-sea-ice-state.info _build/html
-```
-The `-c` flag automatically creates/updates the CNAME file with your custom domain, so you won't need to manually update the DNS settings in GitHub anymore.
+
+1. **Activate the UV environment:**
+   ```bash
+   # If in parent directory:
+   source is2book_uv_env/bin/activate
+   # If in icesat2-book directory:
+   source ../is2book_uv_env/bin/activate
+   ```
+2. **Update the GitHub repository with any changes:**
+   ```bash
+   # Commit and push any changes to the repository
+   git add .
+   git commit -m "Your commit message"
+   git push
+   ```
+3. **Build the book (from parent directory):**
+   ```bash
+   # Navigate to parent directory if not already there
+   cd ..
+   
+   # Build the book - each notebook will be executed and outputs cached in the build folder
+   jb build icesat2-book
+   ```
+
+4. **Update the GitHub Pages site:**
+   ```bash
+   # Navigate back to the book directory
+   cd icesat2-book
+   
+   # Deploy the built HTML to GitHub Pages
+   ghp-import -n -p -c www.icesat-2-sea-ice-state.info _build/html
+   ```
+   The `-c` flag automatically creates/updates the CNAME file with your custom domain, so you won't need to manually update the DNS settings in GitHub anymore.

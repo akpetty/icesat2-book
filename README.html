@@ -602,28 +602,43 @@ To create the environment, run the following in the command line:</p>
 <section class="tex2jax_ignore mathjax_ignore" id="updating-the-jupyter-book">
 <h1>Updating the Jupyter Book<a class="headerlink" href="#updating-the-jupyter-book" title="Link to this heading">#</a></h1>
 <p>Simple instructions for how to construct/update this book are pasted below for the author’s benefit, but don’t go into detail on any of the steps. For a more detailed description on Jupyter Books and how to build one of your own, see their page: <a class="reference external" href="https://jupyterbook.org/intro.html">https://jupyterbook.org/intro.html</a>. <br></p>
-<ol class="arabic simple">
-<li><p>Activate virtual environment associated with book</p></li>
-<li><p>Update github repository with any changes</p></li>
-<li><p>cd out of local book directory into the next highest directory</p></li>
-<li><p>Next you’ll need to construct the html files that make up the pages in the book. Each notebook will be executed and the outputs will be cached in the build folder. In the commmand line, run:</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jb</span> <span class="n">build</span> <span class="n">icesat2</span><span class="o">-</span><span class="n">book</span>
+<ol class="arabic">
+<li><p><strong>Activate the UV environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># If in parent directory:</span>
+<span class="nb">source</span><span class="w"> </span>is2book_uv_env/bin/activate
+<span class="c1"># If in icesat2-book directory:</span>
+<span class="nb">source</span><span class="w"> </span>../is2book_uv_env/bin/activate
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p>Move back cd local book directory… There must be a way to do this without changing in and out of the book directory, but if there is, it’s not very intuitive.</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">icesat2</span><span class="o">-</span><span class="n">book</span>
+</li>
+<li><p><strong>Update the GitHub repository with any changes:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Commit and push any changes to the repository</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Your commit message&quot;</span>
+git<span class="w"> </span>push
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
-<li><p>Next you’ll update the github page associated with all the html files. You won’t be able to see any of the changes to the webpage hosting the book until you do this. In the command line, run:</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span><span class="w"> </span><span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">c</span> <span class="n">www</span><span class="o">.</span><span class="n">icesat</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">sea</span><span class="o">-</span><span class="n">ice</span><span class="o">-</span><span class="n">state</span><span class="o">.</span><span class="n">info</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+</li>
+<li><p><strong>Build the book (from parent directory):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to parent directory if not already there</span>
+<span class="nb">cd</span><span class="w"> </span>..
+
+<span class="c1"># Build the book - each notebook will be executed and outputs cached in the build folder</span>
+jb<span class="w"> </span>build<span class="w"> </span>icesat2-book
+</pre></div>
+</div>
+</li>
+<li><p><strong>Update the GitHub Pages site:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate back to the book directory</span>
+<span class="nb">cd</span><span class="w"> </span>icesat2-book
+
+<span class="c1"># Deploy the built HTML to GitHub Pages</span>
+ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-c<span class="w"> </span>www.icesat-2-sea-ice-state.info<span class="w"> </span>_build/html
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">-c</span></code> flag automatically creates/updates the CNAME file with your custom domain, so you won’t need to manually update the DNS settings in GitHub anymore.</p>
+</li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
