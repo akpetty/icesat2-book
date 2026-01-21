@@ -125,15 +125,13 @@ Simple instructions for how to construct/update this book are pasted below for t
    # If in icesat2-book directory:
    source ../is2book_uv_env/bin/activate
    ```
-
-2. **Update GitHub repository with any changes:**
+2. **Update the GitHub repository with any changes:**
    ```bash
    # Commit and push any changes to the repository
    git add .
    git commit -m "Your commit message"
    git push
    ```
-
 3. **Build the book (from parent directory):**
    ```bash
    # Navigate to parent directory if not already there
