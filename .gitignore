@@ -1,6 +1,9 @@
 # Folder view configuration files
 .DS_Store
 
+# Cursor / VS Code workspace (local preference)
+*.code-workspace
+
 # scratch files
 content/scratch/*
 
@@ -46,4 +49,9 @@ content/figs/*
 #update script
 update_book.sh
 
+# Local paper materials (not for repo / uploads)
+paper/
+
+# Claude Code guidance file
+CLAUDE.md
 

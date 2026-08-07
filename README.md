@@ -1,6 +1,4 @@
-<!-- #region -->
-ICESat-2 Sea Ice State Analysis Jupyter Book
-=============================================
+# ICESat-2 Sea Ice State Analysis Jupyter Book
 
 **View this Jupyter Book (including options to run the code interactively!) in our Jupyter Book:** http://www.icesat-2-sea-ice-state.info
 
@@ -26,6 +24,7 @@ ICESat-2 Sea Ice State Analysis Jupyter Book
  - 12/06/2023: Added the new 2022-2023 winter analysis notebook which also describes the new Version 3 IS2SITMOGR4 dataset. Updated the read dataset function. A few other little minor bug fixes.
  - 02/14/2025: Added the new 2023-2024 winter analysis notebook. More updates to the read dataset function (mainly hard-coding the zarr links). A few other little minor bug fixes.
  - 09/25/2025: Update the books based on peer review (added in MERRA-2/SM-LG snow loading and derived thicknesses, bug fixes etc).
+ - 08/07/2026: Added ICESat-2–SMOS–SMAP data fusion notebooks (11a–11d) for the daily IS2SMGPSIT-V1 thickness/volume analysis, plus related data readers.
 
 If you find any issues in the code or have any suggestions for the book, feel free to open an issue, which you can find by mousing over the GitHub icon at the top of each page. If you are familiar with GitHub, you can also fork the book's repository and suggest an edit that way. 
 

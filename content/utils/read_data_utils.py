@@ -9,6 +9,8 @@ Helper functions for reading ICESat2 data from a local drive and the book netcdf
 """
 
 import os 
+import time
+import shutil
 import xarray as xr 
 import pandas as pd 
 import s3fs
@@ -218,7 +220,244 @@ def read_IS2SITMOGR4(data_type='zarr-s3-v4', version='V4', local_data_path="./da
     
     is2_ds = is2_ds.assign_attrs(description="Aggregated IS2SITMOGR4 "+version+" dataset.")
 
-    return is2_ds
+    return
+
+# Variables kept in the trimmed local cache. Chosen to cover everything the
+# analysis notebooks actually use while dropping large, unused 3-D fields
+# (freeboard_unc, snow_depth_unc, sea_ice_conc, sea_ice_volume,
+# ice_volume_per_grid_cell_area) — this cuts the cache from ~2.7 GB to ~0.9 GB.
+# The static latitude/longitude are also collapsed to 2-D on write (see
+# collapse_latlon), saving a further ~1 GB.
+IS2SMGPSITV1_CACHE_VARS = [
+    'ice_thickness',
+    'freeboard',
+    'snow_depth',
+    'ice_thickness_unc',
+    'grid_cell_area',
+    'region_mask',
+    'crs',
+    'total_sea_ice_volume',
+    'total_sea_ice_volume_regions_1_5',
+    'mean_sea_ice_thickness_regions_1_5',
+    'mean_freeboard_regions_1_5',
+    'mean_snow_depth_regions_1_5',
+    'mean_sea_ice_conc_regions_1_5',
+]
+
+
+def is2smgpsit_monthly_midmonth(da):
+    """Resample a daily scalar time series to monthly means at mid-month timestamps."""
+    import pandas as pd
+
+    out = da.resample(time='1ME').mean()
+    ft = pd.to_datetime(out.time.values)
+    return out.assign_coords(
+        time=(ft.to_period('M').to_timestamp(how='start') + pd.Timedelta(days=14)).values
+    )
+
+
+def static_grid_cell_area(area):
+    """Return 2-D ``grid_cell_area``, dropping a leading time dimension if present."""
+    if 'time' in area.dims:
+        area = area.isel(time=0, drop=True)
+    return area
+
+
+def area_weighted_spatial_mean(field, mask, area):
+    """Area-weighted spatial mean of *field* over cells where *mask* is True.
+
+    Computes sum(field × grid_cell_area) / sum(grid_cell_area) over (y, x).
+    """
+    area = static_grid_cell_area(area)
+    weighted = field.where(mask)
+    w = area.where(mask)
+    return (weighted * w).sum(dim=['y', 'x']) / w.sum(dim=['y', 'x'])
+
+
+def is2smgpsit_domain_masks(ds, inner_arctic=(1, 2, 3, 4, 5), caa_region=12):
+    """Boolean masks for pan-Arctic (excl. CAA) and Inner Arctic Ocean (regions 1–5).
+
+    The fused Zarr now includes Canadian Arctic Archipelago (NSIDC region 12) grid
+    cells, but pan-Arctic diagnostics in the book exclude them from area/volume
+    totals. IAO follows the NOAA Arctic Report Card domain (regions 1–5).
+    """
+    rm = ds['region_mask']
+    if 'time' in rm.dims:
+        rm = rm.isel(time=0, drop=True)
+    valid = rm.notnull()
+    return {
+        'region_mask': rm,
+        'pan_arctic': valid & (rm != caa_region),
+        'iao': rm.isin(list(inner_arctic)),
+    }
+
+
+def read_is2smgpsitv1_zarr(
+    zarr_path=(
+        's3://icesat-2-sea-ice-us-west-2/is2smsitgp/dev_v7/zarr/'
+        'GPSat_multivar_20181101-20250430.zarr'
+    ),
+    persist=False,
+    cache=False,
+    load_cache=False,
+    cache_dir='./data/cache',
+    cache_path=None,
+    cache_time_chunk=100,
+    cache_vars=IS2SMGPSITV1_CACHE_VARS,
+    collapse_latlon=True,
+    cache_refresh=False,
+):
+    """Read the ICESat-2–SMOS–SMAP fused daily gridded product (Zarr).
+
+    The dataset is the GPSat multivar product: daily fields from ICESat-2
+    combined with SMOS/SMAP (e.g. thickness, concentration). Stored as a single
+    Zarr on AWS (~2.7 GB, chunked one time step per object, so repeated S3
+    reads are slow because of per-object latency).
+
+    Local caching (recommended for the analysis notebooks): the S3 store can be
+    mirrored to a single local Zarr once and reused. On write the store is
+    re-chunked into larger time chunks (`cache_time_chunk`), which collapses the
+    ~29k tiny S3 objects into a few hundred local files and makes subsequent
+    reads dramatically faster.
+
+    Typical usage:
+      * "Producer" notebook (runs first, e.g. 11a): ``cache=True`` — build the
+        local cache from S3 if it is missing, then read from it.
+      * "Consumer" notebooks (11b, 11c, ...): ``load_cache=True`` — read the
+        local cache if it exists; if it does not, fall back to S3, build the
+        cache, then read from it (self-healing).
+
+    Rebuilding the cache means re-downloading the whole store from S3, which is
+    slow (tens of minutes). An existing, complete cache is therefore reused even
+    when ``cache=True``; pass ``cache_refresh=True`` to force a rebuild, which is
+    what you want after the upstream S3 store has been regenerated.
+
+    Args:
+        zarr_path (str): S3 path to the Zarr store (default: flat
+            ``dev_v7/zarr/GPSat_multivar_20181101-20250430.zarr``,
+            reuploaded 30 Jul 2026; history ``Created 2026-07-29``). Includes
+            CAA grid cells and IAO scalars ``mean_*_regions_1_5`` /
+            ``total_sea_ice_volume_regions_1_5``.
+        persist (bool): If True, load lazy arrays into memory (default False).
+        cache (bool): If True, build the local cache from S3 (if not already
+            present) and read from it.
+        load_cache (bool): If True, read from the local cache when present;
+            otherwise read from S3 and build the cache for next time.
+        cache_dir (str): Directory for the local cache (default './data/cache').
+        cache_path (str): Explicit local cache path. Defaults to
+            ``cache_dir/<zarr basename>``.
+        cache_time_chunk (int): Time-chunk size used when writing the cache.
+        cache_vars (list): Data variables to keep in the cache (default: the
+            trimmed set used by the notebooks). Set to None to cache all vars.
+        collapse_latlon (bool): If True, store the static latitude/longitude as
+            2-D (drop the redundant time dimension) in the cache.
+        cache_refresh (bool): If True, discard any existing local cache and
+            rebuild it from S3. Needed when the upstream store has changed.
+
+    Returns:
+        xr.Dataset: Dataset opened from Zarr (dask-backed unless persist=True).
+    """
+    def _finalize(ds):
+        # Promote lat/lon to coordinates if present as data variables (for plotting)
+        if 'latitude' in ds.data_vars and 'latitude' not in ds.coords:
+            ds = ds.set_coords('latitude')
+        if 'longitude' in ds.data_vars and 'longitude' not in ds.coords:
+            ds = ds.set_coords('longitude')
+        if persist:
+            ds = ds.persist()
+        return ds.assign_attrs(
+            description='ICESat-2–SMOS–SMAP fused daily gridded product (GPSat multivar).'
+        )
+
+    if cache_path is None:
+        cache_path = os.path.join(cache_dir, os.path.basename(zarr_path.rstrip('/')))
+    cache_exists = os.path.isdir(cache_path) and os.path.exists(
+        os.path.join(cache_path, '.zmetadata')
+    )
+
+    # Read straight from a valid local cache. Rebuilding means re-downloading the
+    # whole store from S3, so an existing cache is reused unless explicitly refreshed.
+    if (load_cache or cache) and cache_exists and not cache_refresh:
+        print('Loading IS2-SMOS-SMAP (is2smsitgp) Zarr from local cache')
+        print('cache_path:', cache_path)
+        ds = xr.open_zarr(cache_path)
+        if cache_vars is not None:
+            missing = [v for v in cache_vars if v not in ds.data_vars]
+            if missing:
+                print('Cache missing vars; checking S3 for:', missing)
+                s3 = s3fs.S3FileSystem(
+                    anon=True,
+                    config_kwargs={'retries': {'max_attempts': 10, 'mode': 'adaptive'}},
+                )
+                store = s3fs.S3Map(root=zarr_path, s3=s3, check=False)
+                ds_s3 = xr.open_zarr(store)
+                available = [v for v in missing if v in ds_s3.data_vars]
+                absent = [v for v in missing if v not in ds_s3.data_vars]
+                if absent:
+                    print('  not present on S3 (skipped):', absent)
+                if available:
+                    print('  loading from S3:', available)
+                    ds = xr.merge([ds, ds_s3[available]])
+        return _finalize(ds)
+
+    # Otherwise read from S3. Use adaptive retries so transient connection
+    # drops during the (slow, ~2.7 GB) read are retried rather than aborting.
+    print('Loading IS2-SMOS-SMAP (is2smsitgp) Zarr from S3')
+    print('zarr_path:', zarr_path)
+    s3 = s3fs.S3FileSystem(
+        anon=True,
+        config_kwargs={'retries': {'max_attempts': 10, 'mode': 'adaptive'}},
+    )
+    store = s3fs.S3Map(root=zarr_path, s3=s3, check=False)
+    ds = xr.open_zarr(store=store)
+
+    # Build the local cache (either forced via cache=True, or lazily via load_cache=True).
+    if cache or load_cache:
+        # Promote coords before writing so the cache stores them as coordinates.
+        if 'latitude' in ds.data_vars and 'latitude' not in ds.coords:
+            ds = ds.set_coords('latitude')
+        if 'longitude' in ds.data_vars and 'longitude' not in ds.coords:
+            ds = ds.set_coords('longitude')
+
+        # Collapse the static latitude/longitude to 2-D (drop redundant time dim).
+        if collapse_latlon:
+            for _c in ('latitude', 'longitude'):
+                if _c in ds.coords and 'time' in ds[_c].dims:
+                    ds = ds.assign_coords({_c: ds[_c].isel(time=0, drop=True)})
+
+        # Keep only the requested data variables (coords are carried through).
+        if cache_vars is not None:
+            _keep = [v for v in cache_vars if v in ds.data_vars]
+            ds = ds[_keep]
+
+        os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
+        # Remove any existing cache dir first: to_zarr(mode='w') overwrites the
+        # arrays it writes but leaves behind stale variable directories from a
+        # previous (possibly aborted) build, so wipe the target for a clean store.
+        if os.path.isdir(cache_path):
+            shutil.rmtree(cache_path, ignore_errors=True)
+        ds_to_write = ds.chunk({'time': cache_time_chunk})
+        # Clear source encoding to avoid chunk-encoding conflicts on write.
+        for _v in ds_to_write.variables:
+            ds_to_write[_v].encoding = {}
+        _nvar = len(ds_to_write.data_vars)
+        print(f'Writing local cache ({_nvar} vars, time chunks of {cache_time_chunk}) to: {cache_path}')
+        print('  (one-time download; subsequent reads use the local cache)')
+        # Retry the whole build a few times in case a transient S3 error still
+        # bubbles up despite the per-request retries above.
+        _n_attempts = 4
+        for _attempt in range(1, _n_attempts + 1):
+            try:
+                ds_to_write.to_zarr(cache_path, mode='w', consolidated=True)
+                break
+            except Exception as _err:  # noqa: BLE001 - re-raised below on final attempt
+                print(f'  cache build attempt {_attempt}/{_n_attempts} failed: {_err}')
+                if _attempt == _n_attempts:
+                    raise
+                time.sleep(10)
+        return _finalize(xr.open_zarr(cache_path))
+
+    return _finalize(ds)
 
 
 def read_book_data(local_path='/data/', CS2=False): 

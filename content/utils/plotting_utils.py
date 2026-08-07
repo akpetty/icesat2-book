@@ -15,6 +15,7 @@ from textwrap import wrap
 import hvplot.xarray
 import holoviews as hv
 import matplotlib.pyplot as plt
+import matplotlib.colorbar as mcbar
 from matplotlib.axes import Axes
 from cartopy.mpl.geoaxes import GeoAxes
 GeoAxes._pcolormesh_patched = Axes.pcolormesh # Helps avoid some weird issues with the polar projection 
@@ -751,3 +752,389 @@ def interactive_winter_comparison_lineplot(da, years=None, title="Winter compari
     p = combined_data.hvplot.line(x='time', by='year', title=title, frame_width=frame_width, frame_height=frame_height)
     
     return p
+
+
+def _time_from_dataarray(da: xr.DataArray):
+    """Get a single datetime from a DataArray's time coordinate (scalar or 0-d)."""
+    t = da.coords.get("time")
+    if t is None:
+        raise ValueError("DataArray must have a 'time' coordinate")
+    val = np.atleast_1d(pd.to_datetime(t.values))
+    return val.flat[0]
+
+
+def _panel_letter_triple(start: str) -> list:
+    """``(a)``, ``(b)``, ``(c)`` from ``start='a'``; ``(d)``…``(f)`` from ``'d'``, etc."""
+    s = start.strip().lower()
+    if len(s) != 1 or not ("a" <= s <= "x"):
+        raise ValueError("panel_letters_start must be a single lowercase letter a–x")
+    o = ord(s)
+    return [f"({chr(o + i)})" for i in range(3)]
+
+
+def plot_is2_v4_vs_fused_three_panel(
+    dataarray1: xr.DataArray,
+    dataarray2: xr.DataArray,
+    title1: str = "",
+    title2: str = "",
+    vmin_thick: float = 0.0,
+    vmax_thick: float = 4.0,
+    diff_range: tuple = (-2.5, 2.5),
+    central_longitude: float = -45.0,
+    min_lat: float = 55.0,
+    cbarlabels=None,
+    cmaps=("viridis", "viridis", "RdBu"),
+    panel_letters_start: str = "a",
+):
+    """
+    Three-panel Arctic map: two fields and their difference.
+
+    Panels (letters set by ``panel_letters_start``, default ``a`` → (a)(b)(c);
+    use e.g. ``d`` for (d)(e)(f) when stacking rows for one date):
+
+        First panel: ``title1`` (default IS2SITMOGR4-V4) with month–year from ``dataarray1``.
+        Second: ``title2`` (default IS2SMGPSIT-V1).
+        Third: difference field, captioned with the third letter and
+        ``(second letter) − (first letter)`` (panel 2 minus panel 1), e.g. ``(i) (h) − (g)``
+        when ``panel_letters_start='g'``.
+
+    All panels use a North Polar Stereographic projection with per-panel colorbars.
+    Each DataArray must have coordinates ``time``, ``latitude``, and ``longitude``;
+    the function uses ``dataarray1`` time for the month in the first panel caption.
+
+    Parameters
+    ----------
+    dataarray1 : xr.DataArray
+        First field (2D with coords ``time``, ``latitude``, ``longitude``).
+    dataarray2 : xr.DataArray
+        Second field (same requirement).
+    title1 : str, default ""
+        Product name for the first panel; default ``IS2SITMOGR4-V4``.
+    title2 : str, default ""
+        Product name for the second panel; default ``IS2SMGPSIT-V1``.
+    vmin_thick, vmax_thick : float
+        Color scale limits for the first two panels.
+    diff_range : (float, float)
+        (vmin, vmax) for the difference (third) panel.
+    central_longitude : float, optional
+        Central longitude for the North Polar Stereographic projection.
+    min_lat : float, optional
+        Southern latitude limit for the map extent (default 55°N).
+    cbarlabels : list of str or None, optional
+        Labels for the three colorbars. If None, sensible defaults are used.
+    cmaps : sequence of three matplotlib colormaps, optional
+        Colormaps for panels (a), (b), and (c). Default is
+        ``("viridis", "viridis", "RdBu")``. Use ``("YlOrRd", "YlOrRd", "RdBu")``
+        for freeboard and ``("inferno", "inferno", "RdBu")`` for snow depth to
+        match the colour conventions in the chapter-2 winter notebooks.
+    panel_letters_start : str, default ``\"a\"``
+        First panel letter (lowercase ``a``–``x``). The three panels use this letter
+        and the next two (e.g. ``d`` → (d), (e), (f); ``g`` → (g), (h), (i)).
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+    axes : numpy.ndarray of cartopy.mpl.geoaxes.GeoAxes
+    """
+    time1 = _time_from_dataarray(dataarray1)
+    lon1 = dataarray1.coords["longitude"]
+    lat1 = dataarray1.coords["latitude"]
+    lon2 = dataarray2.coords["longitude"]
+    lat2 = dataarray2.coords["latitude"]
+
+    # Difference: panel 2 minus panel 1
+    diff = (dataarray2 - dataarray1).rename("difference")
+
+    name1 = title1 if title1 else "IS2SITMOGR4-V4"
+    name2 = title2 if title2 else "IS2SMGPSIT-V1"
+    month_str = pd.to_datetime(time1).strftime("%B %Y")
+
+    # Match manuscript width; height chosen so 3× polar row + bottom colorbars
+    # fill the canvas (slightly wider aspect than 15/5.75 to trim vertical slack).
+    fig_width = 15.0
+    fig_height = 5.45
+    proj = ccrs.NorthPolarStereo(central_longitude=central_longitude)
+
+    fig, axes = plt.subplots(
+        1,
+        3,
+        figsize=(fig_width, fig_height),
+        subplot_kw={"projection": proj},
+    )
+
+    vmins = [vmin_thick, vmin_thick, diff_range[0]]
+    vmaxs = [vmax_thick, vmax_thick, diff_range[1]]
+    cmaps = list(cmaps)
+
+    maps = [dataarray1, dataarray2, diff]
+    lons = [lon1, lon2, lon2]
+    lats = [lat1, lat2, lat2]
+
+    panel_letters = _panel_letter_triple(panel_letters_start)
+    panel_captions = [
+        f"{panel_letters[0]} {name1} ({month_str})",
+        f"{panel_letters[1]} {name2}",
+        f"{panel_letters[2]} {panel_letters[1]} \u2212 {panel_letters[0]}",
+    ]
+
+    ims = []
+    for i, (ax, data, lon, lat) in enumerate(zip(axes, maps, lons, lats)):
+        im = ax.pcolormesh(
+            lon,
+            lat,
+            data,
+            transform=ccrs.PlateCarree(),
+            cmap=cmaps[i],
+            vmin=vmins[i],
+            vmax=vmaxs[i],
+        )
+        ims.append(im)
+
+        ax.coastlines(linewidth=0.15, color="black", zorder=2)
+        ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+        ax.gridlines(
+            draw_labels=False,
+            linewidth=0.25,
+            color="gray",
+            alpha=0.7,
+            linestyle="--",
+            zorder=3,
+        )
+        ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree())
+
+        ax.annotate(
+            panel_captions[i],
+            xy=(0.98, 0.98),
+            xycoords="axes fraction",
+            va="top",
+            ha="right",
+            color="k",
+            fontsize=8,
+        )
+        ax.set_title("")
+
+    # Per-panel colorbars below each panel (looped)
+    if cbarlabels is None:
+        cbarlabels = [
+            "Sea ice thickness (m)",
+            "Sea ice thickness (m)",
+            "Thickness difference (m)",
+        ]
+    tick_n = 5
+
+    # Adjust layout before creating colorbars (tight margins + slight overlap:
+    # polar stereo leaves corner wedges; negative wspace pulls panels together.)
+    plt.subplots_adjust(
+        left=0.008,
+        right=0.998,
+        bottom=0.068,
+        top=0.994,
+        wspace=-0.028,
+    )
+
+    # Create a bottom colorbar for each panel using the final axes positions
+    for i, ax in enumerate(axes):
+        cax, kw = mcbar.make_axes(ax, location="bottom", pad=0.006, shrink=0.52)
+        cb = fig.colorbar(ims[i], cax=cax, extend="both", **kw)
+        cb.set_ticks(np.linspace(vmins[i], vmaxs[i], tick_n))
+        cb.set_label(cbarlabels[i], labelpad=2, fontsize=8)
+
+    return fig, axes
+
+
+def plot_is2smgpsit_thickness_unc_three_months(
+    da_oct: xr.DataArray,
+    da_jan: xr.DataArray,
+    da_mar: xr.DataArray,
+    central_longitude: float = -45.0,
+    min_lat: float = 55.0,
+    vmin: float = 0.0,
+    vmax: float = 0.65,
+    cmap: str = "viridis",
+    panel_letters_start: str = "a",
+    product_name: str = "IS2SMGPSIT-V1",
+):
+    """
+    One-row, three-panel Arctic map of GP ice-thickness uncertainty for three months
+    (typically October, January, March) shown side-by-side.
+    """
+    fig_width = 15.0
+    fig_height = 5.45
+    proj = ccrs.NorthPolarStereo(central_longitude=central_longitude)
+
+    fig, axes = plt.subplots(
+        1,
+        3,
+        figsize=(fig_width, fig_height),
+        subplot_kw={"projection": proj},
+    )
+
+    months = [da_oct, da_jan, da_mar]
+    panel_letters = _panel_letter_triple(panel_letters_start)
+
+    ims = []
+    for i, (ax, da) in enumerate(zip(axes, months)):
+        time0 = _time_from_dataarray(da)
+        month_str = pd.to_datetime(time0).strftime("%B %Y")
+        lon = da.coords["longitude"]
+        lat = da.coords["latitude"]
+
+        im = ax.pcolormesh(
+            lon,
+            lat,
+            da,
+            transform=ccrs.PlateCarree(),
+            cmap=cmap,
+            vmin=vmin,
+            vmax=vmax,
+        )
+        ims.append(im)
+
+        ax.coastlines(linewidth=0.15, color="black", zorder=2)
+        ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+        ax.gridlines(
+            draw_labels=False,
+            linewidth=0.25,
+            color="gray",
+            alpha=0.7,
+            linestyle="--",
+            zorder=3,
+        )
+        ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree())
+
+        ax.annotate(
+            f"{panel_letters[i]} {month_str}",
+            xy=(0.98, 0.98),
+            xycoords="axes fraction",
+            va="top",
+            ha="right",
+            color="k",
+            fontsize=8,
+        )
+        ax.set_title("")
+
+    plt.subplots_adjust(
+        left=0.008,
+        right=0.998,
+        bottom=0.068,
+        top=0.994,
+        wspace=-0.028,
+    )
+
+    tick_n = 5
+    for i, ax in enumerate(axes):
+        cax, kw = mcbar.make_axes(ax, location="bottom", pad=0.006, shrink=0.52)
+        cb = fig.colorbar(ims[i], cax=cax, extend="max", **kw)
+        cb.set_ticks(np.linspace(vmin, vmax, tick_n))
+        cb.set_label("Thickness uncertainty (m)", labelpad=2, fontsize=8)
+
+    return fig, axes
+
+
+def plot_is2smgpsit_uncertainty_three_panel(
+    da_freeboard_unc: xr.DataArray,
+    da_snow_unc: xr.DataArray,
+    da_thickness_unc: xr.DataArray,
+    central_longitude: float = -45.0,
+    min_lat: float = 55.0,
+    vmins: tuple = (0.0, 0.0, 0.0),
+    vmaxs: tuple = (0.2, 0.15, 0.65),
+    cbarlabels=None,
+    cmaps=("viridis", "viridis", "viridis"),
+    panel_letters_start: str = "a",
+    product_name: str = "IS2SMGPSIT-V1",
+):
+    """
+    Three-panel Arctic maps of GP predictive uncertainty (standard deviation) for
+    the fused product: freeboard, snow depth, and ice thickness (single time slice).
+
+    Layout matches ``plot_is2_v4_vs_fused_three_panel`` (polar stereo row + colorbars).
+    """
+    time0 = _time_from_dataarray(da_freeboard_unc)
+    month_str = pd.to_datetime(time0).strftime("%B %Y")
+
+    lon = da_freeboard_unc.coords["longitude"]
+    lat = da_freeboard_unc.coords["latitude"]
+
+    fig_width = 15.0
+    fig_height = 5.45
+    proj = ccrs.NorthPolarStereo(central_longitude=central_longitude)
+
+    fig, axes = plt.subplots(
+        1,
+        3,
+        figsize=(fig_width, fig_height),
+        subplot_kw={"projection": proj},
+    )
+
+    maps = [da_freeboard_unc, da_snow_unc, da_thickness_unc]
+    vmins = list(vmins)
+    vmaxs = list(vmaxs)
+    cmaps = list(cmaps)
+
+    if cbarlabels is None:
+        cbarlabels = [
+            "Freeboard uncertainty (m)",
+            "Snow depth uncertainty (m)",
+            "Thickness uncertainty (m)",
+        ]
+
+    panel_letters = _panel_letter_triple(panel_letters_start)
+    names = ["Total freeboard", "Snow depth", "Sea ice thickness"]
+    panel_captions = [
+        f"{panel_letters[i]} {product_name}: {names[i]} uncertainty ({month_str})"
+        for i in range(3)
+    ]
+
+    ims = []
+    for i, (ax, data) in enumerate(zip(axes, maps)):
+        im = ax.pcolormesh(
+            lon,
+            lat,
+            data,
+            transform=ccrs.PlateCarree(),
+            cmap=cmaps[i],
+            vmin=vmins[i],
+            vmax=vmaxs[i],
+        )
+        ims.append(im)
+
+        ax.coastlines(linewidth=0.15, color="black", zorder=2)
+        ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+        ax.gridlines(
+            draw_labels=False,
+            linewidth=0.25,
+            color="gray",
+            alpha=0.7,
+            linestyle="--",
+            zorder=3,
+        )
+        ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree())
+
+        ax.annotate(
+            panel_captions[i],
+            xy=(0.98, 0.98),
+            xycoords="axes fraction",
+            va="top",
+            ha="right",
+            color="k",
+            fontsize=8,
+        )
+        ax.set_title("")
+
+    tick_n = 5
+    plt.subplots_adjust(
+        left=0.008,
+        right=0.998,
+        bottom=0.068,
+        top=0.994,
+        wspace=-0.028,
+    )
+
+    for i, ax in enumerate(axes):
+        cax, kw = mcbar.make_axes(ax, location="bottom", pad=0.006, shrink=0.52)
+        cb = fig.colorbar(ims[i], cax=cax, extend="max", **kw)
+        cb.set_ticks(np.linspace(vmins[i], vmaxs[i], tick_n))
+        cb.set_label(cbarlabels[i], labelpad=2, fontsize=8)
+
+    return fig, axes
