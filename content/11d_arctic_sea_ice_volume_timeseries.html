@@ -1,0 +1,1587 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Arctic sea ice volume time series &#8212; ICESat-2 Sea Ice State Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=5b5be228" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/11d_arctic_sea_ice_volume_timeseries';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data wrangling" href="7_gridded_data_wrangling.html" />
+    <link rel="prev" title="IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)" href="11c_comparisons_with_BGEP_daily.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="0_home.html">
+                    ICESat-2 Arctic Sea Ice State Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2 Arctic sea ice thickness data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_is2sitmogr4_intro.html">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2e_winter_arctic_sea_ice_variability_2025update.html">Winter Arctic sea ice state variability (updates through to April 2025)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2d_winter_arctic_sea_ice_variability_2024update.html">Winter Arctic sea ice state variability (updates through to April 2024)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2c_winter_arctic_sea_ice_variability_2023update.html">Winter Arctic sea ice state variability (updates through to April 2023)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis (Petty et al., 2023)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_winter_arctic_sea_ice_variability.html">Winter Arctic sea ice state variability</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3_comparisons_with_cryosat-2_and_piomas.html">Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="4_comparisons_with_BGEP.html">Comparisons with BGEP ULS sea ice draft estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="5_atmospheric_variability.html">Atmospheric variability</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">All season Arctic sea ice thickness analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10a_all_season_arctic_sea_ice_variability.html">All-season Arctic sea ice thickness using new summer ICESat-2 ice thickness estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="10b_comparisons_with_BGEP_allseason.html">Comparisons of all-season ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="10c_comparisons_with_BGEP_winter.html">Comparisons of winter (November to April) ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10d_comparisons_with_icebird.html">Comparisons with AWI IceBird 2019 airborne data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10e_comparisons_with_mosaic_simba.html">Comparisons with MOSAiC SIMBA buoys</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10f_map.html">Map of all-season assessment data locations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2–SMOS–SMAP data fusion</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="11a_is2_smos_smap_intro_and_comparison.html">ICESat-2–SMOS–SMAP fusion: intro and V4 comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_comparisons_with_BGEP.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="11c_comparisons_with_BGEP_daily.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Arctic sea ice volume time series</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="7_gridded_data_wrangling.html">Data wrangling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7b_gridded_data_wrangling_allseason.html">All-season gridded data wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_cryosat-2_data_wrangling.html">CryoSat-2 data wrangling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="9_gridded_interp_demo.html">ICESat-2 interpolation workflow</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ancillary code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="utils/markdown_rendering/read_data_utils.html">Functions for reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/markdown_rendering/plotting_utils.html">Functions for plotting and mapping</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/akpetty/icesat2-book/main?urlpath=tree/content/11d_arctic_sea_ice_volume_timeseries.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/edit/main/content/11d_arctic_sea_ice_volume_timeseries.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2Fcontent/11d_arctic_sea_ice_volume_timeseries.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/11d_arctic_sea_ice_volume_timeseries.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Arctic sea ice volume time series</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Arctic sea ice volume time series</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-notebook-dependencies">Import notebook dependencies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-is2smgpsit-v1-and-compute-pan-arctic-volume">Load IS2SMGPSIT-V1 and compute pan-Arctic volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-check-grid-sum-vs-precomputed-field">Cross-check: grid sum vs precomputed field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-cs-2-smos-v206-comparison-data">Optional CS-2/SMOS v206 comparison data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arctic-sea-ice-volume-raw-and-seasonal-anomalies">Arctic sea ice volume: raw and seasonal anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-arctic-ocean-mean-thickness">Inner Arctic Ocean mean thickness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-arctic-ocean-volume">Inner Arctic Ocean volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-arctic-growth-season-volume-winters-overlaid">Pan-Arctic growth-season volume: winters overlaid</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="arctic-sea-ice-volume-time-series">
+<h1>Arctic sea ice volume time series<a class="headerlink" href="#arctic-sea-ice-volume-time-series" title="Link to this heading">#</a></h1>
+<p><strong>Summary</strong>: Pan-Arctic and inner-Arctic-Ocean sea ice volume (km³) from IS2SMGPSIT-V1, computed from precomputed scalars and cross-checked against from-grid calculations.</p>
+<p><strong>Author</strong>: Alek Petty<br />
+<strong>Version history</strong>: Version 1 (08/2026)</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="import-notebook-dependencies">
+<h1>Import notebook dependencies<a class="headerlink" href="#import-notebook-dependencies" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdates</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils.read_data_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_is2smgpsitv1_zarr</span>
+
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;text.usetex&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;font.family&#39;</span><span class="p">:</span> <span class="s1">&#39;sans-serif&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">:</span> <span class="s1">&#39;stixsans&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arial&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-is2smgpsit-v1-and-compute-pan-arctic-volume">
+<h2>Load IS2SMGPSIT-V1 and compute pan-Arctic volume<a class="headerlink" href="#load-is2smgpsit-v1-and-compute-pan-arctic-volume" title="Link to this heading">#</a></h2>
+<p>Pan-Arctic volume is summed from the gridded thickness field over all cells <strong>except</strong> the Canadian Arctic Archipelago (NSIDC region 12). The Zarr now includes CAA grid cells, but we exclude them from pan-Arctic totals for consistency with earlier volume budgets. Inner-Arctic-Ocean volume uses NSIDC regions 1–5 only.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils.read_data_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is2smgpsit_domain_masks</span>
+
+<span class="n">IS2_SMOS_SMAP</span> <span class="o">=</span> <span class="n">read_is2smgpsitv1_zarr</span><span class="p">(</span><span class="n">persist</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">load_cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">_masks</span> <span class="o">=</span> <span class="n">is2smgpsit_domain_masks</span><span class="p">(</span><span class="n">IS2_SMOS_SMAP</span><span class="p">)</span>
+<span class="n">mask_pan_arctic</span> <span class="o">=</span> <span class="n">_masks</span><span class="p">[</span><span class="s1">&#39;pan_arctic&#39;</span><span class="p">]</span>
+<span class="n">mask_iao</span> <span class="o">=</span> <span class="n">_masks</span><span class="p">[</span><span class="s1">&#39;iao&#39;</span><span class="p">]</span>
+<span class="n">innerArctic</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">thick</span> <span class="o">=</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">[</span><span class="s1">&#39;ice_thickness&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">IS2_SMOS_SMAP</span><span class="p">[</span><span class="s1">&#39;ice_thickness&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">[</span><span class="s1">&#39;grid_cell_area&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;grid_cell_area&#39;</span> <span class="ow">in</span> <span class="n">IS2_SMOS_SMAP</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="k">if</span> <span class="n">area</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">vol_cells_pa</span> <span class="o">=</span> <span class="p">(</span><span class="n">thick</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask_pan_arctic</span><span class="p">)</span>
+    <span class="n">volume_fused_daily</span> <span class="o">=</span> <span class="p">(</span><span class="n">vol_cells_pa</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-9</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">cell_km2</span> <span class="o">=</span> <span class="mf">25.0</span> <span class="o">*</span> <span class="mf">25.0</span>
+    <span class="n">volume_fused_daily</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">thick</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="o">*</span> <span class="n">cell_km2</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask_pan_arctic</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">volume_fused_monthly</span> <span class="o">=</span> <span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;1ME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">_ft</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">volume_fused_monthly</span> <span class="o">=</span> <span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="n">_ft</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span><span class="o">.</span><span class="n">values</span>
+<span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="c1"># Optional: compare with precomputed total_sea_ice_volume (includes CAA if present)</span>
+<span class="k">if</span> <span class="s1">&#39;total_sea_ice_volume&#39;</span> <span class="ow">in</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">:</span>
+    <span class="n">_vol_pre</span> <span class="o">=</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">[</span><span class="s1">&#39;total_sea_ice_volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Precomputed total_sea_ice_volume (may include CAA):&#39;</span><span class="p">,</span>
+          <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">_vol_pre</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">_vol_pre</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> km^3&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;IS2SMGPSIT-V1 pan-Arctic volume excl. CAA (km^3), daily and monthly:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daily:&#39;</span><span class="p">,</span> <span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="s1">&#39;steps,&#39;</span><span class="p">,</span>
+      <span class="sa">f</span><span class="s1">&#39;range </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> km^3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Monthly:&#39;</span><span class="p">,</span> <span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="s1">&#39;steps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading IS2-SMOS-SMAP (is2smsitgp) Zarr from local cache
+cache_path: ./data/cache/GPSat_multivar_20181101-20250430.zarr
+Precomputed total_sea_ice_volume (may include CAA): 2,072-21,417 km^3
+IS2SMGPSIT-V1 pan-Arctic volume excl. CAA (km^3), daily and monthly:
+Daily: 1635 steps, range 1,801-19,448 km^3
+Monthly: 78 steps
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cross-check-grid-sum-vs-precomputed-field">
+<h2>Cross-check: grid sum vs precomputed field<a class="headerlink" href="#cross-check-grid-sum-vs-precomputed-field" title="Link to this heading">#</a></h2>
+<p>The primary pan-Arctic series above excludes CAA (region 12). The cell below recomputes volume over the full valid grid (including CAA) for comparison with the precomputed <code class="docutils literal notranslate"><span class="pre">total_sea_ice_volume</span></code> field (which sums <strong>all</strong> valid cells, including CAA).</p>
+<p>IAO volume uses the precomputed <code class="docutils literal notranslate"><span class="pre">total_sea_ice_volume_regions_1_5</span></code> scalar (NSIDC regions 1–5), cross-checked against a from-grid sum.</p>
+<p>Grid-cell <code class="docutils literal notranslate"><span class="pre">ice_thickness</span></code> is documented as the <strong>mean thickness across the grid cell</strong> (open water contributes ~0 m), not an ice-only average over floes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">area</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">vol_cells_full</span> <span class="o">=</span> <span class="n">thick</span> <span class="o">*</span> <span class="n">area</span>
+    <span class="n">volume_computed_daily</span> <span class="o">=</span> <span class="p">(</span><span class="n">vol_cells_full</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-9</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">volume_computed_daily</span> <span class="o">=</span> <span class="p">(</span><span class="n">thick</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="o">*</span> <span class="n">cell_km2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">volume_computed_monthly</span> <span class="o">=</span> <span class="n">volume_computed_daily</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;1ME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">_ft</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">volume_computed_monthly</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">volume_computed_monthly</span> <span class="o">=</span> <span class="n">volume_computed_monthly</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="p">(</span><span class="n">_ft</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span><span class="o">.</span><span class="n">values</span>
+<span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Full-grid volume incl. CAA (km^3):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daily:&#39;</span><span class="p">,</span> <span class="n">volume_computed_daily</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="s1">&#39;steps,&#39;</span><span class="p">,</span>
+      <span class="sa">f</span><span class="s1">&#39;range </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_computed_daily</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_computed_daily</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> km^3&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s1">&#39;total_sea_ice_volume&#39;</span> <span class="ow">in</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">:</span>
+    <span class="n">_vol_pre</span> <span class="o">=</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">[</span><span class="s1">&#39;total_sea_ice_volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_computed_daily</span> <span class="o">-</span> <span class="n">_vol_pre</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">_pct</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">_diff</span> <span class="o">/</span> <span class="n">_vol_pre</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Cross-check vs precomputed total_sea_ice_volume (full grid, incl. CAA):&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  max |diff|: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_diff</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  mean |diff|: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_diff</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> km³ (</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_pct</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">%)&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  (Differences are float32 rounding; field definition matches grid sum.)&#39;</span><span class="p">)</span>
+    <span class="n">_caa_vol</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_computed_daily</span> <span class="o">-</span> <span class="n">volume_fused_daily</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Mean CAA contribution (full − excl. CAA): </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">_caa_vol</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full-grid volume incl. CAA (km^3):
+Daily: 1635 steps, range 2,076-21,424 km^3
+
+Cross-check vs precomputed total_sea_ice_volume (full grid, incl. CAA):
+  max |diff|: 92.43 km³
+  mean |diff|: 13.93 km³ (0.176%)
+  (Differences are float32 rounding; field definition matches grid sum.)
+  Mean CAA contribution (full − excl. CAA): 1,099 km³
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inner Arctic Ocean volume (NSIDC regions 1–5)</span>
+<span class="c1"># Prefer precomputed scalar; fall back to grid sum if absent.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils.read_data_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is2smgpsit_monthly_midmonth</span><span class="p">,</span> <span class="n">area_weighted_spatial_mean</span>
+
+<span class="k">if</span> <span class="s1">&#39;total_sea_ice_volume_regions_1_5&#39;</span> <span class="ow">in</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">:</span>
+    <span class="n">volume_fused_daily_iao</span> <span class="o">=</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">[</span><span class="s1">&#39;total_sea_ice_volume_regions_1_5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;IAO volume from precomputed total_sea_ice_volume_regions_1_5&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">area</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">vol_cells_iao</span> <span class="o">=</span> <span class="p">(</span><span class="n">thick</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask_iao</span><span class="p">)</span>
+        <span class="n">volume_fused_daily_iao</span> <span class="o">=</span> <span class="p">(</span><span class="n">vol_cells_iao</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-9</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">volume_fused_daily_iao</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">thick</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="o">*</span> <span class="n">cell_km2</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask_iao</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;IAO volume from grid sum (scalar not in dataset)&#39;</span><span class="p">)</span>
+
+<span class="n">volume_fused_monthly_iao</span> <span class="o">=</span> <span class="n">is2smgpsit_monthly_midmonth</span><span class="p">(</span><span class="n">volume_fused_daily_iao</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;IS2SMGPSIT-V1 Inner Arctic Ocean volume (km^3):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Daily:   </span><span class="si">{</span><span class="n">volume_fused_daily_iao</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> steps, &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;range </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_fused_daily_iao</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_fused_daily_iao</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> km^3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Monthly: </span><span class="si">{</span><span class="n">volume_fused_monthly_iao</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> steps, &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;range </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_fused_monthly_iao</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_fused_monthly_iao</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> km^3&#39;</span><span class="p">)</span>
+
+<span class="c1"># Cross-check vs grid sum</span>
+<span class="k">if</span> <span class="n">area</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">_vol_grid_iao</span> <span class="o">=</span> <span class="p">((</span><span class="n">thick</span> <span class="o">*</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask_iao</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-9</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">_diff_iao</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_fused_daily_iao</span> <span class="o">-</span> <span class="n">_vol_grid_iao</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">IAO volume sanity check vs grid sum (thick × area over regions 1–5):&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  max |diff|: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_diff_iao</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  mean |diff|: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_diff_iao</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IAO volume from precomputed total_sea_ice_volume_regions_1_5
+IS2SMGPSIT-V1 Inner Arctic Ocean volume (km^3):
+  Daily:   1635 steps, range 1,645-14,974 km^3
+  Monthly: 78 steps, range 2,639-14,563 km^3
+
+IAO volume sanity check vs grid sum (thick × area over regions 1–5):
+  max |diff|: 8.8423 km³
+  mean |diff|: 1.2448 km³
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inner Arctic Ocean mean thickness (NSIDC regions 1–5)</span>
+<span class="c1"># Use precomputed area-weighted scalar from the Zarr (matches grid calc to ~1 cm).</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils.read_data_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is2smgpsit_monthly_midmonth</span><span class="p">,</span> <span class="n">area_weighted_spatial_mean</span>
+
+<span class="n">thick_mean_daily_iao</span> <span class="o">=</span> <span class="n">IS2_SMOS_SMAP</span><span class="p">[</span><span class="s1">&#39;mean_sea_ice_thickness_regions_1_5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="n">thick_mean_monthly_iao</span> <span class="o">=</span> <span class="n">is2smgpsit_monthly_midmonth</span><span class="p">(</span><span class="n">thick_mean_daily_iao</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">_thick_grid_iao</span> <span class="o">=</span> <span class="n">area_weighted_spatial_mean</span><span class="p">(</span><span class="n">thick</span><span class="p">,</span> <span class="n">mask_iao</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="n">_thick_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">thick_mean_daily_iao</span> <span class="o">-</span> <span class="n">_thick_grid_iao</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;IS2SMGPSIT-V1 IAO mean thickness — mean_sea_ice_thickness_regions_1_5 (m):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Daily:   </span><span class="si">{</span><span class="n">thick_mean_daily_iao</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> steps, &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;range </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">thick_mean_daily_iao</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">thick_mean_daily_iao</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Monthly: </span><span class="si">{</span><span class="n">thick_mean_monthly_iao</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> steps, &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;range </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">thick_mean_monthly_iao</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">thick_mean_monthly_iao</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Cross-check vs grid area-weighted mean: mean |diff| = &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_thick_diff</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> m, max |diff| = </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">_thick_diff</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IS2SMGPSIT-V1 IAO mean thickness — mean_sea_ice_thickness_regions_1_5 (m):
+  Daily:   1635 steps, range 0.229-2.087
+  Monthly: 78 steps, range 0.368-2.030
+  Cross-check vs grid area-weighted mean: mean |diff| = 0.0106 m, max |diff| = 0.0168 m
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-cs-2-smos-v206-comparison-data">
+<h2>Optional CS-2/SMOS v206 comparison data<a class="headerlink" href="#optional-cs-2-smos-v206-comparison-data" title="Link to this heading">#</a></h2>
+<p>The CS-2/SMOS v206 IAO CSV is retained for optional exploratory overlays. Set <code class="docutils literal notranslate"><span class="pre">SHOW_CS2SMOS</span> <span class="pre">=</span> <span class="pre">True</span></code> below to include it; published figures leave it off because differing spatial coverage and concentration filtering prevent a like-for-like comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SHOW_CS2SMOS</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Load AWI CryoSat-2/SMOS (v206) Inner Arctic Ocean monthly time series</span>
+<span class="c1"># CSV columns: time, sea_ice_volume (10^5 km^3), sea_ice_volume_uncertainty (10^5 km^3),</span>
+<span class="c1">#              mean_sea_ice_thickness (m), sea_ice_extent / sea_ice_area (10^8 km^2), ...</span>
+<span class="n">awi_csv</span> <span class="o">=</span> <span class="s1">&#39;./data/cs2smos-timeseries-v206-monthly-is2domain.csv&#39;</span>
+<span class="n">awi_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">awi_csv</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Restrict to the IS2SMGPSIT-V1 time range (Nov 2018 onwards) for like-for-like comparison</span>
+<span class="n">awi_df</span> <span class="o">=</span> <span class="n">awi_df</span><span class="p">[</span><span class="n">awi_df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2018-09-01&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Convert reported scaled units to physical units (km^3 and m)</span>
+<span class="n">awi_time</span> <span class="o">=</span> <span class="n">awi_df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">volume_awi</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">awi_df</span><span class="p">[</span><span class="s1">&#39;sea_ice_volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mf">1.0e5</span><span class="p">,</span>
+    <span class="n">dims</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">awi_time</span><span class="p">},</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;volume_awi&#39;</span><span class="p">,</span>
+    <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;km^3&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;CryoSat-2/SMOS v206 monthly sea ice volume, IS2 inner Arctic Ocean domain&#39;</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">volume_awi_unc</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">awi_df</span><span class="p">[</span><span class="s1">&#39;sea_ice_volume_uncertainty&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mf">1.0e5</span><span class="p">,</span>
+    <span class="n">dims</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">awi_time</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;volume_awi_unc&#39;</span><span class="p">,</span>
+    <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;km^3&#39;</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">thickness_awi</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">awi_df</span><span class="p">[</span><span class="s1">&#39;mean_sea_ice_thickness&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">dims</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">awi_time</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;thickness_awi&#39;</span><span class="p">,</span>
+    <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;CryoSat-2/SMOS v206 monthly mean sea ice thickness, IS2 IAO domain&#39;</span><span class="p">},</span>
+<span class="p">)</span>
+
+
+<span class="c1"># Break lines across melt season (May–Aug)</span>
+<span class="n">_cs2_month</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">awi_time</span><span class="p">)</span><span class="o">.</span><span class="n">month</span>
+<span class="n">_cs2_melt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">_cs2_month</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">volume_awi</span> <span class="o">=</span> <span class="n">volume_awi</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">_cs2_melt</span><span class="p">)</span>
+<span class="n">thickness_awi</span> <span class="o">=</span> <span class="n">thickness_awi</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">_cs2_melt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CS-2/SMOS v206 IAO loaded: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">awi_time</span><span class="p">)</span><span class="si">}</span><span class="s1"> months &#39;</span>
+      <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">awi_time</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">awi_time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Volume range:    </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_awi</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">volume_awi</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1"> km^3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Thickness range: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">thickness_awi</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">thickness_awi</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CS-2/SMOS v206 IAO loaded: 38 months (2018-10-25 to 2023-12-12)
+  Volume range:    4,200 - 13,900 km^3
+  Thickness range: 0.83 - 1.99 m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;2018-11-01T00:00:00.000000000&#39;, &#39;2018-11-02T00:00:00.000000000&#39;,
+       &#39;2018-11-03T00:00:00.000000000&#39;, ...,
+       &#39;2025-04-28T00:00:00.000000000&#39;, &#39;2025-04-29T00:00:00.000000000&#39;,
+       &#39;2025-04-30T00:00:00.000000000&#39;], dtype=&#39;datetime64[ns]&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arctic-sea-ice-volume-raw-and-seasonal-anomalies">
+<h2>Arctic sea ice volume: raw and seasonal anomalies<a class="headerlink" href="#arctic-sea-ice-volume-raw-and-seasonal-anomalies" title="Link to this heading">#</a></h2>
+<p>Two-panel IS2SMGPSIT-V1 time series: <strong>(a)</strong> raw pan-Arctic and inner-Arctic-Ocean (NSIDC regions 1–5) volume (daily line + monthly markers); <strong>(b)</strong> pan-Arctic and inner-Arctic daily seasonal anomalies after removing the calendar climatology (no monthly). Summers (May–August) are shaded; daily series are masked in summer. An optional CS-2/SMOS overlay is controlled by <code class="docutils literal notranslate"><span class="pre">SHOW_CS2SMOS</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pan-Arctic + Inner Arctic Ocean volume; optional CS-2/SMOS overlay</span>
+<span class="n">_t0_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">_t1_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">_grid_start_vol</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">_t0_vol</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_t0_vol</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">9</span>
+    <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">_t0_vol</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">all_days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">_grid_start_vol</span><span class="p">,</span> <span class="n">_t1_vol</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="n">all_months</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">_grid_start_vol</span><span class="p">,</span> <span class="n">_t1_vol</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">times_d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">all_days</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_style_ts_axes</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">(</span><span class="n">bymonth</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">bymonthday</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">set_rotation</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">set_ha</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">set_rotation_mode</span><span class="p">(</span><span class="s1">&#39;anchor&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_shade_summer</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">times_d</span><span class="o">.</span><span class="n">year</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">month</span> <span class="o">&lt;</span> <span class="mi">12</span>
+                <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;=</span> <span class="n">times_d</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="ow">and</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">times_d</span><span class="o">.</span><span class="n">max</span><span class="p">():</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1"># Optional CS-2/SMOS overlay on raw panel</span>
+<span class="n">cs2</span> <span class="o">=</span> <span class="n">SHOW_CS2SMOS</span>
+
+<span class="c1"># --- Climatologies &amp; anomalies: pan-Arctic ---</span>
+<span class="n">clim_v_monthly_pa</span> <span class="o">=</span> <span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">v_anom_monthly_pa</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_fused_monthly</span> <span class="o">-</span> <span class="n">clim_v_monthly_pa</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">month</span><span class="o">=</span><span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="p">))</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_months</span><span class="p">)</span>
+
+<span class="n">clim_v_daily_pa</span> <span class="o">=</span> <span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">v_anom_daily_pa</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_fused_daily</span> <span class="o">-</span> <span class="n">clim_v_daily_pa</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">dayofyear</span><span class="o">=</span><span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span>
+<span class="p">))</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_days</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">times_d</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]))</span>
+
+<span class="n">v_daily_pa</span> <span class="o">=</span> <span class="n">volume_fused_daily</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_days</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">times_d</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">v_monthly_pa</span> <span class="o">=</span> <span class="n">volume_fused_monthly</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_months</span><span class="p">)</span>
+
+<span class="c1"># --- Climatologies &amp; anomalies: inner Arctic ---</span>
+<span class="n">clim_v_monthly_iao</span> <span class="o">=</span> <span class="n">volume_fused_monthly_iao</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">volume_fused_monthly_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">v_anom_monthly_iao</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_fused_monthly_iao</span> <span class="o">-</span> <span class="n">clim_v_monthly_iao</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">month</span><span class="o">=</span><span class="n">volume_fused_monthly_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="p">))</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_months</span><span class="p">)</span>
+
+<span class="n">clim_v_daily_iao</span> <span class="o">=</span> <span class="n">volume_fused_daily_iao</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">volume_fused_daily_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">v_anom_daily_iao</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume_fused_daily_iao</span> <span class="o">-</span> <span class="n">clim_v_daily_iao</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">dayofyear</span><span class="o">=</span><span class="n">volume_fused_daily_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span>
+<span class="p">))</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_days</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">times_d</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]))</span>
+
+<span class="n">v_daily_iao</span> <span class="o">=</span> <span class="n">volume_fused_daily_iao</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_days</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">times_d</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">v_monthly_iao</span> <span class="o">=</span> <span class="n">volume_fused_monthly_iao</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_months</span><span class="p">)</span>
+
+<span class="c1"># Printed write-up: monthly volume time series, monthly anomalies, daily max/min; CS-2 monthly if enabled</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sea ice volume — IS2SMGPSIT-V1 (write-up)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_print_vol_monthly_extrema</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">monthly_da</span><span class="p">,</span> <span class="n">daily_da</span><span class="p">):</span>
+    <span class="n">monthly_da</span> <span class="o">=</span> <span class="n">monthly_da</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">daily_da</span> <span class="o">=</span> <span class="n">daily_da</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;--- </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">: monthly means (km³) ---&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">monthly_da</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">monthly_da</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  monthly mean volume   </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">   </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+    <span class="n">vd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">daily_da</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">td</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">daily_da</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">vd</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">imax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">vd</span><span class="p">))</span>
+        <span class="n">imin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmin</span><span class="p">(</span><span class="n">vd</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;--- </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">: daily extrema (growth season; melt masked) ---&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  daily max   </span><span class="si">{</span><span class="n">vd</span><span class="p">[</span><span class="n">imax</span><span class="p">]</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1"> km³   on </span><span class="si">{</span><span class="n">td</span><span class="p">[</span><span class="n">imax</span><span class="p">]</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  daily min   </span><span class="si">{</span><span class="n">vd</span><span class="p">[</span><span class="n">imin</span><span class="p">]</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1"> km³   on </span><span class="si">{</span><span class="n">td</span><span class="p">[</span><span class="n">imin</span><span class="p">]</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">_print_vol_monthly_extrema</span><span class="p">(</span><span class="s1">&#39;Pan-Arctic&#39;</span><span class="p">,</span> <span class="n">v_monthly_pa</span><span class="p">,</span> <span class="n">v_daily_pa</span><span class="p">)</span>
+<span class="n">_print_vol_monthly_extrema</span><span class="p">(</span><span class="s1">&#39;Inner Arctic Ocean&#39;</span><span class="p">,</span> <span class="n">v_monthly_iao</span><span class="p">,</span> <span class="n">v_daily_iao</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--- Pan-Arctic: monthly volume anomalies (km³) ---&#39;</span><span class="p">)</span>
+<span class="n">_v</span> <span class="o">=</span> <span class="n">v_anom_monthly_pa</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">_v</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_v</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  monthly volume anom.  </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">   </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">+,.2f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--- Inner Arctic: monthly volume anomalies (km³) ---&#39;</span><span class="p">)</span>
+<span class="n">_v</span> <span class="o">=</span> <span class="n">v_anom_monthly_iao</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">_v</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_v</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  monthly volume anom.  </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">   </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">+,.2f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_print_daily_anom_extrema</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">daily_anom_da</span><span class="p">):</span>
+    <span class="n">daily_anom_da</span> <span class="o">=</span> <span class="n">daily_anom_da</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">vd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">daily_anom_da</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">td</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">daily_anom_da</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">vd</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="k">return</span>
+    <span class="n">imax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">vd</span><span class="p">))</span>
+    <span class="n">imin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmin</span><span class="p">(</span><span class="n">vd</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;--- </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">: daily volume anomaly extrema (km³; melt masked) ---&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  daily anom max   </span><span class="si">{</span><span class="n">vd</span><span class="p">[</span><span class="n">imax</span><span class="p">]</span><span class="si">:</span><span class="s1">+,.2f</span><span class="si">}</span><span class="s1"> km³   on </span><span class="si">{</span><span class="n">td</span><span class="p">[</span><span class="n">imax</span><span class="p">]</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  daily anom min   </span><span class="si">{</span><span class="n">vd</span><span class="p">[</span><span class="n">imin</span><span class="p">]</span><span class="si">:</span><span class="s1">+,.2f</span><span class="si">}</span><span class="s1"> km³   on </span><span class="si">{</span><span class="n">td</span><span class="p">[</span><span class="n">imin</span><span class="p">]</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">_print_daily_anom_extrema</span><span class="p">(</span><span class="s1">&#39;Pan-Arctic&#39;</span><span class="p">,</span> <span class="n">v_anom_daily_pa</span><span class="p">)</span>
+<span class="n">_print_daily_anom_extrema</span><span class="p">(</span><span class="s1">&#39;Inner Arctic Ocean&#39;</span><span class="p">,</span> <span class="n">v_anom_daily_iao</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">cs2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--- CS-2/SMOS v206 inner-Arctic monthly volume (km³) ---&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">volume_awi</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">volume_awi</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  monthly (CS-2/SMOS)     </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">%Y-%m-%d</span><span class="si">}</span><span class="s1">   </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1"> km³&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10.8</span><span class="p">,</span> <span class="mf">6.12</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Top: raw volume (daily lines + monthly markers)</span>
+<span class="n">v_daily_pa</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pan-Arctic (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">v_monthly_pa</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:purple&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pan-Arctic (monthly)&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">v_daily_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inner Arctic (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">v_monthly_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span>
+    <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inner Arctic (monthly)&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="n">cs2</span><span class="p">:</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">volume_awi</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">volume_awi</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CS-2/SMOS v206 inner Arctic (monthly)&#39;</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Total sea ice volume (km³)&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21800</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s1">&#39;(a) Arctic sea ice volume&#39;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax0</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span> <span class="k">if</span> <span class="n">cs2</span> <span class="k">else</span> <span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">_style_ts_axes</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">_shade_summer</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+
+<span class="c1"># Bottom: daily anomalies only (pan-Arctic + inner Arctic; no monthly)</span>
+<span class="n">v_anom_daily_pa</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pan-Arctic (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">v_anom_daily_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inner Arctic (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Volume anomaly (km³)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">&#39;(b) Arctic sea ice volume — seasonal anomalies&#39;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">_style_ts_axes</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">_shade_summer</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
+<span class="n">_savename</span> <span class="o">=</span> <span class="s1">&#39;arctic_sea_ice_volume_anomalies&#39;</span>
+<span class="k">if</span> <span class="n">cs2</span><span class="p">:</span>
+    <span class="n">_savename</span> <span class="o">+=</span> <span class="s1">&#39;_cs2&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../paper/figures/</span><span class="si">{</span><span class="n">_savename</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
+Sea ice volume — IS2SMGPSIT-V1 (write-up)
+======================================================================
+--- Pan-Arctic: monthly means (km³) ---
+  monthly mean volume   2018-11-15   8,469.88 km³
+  monthly mean volume   2018-12-15   11,525.55 km³
+  monthly mean volume   2019-01-15   14,712.89 km³
+  monthly mean volume   2019-02-15   17,303.84 km³
+  monthly mean volume   2019-03-15   18,805.71 km³
+  monthly mean volume   2019-04-15   18,725.46 km³
+  monthly mean volume   2019-09-15   3,933.69 km³
+  monthly mean volume   2019-10-15   5,762.23 km³
+  monthly mean volume   2019-11-15   8,233.08 km³
+  monthly mean volume   2019-12-15   11,082.69 km³
+  monthly mean volume   2020-01-15   14,578.92 km³
+  monthly mean volume   2020-02-15   17,165.65 km³
+  monthly mean volume   2020-03-15   18,547.36 km³
+  monthly mean volume   2020-04-15   18,211.43 km³
+  monthly mean volume   2020-09-15   2,856.35 km³
+  monthly mean volume   2020-10-15   3,920.40 km³
+  monthly mean volume   2020-11-15   6,005.97 km³
+  monthly mean volume   2020-12-15   8,992.15 km³
+  monthly mean volume   2021-01-15   12,488.67 km³
+  monthly mean volume   2021-02-15   15,560.04 km³
+  monthly mean volume   2021-03-15   17,566.07 km³
+  monthly mean volume   2021-04-15   17,082.37 km³
+  monthly mean volume   2021-09-15   4,597.06 km³
+  monthly mean volume   2021-10-15   6,702.58 km³
+  monthly mean volume   2021-11-15   9,099.16 km³
+  monthly mean volume   2021-12-15   11,982.59 km³
+  monthly mean volume   2022-01-15   14,919.18 km³
+  monthly mean volume   2022-02-15   17,216.00 km³
+  monthly mean volume   2022-03-15   18,458.11 km³
+  monthly mean volume   2022-04-15   18,562.18 km³
+  monthly mean volume   2022-09-15   4,734.21 km³
+  monthly mean volume   2022-10-15   6,405.39 km³
+  monthly mean volume   2022-11-15   8,794.60 km³
+  monthly mean volume   2022-12-15   11,028.43 km³
+  monthly mean volume   2023-01-15   13,863.49 km³
+  monthly mean volume   2023-02-15   16,229.50 km³
+  monthly mean volume   2023-03-15   17,637.38 km³
+  monthly mean volume   2023-04-15   17,982.29 km³
+  monthly mean volume   2023-09-15   3,115.64 km³
+  monthly mean volume   2023-10-15   5,108.88 km³
+  monthly mean volume   2023-11-15   7,532.31 km³
+  monthly mean volume   2023-12-15   10,366.53 km³
+  monthly mean volume   2024-01-15   13,411.22 km³
+  monthly mean volume   2024-02-15   15,544.58 km³
+  monthly mean volume   2024-03-15   17,596.26 km³
+  monthly mean volume   2024-04-15   17,901.29 km³
+  monthly mean volume   2024-09-15   3,197.14 km³
+  monthly mean volume   2024-10-15   4,825.46 km³
+  monthly mean volume   2024-11-15   7,035.10 km³
+  monthly mean volume   2024-12-15   10,145.72 km³
+  monthly mean volume   2025-01-15   12,816.21 km³
+  monthly mean volume   2025-02-15   14,594.16 km³
+  monthly mean volume   2025-03-15   16,567.84 km³
+  monthly mean volume   2025-04-15   17,738.90 km³
+--- Pan-Arctic: daily extrema (growth season; melt masked) ---
+  daily max   19,447.53 km³   on 2019-04-10
+  daily min   1,800.53 km³   on 2020-09-01
+--- Inner Arctic Ocean: monthly means (km³) ---
+  monthly mean volume   2018-11-15   7,563.08 km³
+  monthly mean volume   2018-12-15   9,834.85 km³
+  monthly mean volume   2019-01-15   11,720.39 km³
+  monthly mean volume   2019-02-15   13,216.14 km³
+  monthly mean volume   2019-03-15   14,189.84 km³
+  monthly mean volume   2019-04-15   14,562.55 km³
+  monthly mean volume   2019-09-15   3,783.07 km³
+  monthly mean volume   2019-10-15   5,447.88 km³
+  monthly mean volume   2019-11-15   7,414.44 km³
+  monthly mean volume   2019-12-15   9,437.28 km³
+  monthly mean volume   2020-01-15   11,571.64 km³
+  monthly mean volume   2020-02-15   13,249.31 km³
+  monthly mean volume   2020-03-15   14,009.38 km³
+  monthly mean volume   2020-04-15   14,097.32 km³
+  monthly mean volume   2020-09-15   2,639.06 km³
+  monthly mean volume   2020-10-15   3,584.77 km³
+  monthly mean volume   2020-11-15   5,352.73 km³
+  monthly mean volume   2020-12-15   7,565.32 km³
+  monthly mean volume   2021-01-15   10,007.63 km³
+  monthly mean volume   2021-02-15   11,892.53 km³
+  monthly mean volume   2021-03-15   13,060.93 km³
+  monthly mean volume   2021-04-15   13,437.15 km³
+  monthly mean volume   2021-09-15   4,465.41 km³
+  monthly mean volume   2021-10-15   6,370.50 km³
+  monthly mean volume   2021-11-15   8,226.11 km³
+  monthly mean volume   2021-12-15   10,209.66 km³
+  monthly mean volume   2022-01-15   11,743.32 km³
+  monthly mean volume   2022-02-15   13,012.96 km³
+  monthly mean volume   2022-03-15   13,883.56 km³
+  monthly mean volume   2022-04-15   14,537.95 km³
+  monthly mean volume   2022-09-15   4,528.12 km³
+  monthly mean volume   2022-10-15   6,024.84 km³
+  monthly mean volume   2022-11-15   7,779.02 km³
+  monthly mean volume   2022-12-15   9,168.30 km³
+  monthly mean volume   2023-01-15   10,780.00 km³
+  monthly mean volume   2023-02-15   12,128.83 km³
+  monthly mean volume   2023-03-15   12,961.34 km³
+  monthly mean volume   2023-04-15   13,809.27 km³
+  monthly mean volume   2023-09-15   2,876.97 km³
+  monthly mean volume   2023-10-15   4,649.43 km³
+  monthly mean volume   2023-11-15   6,615.95 km³
+  monthly mean volume   2023-12-15   8,780.57 km³
+  monthly mean volume   2024-01-15   10,494.54 km³
+  monthly mean volume   2024-02-15   11,923.74 km³
+  monthly mean volume   2024-03-15   13,165.67 km³
+  monthly mean volume   2024-04-15   13,939.15 km³
+  monthly mean volume   2024-09-15   3,042.33 km³
+  monthly mean volume   2024-10-15   4,559.61 km³
+  monthly mean volume   2024-11-15   6,352.02 km³
+  monthly mean volume   2024-12-15   8,700.61 km³
+  monthly mean volume   2025-01-15   10,282.92 km³
+  monthly mean volume   2025-02-15   11,263.16 km³
+  monthly mean volume   2025-03-15   12,694.01 km³
+  monthly mean volume   2025-04-15   13,966.56 km³
+--- Inner Arctic Ocean: daily extrema (growth season; melt masked) ---
+  daily max   14,973.84 km³   on 2022-04-21
+  daily min   1,644.54 km³   on 2020-09-01
+--- Pan-Arctic: monthly volume anomalies (km³) ---
+  monthly volume anom.  2018-11-15   +588.43 km³
+  monthly volume anom.  2018-12-15   +793.60 km³
+  monthly volume anom.  2019-01-15   +885.66 km³
+  monthly volume anom.  2019-02-15   +1,073.30 km³
+  monthly volume anom.  2019-03-15   +923.04 km³
+  monthly volume anom.  2019-04-15   +696.33 km³
+  monthly volume anom.  2019-09-15   +194.67 km³
+  monthly volume anom.  2019-10-15   +308.07 km³
+  monthly volume anom.  2019-11-15   +351.64 km³
+  monthly volume anom.  2019-12-15   +350.73 km³
+  monthly volume anom.  2020-01-15   +751.69 km³
+  monthly volume anom.  2020-02-15   +935.11 km³
+  monthly volume anom.  2020-03-15   +664.68 km³
+  monthly volume anom.  2020-04-15   +182.30 km³
+  monthly volume anom.  2020-09-15   -882.66 km³
+  monthly volume anom.  2020-10-15   -1,533.76 km³
+  monthly volume anom.  2020-11-15   -1,875.47 km³
+  monthly volume anom.  2020-12-15   -1,739.80 km³
+  monthly volume anom.  2021-01-15   -1,338.56 km³
+  monthly volume anom.  2021-02-15   -670.50 km³
+  monthly volume anom.  2021-03-15   -316.60 km³
+  monthly volume anom.  2021-04-15   -946.76 km³
+  monthly volume anom.  2021-09-15   +858.05 km³
+  monthly volume anom.  2021-10-15   +1,248.42 km³
+  monthly volume anom.  2021-11-15   +1,217.71 km³
+  monthly volume anom.  2021-12-15   +1,250.64 km³
+  monthly volume anom.  2022-01-15   +1,091.96 km³
+  monthly volume anom.  2022-02-15   +985.46 km³
+  monthly volume anom.  2022-03-15   +575.43 km³
+  monthly volume anom.  2022-04-15   +533.05 km³
+  monthly volume anom.  2022-09-15   +995.19 km³
+  monthly volume anom.  2022-10-15   +951.23 km³
+  monthly volume anom.  2022-11-15   +913.16 km³
+  monthly volume anom.  2022-12-15   +296.48 km³
+  monthly volume anom.  2023-01-15   +36.26 km³
+  monthly volume anom.  2023-02-15   -1.04 km³
+  monthly volume anom.  2023-03-15   -245.30 km³
+  monthly volume anom.  2023-04-15   -46.84 km³
+  monthly volume anom.  2023-09-15   -623.37 km³
+  monthly volume anom.  2023-10-15   -345.27 km³
+  monthly volume anom.  2023-11-15   -349.13 km³
+  monthly volume anom.  2023-12-15   -365.42 km³
+  monthly volume anom.  2024-01-15   -416.00 km³
+  monthly volume anom.  2024-02-15   -685.96 km³
+  monthly volume anom.  2024-03-15   -286.42 km³
+  monthly volume anom.  2024-04-15   -127.84 km³
+  monthly volume anom.  2024-09-15   -541.88 km³
+  monthly volume anom.  2024-10-15   -628.70 km³
+  monthly volume anom.  2024-11-15   -846.35 km³
+  monthly volume anom.  2024-12-15   -586.23 km³
+  monthly volume anom.  2025-01-15   -1,011.02 km³
+  monthly volume anom.  2025-02-15   -1,636.38 km³
+  monthly volume anom.  2025-03-15   -1,314.83 km³
+  monthly volume anom.  2025-04-15   -290.23 km³
+--- Inner Arctic: monthly volume anomalies (km³) ---
+  monthly volume anom.  2018-11-15   +519.75 km³
+  monthly volume anom.  2018-12-15   +735.33 km³
+  monthly volume anom.  2019-01-15   +777.47 km³
+  monthly volume anom.  2019-02-15   +832.33 km³
+  monthly volume anom.  2019-03-15   +766.31 km³
+  monthly volume anom.  2019-04-15   +512.56 km³
+  monthly volume anom.  2019-09-15   +227.24 km³
+  monthly volume anom.  2019-10-15   +341.71 km³
+  monthly volume anom.  2019-11-15   +371.11 km³
+  monthly volume anom.  2019-12-15   +337.77 km³
+  monthly volume anom.  2020-01-15   +628.72 km³
+  monthly volume anom.  2020-02-15   +865.50 km³
+  monthly volume anom.  2020-03-15   +585.85 km³
+  monthly volume anom.  2020-04-15   +47.33 km³
+  monthly volume anom.  2020-09-15   -916.77 km³
+  monthly volume anom.  2020-10-15   -1,521.40 km³
+  monthly volume anom.  2020-11-15   -1,690.60 km³
+  monthly volume anom.  2020-12-15   -1,534.19 km³
+  monthly volume anom.  2021-01-15   -935.29 km³
+  monthly volume anom.  2021-02-15   -491.28 km³
+  monthly volume anom.  2021-03-15   -362.60 km³
+  monthly volume anom.  2021-04-15   -612.84 km³
+  monthly volume anom.  2021-09-15   +909.58 km³
+  monthly volume anom.  2021-10-15   +1,264.33 km³
+  monthly volume anom.  2021-11-15   +1,182.77 km³
+  monthly volume anom.  2021-12-15   +1,110.14 km³
+  monthly volume anom.  2022-01-15   +800.40 km³
+  monthly volume anom.  2022-02-15   +629.15 km³
+  monthly volume anom.  2022-03-15   +460.03 km³
+  monthly volume anom.  2022-04-15   +487.96 km³
+  monthly volume anom.  2022-09-15   +972.29 km³
+  monthly volume anom.  2022-10-15   +918.67 km³
+  monthly volume anom.  2022-11-15   +735.69 km³
+  monthly volume anom.  2022-12-15   +68.79 km³
+  monthly volume anom.  2023-01-15   -162.92 km³
+  monthly volume anom.  2023-02-15   -254.98 km³
+  monthly volume anom.  2023-03-15   -462.19 km³
+  monthly volume anom.  2023-04-15   -240.72 km³
+  monthly volume anom.  2023-09-15   -678.85 km³
+  monthly volume anom.  2023-10-15   -456.74 km³
+  monthly volume anom.  2023-11-15   -427.39 km³
+  monthly volume anom.  2023-12-15   -318.94 km³
+  monthly volume anom.  2024-01-15   -448.38 km³
+  monthly volume anom.  2024-02-15   -460.07 km³
+  monthly volume anom.  2024-03-15   -257.87 km³
+  monthly volume anom.  2024-04-15   -110.85 km³
+  monthly volume anom.  2024-09-15   -513.50 km³
+  monthly volume anom.  2024-10-15   -546.56 km³
+  monthly volume anom.  2024-11-15   -691.32 km³
+  monthly volume anom.  2024-12-15   -398.90 km³
+  monthly volume anom.  2025-01-15   -660.00 km³
+  monthly volume anom.  2025-02-15   -1,120.65 km³
+  monthly volume anom.  2025-03-15   -729.52 km³
+  monthly volume anom.  2025-04-15   -83.43 km³
+--- Pan-Arctic: daily volume anomaly extrema (km³; melt masked) ---
+  daily anom max   +1,436.45 km³   on 2021-11-25
+  daily anom min   -2,249.71 km³   on 2020-11-25
+--- Inner Arctic Ocean: daily volume anomaly extrema (km³; melt masked) ---
+  daily anom max   +1,337.99 km³   on 2021-10-12
+  daily anom min   -1,997.10 km³   on 2020-11-25
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/4d948304c0b4fe0d69f13da5f7459057205e3a9a848bb48a2d624d26d753ee30.png"><img alt="../_images/4d948304c0b4fe0d69f13da5f7459057205e3a9a848bb48a2d624d26d753ee30.png" src="../_images/4d948304c0b4fe0d69f13da5f7459057205e3a9a848bb48a2d624d26d753ee30.png" style="width: 3228px; height: 1825px;" />
+</a>
+</div>
+</div>
+</section>
+<section id="inner-arctic-ocean-mean-thickness">
+<h2>Inner Arctic Ocean mean thickness<a class="headerlink" href="#inner-arctic-ocean-mean-thickness" title="Link to this heading">#</a></h2>
+<p>IAO-focused IS2SMGPSIT-V1 time series (raw + seasonal anomalies). Set <code class="docutils literal notranslate"><span class="pre">SHOW_CS2SMOS</span> <span class="pre">=</span> <span class="pre">True</span></code> to optionally overlay CS-2/SMOS v206 monthly thickness.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># IAO mean thickness: raw + seasonal anomalies; optional CS-2/SMOS overlay</span>
+<span class="n">clim_t_monthly_iao</span> <span class="o">=</span> <span class="n">thick_mean_monthly_iao</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">thick_mean_monthly_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">t_anom_monthly_iao</span> <span class="o">=</span> <span class="p">(</span><span class="n">thick_mean_monthly_iao</span> <span class="o">-</span> <span class="n">clim_t_monthly_iao</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">month</span><span class="o">=</span><span class="n">thick_mean_monthly_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="p">))</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_months</span><span class="p">)</span>
+<span class="n">clim_t_daily_iao</span> <span class="o">=</span> <span class="n">thick_mean_daily_iao</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">thick_mean_daily_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">t_anom_daily_iao</span> <span class="o">=</span> <span class="p">(</span><span class="n">thick_mean_daily_iao</span> <span class="o">-</span> <span class="n">clim_t_daily_iao</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+    <span class="n">dayofyear</span><span class="o">=</span><span class="n">thick_mean_daily_iao</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span>
+<span class="p">))</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_days</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">times_d</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]))</span>
+<span class="n">t_daily_iao</span> <span class="o">=</span> <span class="n">thick_mean_daily_iao</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_days</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">times_d</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">t_monthly_iao</span> <span class="o">=</span> <span class="n">thick_mean_monthly_iao</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">all_months</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10.8</span><span class="p">,</span> <span class="mf">6.12</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">t_daily_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IS2SMGPSIT-V1 (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">t_monthly_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IS2SMGPSIT-V1 (monthly)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="n">SHOW_CS2SMOS</span><span class="p">:</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thickness_awi</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">thickness_awi</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CS-2/SMOS v206 (monthly)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sea ice thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.41</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s1">&#39;(a) Inner Arctic Ocean mean thickness&#39;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax0</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span> <span class="k">if</span> <span class="n">SHOW_CS2SMOS</span> <span class="k">else</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">_style_ts_axes</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">_shade_summer</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">t_anom_daily_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IS2SMGPSIT-V1 (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thickness anomaly (m)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">&#39;(b) Inner Arctic Ocean mean thickness — seasonal anomalies&#39;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">_style_ts_axes</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">_shade_summer</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
+<span class="n">_suffix</span> <span class="o">=</span> <span class="s1">&#39;_cs2&#39;</span> <span class="k">if</span> <span class="n">SHOW_CS2SMOS</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../paper/figures/inner_arctic_seasonal_thickness_anomalies</span><span class="si">{</span><span class="n">_suffix</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inner-arctic-ocean-volume">
+<h2>Inner Arctic Ocean volume<a class="headerlink" href="#inner-arctic-ocean-volume" title="Link to this heading">#</a></h2>
+<p>IAO-focused IS2SMGPSIT-V1 volume time series (raw + seasonal anomalies). Set <code class="docutils literal notranslate"><span class="pre">SHOW_CS2SMOS</span> <span class="pre">=</span> <span class="pre">True</span></code> to optionally overlay CS-2/SMOS v206 monthly volume.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># IAO volume: raw + seasonal anomalies; optional CS-2/SMOS overlay</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10.8</span><span class="p">,</span> <span class="mf">6.12</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">v_daily_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IS2SMGPSIT-V1 (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v_monthly_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IS2SMGPSIT-V1 (monthly)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="n">SHOW_CS2SMOS</span><span class="p">:</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volume_awi</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">volume_awi</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CS-2/SMOS v206 (monthly)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sea ice volume (km$^3$)&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s1">&#39;(a) Inner Arctic Ocean total volume&#39;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax0</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16500</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span> <span class="k">if</span> <span class="n">SHOW_CS2SMOS</span> <span class="k">else</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">_style_ts_axes</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">_shade_summer</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">v_anom_daily_iao</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IS2SMGPSIT-V1 (daily)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Volume anomaly (km$^3$)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">&#39;(b) Inner Arctic Ocean volume — seasonal anomalies&#39;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">_style_ts_axes</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">_shade_summer</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
+<span class="n">_suffix</span> <span class="o">=</span> <span class="s1">&#39;_cs2&#39;</span> <span class="k">if</span> <span class="n">SHOW_CS2SMOS</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../paper/figures/inner_arctic_seasonal_volume_anomalies</span><span class="si">{</span><span class="n">_suffix</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pan-arctic-growth-season-volume-winters-overlaid">
+<h2>Pan-Arctic growth-season volume: winters overlaid<a class="headerlink" href="#pan-arctic-growth-season-volume-winters-overlaid" title="Link to this heading">#</a></h2>
+<p>Monthly <strong>pan-Arctic</strong> total sea ice volume (<code class="docutils literal notranslate"><span class="pre">total_sea_ice_volume</span></code>) from IS2SMGPSIT-V1, with each <strong>growth season</strong> (Sep–Apr) overlaid on a common month axis—same idea as the thickness figure in notebook 11a and <code class="docutils literal notranslate"><span class="pre">plot_seasonal_growth_is2cs2_2024.py</span></code>. <strong>IS2SMGPSIT-V1 only</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Overlapping winters on a common Sep–Apr axis (IS2SMGPSIT-V1 pan-Arctic monthly volume)</span>
+<span class="n">_WINTER_MONTHS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">_WINTER_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_WINTER_MONTHS</span><span class="p">))</span>
+<span class="n">_WINTER_LABELS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sep&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span><span class="p">,</span> <span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_monthly_series_vol</span><span class="p">(</span><span class="n">da_monthly</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">da_monthly</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+        <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">da_monthly</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_iter_winter_monthly_curves_vol</span><span class="p">(</span><span class="n">da_monthly</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">_monthly_series_vol</span><span class="p">(</span><span class="n">da_monthly</span><span class="o">.</span><span class="n">load</span><span class="p">())</span>
+    <span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">start_oy</span> <span class="o">=</span> <span class="n">tmin</span><span class="o">.</span><span class="n">year</span> <span class="k">if</span> <span class="n">tmin</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;=</span> <span class="mi">9</span> <span class="k">else</span> <span class="n">tmin</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">end_oy</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmax</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">tmax</span><span class="o">.</span><span class="n">month</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="k">else</span> <span class="n">tmax</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">curves</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">oy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_oy</span><span class="p">,</span> <span class="n">end_oy</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">_WINTER_MONTHS</span><span class="p">:</span>
+            <span class="n">yy</span> <span class="o">=</span> <span class="n">oy</span> <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;=</span> <span class="mi">9</span> <span class="k">else</span> <span class="n">oy</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">hit</span> <span class="o">=</span> <span class="n">s</span><span class="p">[(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">yy</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="n">m</span><span class="p">)]</span>
+            <span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">hit</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hit</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">curves</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">oy</span><span class="si">}</span><span class="s1">–</span><span class="si">{</span><span class="n">oy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vals</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">curves</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+<span class="n">_curves_vol</span> <span class="o">=</span> <span class="n">_iter_winter_monthly_curves_vol</span><span class="p">(</span><span class="n">volume_fused_monthly</span><span class="p">)</span>
+<span class="n">_cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;tab10&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_i</span><span class="p">,</span> <span class="p">(</span><span class="n">_lab</span><span class="p">,</span> <span class="n">_y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">_curves_vol</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">_WINTER_X</span><span class="p">,</span> <span class="n">_y</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">_cmap</span><span class="p">(</span><span class="n">_i</span> <span class="o">%</span> <span class="mi">10</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">_lab</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">_WINTER_X</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">19800</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">_WINTER_LABELS</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Total sea ice volume (km³)&#39;</span><span class="p">)</span>
+<span class="c1">#ax.set_xlabel(&#39;Month (growth season)&#39;)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+    <span class="s1">&#39;../paper/figures/pan_arctic_seasonal_volume_by_winter_is2v1.png&#39;</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/4337c6b2f7db03d823cbb940377ccfe9d436fc8458f320e53c8dd0277daa3868.png"><img alt="../_images/4337c6b2f7db03d823cbb940377ccfe9d436fc8458f320e53c8dd0277daa3868.png" src="../_images/4337c6b2f7db03d823cbb940377ccfe9d436fc8458f320e53c8dd0277daa3868.png" style="width: 1938px; height: 1128px;" />
+</a>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "is2book_uv_env"
+        },
+        kernelOptions: {
+            name: "is2book_uv_env",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'is2book_uv_env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11c_comparisons_with_BGEP_daily.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="7_gridded_data_wrangling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data wrangling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Arctic sea ice volume time series</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-notebook-dependencies">Import notebook dependencies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-is2smgpsit-v1-and-compute-pan-arctic-volume">Load IS2SMGPSIT-V1 and compute pan-Arctic volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-check-grid-sum-vs-precomputed-field">Cross-check: grid sum vs precomputed field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-cs-2-smos-v206-comparison-data">Optional CS-2/SMOS v206 comparison data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arctic-sea-ice-volume-raw-and-seasonal-anomalies">Arctic sea ice volume: raw and seasonal anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-arctic-ocean-mean-thickness">Inner Arctic Ocean mean thickness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-arctic-ocean-volume">Inner Arctic Ocean volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pan-arctic-growth-season-volume-winters-overlaid">Pan-Arctic growth-season volume: winters overlaid</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alek Petty and Nicole Keeney
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Distributed under the MIT license
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -221,6 +221,16 @@
 
 <li class="toctree-l1"><a class="reference internal" href="10f_map.html">Map of all-season assessment data locations</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2–SMOS–SMAP data fusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="11a_is2_smos_smap_intro_and_comparison.html">ICESat-2–SMOS–SMAP fusion: intro and V4 comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_comparisons_with_BGEP.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="11c_comparisons_with_BGEP_daily.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice volume time series</a></li>
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="7_gridded_data_wrangling.html">Data wrangling</a></li>
@@ -1691,10 +1701,10 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inner Arctic domain (Central_Arctic Beaufort_Sea Chukchi_Sea East_Siberian_Sea Laptev_Sea Kara_Sea)</span>
-<span class="n">innerArctic</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inner Arctic domain (Central_Arctic Beaufort_Sea Chukchi_Sea East_Siberian_Sea Laptev_Sea; excludes Kara/Barents)</span>
+<span class="n">innerArctic</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="c1"># Inner Arcic plus Barents and Greenland</span>
-<span class="c1">#innerArctic = [1,2,3,4,5,6,7,8]</span>
+<span class="c1">#innerArctic = [1,2,3,4,5,6,7,8]  # wider domain option</span>
 </pre></div>
 </div>
 </div>
@@ -2633,16 +2643,16 @@ Complete operation successful!
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "is2book_uv_env"
         },
         kernelOptions: {
-            name: "python3",
+            name: "is2book_uv_env",
             path: "./content"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'is2book_uv_env'</script>
 
                 </article>
               

@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CLAUDE.md &#8212; ICESat-2 Sea Ice State Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=5b5be228" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-J1HEQ5DMT0"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-J1HEQ5DMT0');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'CLAUDE';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="content/0_home.html">
+                    ICESat-2 Arctic Sea Ice State Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2 Arctic sea ice thickness data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/1_is2sitmogr4_intro.html">ICESat-2 L4 Monthly Gridded Sea Ice Thickness Dataset (IS2SITMOGR4)</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis updates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/2e_winter_arctic_sea_ice_variability_2025update.html">Winter Arctic sea ice state variability (updates through to April 2025)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/2d_winter_arctic_sea_ice_variability_2024update.html">Winter Arctic sea ice state variability (updates through to April 2024)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/2c_winter_arctic_sea_ice_variability_2023update.html">Winter Arctic sea ice state variability (updates through to April 2023)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/2b_winter_arctic_sea_ice_variability_2022update.html">Winter Arctic sea ice state variability (updates through to April 2022)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Winter Arctic sea ice thickness analysis (Petty et al., 2023)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/2_winter_arctic_sea_ice_variability.html">Winter Arctic sea ice state variability</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="content/3_comparisons_with_cryosat-2_and_piomas.html">Comparisons with CryoSat-2 and PIOMAS sea ice thickness estimates</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="content/4_comparisons_with_BGEP.html">Comparisons with BGEP ULS sea ice draft estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="content/5_atmospheric_variability.html">Atmospheric variability</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">All season Arctic sea ice thickness analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/10a_all_season_arctic_sea_ice_variability.html">All-season Arctic sea ice thickness using new summer ICESat-2 ice thickness estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="content/10b_comparisons_with_BGEP_allseason.html">Comparisons of all-season ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="content/10c_comparisons_with_BGEP_winter.html">Comparisons of winter (November to April) ICESat-2 and CryoSat-2 sea ice thickness datasets with BGEP ULS sea ice draft estimates</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="content/10d_comparisons_with_icebird.html">Comparisons with AWI IceBird 2019 airborne data</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="content/10e_comparisons_with_mosaic_simba.html">Comparisons with MOSAiC SIMBA buoys</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="content/10f_map.html">Map of all-season assessment data locations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2–SMOS–SMAP data fusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/11a_is2_smos_smap_intro_and_comparison.html">ICESat-2–SMOS–SMAP fusion: intro and V4 comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/11b_comparisons_with_BGEP.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="content/11c_comparisons_with_BGEP_daily.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="content/11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice volume time series</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/7_gridded_data_wrangling.html">Data wrangling</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="content/7b_gridded_data_wrangling_allseason.html">All-season gridded data wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/8_cryosat-2_data_wrangling.html">CryoSat-2 data wrangling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="content/9_gridded_interp_demo.html">ICESat-2 interpolation workflow</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ancillary code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/utils/markdown_rendering/read_data_utils.html">Functions for reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/utils/markdown_rendering/plotting_utils.html">Functions for plotting and mapping</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/edit/main/CLAUDE.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/akpetty/icesat2-book/issues/new?title=Issue%20on%20page%20%2FCLAUDE.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/CLAUDE.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CLAUDE.md</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-overview">Project Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-commands">Key Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-content">Content (<code class="docutils literal notranslate"><span class="pre">content/</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities-content-utils">Utilities (<code class="docutils literal notranslate"><span class="pre">content/utils/</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow">Data flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-execution-at-build-time">Notebook execution at build time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#active-paper-paper">Active Paper (paper/)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-data-notes">V4 Data Notes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="claude-md">
+<h1><a class="reference external" href="http://CLAUDE.md">CLAUDE.md</a><a class="headerlink" href="#claude-md" title="Link to this heading">#</a></h1>
+<p>This file provides guidance to Claude Code (<a class="reference external" href="http://claude.ai/code">claude.ai/code</a>) when working with code in this repository.</p>
+<section id="project-overview">
+<h2>Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading">#</a></h2>
+<p>This is a <strong>Jupyter Book</strong> (Sphinx-based) that compiles scientific Jupyter Notebooks analyzing Arctic sea ice thickness from ICESat-2 satellite data. The live site is at <a class="reference external" href="http://www.icesat-2-sea-ice-state.info">http://www.icesat-2-sea-ice-state.info</a>. It is not a Python package — there are no tests, no <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, and no CI pipeline.</p>
+</section>
+<section id="key-commands">
+<h2>Key Commands<a class="headerlink" href="#key-commands" title="Link to this heading">#</a></h2>
+<p><strong>Build the book</strong> (run from the <em>parent</em> directory of <code class="docutils literal notranslate"><span class="pre">icesat2-book</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb<span class="w"> </span>build<span class="w"> </span>icesat2-book
+</pre></div>
+</div>
+<p><strong>Deploy to GitHub Pages</strong> (run from inside <code class="docutils literal notranslate"><span class="pre">icesat2-book</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-c<span class="w"> </span>www.icesat-2-sea-ice-state.info<span class="w"> </span>_build/html
+</pre></div>
+</div>
+<p><strong>Environment setup (UV — preferred):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># From parent directory</span>
+uv<span class="w"> </span>venv<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.9<span class="w"> </span>is2book_uv_env
+<span class="nb">source</span><span class="w"> </span>../is2book_uv_env/bin/activate<span class="w">  </span><span class="c1"># from inside icesat2-book</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>is2book_uv_env<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;ICESat-2 Book (UV)&quot;</span>
+</pre></div>
+</div>
+<p><strong>Legacy Conda environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment_021425.yml
+conda<span class="w"> </span>activate<span class="w"> </span>is2book_p39_env
+</pre></div>
+</div>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> — Jupyter Book / Sphinx settings (execution policy, theme, analytics, excluded notebooks)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> — Book structure / table of contents (defines which notebooks appear and in what order)</p></li>
+</ul>
+</section>
+<section id="content-content">
+<h3>Content (<code class="docutils literal notranslate"><span class="pre">content/</span></code>)<a class="headerlink" href="#content-content" title="Link to this heading">#</a></h3>
+<p>Notebooks are grouped into thematic series by filename prefix:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1_*</span></code> — Introduction to the IS2SITMOGR4 dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2_*</span></code> — Annual winter Arctic sea ice thickness update notebooks (one per winter season)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3–5_*</span></code> — Comparisons with CryoSat-2, PIOMAS, BGEP, and atmospheric reanalysis (Petty et al. 2023)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6_*</span></code> — Interactive visualizations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">7–9_*</span></code> — Data wrangling and interpolation demos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">10_*</span></code> — All-season (summer + winter) analysis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">11_*</span></code> — IS2-SMOS-SMAP data fusion notebooks</p></li>
+</ul>
+</section>
+<section id="utilities-content-utils">
+<h3>Utilities (<code class="docutils literal notranslate"><span class="pre">content/utils/</span></code>)<a class="headerlink" href="#utilities-content-utils" title="Link to this heading">#</a></h3>
+<p>Three shared Python modules imported by most notebooks:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">read_data_utils.py</span></code></strong> — All data loading. <code class="docutils literal notranslate"><span class="pre">read_IS2SITMOGR4()</span></code> is the main entry point; supports local netcdf, S3 netcdf download, or S3 Zarr (v3/v4). <code class="docutils literal notranslate"><span class="pre">read_is2smgpsitv1_zarr()</span></code> loads IS2-SMOS-SMAP fused data. Data is never bundled in the repo — it is fetched from S3 anonymously via <code class="docutils literal notranslate"><span class="pre">s3fs</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">plotting_utils.py</span></code></strong> — Cartopy/Matplotlib map generation, <code class="docutils literal notranslate"><span class="pre">get_winter_data()</span></code> for seasonal subsetting, <code class="docutils literal notranslate"><span class="pre">compute_gridcell_winter_means()</span></code> for seasonal averaging.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">extra_funcs.py</span></code></strong> — All-season counterpart to <code class="docutils literal notranslate"><span class="pre">plotting_utils</span></code>: <code class="docutils literal notranslate"><span class="pre">get_summer_data()</span></code>, <code class="docutils literal notranslate"><span class="pre">compute_gridcell_summer_means()</span></code>, interpolation/smoothing helpers.</p></li>
+</ul>
+</section>
+<section id="data-flow">
+<h3>Data flow<a class="headerlink" href="#data-flow" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Notebooks call <code class="docutils literal notranslate"><span class="pre">read_IS2SITMOGR4()</span></code> → returns an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> backed by Dask (Zarr) or in memory (netcdf).</p></li>
+<li><p>All datasets are regridded to the <strong>NSIDC North Polar Stereographic</strong> grid (IS2SITMOGR4’s native grid) before comparison.</p></li>
+<li><p>Figures are written to <code class="docutils literal notranslate"><span class="pre">content/figs/</span></code> (gitignored); data cached to <code class="docutils literal notranslate"><span class="pre">content/data/</span></code> (gitignored).</p></li>
+</ol>
+</section>
+<section id="notebook-execution-at-build-time">
+<h3>Notebook execution at build time<a class="headerlink" href="#notebook-execution-at-build-time" title="Link to this heading">#</a></h3>
+<p>Most notebooks are <strong>excluded from execution</strong> in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> (their pre-run outputs are committed). Only notebooks missing a cache entry are re-executed. Execution timeout is 1000 s. The cache lives in <code class="docutils literal notranslate"><span class="pre">.jupyter_cache/</span></code>.</p>
+</section>
+</section>
+<section id="active-paper-paper">
+<h2>Active Paper (paper/)<a class="headerlink" href="#active-paper-paper" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">paper/</span></code> directory (gitignored) contains a draft manuscript targeting <em>The Cryosphere</em> (Copernicus):</p>
+<blockquote>
+<div><p><strong>“A daily gridded Arctic sea ice thickness and volume dataset from fused ICESat-2 and SMOS/SMAP observations using Gaussian process regression”</strong>
+Petty, Cardinale, Tsamados, Spreen</p>
+</div></blockquote>
+<p>The paper describes <strong>IS2SMGPSIT-V1</strong> — the dataset that the <code class="docutils literal notranslate"><span class="pre">11_*</span></code> notebooks analyze. Key details:</p>
+<ul class="simple">
+<li><p>Pan-Arctic, 25 km, daily gridded sea ice thickness spanning Nov 2018–Apr 2025 (7 growth seasons, Sep–Apr only)</p></li>
+<li><p>Produced by fusing ICESat-2 along-track thickness with SMOS/SMAP thin-ice thickness using Gaussian process (GP) regression in the <a class="reference external" href="https://github.com/...">GPSat</a> framework</p></li>
+<li><p>GPSat uses a local-expert architecture: 200 km expert grid, ±30-day temporal window, Matérn-3/2 kernel with SGPR (500 inducing points)</p></li>
+<li><p>SMOS/SMAP data coarsened ×4, clipped to 0–0.5 m, Central Arctic excluded; CDR SIC pseudo-observations added at ice edge</p></li>
+<li><p>Output: per-grid-cell thickness + uncertainty; monthly NetCDF and single Zarr store on S3</p></li>
+<li><p>Validated against BGEP ULS moorings: <span class="math notranslate nohighlight">\(r^2=0.89\)</span>, RMSE=0.21 m (vs. IS2SITMOGR4-V4: <span class="math notranslate nohighlight">\(r^2=0.84\)</span>, RMSE=0.25 m)</p></li>
+<li><p>Several <code class="docutils literal notranslate"><span class="pre">\todo{}</span></code> items remain in the paper (SMOS/SMAP coarsen factor confirmation, CDR version, figure insertion, S3 URLs)</p></li>
+</ul>
+<p>Compile the paper with: <code class="docutils literal notranslate"><span class="pre">pdflatex</span> <span class="pre">→</span> <span class="pre">bibtex</span> <span class="pre">→</span> <span class="pre">pdflatex</span> <span class="pre">→</span> <span class="pre">pdflatex</span></code> (uses <code class="docutils literal notranslate"><span class="pre">copernicus.cls</span></code> in <code class="docutils literal notranslate"><span class="pre">paper/</span></code>).</p>
+</section>
+<section id="v4-data-notes">
+<h2>V4 Data Notes<a class="headerlink" href="#v4-data-notes" title="Link to this heading">#</a></h2>
+<p>IS2SITMOGR4 V4 has static variables (<code class="docutils literal notranslate"><span class="pre">grid_cell_area</span></code>, <code class="docutils literal notranslate"><span class="pre">region_mask</span></code>, etc.) without a time dimension. <code class="docutils literal notranslate"><span class="pre">read_IS2SITMOGR4()</span></code> drops the time coordinate from those variables and shifts the time coordinate from the 15th to the 1st of each month for consistency with V3.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-overview">Project Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-commands">Key Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-content">Content (<code class="docutils literal notranslate"><span class="pre">content/</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities-content-utils">Utilities (<code class="docutils literal notranslate"><span class="pre">content/utils/</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow">Data flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-execution-at-build-time">Notebook execution at build time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#active-paper-paper">Active Paper (paper/)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v4-data-notes">V4 Data Notes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alek Petty and Nicole Keeney
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Distributed under the MIT license
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

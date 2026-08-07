@@ -71,6 +71,8 @@
                 gtag('config', 'G-J1HEQ5DMT0');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/0_home';</script>
     <link rel="icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -221,6 +223,16 @@
 <li class="toctree-l1"><a class="reference internal" href="10e_comparisons_with_mosaic_simba.html">Comparisons with MOSAiC SIMBA buoys</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="10f_map.html">Map of all-season assessment data locations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ICESat-2–SMOS–SMAP data fusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="11a_is2_smos_smap_intro_and_comparison.html">ICESat-2–SMOS–SMAP fusion: intro and V4 comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_comparisons_with_BGEP.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="11c_comparisons_with_BGEP_daily.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice volume time series</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
 <ul class="nav bd-sidenav">
@@ -500,6 +512,10 @@ Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relat
 </section>
 <section id="version-history">
 <h2>Version History<a class="headerlink" href="#version-history" title="Link to this heading">#</a></h2>
+<p>Version 1.7 (08/07/2026):</p>
+<ul class="simple">
+<li><p>Added ICESat-2–SMOS–SMAP data fusion chapter (notebooks 11a–11d), introducing the daily gridded IS2SMGPSIT-V1 thickness/volume analysis and BGEP validation</p></li>
+</ul>
 <p>Version 1.6 (11/15/2025):</p>
 <ul class="simple">
 <li><p>Added a new winter 2024-2025 notebook</p></li>
@@ -563,6 +579,14 @@ Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relat
 </ul>
 </li>
 <li><p>Check out the new notebooks in the chapter: “All season Arctic sea ice thickness analysis” for the inclusion of summer ICESat-2 ice thickness using SnowModel-LG snow loading and comparisons with CryoSat-2 and ULS/BGEP, ICEBIRD-2019 and MOSAiC/SIMBA validation data.</p></li>
+<li><p>See the new chapter: “ICESat-2–SMOS–SMAP data fusion” for daily gridded Arctic sea ice thickness from fused ICESat-2 and SMOS/SMAP observations (IS2SMGPSIT-V1), including BGEP validation and pan-Arctic volume time series:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.icesat-2-sea-ice-state.info/content/11a_is2_smos_smap_intro_and_comparison.html">Intro and comparison with IS2SITMOGR4</a></p></li>
+<li><p><a class="reference external" href="https://www.icesat-2-sea-ice-state.info/content/11b_comparisons_with_BGEP.html">Monthly BGEP comparisons</a></p></li>
+<li><p><a class="reference external" href="https://www.icesat-2-sea-ice-state.info/content/11c_comparisons_with_BGEP_daily.html">Daily/weekly BGEP comparisons</a></p></li>
+<li><p><a class="reference external" href="https://www.icesat-2-sea-ice-state.info/content/11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice volume time series</a></p></li>
+</ul>
+</li>
 <li><p>Continue to watch this space for more sea ice analyses from ICESat-2!</p></li>
 </ul>
 </section>
@@ -574,6 +598,7 @@ Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relat
 <li><p><a class="reference external" href="https://nsidc.org/data/is2sitmogr4"><strong>IS2SITMOGR4</strong></a>: Monthly gridded winter (September to April) Arctic sea ice thickness estimates using snow loading from the NASA Eulerian Snow on Sea Ice Model <a class="reference external" href="https://github.com/akpetty/NESOSIM">(NESOSIM)</a>. For detailed methodology see our <a class="reference external" href="http://www.alekpetty.com/papers/petty2020">original methodology paper</a> and the <a class="reference external" href="https://tc.copernicus.org/articles/17/127/2023/">updated analysis</a>.</p></li>
 </ul>
 <p>In addition, we have archived a preliminary/unofficial summer (May to August) monthly gridded Arctic sea ice thickness dataset, <a class="reference external" href="https://zenodo.org/records/15375596">IS2SITMOGR4S</a>.</p>
+<p>The fusion notebooks analyze <strong>IS2SMGPSIT-V1</strong>, a daily 25 km pan-Arctic sea ice thickness product generated by fusing ICESat-2 along-track thickness with SMOS/SMAP thin-ice thickness using Gaussian process regression (growth seasons, Sep–Apr). Data are hosted on AWS S3 as NetCDF/Zarr and loaded via <code class="docutils literal notranslate"><span class="pre">read_is2smgpsitv1_zarr()</span></code> in the book utilities.</p>
 <p>Additional ICESat-2 sea ice datasets not used here include the official along-track height/type product (ATL07), along-track winter Arctic sea ice thickness estimates (IS2SITDAT4) and monthly gridded total freeboard (ATL20) and sea surface height anomalies (ATL21).</p>
 </section>
 <section id="accessing-the-data">
@@ -607,6 +632,8 @@ Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relat
     >
 </iframe> -->
 </section>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
