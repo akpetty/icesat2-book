@@ -228,8 +228,11 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../../content/11c_comparisons_with_BGEP_daily.html">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../content/11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice volume time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice thickness and volume time series</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../../content/11e_winter_arctic_sea_ice_maps.html">IS2SMGPSIT-V1 winter Arctic sea ice maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/11f_comparisons_with_cs3smos.html">Comparison with CryoSat-2/Sentinel-3/SMOS (CS3SMOS v300)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/11g_icechunk_data_access.html">Versioned data access with Icechunk</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
 <ul class="nav bd-sidenav">
@@ -498,11 +501,15 @@ Non-notebook figures (GPSat_<em>, combined_thickness_map_</em>, expert_location_
 <li><p><code class="docutils literal notranslate"><span class="pre">fig:bgep_scatter_monthly</span></code> → BGEP_V4_vs_V1_scatter (11b, Section 4.3)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fig:bgep_scatter_daily</span></code> → BGEP_V4_vs_V1_daily_scatter (11c, Section 4.3)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fig:bgep_scatter_anomaly</span></code> → BGEP_V4_vs_V1_daily_scatter_subseasonal (11c, Section 4.3)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tab:windows</span></code> → <code class="docutils literal notranslate"><span class="pre">paper/tables/bgep_validation_by_window_rows.tex</span></code> (11c; monthly rows from 11b). Retired weekly notebook: <code class="docutils literal notranslate"><span class="pre">11d_comparisons_with_BGEP_weekly.ipynb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tab:windows</span></code> → ~~dropped~~ (was <code class="docutils literal notranslate"><span class="pre">paper/tables/bgep_validation_by_window_rows.tex</span></code> from 11c); discrete daily/weekly/monthly skill now cited in prose only; continuous anomaly sweep kept as <code class="docutils literal notranslate"><span class="pre">fig:window_sweep</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fig:window_sweep</span></code> → BGEP_anomaly_r2_vs_window (11c; promoted from supplement)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fig:mosaic_scatter</span></code> → MOSAIC_V4_vs_V1_daily_scatter_thickness + snow (11x1)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fig:volume</span></code> → arctic_sea_ice_volume_timeseries (11d, Section 4.5) — verify CAA mask applied</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fig:volume_anomalies</span></code> → arctic_sea_ice_volume_anomalies (11d, Section 4.5)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fig:winter_thickness_maps</span></code> → maps_thickness_winter_2018_2025_is2smgpsitv1 (11e)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fig:winter_thickness_anomalies</span></code> → maps_thickness_winter_2018_2025_anomalies_is2smgpsitv1 (11e)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">supfig:winter_freeboard_maps</span></code> / <code class="docutils literal notranslate"><span class="pre">_anomalies</span></code> → maps_freeboard_winter_2018_2025_*_is2smgpsitv1 (11e, SI)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">supfig:winter_snow_maps</span></code> / <code class="docutils literal notranslate"><span class="pre">_anomalies</span></code> → maps_snow_depth_winter_2018_2025_*_is2smgpsitv1 (11e, SI)</p></li>
 </ul>
 
     <script type="text/x-thebe-config">

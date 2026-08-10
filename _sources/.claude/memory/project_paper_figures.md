@@ -26,8 +26,12 @@ Non-notebook figures (GPSat_*, combined_thickness_map_*, expert_location_*, pred
 - `fig:bgep_scatter_monthly` → BGEP_V4_vs_V1_scatter (11b, Section 4.3)
 - `fig:bgep_scatter_daily` → BGEP_V4_vs_V1_daily_scatter (11c, Section 4.3)
 - `fig:bgep_scatter_anomaly` → BGEP_V4_vs_V1_daily_scatter_subseasonal (11c, Section 4.3)
-- `tab:windows` → `paper/tables/bgep_validation_by_window_rows.tex` (11c; monthly rows from 11b). Retired weekly notebook: `11d_comparisons_with_BGEP_weekly.ipynb`
+- `tab:windows` → ~~dropped~~ (was `paper/tables/bgep_validation_by_window_rows.tex` from 11c); discrete daily/weekly/monthly skill now cited in prose only; continuous anomaly sweep kept as `fig:window_sweep`
 - `fig:window_sweep` → BGEP_anomaly_r2_vs_window (11c; promoted from supplement)
 - `fig:mosaic_scatter` → MOSAIC_V4_vs_V1_daily_scatter_thickness + snow (11x1)
 - `fig:volume` → arctic_sea_ice_volume_timeseries (11d, Section 4.5) — verify CAA mask applied
 - `fig:volume_anomalies` → arctic_sea_ice_volume_anomalies (11d, Section 4.5)
+- `fig:winter_thickness_maps` → maps_thickness_winter_2018_2025_is2smgpsitv1 (11e)
+- `fig:winter_thickness_anomalies` → maps_thickness_winter_2018_2025_anomalies_is2smgpsitv1 (11e)
+- `supfig:winter_freeboard_maps` / `_anomalies` → maps_freeboard_winter_2018_2025_*_is2smgpsitv1 (11e, SI)
+- `supfig:winter_snow_maps` / `_anomalies` → maps_snow_depth_winter_2018_2025_*_is2smgpsitv1 (11e, SI)

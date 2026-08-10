@@ -75,6 +75,8 @@ There are three different ways to use this Jupyter Book:
     - [Monthly BGEP comparisons](https://www.icesat-2-sea-ice-state.info/content/11b_comparisons_with_BGEP.html)
     - [Daily/weekly BGEP comparisons](https://www.icesat-2-sea-ice-state.info/content/11c_comparisons_with_BGEP_daily.html)
     - [Arctic sea ice volume time series](https://www.icesat-2-sea-ice-state.info/content/11d_arctic_sea_ice_volume_timeseries.html)
+    - [Winter mean and anomaly maps](https://www.icesat-2-sea-ice-state.info/content/11e_winter_arctic_sea_ice_maps.html)
+    - [Versioned data access with Icechunk](https://www.icesat-2-sea-ice-state.info/content/11g_icechunk_data_access.html)
 - Continue to watch this space for more sea ice analyses from ICESat-2!
 
 ## Data Products

@@ -77,7 +77,7 @@
     <link rel="icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Arctic sea ice volume time series" href="11d_arctic_sea_ice_volume_timeseries.html" />
+    <link rel="next" title="Arctic sea ice thickness and volume time series" href="11d_arctic_sea_ice_volume_timeseries.html" />
     <link rel="prev" title="IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft" href="11b_comparisons_with_BGEP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -230,8 +230,11 @@
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">IS2SITMOGR4-V4 and IS2SMGPSIT-V1 vs BGEP ULS ice draft (daily / weekly)</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice volume time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11d_arctic_sea_ice_volume_timeseries.html">Arctic sea ice thickness and volume time series</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="11e_winter_arctic_sea_ice_maps.html">IS2SMGPSIT-V1 winter Arctic sea ice maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11f_comparisons_with_cs3smos.html">Comparison with CryoSat-2/Sentinel-3/SMOS (CS3SMOS v300)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11g_icechunk_data_access.html">Versioned data access with Icechunk</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data wrangling</span></p>
 <ul class="nav bd-sidenav">
@@ -612,11 +615,15 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>load zarr from S3 bucket
 zarr_path: s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/zarr/IS2SITMOGR4_V4_201811-202504.zarr
-IS2SITMOGR4-V4 monthly loaded: 54 months
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IS2SITMOGR4-V4 monthly loaded: 54 months
 Loading IS2-SMOS-SMAP (is2smsitgp) Zarr from local cache
 cache_path: ./data/cache/GPSat_multivar_20181101-20250430.zarr
 IS2SMGPSIT-V1 daily loaded: 1635 days
-IS2SMGPSIT-V1 monthly loaded: 78 months
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IS2SMGPSIT-V1 monthly loaded: 78 months
 </pre></div>
 </div>
 </div>
@@ -739,17 +746,39 @@ Meshgrids ready: V4 (448, 304) fused daily (448, 304) fused monthly (448, 304)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring A (75.0 N, 150 W)
-Mooring B (78.4 N, 150.0 W)
-Mooring D (74.0 N, 140.0 W)
-Mooring A (75.0 N, 150 W)
-Mooring B (78.4 N, 150.0 W)
-Mooring D (74.0 N, 140.0 W)
-Mooring A (75.0 N, 150 W)
-Mooring B (78.4 N, 150.0 W)
-Mooring D (74.0 N, 140.0 W)
-Mooring A (75.0 N, 150 W)
-Mooring B (78.4 N, 150.0 W)
-Mooring D (74.0 N, 140.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring B (78.4 N, 150.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring D (74.0 N, 140.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring A (75.0 N, 150 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring B (78.4 N, 150.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring D (74.0 N, 140.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring A (75.0 N, 150 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring B (78.4 N, 150.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring D (74.0 N, 140.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring A (75.0 N, 150 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring B (78.4 N, 150.0 W)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring D (74.0 N, 140.0 W)
 </pre></div>
 </div>
 </div>
@@ -853,8 +882,12 @@ Mooring D: 2167 daily ULS values
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring A: 2124 days, V4 valid=1251, fused-monthly valid=1372, fused-daily valid=1360
-Mooring B: 2038 days, V4 valid=1413, fused-monthly valid=1399, fused-daily valid=1387
-Mooring D: 2167 days, V4 valid=1327, fused-monthly valid=1405, fused-daily valid=1394
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring B: 2038 days, V4 valid=1413, fused-monthly valid=1399, fused-daily valid=1387
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mooring D: 2167 days, V4 valid=1327, fused-monthly valid=1405, fused-daily valid=1394
 </pre></div>
 </div>
 </div>
@@ -1147,10 +1180,10 @@ Std of draft anomalies (m):
 <span class="c1"># only change the averaging window, so the seasonal removal is identical throughout.</span>
 <span class="c1"># Averaging the daily anomalies to W-day means isolates the effect of temporal</span>
 <span class="c1"># smoothing alone.</span>
-<span class="n">windows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">))</span>
+<span class="n">windows</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 <span class="n">diag_products</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;fused_daily&#39;</span><span class="p">:</span> <span class="s1">&#39;IS2SMGPSIT-V1 (daily)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;v4_monthly&#39;</span><span class="p">:</span> <span class="s1">&#39;IS2SITMOGR4-V4 (monthly, control)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;v4_monthly&#39;</span><span class="p">:</span> <span class="s1">&#39;IS2SITMOGR4-V4 (monthly)&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 
 
@@ -1198,18 +1231,18 @@ Std of draft anomalies (m):
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">ylab</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="s1">&#39;Pooled anomaly $r^2$&#39;</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
                       <span class="p">(</span><span class="s1">&#39;rmse&#39;</span><span class="p">,</span> <span class="s1">&#39;Anomaly RMSE (m)&#39;</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])]:</span>
     <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">diag_products</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">stats_by_window</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">key</span><span class="p">],</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">p</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">lab</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">stats_by_window</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">key</span><span class="p">],</span> <span class="s1">&#39;-x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">p</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">lab</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Averaging window (days)&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylab</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Anomaly skill improves with temporal averaging for both products</span><span class="se">\n</span><span class="s1">&#39;</span>
-             <span class="s1">&#39;(the monthly-only V4 control cannot contain real sub-monthly skill)&#39;</span><span class="p">,</span>
-             <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;(b)&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../paper/figures/BGEP_anomaly_r2_vs_window.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1220,38 +1253,14 @@ Std of draft anomalies (m):
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Anomaly skill vs averaging window (pooled A+B+D):
 window(d)      N   V1 r^2   V1 RMSE   V4 r^2   V4 RMSE
         1   4125     0.15      0.29     0.12      0.30
-        2   2090     0.21      0.24     0.17      0.26
-        3   1403     0.24      0.23     0.20      0.24
-        4   1061     0.26      0.21     0.22      0.23
         5    854     0.28      0.21     0.23      0.22
-        6    719     0.30      0.20     0.25      0.21
-        7    618     0.31      0.19     0.26      0.20
-        8    547     0.33      0.19     0.28      0.20
-        9    487     0.33      0.19     0.29      0.19
        10    439     0.33      0.18     0.28      0.19
-       11    400     0.37      0.18     0.31      0.19
-       12    371     0.35      0.18     0.30      0.19
-       13    343     0.36      0.18     0.28      0.19
-       14    320     0.36      0.17     0.30      0.19
        15    301     0.37      0.17     0.31      0.18
-       16    284     0.39      0.17     0.33      0.18
-       17    264     0.39      0.17     0.33      0.18
-       18    255     0.40      0.17     0.33      0.18
-       19    240     0.38      0.17     0.33      0.18
        20    231     0.40      0.16     0.33      0.18
-       21    220     0.37      0.17     0.32      0.18
-       22    211     0.42      0.16     0.33      0.17
-       23    204     0.41      0.16     0.35      0.17
-       24    197     0.39      0.16     0.34      0.17
-       25    189     0.44      0.16     0.34      0.17
-       26    179     0.39      0.16     0.34      0.17
-       27    176     0.40      0.16     0.35      0.17
-       28    169     0.42      0.16     0.33      0.17
-       29    166     0.40      0.16     0.34      0.17
        30    161     0.38      0.16     0.34      0.17
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/7a45dcfa28bc88712dc112d7c86c969d4fcc49439029019b1758c8021cf9e486.png"><img alt="../_images/7a45dcfa28bc88712dc112d7c86c969d4fcc49439029019b1758c8021cf9e486.png" src="../_images/7a45dcfa28bc88712dc112d7c86c969d4fcc49439029019b1758c8021cf9e486.png" style="width: 2206px; height: 963px;" />
+<a class="reference internal image-reference" href="../_images/8eeed72a820e0adebb2e1bf0f56a3dfc674b7c2d97362b3d95e31e65941afbde.png"><img alt="../_images/8eeed72a820e0adebb2e1bf0f56a3dfc674b7c2d97362b3d95e31e65941afbde.png" src="../_images/8eeed72a820e0adebb2e1bf0f56a3dfc674b7c2d97362b3d95e31e65941afbde.png" style="width: 2206px; height: 946px;" />
 </a>
 </div>
 </div>
@@ -1848,7 +1857,7 @@ Saved LaTeX rows to ../paper/tables/bgep_validation_by_window_rows.tex
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Arctic sea ice volume time series</p>
+        <p class="prev-next-title">Arctic sea ice thickness and volume time series</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
