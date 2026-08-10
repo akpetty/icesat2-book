@@ -1,0 +1,27 @@
+# Icechunk migration / publishing tooling (NOT for the main Jupyter Book env).
+#
+# icechunk requires Python >=3.12. The book env (is2book_uv_env) is Python 3.9.
+# Create a separate env, e.g. from the parent directory:
+#
+#   uv venv --python 3.12 is2book_icechunk_env
+#   source is2book_icechunk_env/bin/activate
+#   cd icesat2-book
+#   uv pip install -r requirements-icechunk.txt
+#
+# AWS credentials for writes: aws configure, or standard AWS_* env vars.
+# Anonymous read works for public prefixes once the repo is published.
+
+icechunk>=2.0,<3
+xarray>=2024.7
+zarr>=3.0
+boto3>=1.40.0
+s3fs>=2025.9
+dask>=2024.1.0
+netcdf4
+
+# For the Icechunk data-access notebook (content/11g_icechunk_data_access.ipynb)
+matplotlib>=3.9
+cartopy>=0.24
+holoviews
+hvplot
+ipykernel
