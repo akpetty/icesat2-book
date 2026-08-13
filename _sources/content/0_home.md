@@ -1,7 +1,7 @@
 # ICESat-2 Arctic Sea Ice State Analysis
 
 ## Overview
-NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is an advanced satellite laser altimetry system designed to profile Earth's polar regions with meter-scale horizontal resolution and centimeter-scale vertical precision, making it particularly well-suited for profiling Arctic sea ice thickness. This Jupyter Book provides a comprehensive analysis of Arctic sea ice thickness variability derived from ICESat-2 since its launch in fall 2018. The initial focus of this book was on winter Arctic sea ice thickness, but we have recently expanded this to include summer/all-season gridded thickness estimates. 
+NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.gsfc.nasa.gov/)) is an advanced satellite laser altimetry system designed to profile Earth's polar regions with meter-scale horizontal resolution and centimeter-scale vertical precision, making it particularly well-suited for profiling Arctic sea ice thickness. This Jupyter Book provides a comprehensive analysis of Arctic sea ice thickness variability derived from ICESat-2 since its launch in fall 2018, now spanning eight winters through April 2026. The initial focus of this book was on winter Arctic sea ice thickness, but we have recently expanded this to include summer/all-season gridded thickness estimates and a daily fused ICESat-2–SMOS–SMAP thickness product.
 
 ## Contributors
 **Alek Petty (Current book lead, summer 2022 onwards)**<br>
@@ -10,17 +10,21 @@ NASA's Ice, Cloud, and Land Elevation Satellite-2 ([ICESat-2](https://icesat-2.g
 **Nicole Keeney (Original book creator)**<br>
 [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/nicolejkeeney)
 
-![ICESat-2 maps](../maps_thickness_winter_2018_2025.png "ICESat-2 mean winter Arctic sea ice thickness")
+![ICESat-2 maps](../maps_thickness_winter_2018_2026.png "ICESat-2 mean winter Arctic sea ice thickness")
 <p align = "center">
-Fig 1: Mean winter (November to April) Arctic sea ice thickness from the first seven winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
+Fig 1: Mean winter (November to April) Arctic sea ice thickness from the first eight winters profiled by ICESat-2 (data from the monthly gridded IS2SITMOGR4 dataset).
 </p>
 
-![ICESat-2 maps](../maps_thickness_winter_2018_2025_anomalies.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
+![ICESat-2 maps](../maps_thickness_winter_2018_2026_anomalies.png "ICESat-2 mean winter Arctic sea ice thickness anomalies")
 <p align = "center">
-Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relative to the seven winter mean) from the first seven winters profiled by ICESat-2.
+Fig 2: Mean winter (November to April) Arctic sea ice thickness anomalies (relative to the eight-winter mean) from the first eight winters profiled by ICESat-2.
 </p>
 
 ## Version History
+Version 1.8 (08/13/2026):
+- Added the 2025–2026 winter analysis notebook (2f) and updated the homepage winter thickness/anomaly maps through April 2026
+- Expanded the ICESat-2–SMOS–SMAP data fusion chapter with winter maps, CS3SMOS comparisons, and Icechunk data-access notebooks (11e–11g)
+
 Version 1.7 (08/07/2026):
 - Added ICESat-2–SMOS–SMAP data fusion chapter (notebooks 11a–11d), introducing the daily gridded IS2SMGPSIT-V1 thickness/volume analysis and BGEP validation
 
@@ -68,7 +72,8 @@ There are three different ways to use this Jupyter Book:
     - [2021-2022 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2b_winter_arctic_sea_ice_variability_2022update.html)
     - [2022-2023 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2c_winter_arctic_sea_ice_variability_2023update.html).
     - [2023-2024 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2d_winter_arctic_sea_ice_variability_2024update.html).
-     - [2024-2025 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2e_winter_arctic_sea_ice_variability_2025update.html).
+    - [2024-2025 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2e_winter_arctic_sea_ice_variability_2025update.html).
+    - [2025-2026 winter analysis notebook](https://www.icesat-2-sea-ice-state.info/content/2f_winter_arctic_sea_ice_variability_2026update.html).
 - Check out the new notebooks in the chapter: "All season Arctic sea ice thickness analysis" for the inclusion of summer ICESat-2 ice thickness using SnowModel-LG snow loading and comparisons with CryoSat-2 and ULS/BGEP, ICEBIRD-2019 and MOSAiC/SIMBA validation data.
 - See the new chapter: "ICESat-2–SMOS–SMAP data fusion" for daily gridded Arctic sea ice thickness from fused ICESat-2 and SMOS/SMAP observations (IS2SMGPSIT-V1), including BGEP validation and pan-Arctic volume time series:
     - [Intro and comparison with IS2SITMOGR4](https://www.icesat-2-sea-ice-state.info/content/11a_is2_smos_smap_intro_and_comparison.html)
@@ -76,6 +81,7 @@ There are three different ways to use this Jupyter Book:
     - [Daily/weekly BGEP comparisons](https://www.icesat-2-sea-ice-state.info/content/11c_comparisons_with_BGEP_daily.html)
     - [Arctic sea ice volume time series](https://www.icesat-2-sea-ice-state.info/content/11d_arctic_sea_ice_volume_timeseries.html)
     - [Winter mean and anomaly maps](https://www.icesat-2-sea-ice-state.info/content/11e_winter_arctic_sea_ice_maps.html)
+    - [CS3SMOS comparisons](https://www.icesat-2-sea-ice-state.info/content/11f_comparisons_with_cs3smos.html)
     - [Versioned data access with Icechunk](https://www.icesat-2-sea-ice-state.info/content/11g_icechunk_data_access.html)
 - Continue to watch this space for more sea ice analyses from ICESat-2!
 
