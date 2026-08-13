@@ -10,6 +10,7 @@ parts:
 #   - file: content/6_interactive_data_viz
 - caption: Winter Arctic sea ice thickness analysis updates
   chapters:
+  - file: content/2f_winter_arctic_sea_ice_variability_2026update
   - file: content/2e_winter_arctic_sea_ice_variability_2025update
   - file: content/2d_winter_arctic_sea_ice_variability_2024update
   - file: content/2c_winter_arctic_sea_ice_variability_2023update
@@ -34,6 +35,9 @@ parts:
   - file: content/11b_comparisons_with_BGEP
   - file: content/11c_comparisons_with_BGEP_daily
   - file: content/11d_arctic_sea_ice_volume_timeseries
+  - file: content/11e_winter_arctic_sea_ice_maps
+  - file: content/11f_comparisons_with_cs3smos
+  - file: content/11g_icechunk_data_access
 - caption: Data wrangling
   chapters:
   - file: content/7_gridded_data_wrangling

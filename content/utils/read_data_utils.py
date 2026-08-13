@@ -76,7 +76,7 @@ def add_time_dim_v3(xda):
     return xda
 
 def read_IS2SITMOGR4(data_type='zarr-s3-v4', version='V4', local_data_path="./data/IS2SITMOGR4/", 
-                     zarr_path='s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/zarr/IS2SITMOGR4_V4_201811-202504.zarr',
+                     zarr_path='s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/zarr/IS2SITMOGR4_V4_201811-202604.zarr',
                      netcdf_s3_path='s3://icesat-2-sea-ice-us-west-2/IS2SITMOGR4_V4/netcdf/', 
                      persist=True): 
     """ Read in IS2SITMOGR4 monthly gridded thickness dataset from local netcdf files, 
@@ -266,11 +266,14 @@ def static_grid_cell_area(area):
 def area_weighted_spatial_mean(field, mask, area):
     """Area-weighted spatial mean of *field* over cells where *mask* is True.
 
-    Computes sum(field × grid_cell_area) / sum(grid_cell_area) over (y, x).
+    Computes sum(field × grid_cell_area) / sum(grid_cell_area) over valid
+    field values within *mask*. Missing field values are excluded from both the
+    numerator and denominator.
     """
     area = static_grid_cell_area(area)
-    weighted = field.where(mask)
-    w = area.where(mask)
+    valid = mask & field.notnull()
+    weighted = field.where(valid)
+    w = area.where(valid)
     return (weighted * w).sum(dim=['y', 'x']) / w.sum(dim=['y', 'x'])
 
 
@@ -284,10 +287,10 @@ def is2smgpsit_domain_masks(ds, inner_arctic=(1, 2, 3, 4, 5), caa_region=12):
     rm = ds['region_mask']
     if 'time' in rm.dims:
         rm = rm.isel(time=0, drop=True)
-    valid = rm.notnull()
+    ocean = rm.isin(list(range(1, 19)))
     return {
         'region_mask': rm,
-        'pan_arctic': valid & (rm != caa_region),
+        'pan_arctic': ocean & (rm != caa_region),
         'iao': rm.isin(list(inner_arctic)),
     }
 

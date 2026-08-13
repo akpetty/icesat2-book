@@ -30,6 +30,8 @@ sphinx:
       - 'is2book_uv_env/**'
       - 'delete/**'
       - '_build/**'
+      - 'content/scratch/**'
+      - 'content/11x*.ipynb'
 
 # Interactive features
 interactive:
@@ -75,6 +77,8 @@ execute:
     - 'delete/*'
     - '_build/*'
     - 'is2book_uv_env/*'
+    - 'content/scratch/*'
+    - 'content/scratch/**'
     - 'content/1_is2sitmogr4_intro.ipynb'
     - 'content/2_winter_arctic_sea_ice_variability.ipynb'
     - 'content/3_comparisons_with_cryosat-2_and_piomas.ipynb'
@@ -84,6 +88,7 @@ execute:
     - 'content/2c_winter_arctic_sea_ice_variability_2023update.ipynb'
     - 'content/2d_winter_arctic_sea_ice_variability_2024update.ipynb'
     - 'content/2e_winter_arctic_sea_ice_variability_2025update.ipynb'
+    - 'content/2f_winter_arctic_sea_ice_variability_2026update.ipynb'
     - 'content/10a_all_season_arctic_sea_ice_variability.ipynb'
     - 'content/10b_comparisons_with_BGEP_allseason.ipynb'
     - 'content/10c_comparisons_with_BGEP_winter.ipynb'
@@ -94,6 +99,10 @@ execute:
     - 'content/11b_comparisons_with_BGEP.ipynb'
     - 'content/11c_comparisons_with_BGEP_daily.ipynb'
     - 'content/11d_arctic_sea_ice_volume_timeseries.ipynb'
+    - 'content/11e_winter_arctic_sea_ice_maps.ipynb'
+    - 'content/11f_comparisons_with_cs3smos.ipynb'
+    - 'content/11g_icechunk_data_access.ipynb'
+    - 'content/11x*.ipynb'
     - 'content/7_gridded_data_wrangling.ipynb'
     - 'content/7b_gridded_data_wrangling_allseason.ipynb'
     - 'content/8_cryosat-2_data_wrangling.ipynb'

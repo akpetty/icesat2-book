@@ -316,6 +316,259 @@ def staticArcticMaps_2025(da, title=None, dates=[], out_str="out", cmap="viridis
     return fig
 
 
+def staticArcticMaps_2026(da, title=None, dates=[], out_str="out", cmap="viridis", col=None, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True):
+    """ Show data on a basemap of the Arctic with a 2026 layout for 8 winters:
+    all panels equal size in a 2 rows x 4 columns grid, with a horizontal
+    colorbar centered below the figure.
+
+    Args:
+        da (xr DataArray): data to plot (should have 8 time periods)
+        title (str, optional): title string for plot
+        dates (str list, option): dates to assign to subtitles, else defaults to whatever cartopy thinks they are
+        out_str (str, optional): output string when saving
+        cmap (str, optional): colormap to use (default to viridis)
+        col (str, optional): coordinate to use for creating facet plot (default to "time")
+        vmin (float, optional): minimum on colorbar (default to 1st percentile)
+        vmax (float, optional): maximum on colorbar (default to 99th percentile)
+        min_lat (float, optional): minimum latitude to set extent of plot (default to 50 deg lat)
+        set_cbarlabel (str, optional): set colorbar label
+        savefig (bool): output figure
+
+    Returns:
+        Figure displayed in notebook
+
+    """
+    # Compute min and max for plotting
+    def compute_vmin_vmax(da):
+        vmin = np.nanpercentile(da.values, 1)
+        vmax = np.nanpercentile(da.values, 99)
+        return vmin, vmax
+    vmin_data, vmax_data = compute_vmin_vmax(da)
+    vmin = vmin if vmin is not None else vmin_data
+    vmax = vmax if vmax is not None else vmax_data
+
+    if col is None:
+        col = "time"
+        try:
+            da["time"]
+        except AttributeError:
+            da = da.assign_coords({col:"unknown"})
+    col = col if sum(da[col].shape) > 1 else None
+
+    if len(set_cbarlabel)==0:
+        set_cbarlabel=da.attrs["long_name"]+' ['+da.attrs["units"]+']'
+
+    n_maps = int(da.sizes[col]) if col is not None else 1
+    if n_maps != 8:
+        print(f'Warning: staticArcticMaps_2026 expects 8 time panels; got {n_maps}')
+
+    # 2 rows x 4 columns of equal-sized panels
+    fig = plt.figure(figsize=(12, 6.5))
+    gs = fig.add_gridspec(2, 4, width_ratios=[1, 1, 1, 1], height_ratios=[1, 1])
+
+    axes = []
+    im = None
+    for i in range(min(n_maps, 8)):
+        row, col_idx = divmod(i, 4)
+        ax = fig.add_subplot(gs[row, col_idx], projection=ccrs.NorthPolarStereo(central_longitude=0))
+        axes.append(ax)
+
+        if col is not None:
+            data_to_plot = da.isel({col: i})
+        else:
+            data_to_plot = da
+
+        im = data_to_plot.plot(ax=ax, x="longitude", y="latitude", transform=ccrs.PlateCarree(),
+                               cmap=cmap, zorder=8, vmin=vmin, vmax=vmax, add_colorbar=False)
+
+        ax.coastlines(linewidth=0.15, color='black', zorder=10)
+        ax.add_feature(cfeature.LAND, color='0.95', zorder=5)
+        ax.add_feature(cfeature.LAKES, color='grey', zorder=5)
+        ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6)
+        ax.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
+
+        if len(dates) > i:
+            ax.set_title(dates[i], fontsize=10, horizontalalignment="center", verticalalignment="bottom",
+                        x=0.5, y=0.97, fontweight='medium')
+
+    # Horizontal colorbar centered below the panels
+    plt.subplots_adjust(left=0.02, right=0.98, top=0.95, bottom=0.08, wspace=0.03, hspace=0.08)
+    cbar_ax = fig.add_axes([0.35, 0.045, 0.3, 0.02])
+    cbar = fig.colorbar(im, cax=cbar_ax, orientation='horizontal', extend='both')
+    cbar.set_label(set_cbarlabel, fontsize=10, labelpad=4)
+    cbar.set_ticks(np.linspace(vmin, vmax, 6))
+    cbar.ax.tick_params(labelsize=8)
+
+    if title is not None:
+        fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.5, y=0.99, fontweight='medium')
+
+    if savefig:
+        plt.savefig('./figs/maps_'+out_str+'.png', dpi=300, facecolor="white", bbox_inches='tight')
+
+    plt.close()
+    return fig
+
+
+def staticArcticMaps_equal_panels(da, title=None, dates=[], out_str="out", cmap="viridis",
+                                    col=None, vmin=None, vmax=None, set_cbarlabel='',
+                                    min_lat=50, savefig=True, ocean_mask=None):
+    """Equal-sized multi-panel Arctic maps (2×4 grid) for seven winters.
+
+    Panels 1–7 are identical in size; the unused 8th grid slot holds a horizontal
+    colorbar at its top (just under the panel above).
+
+    Open-water fill must be restricted to ocean cells before calling (NSIDC
+    region_mask 1–18). Pass the same boolean ``ocean_mask`` here so land cells
+    (regions 0/30+) are re-masked and painted grey *above* the data — cartopy
+    FeatureArtist zorder alone does not reliably sit above pcolormesh.
+
+    Use this for IS2SMGPSIT-V1 map figures; keep ``staticArcticMaps_2025`` for
+    the original large-right-panel layout.
+    """
+    from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+    from matplotlib.colors import ListedColormap
+    import matplotlib.path as mpath
+
+    def compute_vmin_vmax(da_in):
+        return np.nanpercentile(da_in.values, 1), np.nanpercentile(da_in.values, 99)
+
+    def _circular_boundary(ax):
+        """Clip polar maps to a circle so corner artifacts don't look like land fill."""
+        theta = np.linspace(0, 2 * np.pi, 361)
+        verts = np.vstack([np.sin(theta), np.cos(theta)]).T
+        circle = mpath.Path(verts * 0.5 + 0.5)
+        ax.set_boundary(circle, transform=ax.transAxes)
+
+    # NSIDC Sea Ice Polar Stereographic North (EPSG:3411) — matches dataset x/y
+    _nsidc_globe = ccrs.Globe(semimajor_axis=6378273, semiminor_axis=6356889.449)
+    data_crs = ccrs.Stereographic(
+        central_latitude=90, central_longitude=-45, true_scale_latitude=70,
+        globe=_nsidc_globe,
+    )
+    map_crs = ccrs.NorthPolarStereo(central_longitude=0)
+
+    vmin_data, vmax_data = compute_vmin_vmax(da)
+    vmin = vmin if vmin is not None else vmin_data
+    vmax = vmax if vmax is not None else vmax_data
+
+    if col is None:
+        col = "time"
+        try:
+            da["time"]
+        except AttributeError:
+            da = da.assign_coords({col: "unknown"})
+    col = col if sum(da[col].shape) > 1 else None
+
+    if len(set_cbarlabel) == 0:
+        set_cbarlabel = da.attrs["long_name"] + ' [' + da.attrs["units"] + ']'
+
+    n_maps = int(da.sizes[col]) if col is not None else 1
+    if n_maps != 7:
+        print(f'Warning: staticArcticMaps_equal_panels expects 7 time panels; got {n_maps}')
+
+    ocean_mask_arr = None
+    land_overlay_arr = None
+    if ocean_mask is not None:
+        ocean_mask_arr = np.asarray(ocean_mask).astype(bool)
+        if ocean_mask_arr.ndim > 2:
+            ocean_mask_arr = np.squeeze(ocean_mask_arr)
+        # Paint land *above* data with a 1-cell dilation so coastal pcolormesh
+        # bleed from filled ocean cells cannot cover the coastline.
+        try:
+            from scipy import ndimage
+            land_overlay_arr = ndimage.binary_dilation(~ocean_mask_arr, iterations=1)
+        except Exception:
+            land_overlay_arr = ~ocean_mask_arr
+
+    # 2×4 equal cells; narrower canvas to reduce lateral whitespace
+    fig = plt.figure(figsize=(10.5, 6.0))
+    gs = fig.add_gridspec(2, 4, width_ratios=[1, 1, 1, 1], height_ratios=[1, 1],
+                          left=0.01, right=0.99, top=0.93, bottom=0.04,
+                          wspace=0.02, hspace=0.08)
+
+    axes = []
+    im = None
+    use_xy = ('x' in da.coords) and ('y' in da.coords)
+    land_cmap = ListedColormap(['0.92'])
+
+    for i in range(min(n_maps, 7)):
+        row, col_idx = divmod(i, 4)
+        ax = fig.add_subplot(gs[row, col_idx], projection=map_crs)
+        axes.append(ax)
+
+        data_to_plot = da.isel({col: i}) if col is not None else da
+        data = np.asarray(data_to_plot.values, dtype=float)
+        if ocean_mask_arr is not None:
+            if ocean_mask_arr.shape != data.shape:
+                raise ValueError(
+                    f'ocean_mask shape {ocean_mask_arr.shape} != data shape {data.shape}'
+                )
+            # Restrict any open-water fill to ocean; keep land/coast (0/30+) as NaN
+            data = np.where(ocean_mask_arr, data, np.nan)
+        data = np.ma.masked_invalid(data)
+
+        if use_xy:
+            x = np.asarray(data_to_plot['x'].values)
+            y = np.asarray(data_to_plot['y'].values)
+            plot_kwargs = dict(transform=data_crs, shading='nearest')
+            xy = (x, y)
+        else:
+            lon = np.asarray(data_to_plot['longitude'].values)
+            lat = np.asarray(data_to_plot['latitude'].values)
+            plot_kwargs = dict(transform=ccrs.PlateCarree(), shading='nearest')
+            xy = (lon, lat)
+
+        im = ax.pcolormesh(
+            *xy, data, cmap=cmap, vmin=vmin, vmax=vmax, zorder=1, **plot_kwargs,
+        )
+        if land_overlay_arr is not None:
+            # Opaque grey land on top — FeatureArtist zorder is not reliable here
+            land = np.ma.array(
+                np.zeros(data.shape, dtype=float), mask=~land_overlay_arr,
+            )
+            ax.pcolormesh(
+                *xy, land, cmap=land_cmap, vmin=0, vmax=1, zorder=10, **plot_kwargs,
+            )
+
+        ax.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
+        _circular_boundary(ax)
+        ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7,
+                     linestyle='--', zorder=2)
+        # Coastline outlines only (fill comes from land pcolormesh above)
+        ax.add_feature(cfeature.LAKES.with_scale('50m'), facecolor='0.75',
+                       edgecolor='none', zorder=11)
+        ax.coastlines(resolution='50m', linewidth=0.4, color='black', zorder=12)
+
+        if len(dates) > i:
+            ax.set_title(
+                dates[i], fontsize=9, horizontalalignment="center",
+                verticalalignment="bottom", x=0.5, y=0.97, fontweight='medium',
+            )
+
+    # Colorbar just under the top-right panel (top of the unused 8th slot)
+    if im is not None and len(axes) >= 4:
+        cax = inset_axes(
+            axes[3], width="88%", height="5%", loc='lower center',
+            bbox_to_anchor=(0.0, -0.14, 1.0, 1.0), bbox_transform=axes[3].transAxes,
+            borderpad=0,
+        )
+        cbar = fig.colorbar(im, cax=cax, orientation='horizontal', extend='both')
+        cbar.set_label(set_cbarlabel, fontsize=9, labelpad=1)
+        cbar.set_ticks(np.linspace(vmin, vmax, 6))
+        cbar.ax.tick_params(labelsize=8)
+
+    if title is not None:
+        fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.5, y=0.98,
+                     fontweight='medium')
+
+    if savefig:
+        plt.savefig('./figs/maps_' + out_str + '.png', dpi=300, facecolor="white",
+                    bbox_inches='tight')
+
+    plt.close()
+    return fig
+
+
 def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0.1, scale_vec=0.5, res=6, units_vec=r'm s$^{-1}$', title=None, out_str="out", dates=[], cmap="viridis", col=None, col_wrap=3, vmin=None, vmax=None, set_cbarlabel = '', min_lat=50, savefig=True, figsize=(6,6)): 
     """ Show data on a basemap of the Arctic. Can be one month or multiple months of data. Overlay drift vectors on top 
     Creates an xarray facet grid. For more info, see: http://xarray.pydata.org/en/stable/user-guide/plotting.html
@@ -938,6 +1191,216 @@ def plot_is2_v4_vs_fused_three_panel(
         cb = fig.colorbar(ims[i], cax=cax, extend="both", **kw)
         cb.set_ticks(np.linspace(vmins[i], vmaxs[i], tick_n))
         cb.set_label(cbarlabels[i], labelpad=2, fontsize=8)
+
+    return fig, axes
+
+
+def plot_is2_v4_vs_fused_nine_panel(
+    dataarrays1,
+    dataarrays2,
+    title1: str = "",
+    title2: str = "",
+    row_labels=("Sea ice thickness", "Total freeboard", "Snow depth"),
+    value_ranges=((0.0, 4.0), (0.0, 0.6), (0.0, 0.4)),
+    diff_ranges=((-2.5, 2.5), (-0.2, 0.2), (-0.2, 0.2)),
+    value_cbarlabels=(
+        "Sea ice thickness (m)",
+        "Total freeboard (m)",
+        "Snow depth (m)",
+    ),
+    diff_cbarlabels=(
+        "Thickness difference (m)",
+        "Freeboard difference (m)",
+        "Snow depth difference (m)",
+    ),
+    cmaps=("viridis", "YlOrRd", "inferno"),
+    diff_cmap="RdBu",
+    central_longitude: float = -45.0,
+    min_lat: float = 55.0,
+    panel_letters_start: str = "a",
+    figsize=(10.5, 10.0),
+):
+    """Compact nine-panel comparison of three V4 and fused variables.
+
+    Rows contain sea ice thickness, total freeboard, and snow depth by default.
+    Columns contain IS2SITMOGR4-V4, IS2SMGPSIT-V1, and fused minus V4. Panel
+    letters run row-wise from ``(a)`` to ``(i)``. Compact inset colorbars sit in
+    the unused upper-right corner of each polar panel (label below ticks), with
+    a small gutter between panels.
+
+    Parameters
+    ----------
+    dataarrays1, dataarrays2 : sequence of three xr.DataArray
+        V4 and fused fields, respectively. Each field must be two-dimensional
+        with scalar ``time`` and ``latitude``/``longitude`` coordinates. All six
+        fields must represent the same calendar month.
+    title1, title2 : str, optional
+        Column product names. Defaults are ``IS2SITMOGR4-V4`` and
+        ``IS2SMGPSIT-V1``.
+    row_labels : sequence of three str
+        Kept for API compatibility; not drawn on the figure (row identity is
+        conveyed by the per-panel colorbar labels).
+    value_ranges, diff_ranges : sequence of three (float, float) pairs
+        Row-specific limits for the product fields and difference fields.
+    value_cbarlabels, diff_cbarlabels : sequence of three str
+        Row-specific colorbar labels.
+    cmaps : sequence of three matplotlib colormaps
+        Row-specific colormaps used for both product columns.
+    diff_cmap : matplotlib colormap
+        Colormap used for all three difference panels.
+    central_longitude, min_lat : float
+        North Polar Stereographic central longitude and southern map limit.
+    panel_letters_start : str
+        First lowercase panel letter. The default produces ``(a)``--``(i)``.
+    figsize : (float, float)
+        Figure size in inches.
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+    axes : numpy.ndarray
+        A 3-by-3 array of Cartopy GeoAxes.
+    """
+    from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+
+    dataarrays1 = list(dataarrays1)
+    dataarrays2 = list(dataarrays2)
+    row_labels = list(row_labels)
+    value_ranges = list(value_ranges)
+    diff_ranges = list(diff_ranges)
+    value_cbarlabels = list(value_cbarlabels)
+    diff_cbarlabels = list(diff_cbarlabels)
+    cmaps = list(cmaps)
+
+    row_options = {
+        "dataarrays1": dataarrays1,
+        "dataarrays2": dataarrays2,
+        "row_labels": row_labels,
+        "value_ranges": value_ranges,
+        "diff_ranges": diff_ranges,
+        "value_cbarlabels": value_cbarlabels,
+        "diff_cbarlabels": diff_cbarlabels,
+        "cmaps": cmaps,
+    }
+    for option_name, values in row_options.items():
+        if len(values) != 3:
+            raise ValueError(f"{option_name} must contain exactly three items")
+
+    panel_start = panel_letters_start.strip().lower()
+    if len(panel_start) != 1 or not ("a" <= panel_start <= "r"):
+        raise ValueError("panel_letters_start must be a single lowercase letter a–r")
+    panel_letters = [f"({chr(ord(panel_start) + i)})" for i in range(9)]
+
+    month_periods = {
+        pd.Timestamp(_time_from_dataarray(da)).to_period("M")
+        for da in dataarrays1 + dataarrays2
+    }
+    if len(month_periods) != 1:
+        raise ValueError("All six DataArrays must represent the same calendar month")
+    month_str = next(iter(month_periods)).strftime("%B %Y")
+
+    name1 = title1 if title1 else "IS2SITMOGR4-V4"
+    name2 = title2 if title2 else "IS2SMGPSIT-V1"
+    column_titles = [f"{name1}\n{month_str}", name2, f"{name2} − {name1}"]
+
+    proj = ccrs.NorthPolarStereo(central_longitude=central_longitude)
+    fig, axes = plt.subplots(
+        3,
+        3,
+        figsize=figsize,
+        subplot_kw={"projection": proj},
+    )
+
+    # Keep a small gutter between polar panels while still using the unused
+    # corner wedges for inset colorbars.
+    fig.subplots_adjust(
+        left=0.01,
+        right=0.995,
+        bottom=0.01,
+        top=0.955,
+        wspace=0.08,
+        hspace=0.10,
+    )
+
+    for row, (data1, data2) in enumerate(zip(dataarrays1, dataarrays2)):
+        difference = (data2 - data1).rename("difference")
+        maps = (data1, data2, difference)
+        lons = (
+            data1.coords["longitude"],
+            data2.coords["longitude"],
+            data2.coords["longitude"],
+        )
+        lats = (
+            data1.coords["latitude"],
+            data2.coords["latitude"],
+            data2.coords["latitude"],
+        )
+        limits = (value_ranges[row], value_ranges[row], diff_ranges[row])
+        row_cmaps = (cmaps[row], cmaps[row], diff_cmap)
+        cbarlabels = (
+            value_cbarlabels[row],
+            value_cbarlabels[row],
+            diff_cbarlabels[row],
+        )
+
+        for col, (data, lon, lat, limits_i, cmap_i) in enumerate(
+            zip(maps, lons, lats, limits, row_cmaps)
+        ):
+            ax = axes[row, col]
+            vmin, vmax = limits_i
+            im = ax.pcolormesh(
+                lon,
+                lat,
+                data,
+                transform=ccrs.PlateCarree(),
+                cmap=cmap_i,
+                vmin=vmin,
+                vmax=vmax,
+                shading="auto",
+            )
+
+            ax.coastlines(linewidth=0.15, color="black", zorder=2)
+            ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+            ax.gridlines(
+                draw_labels=False,
+                linewidth=0.25,
+                color="gray",
+                alpha=0.7,
+                linestyle="--",
+                zorder=3,
+            )
+            ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree())
+            ax.set_title(column_titles[col] if row == 0 else "", fontsize=9, pad=1)
+
+            ax.annotate(
+                panel_letters[row * 3 + col],
+                xy=(0.025, 0.965),
+                xycoords="axes fraction",
+                va="top",
+                ha="left",
+                fontsize=8.5,
+                fontweight="bold",
+                bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.7, "pad": 1},
+                zorder=5,
+            )
+
+            # Put each colorbar in the unused upper-right corner of its polar
+            # axes: more room for the bar, ticks, and label underneath.
+            cax = inset_axes(
+                ax,
+                width="48%",
+                height="3.2%",
+                loc="upper right",
+                bbox_to_anchor=(0.0, 0.0, 0.985, 0.955),
+                bbox_transform=ax.transAxes,
+                borderpad=0,
+            )
+            cb = fig.colorbar(im, cax=cax, orientation="horizontal", extend="both")
+            cb.set_ticks(np.linspace(vmin, vmax, 5))
+            cb.ax.xaxis.set_ticks_position("bottom")
+            cb.ax.xaxis.set_label_position("bottom")
+            cb.set_label(cbarlabels[col], labelpad=1.5, fontsize=6.5)
+            cb.ax.tick_params(labelsize=6, length=1.5, pad=1)
 
     return fig, axes
 
