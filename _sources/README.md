@@ -26,6 +26,7 @@
  - 09/25/2025: Update the books based on peer review (added in MERRA-2/SM-LG snow loading and derived thicknesses, bug fixes etc).
  - 08/07/2026: Added ICESat-2–SMOS–SMAP data fusion notebooks (11a–11d) for the daily IS2SMGPSIT-V1 thickness/volume analysis, plus related data readers.
  - 08/13/2026: Added the 2025–2026 winter analysis notebook (2f) and updated homepage winter maps through April 2026; expanded the fusion chapter with notebooks 11e–11g (winter maps, CS3SMOS comparisons, Icechunk access).
+ - 09/04/2026: Added the 2025–2026 IS2SMGPSIT-V1 winter map notebook (2g), concatenating the v0.1 store with the 2025–2026 Zarr extension.
 
 If you find any issues in the code or have any suggestions for the book, feel free to open an issue, which you can find by mousing over the GitHub icon at the top of each page. If you are familiar with GitHub, you can also fork the book's repository and suggest an edit that way. 
 
