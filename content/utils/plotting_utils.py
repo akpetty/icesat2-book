@@ -18,7 +18,11 @@ import matplotlib.pyplot as plt
 import matplotlib.colorbar as mcbar
 from matplotlib.axes import Axes
 from cartopy.mpl.geoaxes import GeoAxes
-GeoAxes._pcolormesh_patched = Axes.pcolormesh # Helps avoid some weird issues with the polar projection 
+GeoAxes._pcolormesh_patched = Axes.pcolormesh # Helps avoid some weird issues with the polar projection
+
+# Light grey land, drawn above the data. Open-ocean NaNs are filled with 0 so
+# they take the colormap's zero color; grey keeps land distinct from that fill.
+LAND_FILL = '0.80' 
 
 
 # -
@@ -159,7 +163,7 @@ def staticArcticMaps(da, title=None, dates=[], out_str="out", cmap="viridis", co
     i=0
     for ax in ax_iter.flatten():
         ax.coastlines(linewidth=0.15, color = 'black', zorder = 10) # Coastlines
-        ax.add_feature(cfeature.LAND, color ='0.95', zorder = 5)    # Land
+        ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder = 5)    # Land
         ax.add_feature(cfeature.LAKES, color = 'grey', zorder = 5)  # Lakes
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
         ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
@@ -257,7 +261,7 @@ def staticArcticMaps_2025(da, title=None, dates=[], out_str="out", cmap="viridis
         
         # Add map features
         ax.coastlines(linewidth=0.15, color='black', zorder=10)
-        ax.add_feature(cfeature.LAND, color='0.95', zorder=5)
+        ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder=5)
         ax.add_feature(cfeature.LAKES, color='grey', zorder=5)
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6)
         ax.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
@@ -282,7 +286,7 @@ def staticArcticMaps_2025(da, title=None, dates=[], out_str="out", cmap="viridis
     
     # Add map features
     ax_large.coastlines(linewidth=0.15, color='black', zorder=10)
-    ax_large.add_feature(cfeature.LAND, color='0.95', zorder=5)
+    ax_large.add_feature(cfeature.LAND, color=LAND_FILL, zorder=5)
     ax_large.add_feature(cfeature.LAKES, color='grey', zorder=5)
     ax_large.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6)
     ax_large.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
@@ -382,7 +386,7 @@ def staticArcticMaps_2026(da, title=None, dates=[], out_str="out", cmap="viridis
                                cmap=cmap, zorder=8, vmin=vmin, vmax=vmax, add_colorbar=False)
 
         ax.coastlines(linewidth=0.15, color='black', zorder=10)
-        ax.add_feature(cfeature.LAND, color='0.95', zorder=5)
+        ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder=5)
         ax.add_feature(cfeature.LAKES, color='grey', zorder=5)
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6)
         ax.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
@@ -412,15 +416,16 @@ def staticArcticMaps_2026(da, title=None, dates=[], out_str="out", cmap="viridis
 def staticArcticMaps_equal_panels(da, title=None, dates=[], out_str="out", cmap="viridis",
                                     col=None, vmin=None, vmax=None, set_cbarlabel='',
                                     min_lat=50, savefig=True, ocean_mask=None):
-    """Equal-sized multi-panel Arctic maps (2×4 grid) for seven winters.
+    """Equal-sized multi-panel Arctic maps (2×4 grid) for seven or eight winters.
 
-    Panels 1–7 are identical in size; the unused 8th grid slot holds a horizontal
-    colorbar at its top (just under the panel above).
+    For seven winters, panels 1–7 are identical in size and the unused 8th grid
+    slot holds a horizontal colorbar. For eight winters all slots are maps and
+    the colorbar sits below the figure.
 
-    Open-water fill must be restricted to ocean cells before calling (NSIDC
-    region_mask 1–18). Pass the same boolean ``ocean_mask`` here so land cells
-    (regions 0/30+) are re-masked and painted grey *above* the data — cartopy
-    FeatureArtist zorder alone does not reliably sit above pcolormesh.
+    Open-ocean / missing cells stay NaN and render white (axes + colormap bad
+    color). Pass ``ocean_mask`` so non-ocean cells are excluded from the data;
+    land is filled grey from Natural Earth, not from ``~ocean_mask`` (that mask
+    also includes extra-Arctic ocean, which would otherwise paint grey).
 
     Use this for IS2SMGPSIT-V1 map figures; keep ``staticArcticMaps_2025`` for
     the original large-right-panel layout.
@@ -428,6 +433,7 @@ def staticArcticMaps_equal_panels(da, title=None, dates=[], out_str="out", cmap=
     from mpl_toolkits.axes_grid1.inset_locator import inset_axes
     from matplotlib.colors import ListedColormap
     import matplotlib.path as mpath
+    import matplotlib.cm as mcm
 
     def compute_vmin_vmax(da_in):
         return np.nanpercentile(da_in.values, 1), np.nanpercentile(da_in.values, 99)
@@ -463,37 +469,36 @@ def staticArcticMaps_equal_panels(da, title=None, dates=[], out_str="out", cmap=
         set_cbarlabel = da.attrs["long_name"] + ' [' + da.attrs["units"] + ']'
 
     n_maps = int(da.sizes[col]) if col is not None else 1
-    if n_maps != 7:
-        print(f'Warning: staticArcticMaps_equal_panels expects 7 time panels; got {n_maps}')
+    if n_maps not in (7, 8):
+        print(f'Warning: staticArcticMaps_equal_panels expects 7 or 8 time panels; got {n_maps}')
+    eight = n_maps >= 8
 
     ocean_mask_arr = None
-    land_overlay_arr = None
     if ocean_mask is not None:
         ocean_mask_arr = np.asarray(ocean_mask).astype(bool)
         if ocean_mask_arr.ndim > 2:
             ocean_mask_arr = np.squeeze(ocean_mask_arr)
-        # Paint land *above* data with a 1-cell dilation so coastal pcolormesh
-        # bleed from filled ocean cells cannot cover the coastline.
-        try:
-            from scipy import ndimage
-            land_overlay_arr = ndimage.binary_dilation(~ocean_mask_arr, iterations=1)
-        except Exception:
-            land_overlay_arr = ~ocean_mask_arr
 
-    # 2×4 equal cells; narrower canvas to reduce lateral whitespace
-    fig = plt.figure(figsize=(10.5, 6.0))
+    # 2×4 equal cells; extra bottom margin when the 8th slot is also a map
+    fig = plt.figure(figsize=(10.5, 6.6 if eight else 6.0))
     gs = fig.add_gridspec(2, 4, width_ratios=[1, 1, 1, 1], height_ratios=[1, 1],
-                          left=0.01, right=0.99, top=0.93, bottom=0.04,
+                          left=0.01, right=0.99, top=0.93, bottom=0.12 if eight else 0.04,
                           wspace=0.02, hspace=0.08)
 
     axes = []
     im = None
     use_xy = ('x' in da.coords) and ('y' in da.coords)
-    land_cmap = ListedColormap(['0.92'])
+    if isinstance(cmap, str):
+        plot_cmap = mcm.get_cmap(cmap).copy()
+    else:
+        plot_cmap = cmap.copy() if hasattr(cmap, 'copy') else cmap
+    if hasattr(plot_cmap, 'set_bad'):
+        plot_cmap.set_bad('white')
 
-    for i in range(min(n_maps, 7)):
+    for i in range(min(n_maps, 8)):
         row, col_idx = divmod(i, 4)
         ax = fig.add_subplot(gs[row, col_idx], projection=map_crs)
+        ax.set_facecolor('white')
         axes.append(ax)
 
         data_to_plot = da.isel({col: i}) if col is not None else da
@@ -503,7 +508,7 @@ def staticArcticMaps_equal_panels(da, title=None, dates=[], out_str="out", cmap=
                 raise ValueError(
                     f'ocean_mask shape {ocean_mask_arr.shape} != data shape {data.shape}'
                 )
-            # Restrict any open-water fill to ocean; keep land/coast (0/30+) as NaN
+            # Keep land / extra-Arctic cells NaN (white); do not fill ocean NaNs
             data = np.where(ocean_mask_arr, data, np.nan)
         data = np.ma.masked_invalid(data)
 
@@ -519,24 +524,22 @@ def staticArcticMaps_equal_panels(da, title=None, dates=[], out_str="out", cmap=
             xy = (lon, lat)
 
         im = ax.pcolormesh(
-            *xy, data, cmap=cmap, vmin=vmin, vmax=vmax, zorder=1, **plot_kwargs,
+            *xy, data, cmap=plot_cmap, vmin=vmin, vmax=vmax, zorder=1, **plot_kwargs,
         )
-        if land_overlay_arr is not None:
-            # Opaque grey land on top — FeatureArtist zorder is not reliable here
-            land = np.ma.array(
-                np.zeros(data.shape, dtype=float), mask=~land_overlay_arr,
-            )
-            ax.pcolormesh(
-                *xy, land, cmap=land_cmap, vmin=0, vmax=1, zorder=10, **plot_kwargs,
-            )
 
         ax.set_extent([-179, 179, 54, 90], crs=ccrs.PlateCarree())
         _circular_boundary(ax)
+        ax.set_facecolor('white')
         ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7,
                      linestyle='--', zorder=2)
-        # Coastline outlines only (fill comes from land pcolormesh above)
-        ax.add_feature(cfeature.LAKES.with_scale('50m'), facecolor='0.75',
-                       edgecolor='none', zorder=11)
+        ax.add_feature(
+            cfeature.LAND.with_scale('50m'), facecolor=LAND_FILL,
+            edgecolor='none', zorder=10,
+        )
+        ax.add_feature(
+            cfeature.LAKES.with_scale('50m'), facecolor='white',
+            edgecolor='none', zorder=11,
+        )
         ax.coastlines(resolution='50m', linewidth=0.4, color='black', zorder=12)
 
         if len(dates) > i:
@@ -545,17 +548,24 @@ def staticArcticMaps_equal_panels(da, title=None, dates=[], out_str="out", cmap=
                 verticalalignment="bottom", x=0.5, y=0.97, fontweight='medium',
             )
 
-    # Colorbar just under the top-right panel (top of the unused 8th slot)
-    if im is not None and len(axes) >= 4:
-        cax = inset_axes(
-            axes[3], width="88%", height="5%", loc='lower center',
-            bbox_to_anchor=(0.0, -0.14, 1.0, 1.0), bbox_transform=axes[3].transAxes,
-            borderpad=0,
-        )
-        cbar = fig.colorbar(im, cax=cax, orientation='horizontal', extend='both')
-        cbar.set_label(set_cbarlabel, fontsize=9, labelpad=1)
-        cbar.set_ticks(np.linspace(vmin, vmax, 6))
-        cbar.ax.tick_params(labelsize=8)
+    if im is not None:
+        if eight:
+            cax = fig.add_axes([0.35, 0.045, 0.30, 0.02])
+            cbar = fig.colorbar(im, cax=cax, orientation='horizontal', extend='both')
+        elif len(axes) >= 4:
+            # Colorbar just under the top-right panel (unused 8th slot)
+            cax = inset_axes(
+                axes[3], width="88%", height="5%", loc='lower center',
+                bbox_to_anchor=(0.0, -0.14, 1.0, 1.0), bbox_transform=axes[3].transAxes,
+                borderpad=0,
+            )
+            cbar = fig.colorbar(im, cax=cax, orientation='horizontal', extend='both')
+        else:
+            cbar = None
+        if cbar is not None:
+            cbar.set_label(set_cbarlabel, fontsize=9, labelpad=1)
+            cbar.set_ticks(np.linspace(vmin, vmax, 6))
+            cbar.ax.tick_params(labelsize=8)
 
     if title is not None:
         fig.suptitle(title, fontsize=12, horizontalalignment="center", x=0.5, y=0.98,
@@ -669,7 +679,7 @@ def staticArcticMaps_overlayDrifts(da, drifts_x, drifts_y, alpha=1, vector_val=0
             ax.quiverkey(Q, 0.85, 0.88, vector_val, str(vector_val)+' '+units_vec, coordinates='axes', zorder=11)   
 
             ax.coastlines(linewidth=0.15, color = 'black', zorder = 8) # Coastlines
-            ax.add_feature(cfeature.LAND, color ='0.95', zorder = 5)    # Land
+            ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder = 5)    # Land
             ax.add_feature(cfeature.LAKES, color = 'grey', zorder = 5)  # Lakes
             ax.gridlines(draw_labels=False, linewidth=0.25, color='gray', alpha=0.7, linestyle='--', zorder=6) # Gridlines
             ax.set_extent([-179, 179, min_lat, 90], crs=ccrs.PlateCarree()) # Set extent to zoom in on Arctic
@@ -792,10 +802,10 @@ def interactive_winter_mean_maps(da, years=None, end_year=None, start_month="Sep
     return pl_means
 
 
-def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3), start_month="Sep", 
+def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(6.2, 2.55), start_month="Sep", 
     end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', 
-    annotation = '', force_complete_season=False, loc_pos=0, fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.'],
-    reanalysis_option=None): 
+    annotation = '', force_complete_season=False, loc_pos=0, fmts=None,
+    reanalysis_option=None, envelope=False, highlight_years=None): 
     """ Make a lineplot with markers comparing monthly mean data across winter seasons 
     
     Args: 
@@ -813,8 +823,13 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
         end_month (str, optional): second month in winter; this is the following calender year after start_month (default to April)
         force_complete_season (bool, optional): require that winter season returns data if and only if all months have data? i.e. if Sep and Oct have no data, return nothing even if Nov-Apr have data? (default to False) 
         loc_pos (int, optional): if greater than one use that, if not default to "best"
-        fmts (list, optional): list of format strings for different years
+        fmts (list, optional): matplotlib format strings per year; if None, use a
+            publication color cycle and emphasize the most recent winter
         reanalysis_option (str, optional): specify which reanalysis to use for snow depth ('m2' or 'e5'). If None, uses the default snow_depth variable.
+        envelope (bool, optional): if True, show the min–max range as shading and
+            the multi-winter mean as a black line, with only selected winters drawn
+        highlight_years (list, optional): winter start years to overlay when
+            ``envelope=True`` (default: 2020 and the most recent winter)
 
        Returns: 
            Figure displayed in notebook
@@ -852,85 +867,201 @@ def static_winter_comparison_lineplot(da, da_unc=None, years=None, figsize=(5,3)
         yr_end = yr+1
     else: 
         yr_end = yr
-    xaxis_months = pd.date_range(start_month+"-"+str(yr), end_month+"-"+str(yr_end), freq="M").strftime("%b")
+    xaxis_months = pd.date_range(start_month+"-"+str(yr), end_month+"-"+str(yr_end), freq="MS").strftime("%b")
     
-    # Set up plot 
-    fig, ax = plt.subplots(figsize=figsize)
-    ax.plot(xaxis_months, np.empty((len(xaxis_months),1))*np.nan, color=None, label=None) # Set x axis using winter months 
-    try:
-        gridlines = plt.grid(b = True, linestyle = '-', alpha = 0.2) # Add gridlines 
-    except:
-        try:
-            gridlines = plt.grid(visible = True, linestyle = '-', alpha = 0.2) # Add gridlines 
-        except:
-            print("No gridlines")
-    for year, fmt in zip(years, fmts*100): 
-        winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season) # Get data from that winter 
-        if winter_da is None: # In case the user inputs a year that doesn't have data, skip this loop iteration to avoid appending None
-            continue
-        y = winter_da.mean(dim=["x","y"], keep_attrs=True)
-        x = pd.to_datetime(y.time.values)
-        
-        # Add reanalysis info to legend if specified
-        if reanalysis_option is not None:
-            label = f"{x.year[0]}-{str(x.year[-1])[2:]} ({reanalysis_option.upper()})"
-        else:
-            label = f"{x.year[0]}-{str(x.year[-1])[2:]}"
-            
-        ax.plot(x.strftime("%b"), y, fmt, label=label, markersize=4)
+    # Tableau-like hues; last winter is drawn in near-black and slightly thicker
+    _colors = ['#4c78a8', '#f58518', '#54a24b', '#e45756',
+               '#72b7b2', '#b279a2', '#8c6d31', '#222222']
+    _markers = ['o', 's', 'D', '^', 'v', 'P', 'X', 'o']
 
-        if da_unc is not None:
-            # Get uncertaintiy data from that winter 
-            winter_da_unc = get_winter_data(da_unc, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season) 
-            if winter_da_unc is None: # In case the user inputs a year that doesn't have data, skip this loop iteration to avoid appending None
+    month_index = {m: i for i, m in enumerate(xaxis_months)}
+    from matplotlib.ticker import MaxNLocator
+
+    rc = {
+        'font.family': 'sans-serif',
+        'font.sans-serif': ['Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'],
+        'axes.unicode_minus': False,
+        'axes.grid': False,
+        'xtick.top': False,
+        'ytick.right': False,
+    }
+    with plt.rc_context(rc):
+        fig, ax = plt.subplots(figsize=figsize)
+        ax.set_xlim(-0.35, len(xaxis_months) - 0.65)
+        ax.set_xticks(range(len(xaxis_months)))
+        ax.set_xticklabels(list(xaxis_months))
+        ax.grid(False)
+        ax.xaxis.grid(False)
+        ax.yaxis.grid(True, linestyle='-', linewidth=0.4, color='0.88', zorder=0)
+        ax.yaxis.set_major_locator(MaxNLocator(nbins=4, prune=None))
+        ax.minorticks_off()
+        ax.set_axisbelow(True)
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        for spine in ('left', 'bottom'):
+            ax.spines[spine].set_linewidth(0.8)
+            ax.spines[spine].set_color('0.15')
+        ax.tick_params(axis='x', which='both', top=False, length=3.2, width=0.6)
+        ax.tick_params(axis='y', which='both', right=False, length=3.2, width=0.6)
+
+        plotted = 0
+        n_months = len(xaxis_months)
+        series = []
+        labels_by_year = {}
+        for year in years:
+            winter_da = get_winter_data(da, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season)
+            if winter_da is None:
                 continue
-            yu = winter_da_unc.mean(dim=["x","y"], keep_attrs=True)    
-            ax.fill_between(x.strftime("%b"), y - yu, y + yu, facecolor = fmt[0], alpha = 0.1, edgecolor = 'none')
-    
+            y = winter_da.mean(dim=["x","y"], keep_attrs=True)
+            x = pd.to_datetime(y.time.values)
+            y_month = np.full(n_months, np.nan)
+            for m, val in zip(x.strftime("%b"), np.asarray(y.values, dtype=float)):
+                if m in month_index:
+                    y_month[month_index[m]] = val
+            year_int = int(str(year)[:4])
+            if reanalysis_option is not None:
+                labels_by_year[year_int] = f"{x.year[0]}-{str(x.year[-1])[2:]} ({reanalysis_option.upper()})"
+            else:
+                labels_by_year[year_int] = f"{x.year[0]}-{str(x.year[-1])[2:]}"
+            series.append((year_int, y_month))
 
-    # Add legend, title, and axis labels, and display plot in notebook 
-    if legend:
-        if loc_pos>0:
-            plt.legend(fontsize=8, frameon=False,loc=loc_pos)
+            if (not envelope) and (da_unc is not None):
+                winter_da_unc = get_winter_data(da_unc, year_start=year, start_month=start_month, end_month=end_month, force_complete_season=force_complete_season)
+                if winter_da_unc is not None:
+                    yu = winter_da_unc.mean(dim=["x","y"], keep_attrs=True)
+                    x_idx = [month_index[m] for m in x.strftime("%b") if m in month_index]
+                    ax.fill_between(
+                        x_idx, np.asarray(y.values) - np.asarray(yu.values),
+                        np.asarray(y.values) + np.asarray(yu.values),
+                        facecolor='0.5', alpha=0.12, edgecolor='none', zorder=2,
+                    )
+
+        x_idx_all = np.arange(n_months)
+        if envelope and series:
+            stack = np.vstack([s[1] for s in series])
+            y_min = np.nanmin(stack, axis=0)
+            y_max = np.nanmax(stack, axis=0)
+            y_mean = np.nanmean(stack, axis=0)
+            valid = np.isfinite(y_mean)
+            year0 = series[0][0]
+            year1 = series[-1][0] + 1
+            ax.fill_between(
+                x_idx_all[valid], y_min[valid], y_max[valid],
+                color='0.78', alpha=0.55, linewidth=0, zorder=1,
+                label=f'{year0} to {year1} range',
+            )
+            ax.plot(
+                x_idx_all[valid], y_mean[valid], color='0.05', linewidth=1.9,
+                linestyle='-', zorder=4, label='Mean',
+            )
+            plotted += 2
+
+            available = [s[0] for s in series]
+            latest = available[-1]
+            if highlight_years is None:
+                overlay = [2020, latest]
+            else:
+                overlay = [int(str(y)[:4]) for y in highlight_years] + [latest]
+            overlay = list(dict.fromkeys([y for y in overlay if y in available]))
+            overlay_styles = {
+                2020: dict(color='#4c78a8', marker='o'),
+                latest: dict(color='#e45756', marker='s'),
+            }
+            series_map = {y: ym for y, ym in series}
+            for year_int in overlay:
+                style = overlay_styles.get(year_int, dict(color='#54a24b', marker='D'))
+                ym = series_map[year_int]
+                ok = np.isfinite(ym)
+                ax.plot(
+                    x_idx_all[ok], ym[ok], label=labels_by_year[year_int],
+                    color=style['color'], linestyle='-', marker=style['marker'],
+                    markersize=4.2, linewidth=1.7,
+                    markeredgecolor='white', markeredgewidth=0.35, zorder=5,
+                )
+                plotted += 1
         else:
-            plt.legend(fontsize=8, frameon=False, loc="best")
-    
-    # Add annotation if provided
-    ax.annotate(annotation, xy=(0.02, 0.98),xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=8, zorder=2)
+            n_years = len(series)
+            for i, (year_int, y_month) in enumerate(series):
+                ok = np.isfinite(y_month)
+                is_latest = (i == n_years - 1)
+                if fmts is None:
+                    ax.plot(
+                        x_idx_all[ok], y_month[ok], label=labels_by_year[year_int],
+                        color=_colors[i % len(_colors)], linestyle='-',
+                        marker=_markers[i % len(_markers)],
+                        markersize=4.0 if is_latest else 3.2,
+                        linewidth=1.8 if is_latest else 1.15,
+                        markeredgecolor='white', markeredgewidth=0.35,
+                        zorder=5 if is_latest else 3,
+                    )
+                else:
+                    ax.plot(
+                        x_idx_all[ok], y_month[ok], fmts[i % len(fmts)],
+                        label=labels_by_year[year_int], markersize=4,
+                        zorder=5 if is_latest else 3,
+                    )
+                plotted += 1
 
-    
-    plt.title(title, fontsize=9)
-    if len(set_ylabel)>0:
-        ylabel=set_ylabel
-    elif "long_name" in da.attrs: 
-        ylabel = da.attrs["long_name"]
-        if "units" in da.attrs: 
-            ylabel+=" ("+da.attrs["units"]+")"
-        ylabel="\n".join(wrap(ylabel, 35))
-    else: 
-        ylabel=None
+        ax.margins(y=0.08)
+        ax.set_xlim(-0.35, len(xaxis_months) - 0.65)
+        ax.xaxis.grid(False)
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
 
-    plt.ylabel(ylabel, fontsize=8)
-    ax.tick_params(axis='both', which='major', labelsize=8)
-   
-   # reduce white space
-    plt.tight_layout()
+        if legend:
+            ncol = 2 if plotted > 5 else 1
+            legend_kwargs = dict(
+                fontsize=7, frameon=False, ncol=ncol, handlelength=1.6,
+                columnspacing=1.0, labelspacing=0.25, borderaxespad=0.3,
+            )
+            if loc_pos > 0:
+                ax.legend(loc=loc_pos, **legend_kwargs)
+            else:
+                ax.legend(loc='best', **legend_kwargs)
 
-    # save figure
-    if savefig:
-        # Include reanalysis option in filename if specified
-        if reanalysis_option is not None:
-            filename = f'./figs/{da.attrs.get("long_name", "data")}{start_month}{end_month}{years[0]}-{years[-1]+1}{save_label}_{reanalysis_option}.pdf'
+        if annotation:
+            ax.annotate(
+                annotation, xy=(0.02, 0.98), xycoords='axes fraction',
+                horizontalalignment='left', verticalalignment='top',
+                fontsize=8, fontweight='medium', zorder=6,
+            )
+
+        if title:
+            ax.set_title(title, fontsize=9, pad=4)
+
+        if len(set_ylabel) > 0:
+            ylabel = set_ylabel
+            if len(set_units) > 0:
+                ylabel = f"{set_ylabel} ({set_units})"
+        elif "long_name" in da.attrs:
+            ylabel = da.attrs["long_name"]
+            if "units" in da.attrs:
+                ylabel += " (" + da.attrs["units"] + ")"
+            ylabel = "\n".join(wrap(ylabel, 35))
         else:
-            filename = f'./figs/{da.attrs.get("long_name", "data")}{start_month}{end_month}{years[0]}-{years[-1]+1}{save_label}.pdf'
-        plt.savefig(filename, dpi=300, facecolor="white", bbox_inches='tight')
+            ylabel = None
 
-    plt.show()
+        ax.set_ylabel(ylabel, fontsize=8)
+        ax.tick_params(
+            axis='both', which='major', labelsize=8, length=3.2, width=0.6,
+            color='0.25', top=False, right=False,
+        )
+        ax.tick_params(axis='x', which='major', pad=2)
+        fig.tight_layout()
+
+        if savefig:
+            if reanalysis_option is not None:
+                filename = f'./figs/{da.attrs.get("long_name", "data")}{start_month}{end_month}{years[0]}-{years[-1]+1}{save_label}_{reanalysis_option}.pdf'
+            else:
+                filename = f'./figs/{da.attrs.get("long_name", "data")}{start_month}{end_month}{years[0]}-{years[-1]+1}{save_label}.pdf'
+            fig.savefig(filename, dpi=300, facecolor="white", bbox_inches='tight')
+
+        plt.show()
 
 
 def static_winter_comparison_lineplot_with_reanalysis(da, reanalysis_option='m2', da_unc=None, years=None, figsize=(5,3), start_month="Sep", 
     end_month="Apr", title="", set_ylabel = '', set_units = '', legend=True, savefig=True, save_label='', 
-    annotation = '', force_complete_season=False, loc_pos=0, fmts = ['mo-.','cs-.','yv-.','k*-','r.-','gD--','b-.']): 
+    annotation = '', force_complete_season=False, loc_pos=0, fmts=None): 
     """ Make a lineplot with markers comparing monthly mean data across winter seasons with reanalysis option for snow depth
     
     This is a convenience function that calls static_winter_comparison_lineplot with the reanalysis_option parameter.
@@ -1144,7 +1275,7 @@ def plot_is2_v4_vs_fused_three_panel(
         ims.append(im)
 
         ax.coastlines(linewidth=0.15, color="black", zorder=2)
-        ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+        ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder=1)
         ax.gridlines(
             draw_labels=False,
             linewidth=0.25,
@@ -1360,7 +1491,7 @@ def plot_is2_v4_vs_fused_nine_panel(
             )
 
             ax.coastlines(linewidth=0.15, color="black", zorder=2)
-            ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+            ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder=1)
             ax.gridlines(
                 draw_labels=False,
                 linewidth=0.25,
@@ -1454,7 +1585,7 @@ def plot_is2smgpsit_thickness_unc_three_months(
         ims.append(im)
 
         ax.coastlines(linewidth=0.15, color="black", zorder=2)
-        ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+        ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder=1)
         ax.gridlines(
             draw_labels=False,
             linewidth=0.25,
@@ -1563,7 +1694,7 @@ def plot_is2smgpsit_uncertainty_three_panel(
         ims.append(im)
 
         ax.coastlines(linewidth=0.15, color="black", zorder=2)
-        ax.add_feature(cfeature.LAND, color="0.95", zorder=1)
+        ax.add_feature(cfeature.LAND, color=LAND_FILL, zorder=1)
         ax.gridlines(
             draw_labels=False,
             linewidth=0.25,

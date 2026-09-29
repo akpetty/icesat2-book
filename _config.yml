@@ -89,6 +89,7 @@ execute:
     - 'content/2d_winter_arctic_sea_ice_variability_2024update.ipynb'
     - 'content/2e_winter_arctic_sea_ice_variability_2025update.ipynb'
     - 'content/2f_winter_arctic_sea_ice_variability_2026update.ipynb'
+    - 'content/2g_is2smgpsit_winter_arctic_sea_ice_2026update.ipynb'
     - 'content/10a_all_season_arctic_sea_ice_variability.ipynb'
     - 'content/10b_comparisons_with_BGEP_allseason.ipynb'
     - 'content/10c_comparisons_with_BGEP_winter.ipynb'

@@ -10,6 +10,7 @@ parts:
 #   - file: content/6_interactive_data_viz
 - caption: Winter Arctic sea ice thickness analysis updates
   chapters:
+  - file: content/2g_is2smgpsit_winter_arctic_sea_ice_2026update
   - file: content/2f_winter_arctic_sea_ice_variability_2026update
   - file: content/2e_winter_arctic_sea_ice_variability_2025update
   - file: content/2d_winter_arctic_sea_ice_variability_2024update
